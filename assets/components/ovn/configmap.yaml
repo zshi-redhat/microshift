@@ -1,0 +1,37 @@
+---
+# The ovnconfig config file. Used by both node and master processes.
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: ovnkube-config
+  namespace: openshift-ovn-kubernetes
+data:
+  ovnkube.conf:   |-
+    [default]
+    mtu="1400"
+    cluster-subnets="10.128.0.0/14/23"
+    encap-port="6081"
+    enable-lflow-cache=true
+    lflow-cache-limit-kb=1048576
+
+    [kubernetes]
+    service-cidrs="172.30.0.0/16"
+    ovn-config-namespace="openshift-ovn-kubernetes"
+    # apiserver="https://10.73.116.66:6443"
+    kubeconfig="/var/lib/microshift/resources/kubeadmin/kubeconfig"
+    host-network-namespace="openshift-host-network"
+    platform-type="BareMetal"
+ 
+    [ovnkubernetesfeature]
+    enable-egress-ip=true
+    enable-egress-firewall=true
+    enable-egress-qos=true
+
+    [gateway]
+    mode=shared
+    nodeport=true
+
+    [masterha]
+    election-lease-duration=137
+    election-renew-deadline=107
+    election-retry-period=26

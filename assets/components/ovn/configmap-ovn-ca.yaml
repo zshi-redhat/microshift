@@ -1,0 +1,29 @@
+apiVersion: v1
+data:
+  ca-bundle.crt: |
+    -----BEGIN CERTIFICATE-----
+    MIIDTzCCAjegAwIBAgIIFdR7cyl+zQcwDQYJKoZIhvcNAQELBQAwNTEzMDEGA1UE
+    Awwqb3BlbnNoaWZ0LW92bi1rdWJlcm5ldGVzX292bi1jYUAxNjUzMzEyMTA4MB4X
+    DTIyMDUyMzEzMjE0N1oXDTMyMDUyMDEzMjE0OFowNTEzMDEGA1UEAwwqb3BlbnNo
+    aWZ0LW92bi1rdWJlcm5ldGVzX292bi1jYUAxNjUzMzEyMTA4MIIBIjANBgkqhkiG
+    9w0BAQEFAAOCAQ8AMIIBCgKCAQEAz9xtIk8t19f1CbNCJTtdg6uTRcaO5TWiwv8t
+    fp/BJeOV3HoLImC3ok9UyKaO/BPSOgBy7X2E9E0hodgggsNXVwvAyqTLpxU5gPQS
+    QSNaOQM2HkWJJWW8GeYvq7+7ZSIJD2gXEnZHwI/FluN6Q41qMScV4BZHFX5xiTbm
+    PcELZyCXDInXyFoW23yCSJ68LFFAct2rpeK2TvM3affrQ/xAp4oIwYZvZ3Fn835I
+    A4hYhw0iEgkKewZVgWBNbbMy/l9qnwaboYXBa92WsgS/9UJqRwlxvBkCDJ08AGBn
+    0OlF+PJI204t8F2tL2JrHqN1WtkWgYf6Tur1vITKq7G3ngmW0wIDAQABo2MwYTAO
+    BgNVHQ8BAf8EBAMCAqQwDwYDVR0TAQH/BAUwAwEB/zAdBgNVHQ4EFgQUvjmJcaPn
+    UOevhPI6iJM0I1Ux2ZUwHwYDVR0jBBgwFoAUvjmJcaPnUOevhPI6iJM0I1Ux2ZUw
+    DQYJKoZIhvcNAQELBQADggEBAGuu3uOP4yzy6OaK1vdy7k5xH1JCwhbkygG8C3NO
+    0A9cDTGrCbR+3F8blv+TopV49xOrP/82X9GaQBpfnsYC44FL5P4oppYDJh3YPITV
+    mrOhx376hAs4e1WMFbgRNdHxDSzQr5+Xb+wcwBy2Bqfp2v53SRKX5m5ZKU8lYWqq
+    YEHRCtTZWlmOQo1AThJHgx5QesLnJsk4ikGtiVkFr+Hpv1MrrTwmKy3n2Ytu2Zrj
+    xOdBhakRaqdSN8R3ZvFnQcqNGqShq9gCG10KriTjLEmBlZXsJ7y84TKvH8IJS8WT
+    jzeF3oIxeCrkL7zXiq3veFasmEceip93h+zKLbZakLN4B+k=
+    -----END CERTIFICATE-----
+kind: ConfigMap
+metadata:
+  labels:
+    auth.openshift.io/managed-certificate-type: ca-bundle
+  name: ovn-ca
+  namespace: openshift-ovn-kubernetes

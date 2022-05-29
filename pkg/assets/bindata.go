@@ -30,6 +30,19 @@
 // assets/components/openshift-router/service-account.yaml
 // assets/components/openshift-router/service-cloud.yaml
 // assets/components/openshift-router/service-internal.yaml
+// assets/components/ovn/clusterrole.yaml
+// assets/components/ovn/clusterrolebinding.yaml
+// assets/components/ovn/configmap-ovn-ca.yaml
+// assets/components/ovn/configmap.yaml
+// assets/components/ovn/master/.daemonset.yaml.swp
+// assets/components/ovn/master/daemonset.yaml
+// assets/components/ovn/master/serviceaccount.yaml
+// assets/components/ovn/namespace.yaml
+// assets/components/ovn/node/daemonset.yaml
+// assets/components/ovn/node/serviceaccount.yaml
+// assets/components/ovn/role.yaml
+// assets/components/ovn/rolebinding.yaml
+// assets/components/ovn/service.yaml
 // assets/components/service-ca/clusterrole.yaml
 // assets/components/service-ca/clusterrolebinding.yaml
 // assets/components/service-ca/deployment.yaml
@@ -148,7 +161,7 @@ func assetsComponentsFlannelClusterroleYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/flannel/clusterrole.yaml", size: 418, mode: os.FileMode(436), modTime: time.Unix(1653308373, 0)}
+	info := bindataFileInfo{name: "assets/components/flannel/clusterrole.yaml", size: 418, mode: os.FileMode(436), modTime: time.Unix(1653646266, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -176,7 +189,7 @@ func assetsComponentsFlannelClusterrolebindingYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/flannel/clusterrolebinding.yaml", size: 248, mode: os.FileMode(436), modTime: time.Unix(1653308373, 0)}
+	info := bindataFileInfo{name: "assets/components/flannel/clusterrolebinding.yaml", size: 248, mode: os.FileMode(436), modTime: time.Unix(1653646266, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -229,7 +242,7 @@ func assetsComponentsFlannelConfigmapYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/flannel/configmap.yaml", size: 674, mode: os.FileMode(436), modTime: time.Unix(1653308373, 0)}
+	info := bindataFileInfo{name: "assets/components/flannel/configmap.yaml", size: 674, mode: os.FileMode(436), modTime: time.Unix(1653646266, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -352,7 +365,7 @@ func assetsComponentsFlannelDaemonsetYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/flannel/daemonset.yaml", size: 2657, mode: os.FileMode(436), modTime: time.Unix(1653308425, 0)}
+	info := bindataFileInfo{name: "assets/components/flannel/daemonset.yaml", size: 2657, mode: os.FileMode(436), modTime: time.Unix(1653646266, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -414,7 +427,7 @@ func assetsComponentsFlannelPodsecuritypolicyYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/flannel/podsecuritypolicy.yaml", size: 1195, mode: os.FileMode(436), modTime: time.Unix(1653308373, 0)}
+	info := bindataFileInfo{name: "assets/components/flannel/podsecuritypolicy.yaml", size: 1195, mode: os.FileMode(436), modTime: time.Unix(1653646266, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -435,7 +448,7 @@ func assetsComponentsFlannelServiceAccountYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/flannel/service-account.yaml", size: 86, mode: os.FileMode(436), modTime: time.Unix(1653308373, 0)}
+	info := bindataFileInfo{name: "assets/components/flannel/service-account.yaml", size: 86, mode: os.FileMode(436), modTime: time.Unix(1653646266, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -474,7 +487,7 @@ func assetsComponentsHostpathProvisionerClusterroleYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/hostpath-provisioner/clusterrole.yaml", size: 609, mode: os.FileMode(436), modTime: time.Unix(1653308373, 0)}
+	info := bindataFileInfo{name: "assets/components/hostpath-provisioner/clusterrole.yaml", size: 609, mode: os.FileMode(436), modTime: time.Unix(1653632080, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -502,7 +515,7 @@ func assetsComponentsHostpathProvisionerClusterrolebindingYaml() (*asset, error)
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/hostpath-provisioner/clusterrolebinding.yaml", size: 338, mode: os.FileMode(436), modTime: time.Unix(1653308373, 0)}
+	info := bindataFileInfo{name: "assets/components/hostpath-provisioner/clusterrolebinding.yaml", size: 338, mode: os.FileMode(436), modTime: time.Unix(1653632080, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -558,7 +571,7 @@ func assetsComponentsHostpathProvisionerDaemonsetYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/hostpath-provisioner/daemonset.yaml", size: 1231, mode: os.FileMode(436), modTime: time.Unix(1653308443, 0)}
+	info := bindataFileInfo{name: "assets/components/hostpath-provisioner/daemonset.yaml", size: 1231, mode: os.FileMode(436), modTime: time.Unix(1653646266, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -578,7 +591,7 @@ func assetsComponentsHostpathProvisionerNamespaceYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/hostpath-provisioner/namespace.yaml", size: 78, mode: os.FileMode(436), modTime: time.Unix(1653308373, 0)}
+	info := bindataFileInfo{name: "assets/components/hostpath-provisioner/namespace.yaml", size: 78, mode: os.FileMode(436), modTime: time.Unix(1653632080, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -619,7 +632,7 @@ func assetsComponentsHostpathProvisionerSccYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/hostpath-provisioner/scc.yaml", size: 480, mode: os.FileMode(436), modTime: time.Unix(1653308373, 0)}
+	info := bindataFileInfo{name: "assets/components/hostpath-provisioner/scc.yaml", size: 480, mode: os.FileMode(436), modTime: time.Unix(1653632080, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -640,7 +653,7 @@ func assetsComponentsHostpathProvisionerServiceAccountYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/hostpath-provisioner/service-account.yaml", size: 132, mode: os.FileMode(436), modTime: time.Unix(1653308373, 0)}
+	info := bindataFileInfo{name: "assets/components/hostpath-provisioner/service-account.yaml", size: 132, mode: os.FileMode(436), modTime: time.Unix(1653632080, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -666,7 +679,7 @@ func assetsComponentsHostpathProvisionerStorageclassYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/hostpath-provisioner/storageclass.yaml", size: 276, mode: os.FileMode(436), modTime: time.Unix(1653308373, 0)}
+	info := bindataFileInfo{name: "assets/components/hostpath-provisioner/storageclass.yaml", size: 276, mode: os.FileMode(436), modTime: time.Unix(1653632080, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -694,7 +707,7 @@ func assetsComponentsOpenshiftDnsDnsClusterRoleBindingYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/openshift-dns/dns/cluster-role-binding.yaml", size: 223, mode: os.FileMode(436), modTime: time.Unix(1653308373, 0)}
+	info := bindataFileInfo{name: "assets/components/openshift-dns/dns/cluster-role-binding.yaml", size: 223, mode: os.FileMode(436), modTime: time.Unix(1653632080, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -748,7 +761,7 @@ func assetsComponentsOpenshiftDnsDnsClusterRoleYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/openshift-dns/dns/cluster-role.yaml", size: 492, mode: os.FileMode(436), modTime: time.Unix(1653308373, 0)}
+	info := bindataFileInfo{name: "assets/components/openshift-dns/dns/cluster-role.yaml", size: 492, mode: os.FileMode(436), modTime: time.Unix(1653632080, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -794,7 +807,7 @@ func assetsComponentsOpenshiftDnsDnsConfigmapYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/openshift-dns/dns/configmap.yaml", size: 610, mode: os.FileMode(436), modTime: time.Unix(1653308373, 0)}
+	info := bindataFileInfo{name: "assets/components/openshift-dns/dns/configmap.yaml", size: 610, mode: os.FileMode(436), modTime: time.Unix(1653632080, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -917,7 +930,7 @@ func assetsComponentsOpenshiftDnsDnsDaemonsetYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/openshift-dns/dns/daemonset.yaml", size: 3217, mode: os.FileMode(436), modTime: time.Unix(1653308465, 0)}
+	info := bindataFileInfo{name: "assets/components/openshift-dns/dns/daemonset.yaml", size: 3217, mode: os.FileMode(436), modTime: time.Unix(1653646266, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -946,7 +959,7 @@ func assetsComponentsOpenshiftDnsDnsNamespaceYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/openshift-dns/dns/namespace.yaml", size: 417, mode: os.FileMode(436), modTime: time.Unix(1653308373, 0)}
+	info := bindataFileInfo{name: "assets/components/openshift-dns/dns/namespace.yaml", size: 417, mode: os.FileMode(436), modTime: time.Unix(1653632080, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -968,7 +981,7 @@ func assetsComponentsOpenshiftDnsDnsServiceAccountYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/openshift-dns/dns/service-account.yaml", size: 85, mode: os.FileMode(436), modTime: time.Unix(1653308373, 0)}
+	info := bindataFileInfo{name: "assets/components/openshift-dns/dns/service-account.yaml", size: 85, mode: os.FileMode(436), modTime: time.Unix(1653632080, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -1015,7 +1028,7 @@ func assetsComponentsOpenshiftDnsDnsServiceYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/openshift-dns/dns/service.yaml", size: 691, mode: os.FileMode(436), modTime: time.Unix(1653308373, 0)}
+	info := bindataFileInfo{name: "assets/components/openshift-dns/dns/service.yaml", size: 691, mode: os.FileMode(436), modTime: time.Unix(1653632080, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -1159,7 +1172,7 @@ func assetsComponentsOpenshiftDnsNodeResolverDaemonsetYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/openshift-dns/node-resolver/daemonset.yaml", size: 4823, mode: os.FileMode(436), modTime: time.Unix(1653308373, 0)}
+	info := bindataFileInfo{name: "assets/components/openshift-dns/node-resolver/daemonset.yaml", size: 4823, mode: os.FileMode(436), modTime: time.Unix(1653632080, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -1181,7 +1194,7 @@ func assetsComponentsOpenshiftDnsNodeResolverServiceAccountYaml() (*asset, error
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/openshift-dns/node-resolver/service-account.yaml", size: 95, mode: os.FileMode(436), modTime: time.Unix(1653308373, 0)}
+	info := bindataFileInfo{name: "assets/components/openshift-dns/node-resolver/service-account.yaml", size: 95, mode: os.FileMode(436), modTime: time.Unix(1653632080, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -1211,7 +1224,7 @@ func assetsComponentsOpenshiftRouterClusterRoleBindingYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/openshift-router/cluster-role-binding.yaml", size: 329, mode: os.FileMode(436), modTime: time.Unix(1653308373, 0)}
+	info := bindataFileInfo{name: "assets/components/openshift-router/cluster-role-binding.yaml", size: 329, mode: os.FileMode(436), modTime: time.Unix(1653632080, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -1289,7 +1302,7 @@ func assetsComponentsOpenshiftRouterClusterRoleYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/openshift-router/cluster-role.yaml", size: 883, mode: os.FileMode(436), modTime: time.Unix(1653308373, 0)}
+	info := bindataFileInfo{name: "assets/components/openshift-router/cluster-role.yaml", size: 883, mode: os.FileMode(436), modTime: time.Unix(1653632080, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -1313,7 +1326,7 @@ func assetsComponentsOpenshiftRouterConfigmapYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/openshift-router/configmap.yaml", size: 168, mode: os.FileMode(436), modTime: time.Unix(1653308373, 0)}
+	info := bindataFileInfo{name: "assets/components/openshift-router/configmap.yaml", size: 168, mode: os.FileMode(436), modTime: time.Unix(1653632080, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -1470,7 +1483,7 @@ func assetsComponentsOpenshiftRouterDeploymentYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/openshift-router/deployment.yaml", size: 4746, mode: os.FileMode(436), modTime: time.Unix(1653308373, 0)}
+	info := bindataFileInfo{name: "assets/components/openshift-router/deployment.yaml", size: 4746, mode: os.FileMode(436), modTime: time.Unix(1653632080, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -1501,7 +1514,7 @@ func assetsComponentsOpenshiftRouterNamespaceYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/openshift-router/namespace.yaml", size: 499, mode: os.FileMode(436), modTime: time.Unix(1653308373, 0)}
+	info := bindataFileInfo{name: "assets/components/openshift-router/namespace.yaml", size: 499, mode: os.FileMode(436), modTime: time.Unix(1653632080, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -1525,7 +1538,7 @@ func assetsComponentsOpenshiftRouterServiceAccountYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/openshift-router/service-account.yaml", size: 213, mode: os.FileMode(436), modTime: time.Unix(1653308373, 0)}
+	info := bindataFileInfo{name: "assets/components/openshift-router/service-account.yaml", size: 213, mode: os.FileMode(436), modTime: time.Unix(1653632080, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -1564,7 +1577,7 @@ func assetsComponentsOpenshiftRouterServiceCloudYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/openshift-router/service-cloud.yaml", size: 567, mode: os.FileMode(436), modTime: time.Unix(1653308373, 0)}
+	info := bindataFileInfo{name: "assets/components/openshift-router/service-cloud.yaml", size: 567, mode: os.FileMode(436), modTime: time.Unix(1653632080, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -1609,7 +1622,1737 @@ func assetsComponentsOpenshiftRouterServiceInternalYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/openshift-router/service-internal.yaml", size: 727, mode: os.FileMode(436), modTime: time.Unix(1653308373, 0)}
+	info := bindataFileInfo{name: "assets/components/openshift-router/service-internal.yaml", size: 727, mode: os.FileMode(436), modTime: time.Unix(1653632080, 0)}
+	a := &asset{bytes: bytes, info: info}
+	return a, nil
+}
+
+var _assetsComponentsOvnClusterroleYaml = []byte(`---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: openshift-ovn-kubernetes-node
+rules:
+- apiGroups: [""]
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+  - watch
+  - patch
+- apiGroups: [""]
+  resources:
+  - namespaces
+  - endpoints
+  - services
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - discovery.k8s.io
+  resources:
+  - endpointslices
+  verbs:
+  - list
+  - watch
+- apiGroups: ["networking.k8s.io"]
+  resources:
+  - networkpolicies
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups: ["", "events.k8s.io"]
+  resources:
+  - events
+  verbs:
+  - create
+  - patch
+  - update
+- apiGroups: [""]
+  resources:
+  - nodes
+  verbs:
+  - get
+  - list
+  - watch
+  - patch
+  - update
+- apiGroups: ["k8s.ovn.org"]
+  resources:
+  - egressips
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups: ["apiextensions.k8s.io"]
+  resources:
+  - customresourcedefinitions
+  verbs:
+    - get
+    - list
+    - watch
+- apiGroups: ['authentication.k8s.io']
+  resources: ['tokenreviews']
+  verbs: ['create']
+- apiGroups: ['authorization.k8s.io']
+  resources: ['subjectaccessreviews']
+  verbs: ['create']
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: openshift-ovn-kubernetes-controller
+rules:
+- apiGroups: [""]
+  resources:
+  - namespaces
+  - nodes
+  - pods
+  verbs:
+  - get
+  - list
+  - patch
+  - watch
+  - update
+- apiGroups: [""]
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+  - patch
+  - watch
+  - delete
+- apiGroups: [""]
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - create
+  - update
+  - patch
+- apiGroups: [""]
+  resources:
+  - services
+  - endpoints
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - discovery.k8s.io
+  resources:
+  - endpointslices
+  verbs:
+  - list
+  - watch
+- apiGroups: ["networking.k8s.io"]
+  resources:
+  - networkpolicies
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups: ["", "events.k8s.io"]
+  resources:
+  - events
+  verbs:
+  - create
+  - patch
+  - update
+- apiGroups: ["security.openshift.io"]
+  resources:
+  - securitycontextconstraints
+  verbs:
+  - use
+  resourceNames:
+  - privileged
+- apiGroups: [""]
+  resources:
+  - "nodes/status"
+  verbs:
+  - patch
+  - update
+- apiGroups: ["k8s.ovn.org"]
+  resources:
+  - egressfirewalls
+  - egressips
+  - egressqoses
+  verbs:
+  - get
+  - list
+  - watch
+  - update
+  - patch
+- apiGroups: ["cloud.network.openshift.io"]
+  resources:
+  - cloudprivateipconfigs
+  verbs:
+  - create
+  - patch
+  - update
+  - delete
+  - get
+  - list
+  - watch
+- apiGroups: ["apiextensions.k8s.io"]
+  resources:
+  - customresourcedefinitions
+  verbs:
+    - get
+    - list
+    - watch
+- apiGroups: ['authentication.k8s.io']
+  resources: ['tokenreviews']
+  verbs: ['create']
+- apiGroups: ['authorization.k8s.io']
+  resources: ['subjectaccessreviews']
+  verbs: ['create']
+`)
+
+func assetsComponentsOvnClusterroleYamlBytes() ([]byte, error) {
+	return _assetsComponentsOvnClusterroleYaml, nil
+}
+
+func assetsComponentsOvnClusterroleYaml() (*asset, error) {
+	bytes, err := assetsComponentsOvnClusterroleYamlBytes()
+	if err != nil {
+		return nil, err
+	}
+
+	info := bindataFileInfo{name: "assets/components/ovn/clusterrole.yaml", size: 2771, mode: os.FileMode(436), modTime: time.Unix(1653813555, 0)}
+	a := &asset{bytes: bytes, info: info}
+	return a, nil
+}
+
+var _assetsComponentsOvnClusterrolebindingYaml = []byte(`---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: openshift-ovn-kubernetes-node
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: openshift-ovn-kubernetes-node
+subjects:
+- kind: ServiceAccount
+  name: ovn-kubernetes-node
+  namespace: openshift-ovn-kubernetes
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: openshift-ovn-kubernetes-controller
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: openshift-ovn-kubernetes-controller
+subjects:
+- kind: ServiceAccount
+  name: ovn-kubernetes-controller
+  namespace: openshift-ovn-kubernetes
+`)
+
+func assetsComponentsOvnClusterrolebindingYamlBytes() ([]byte, error) {
+	return _assetsComponentsOvnClusterrolebindingYaml, nil
+}
+
+func assetsComponentsOvnClusterrolebindingYaml() (*asset, error) {
+	bytes, err := assetsComponentsOvnClusterrolebindingYamlBytes()
+	if err != nil {
+		return nil, err
+	}
+
+	info := bindataFileInfo{name: "assets/components/ovn/clusterrolebinding.yaml", size: 663, mode: os.FileMode(436), modTime: time.Unix(1653813572, 0)}
+	a := &asset{bytes: bytes, info: info}
+	return a, nil
+}
+
+var _assetsComponentsOvnConfigmapOvnCaYaml = []byte(`apiVersion: v1
+data:
+  ca-bundle.crt: |
+    -----BEGIN CERTIFICATE-----
+    MIIDTzCCAjegAwIBAgIIFdR7cyl+zQcwDQYJKoZIhvcNAQELBQAwNTEzMDEGA1UE
+    Awwqb3BlbnNoaWZ0LW92bi1rdWJlcm5ldGVzX292bi1jYUAxNjUzMzEyMTA4MB4X
+    DTIyMDUyMzEzMjE0N1oXDTMyMDUyMDEzMjE0OFowNTEzMDEGA1UEAwwqb3BlbnNo
+    aWZ0LW92bi1rdWJlcm5ldGVzX292bi1jYUAxNjUzMzEyMTA4MIIBIjANBgkqhkiG
+    9w0BAQEFAAOCAQ8AMIIBCgKCAQEAz9xtIk8t19f1CbNCJTtdg6uTRcaO5TWiwv8t
+    fp/BJeOV3HoLImC3ok9UyKaO/BPSOgBy7X2E9E0hodgggsNXVwvAyqTLpxU5gPQS
+    QSNaOQM2HkWJJWW8GeYvq7+7ZSIJD2gXEnZHwI/FluN6Q41qMScV4BZHFX5xiTbm
+    PcELZyCXDInXyFoW23yCSJ68LFFAct2rpeK2TvM3affrQ/xAp4oIwYZvZ3Fn835I
+    A4hYhw0iEgkKewZVgWBNbbMy/l9qnwaboYXBa92WsgS/9UJqRwlxvBkCDJ08AGBn
+    0OlF+PJI204t8F2tL2JrHqN1WtkWgYf6Tur1vITKq7G3ngmW0wIDAQABo2MwYTAO
+    BgNVHQ8BAf8EBAMCAqQwDwYDVR0TAQH/BAUwAwEB/zAdBgNVHQ4EFgQUvjmJcaPn
+    UOevhPI6iJM0I1Ux2ZUwHwYDVR0jBBgwFoAUvjmJcaPnUOevhPI6iJM0I1Ux2ZUw
+    DQYJKoZIhvcNAQELBQADggEBAGuu3uOP4yzy6OaK1vdy7k5xH1JCwhbkygG8C3NO
+    0A9cDTGrCbR+3F8blv+TopV49xOrP/82X9GaQBpfnsYC44FL5P4oppYDJh3YPITV
+    mrOhx376hAs4e1WMFbgRNdHxDSzQr5+Xb+wcwBy2Bqfp2v53SRKX5m5ZKU8lYWqq
+    YEHRCtTZWlmOQo1AThJHgx5QesLnJsk4ikGtiVkFr+Hpv1MrrTwmKy3n2Ytu2Zrj
+    xOdBhakRaqdSN8R3ZvFnQcqNGqShq9gCG10KriTjLEmBlZXsJ7y84TKvH8IJS8WT
+    jzeF3oIxeCrkL7zXiq3veFasmEceip93h+zKLbZakLN4B+k=
+    -----END CERTIFICATE-----
+kind: ConfigMap
+metadata:
+  labels:
+    auth.openshift.io/managed-certificate-type: ca-bundle
+  name: ovn-ca
+  namespace: openshift-ovn-kubernetes
+`)
+
+func assetsComponentsOvnConfigmapOvnCaYamlBytes() ([]byte, error) {
+	return _assetsComponentsOvnConfigmapOvnCaYaml, nil
+}
+
+func assetsComponentsOvnConfigmapOvnCaYaml() (*asset, error) {
+	bytes, err := assetsComponentsOvnConfigmapOvnCaYamlBytes()
+	if err != nil {
+		return nil, err
+	}
+
+	info := bindataFileInfo{name: "assets/components/ovn/configmap-ovn-ca.yaml", size: 1475, mode: os.FileMode(436), modTime: time.Unix(1653813524, 0)}
+	a := &asset{bytes: bytes, info: info}
+	return a, nil
+}
+
+var _assetsComponentsOvnConfigmapYaml = []byte(`---
+# The ovnconfig config file. Used by both node and master processes.
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: ovnkube-config
+  namespace: openshift-ovn-kubernetes
+data:
+  ovnkube.conf:   |-
+    [default]
+    mtu="1400"
+    cluster-subnets="10.128.0.0/14/23"
+    encap-port="6081"
+    enable-lflow-cache=true
+    lflow-cache-limit-kb=1048576
+
+    [kubernetes]
+    service-cidrs="172.30.0.0/16"
+    ovn-config-namespace="openshift-ovn-kubernetes"
+    # apiserver="https://10.73.116.66:6443"
+    kubeconfig="/var/lib/microshift/resources/kubeadmin/kubeconfig"
+    host-network-namespace="openshift-host-network"
+    platform-type="BareMetal"
+ 
+    [ovnkubernetesfeature]
+    enable-egress-ip=true
+    enable-egress-firewall=true
+    enable-egress-qos=true
+
+    [gateway]
+    mode=shared
+    nodeport=true
+
+    [masterha]
+    election-lease-duration=137
+    election-renew-deadline=107
+    election-retry-period=26
+`)
+
+func assetsComponentsOvnConfigmapYamlBytes() ([]byte, error) {
+	return _assetsComponentsOvnConfigmapYaml, nil
+}
+
+func assetsComponentsOvnConfigmapYaml() (*asset, error) {
+	bytes, err := assetsComponentsOvnConfigmapYamlBytes()
+	if err != nil {
+		return nil, err
+	}
+
+	info := bindataFileInfo{name: "assets/components/ovn/configmap.yaml", size: 923, mode: os.FileMode(436), modTime: time.Unix(1653813505, 0)}
+	a := &asset{bytes: bytes, info: info}
+	return a, nil
+}
+
+var _assetsComponentsOvnMasterDaemonsetYamlSwp = []byte("b0VIM 8.2\x00\x00\x00\x00\x10\x00\x00 5\x93bt~f\x00\x92\x92\x12\x00zshi\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00localhost.localdomain\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00~zshi/git/openshift/microshift/assets/components/ovn/master/daemonset.yaml\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00utf-8\r\x003210\x00\x00\x00\x00#\"! \x13\x12U\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00tp\t\x00\u007f\x00\x00\x00\x02\x00\x00\x00\x00\x00\x00\x00p\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\a\x00\x00\x00\x00\x00\x00\x00W\x00\x00\x00\x00\x00\x00\x00q\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00X\x00\x00\x00\x00\x00\x00\x00\xc8\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\t\x00\x00\x00\x00\x00\x00\x00M\x00\x00\x00\x00\x00\x00\x00 \x01\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x04\x00\x00\x00\x00\x00\x00\x00h\x00\x00\x00\x00\x00\x00\x00m\x01\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\n\x00\x00\x00\x00\x00\x00\x00R\x00\x00\x00\x00\x00\x00\x00\xd5\x01\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x05\x00\x00\x00\x00\x00\x00\x00V\x00\x00\x00\x00\x00\x00\x00'\x02\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x06\x00\x00\x00\x00\x00\x00\x00l\x00\x00\x00\x00\x00\x00\x00}\x02\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x03\x00\x00\x00\x00\x00\x00\x00-\x00\x00\x00\x00\x00\x00\x00\xe9\x02\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00ad\x00\x00-\x00\x00\x00\t\x02\x00\x00\x00\x10\x00\x00p\x00\x00\x00\x00\x00\x00\x00\xfc\x0f\x00\x00\xd5\x0f\x00\x00\xd4\x0f\x00\x00\xc4\x0f\x00\x00\xb0\x0f\x00\x00\xa6\x0f\x00\x00\x8f\x0f\x00\x00i\x0f\x00\x00Z\x0f\x00\x009\x0f\x00\x00\xdd\x0e\x00\x00\xb4\x0e\x00\x00\xae\x0e\x00\x00\xa2\x0e\x00\x00\x91\x0e\x00\x00w\x0e\x00\x00e\x0e\x00\x00M\x0e\x00\x00:\x0e\x00\x00\xe7\r\x00\x00\xa8\r\x00\x00\x96\r\x00\x00~\r\x00\x00r\r\x00\x00d\r\x00\x00Q\r\x00\x00\xf6\f\x00\x00\xe8\f\x00\x00\xcc\f\x00\x00\xb1\f\x00\x00\x96\f\x00\x00\x82\f\x00\x00Z\f\x00\x008\f\x00\x00.\f\x00\x00\xfa\v\x00\x00\xe2\v\x00\x00\xc9\v\x00\x00\x96\v\x00\x00s\v\x00\x00U\v\x00\x00\x1b\v\x00\x00\xd7\n\x00\x00\xab\n\x00\x00q\n\x00\x00_\n\x00\x00\x1a\n\x00\x00\x05\n\x00\x00\xce\t\x00\x00\xbd\t\x00\x00\xa9\t\x00\x00\x9c\t\x00\x00\x90\t\x00\x00}\t\x00\x00T\t\x00\x007\t\x00\x00\x17\t\x00\x00\xfa\b\x00\x00\xed\b\x00\x00\xec\b\x00\x00\xd9\b\x00\x00\x9e\b\x00\x00S\b\x00\x00\x19\b\x00\x00\xeb\a\x00\x00\xd8\a\x00\x00\xcc\a\x00\x00\xb4\a\x00\x00\x97\a\x00\x00\x96\a\x00\x00]\a\x00\x00A\a\x00\x00\xc1\x06\x00\x00\x90\x06\x00\x00_\x06\x00\x00+\x06\x00\x00\b\x06\x00\x00\xe5\x05\x00\x00\xbe\x05\x00\x00\xbd\x05\x00\x00\xab\x05\x00\x00\x98\x05\x00\x00\x85\x05\x00\x00s\x05\x00\x00\\\x05\x00\x00@\x05\x00\x00+\x05\x00\x00\xda\x04\x00\x00\xcd\x04\x00\x00\xaf\x04\x00\x00\x98\x04\x00\x00\x82\x04\x00\x00[\x04\x00\x00;\x04\x00\x00\x10\x04\x00\x00\xec\x03\x00\x00\xc5\x03\x00\x00\xa5\x03\x00\x00\x86\x03\x00\x00n\x03\x00\x00T\x03\x00\x006\x03\x00\x00\xe5\x02\x00\x00\xcc\x02\x00\x00\xaf\x02\x00\x00\x98\x02\x00\x00\x85\x02\x00\x00q\x02\x00\x00\\\x02\x00\x00B\x02\x00\x00\n\x02\x00\x00\t\x02\x00\x00\b\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00        terminationMessagePolicy: FallbackToLogsOnError\x00            memory: 300Mi\x00            cpu: 10m\x00          requests:\x00        resources:\x00          name: ovn-ca\x00        - mountPath: /ovn-ca\x00          name: ovn-cert\x00        - mountPath: /ovn-cert # not needed, but useful when exec'ing in to pod.\x00          name: env-overrides\x00        - mountPath: /env\x00          name: run-ovn\x00        - mountPath: /run/ovn/\x00          name: run-openvswitch\x00        - mountPath: /run/openvswitch/\x00          name: var-lib-openvswitch\x00        - mountPath: /var/lib/openvswitch/\x00          name: etc-openvswitch\x00        - mountPath: /etc/openvswitch/\x00        volumeMounts:\x00          value: info \x00        - name: OVN_LOG_LEVEL\x00        env:\x00                - OVN_MANAGE_OVSDB=no /usr/share/ovn/scripts/ovn-ctl stop_northd\x00                - -c\x00                - /bin/bash\x00              command:\x00            exec:\x00          preStop:\x00        lifecycle:\x00          wait $!\x00\x00            -C /ovn-ca/ca-bundle.crt &\x00            -c /ovn-cert/tls.crt \\\x00            -p /ovn-cert/tls.key \\\x00            --pidfile /var/run/ovn/ovn-northd.pid \\\x00            --ovnsb-db \"ssl:10.73.116.66:9642\" \\\x00            --ovnnb-db \"ssl:10.73.116.66:9641\" \\\x00            --no-chdir \"-vconsole:${OVN_LOG_LEVEL}\" -vfile:off \"-vPATTERN:console:%D{%Y-%m-%dT%H:%M:%S.###Z}|%05N|%c%T|%p|%m\" \\\x00          exec ovn-northd \\\x00          echo \"$(date -Iseconds) - starting ovn-northd\"\x00\x00          trap quit TERM INT\x00          # end of quit\x00          }\x00            exit 0\x00            rm -f /var/run/ovn/ovn-northd.pid\x00            echo \"$(date -Iseconds) - ovn-northd stopped\"\x00            OVN_MANAGE_OVSDB=no /usr/share/ovn/scripts/ovn-ctl stop_northd\x00            echo \"$(date -Iseconds) - stopping ovn-northd\"\x00          quit() {\x00\x00          fi\x00            set +o allexport\x00            source /env/_master\x00            set -o allexport\x00          if [[ -f /env/_master ]]; then\x00          set -xem\x00        - |\x00        - -c\x00        - /bin/bash\x00        command:\x00        image: \"quay.io/zshi/ovn-daemonset:microshift\"\x00      - name: northd\x00      # ovn-northd: convert network objects in nbdb to flows in sbdb\x00      containers:\x00      # /env -> configmap env-overrides - debug overrides\x00      # /run/openvswitch -> tmpfs - sockets\x00      # /var/lib/openvswitch -> /var/lib/ovn/data - ovsdb pki state\x00      # /etc/openvswitch -> /var/lib/ovn/etc - ovsdb data\x00      # (container) -> (host)\x00      # volumes in all containers:\x00      priorityClassName: \"system-cluster-critical\"\x00      dnsPolicy: Default\x00      hostNetwork: true\x00      serviceAccountName: ovn-kubernetes-controller\x00    spec:\x00        kubernetes.io/os: \"linux\"\x00        openshift.io/component: network\x00        type: infra\x00        component: network\x00        ovn-db-pod: \"true\"\x00        app: ovnkube-master\x00      labels:\x00        target.workload.openshift.io/management: '{\"effect\": \"PreferredDuringScheduling\"}'\x00      annotations:\x00    metadata:\x00  template:\x00      maxUnavailable: 1\x00      maxSurge: 0\x00      # but we don't want that - because ovsdb holds the lock.\x00      # by default, Deployments spin up the new pod before terminating the old one\x00    rollingUpdate:\x00    type: RollingUpdate\x00  updateStrategy:\x00      app: ovnkube-master\x00    matchLabels:\x00  selector:\x00spec:\x00    release.openshift.io/version: \"4.11\"\x00      This daemonset launches the ovn-kubernetes controller (master) networking components.\x00    kubernetes.io/description: |\x00  annotations:\x00  namespace: openshift-ovn-kubernetes\x00  name: ovnkube-master\x00metadata:\x00apiVersion: apps/v1\x00kind: DaemonSet\x00\x00# The ovnkube control-plane components\x00---\x00ad\x00\x00\x17\n\x00\x00\xe7\n\x00\x00\x00\x10\x00\x00-\x00\x00\x00\x00\x00\x00\x00\xd1\x0f\x00\x00\xb5\x0f\x00\x00\xa3\x0f\x00\x00\u007f\x0f\x00\x00a\x0f\x00\x00O\x0f\x00\x00.\x0f\x00\x00\f\x0f\x00\x00\xfa\x0e\x00\x00\xd8\x0e\x00\x00\xba\x0e\x00\x00\xa8\x0e\x00\x00\x83\x0e\x00\x00m\x0e\x00\x00[\x0e\x00\x00>\x0e\x00\x00%\x0e\x00\x00\x13\x0e\x00\x00\xdb\r\x00\x00\xbe\r\x00\x00\xab\r\x00\x00\x8c\r\x00\x00p\r\x00\x00]\r\x00\x00?\r\x00\x00&\r\x00\x00\x11\r\x00\x00\xfe\f\x00\x00\xe7\f\x00\x00\xd0\f\x00\x00\xc0\f\x00\x00\xa1\f\x00\x00{\f\x00\x00k\f\x00\x00=\f\x00\x00$\f\x00\x00\x11\f\x00\x00\xe3\v\x00\x00\xc8\v\x00\x00\x9c\v\x00\x00\x81\v\x00\x00S\v\x00\x008\v\x00\x00\x02\v\x00\x00\xe7\n\x00\x00\xe6\n\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00        operator: \"Exists\"\x00      - key: \"node.kubernetes.io/network-unavailable\"\x00        operator: \"Exists\"\x00      - key: \"node.kubernetes.io/unreachable\"\x00        operator: \"Exists\"\x00      - key: \"node.kubernetes.io/not-ready\"\x00        operator: \"Exists\"\x00      - key: \"node-role.kubernetes.io/master\"\x00      tolerations:\x00          optional: true\x00          secretName: ovn-master-metrics-cert\x00        secret:\x00      - name: ovn-master-metrics-cert\x00          secretName: ovn-cert\x00        secret:\x00      - name: ovn-cert\x00          name: ovn-ca\x00        configMap:\x00      - name: ovn-ca\x00          optional: true\x00          name: env-overrides\x00        configMap:\x00      - name: env-overrides\x00          name: ovnkube-config\x00        configMap:\x00      - name: ovnkube-config\x00          path: /var/lib/microshift/resources/kubeadmin\x00        hostPath:\x00      - name: kubeconfig\x00          path: /var/run/ovn\x00        hostPath:\x00      - name: run-ovn\x00          path: /var/run/openvswitch\x00        hostPath:\x00      - name: run-openvswitch\x00          path: /var/lib/ovn/data\x00        hostPath:\x00      - name: var-lib-openvswitch\x00          path: /var/lib/ovn/etc\x00        hostPath:\x00      - name: etc-openvswitch\x00          path: /etc/systemd/system\x00        hostPath:\x00      - name: systemd-units\x00      # for checking ovs-configuration service\x00ad\x00\x00\x1a\x00\x00\x00\xd6\x01\x00\x00\x00\x10\x00\x00h\x00\x00\x00\x00\x00\x00\x00\xe9\x0f\x00\x00\xd6\x0f\x00\x00S\x0f\x00\x00B\x0f\x00\x00A\x0f\x00\x004\x0f\x00\x00\x16\x0f\x00\x00\xff\x0e\x00\x00\xd5\x0e\x00\x00\xbd\x0e\x00\x00\xa1\x0e\x00\x00\x8c\x0e\x00\x00v\x0e\x00\x00O\x0e\x00\x009\x0e\x00\x00\x12\x0e\x00\x00\xf2\r\x00\x00\xd3\r\x00\x00\xb3\r\x00\x00\x88\r\x00\x00d\r\x00\x00=\r\x00\x00\x1d\r\x00\x00\xfe\f\x00\x00\xe6\f\x00\x00\xcc\f\x00\x00\xae\f\x00\x00\x8f\f\x00\x00v\f\x00\x00Y\f\x00\x00B\f\x00\x00/\f\x00\x00\x1b\f\x00\x00\x06\f\x00\x00\xec\v\x00\x00\xdd\v\x00\x00\xc2\v\x00\x00\xa4\v\x00\x00\x84\v\x00\x00f\v\x00\x00.\v\x00\x00-\v\x00\x00\xf6\n\x00\x00\xe3\n\x00\x00\xac\n\x00\x00\x9b\n\x00\x00\x87\n\x00\x00z\n\x00\x00n\n\x00\x00\\\n\x00\x003\n\x00\x00\x16\n\x00\x00\xf6\t\x00\x00\xd9\t\x00\x00\xcc\t\x00\x00\xcb\t\x00\x00\xb8\t\x00\x00\x83\t\x00\x00J\t\x00\x00\x16\t\x00\x00\xea\b\x00\x00\xd7\b\x00\x00\xcb\b\x00\x00\xb3\b\x00\x00\x96\b\x00\x00\x95\b\x00\x00D\b\x00\x00C\b\x00\x00\"\b\x00\x00\xe6\a\x00\x00\x84\a\x00\x00j\a\x00\x00A\a\x00\x00\x0e\a\x00\x00\xde\x06\x00\x00\xd1\x06\x00\x00\xbf\x06\x00\x00\xa6\x06\x00\x00v\x06\x00\x00:\x06\x00\x00\x19\x06\x00\x00\xfe\x05\x00\x00\xe4\x05\x00\x00\xc8\x05\x00\x00\x8f\x05\x00\x00\x11\x05\x00\x00\x9c\x04\x00\x00y\x04\x00\x00K\x04\x00\x004\x04\x00\x00%\x04\x00\x00\xf8\x03\x00\x00\xcd\x03\x00\x00b\x03\x00\x00\x10\x03\x00\x00\xb0\x02\x00\x00q\x02\x00\x00Z\x02\x00\x00K\x02\x00\x00\x1e\x02\x00\x00\t\x02\x00\x00\xfd\x01\x00\x00\xd7\x01\x00\x00\xd6\x01\x00\x00\xcb\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00          \x00          # end of db_part_of_cluster\x00          }\x00            return 0\x00            echo \"${pod} is part of cluster\"\x00            fi\x00              return 1\x00              echo \"Unable to check correct target ${target} \"\x00            if [[ \"${target}\" != \"p${transport}:${port}${ovn_raft_conn_ip_url_suffix}\" ]]; then\x00                      --data=bare --no-headings --columns=target list connection)\x00            target=$(ovn-${db}ctl --timeout=5 --db=${transport}:${init_ip}:${port} ${ovndb_ctl_ssl_opts} \\\x00            init_ip=$(bracketify $init_ip)\x00            echo \"Found ${pod} ip: $init_ip\"\x00            fi\x00              return 1\x00              echo \"Unable to get ${pod} ip \"\x00            if [[ $? != 0 ]]; then\x00            init_ip=$(timeout 5 kubectl get pod -n ${ovn_kubernetes_namespace} ${pod} -o=jsonpath='{.status.podIP}')\x00            # TODO: change to use '--request-timeout=5s', if https://github.com/kubernetes/kubernetes/issues/49343 is fixed. \x00            echo \"Checking if ${pod} is part of cluster\"\x00            local port=${3}\x00            local db=${2}\x00            local pod=${1}\x00          db_part_of_cluster() {\x00          # checks if a db pod is part of a current cluster\x00          ovn_db_file=\"/etc/ovn/ovn${db}_db.db\"\x00          db_port=\"9642\"\x00          db=\"sb\"\x00          fi\x00            ovn_raft_conn_ip_url_suffix=\":[::]\"\x00          if [[ \"${K8S_NODE_IP}\" == *\":\"* ]]; then\x00          ovn_raft_conn_ip_url_suffix=\"\"\x00          transport=\"ssl\"\x00          ovndb_ctl_ssl_opts=\"-p /ovn-cert/tls.key -c /ovn-cert/tls.crt -C /ovn-ca/ca-bundle.crt\"\x00          ovn_kubernetes_namespace=openshift-ovn-kubernetes\x00          # initialize variables\x00\x00          bracketify() { case \"$1\" in *:*) echo \"[$1]\" ;; *) echo \"$1\" ;; esac }\x00\x00          trap quit TERM INT\x00          # end of quit\x00          }\x00            exit 0\x00            rm -f /var/run/ovn/ovnsb_db.pid\x00            echo \"$(date -Iseconds) - sbdb stopped\"\x00            /usr/share/ovn/scripts/ovn-ctl stop_sb_ovsdb\x00            echo \"$(date -Iseconds) - stopping sbdb\"\x00          quit() {\x00\x00          fi\x00            set +o allexport\x00            source /env/_master\x00            set -o allexport\x00          if [[ -f /env/_master ]]; then\x00          set -xm\x00        - |\x00        - -c\x00        - /bin/bash\x00        command:\x00        image: \"quay.io/zshi/ovn-daemonset:microshift\"\x00      - name: sbdb\x00      # sbdb: The southbound, or flow DB. In raft mode\x00\x00        terminationMessagePolicy: FallbackToLogsOnError\x00          containerPort: 9643\x00        - name: nb-db-raft-port\x00          containerPort: 9641\x00        - name: nb-db-port\x00        ports:\x00            memory: 300Mi\x00            cpu: 10m\x00          requests:\x00        resources:\x00          name: ovn-ca\x00        - mountPath: /ovn-ca\x00          name: ovn-cert\x00        - mountPath: /ovn-cert\x00          name: env-overrides\x00        - mountPath: /env\x00          name: run-ovn\x00        - mountPath: /run/ovn/\x00          name: run-openvswitch\x00        - mountPath: /run/openvswitch/\x00          name: var-lib-openvswitch\x00        - mountPath: /var/lib/openvswitch/\x00          name: etc-openvswitch\x00        - mountPath: /etc/ovn/\x00          name: etc-openvswitch\x00        - mountPath: /etc/openvswitch/\x00        volumeMounts:\x00              fieldPath: status.hostIP\x00            fieldRef:\x00          valueFrom:\x00        - name: K8S_NODE_IP\x00          value: \"5000\"\x00        - name: OVN_NORTHD_PROBE_INTERVAL\x00          value: info \x00        - name: OVN_LOG_LEVEL\x00        env:\x00\x00              fi\x00                /usr/bin/ovn-appctl -t /var/run/ovn/ovnnb_db.ctl --timeout=5 ovsdb-server/memory-trim-on-compaction on 2>/dev/null\x00              else\x00                exit 1\x00ad\x00\x00\x0f\x00\x00\x00\x83\x01\x00\x00\x00\x10\x00\x00V\x00\x00\x00\x00\x00\x00\x00|\x0f\x00\x00]\x0f\x00\x00\\\x0f\x00\x00D\x0f\x00\x003\x0f\x00\x00$\x0f\x00\x00\x15\x0f\x00\x00\xd7\x0e\x00\x00W\x0e\x00\x00<\x0e\x00\x00;\x0e\x00\x00'\x0e\x00\x00\x1a\x0e\x00\x00\a\x0e\x00\x00\xf2\r\x00\x00\xe0\r\x00\x00\xc9\r\x00\x00\xaf\r\x00\x00\x9c\r\x00\x00\x8a\r\x00\x00s\r\x00\x00?\r\x00\x00\x0f\r\x00\x00\xc2\f\x00\x00a\f\x00\x00`\f\x00\x00$\f\x00\x00\b\f\x00\x00\x85\v\x00\x00^\v\x00\x00)\v\x00\x00\xb2\n\x00\x00\x95\n\x00\x00\x80\n\x00\x00f\n\x00\x00O\n\x00\x00N\n\x00\x00\x1e\n\x00\x00\xe0\t\x00\x00\xa2\t\x00\x00_\t\x00\x00\xfd\b\x00\x00\xb2\b\x00\x00\xb1\b\x00\x00W\b\x00\x00A\b\x00\x00\xe4\a\x00\x006\a\x00\x00\x1f\a\x00\x00\xaf\x06\x00\x00d\x06\x00\x00O\x06\x00\x00<\x06\x00\x00)\x06\x00\x00\x17\x06\x00\x00\x00\x06\x00\x00\xe6\x05\x00\x00\xd3\x05\x00\x00\xc1\x05\x00\x00\x88\x05\x00\x00K\x05\x00\x00\x13\x05\x00\x00\xe3\x04\x00\x00\xcb\x04\x00\x00\xaf\x04\x00\x00\x9f\x04\x00\x00\x8a\x04\x00\x00r\x04\x00\x00a\x04\x00\x00Q\x04\x00\x001\x04\x00\x00\x84\x03\x00\x00O\x03\x00\x00\x06\x03\x00\x00\xef\x02\x00\x00\xdc\x02\x00\x00Y\x02\x00\x00H\x02\x00\x00;\x02\x00\x00\x1d\x02\x00\x00\a\x02\x00\x00\xeb\x01\x00\x00\xd6\x01\x00\x00\xc0\x01\x00\x00\x99\x01\x00\x00\x83\x01\x00\x00\x82\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00         volumeMounts:\x00              fieldPath: status.hostIP\x00            fieldRef:\x00          valueFrom:\x00        - name: K8S_NODE_IP\x00          value: info\x00        - name: OVN_LOG_LEVEL\x00        env:\x00              fi\x00                /usr/bin/ovn-appctl -t /var/run/ovn/ovnsb_db.ctl --timeout=5 ovsdb-server/memory-trim-on-compaction on 2>/dev/null\x00              else\x00                exit 1\x00                echo \"SB DB Raft leader is unknown to the cluster node.\"\x00              if [[ ! -z \"${leader_status}\" ]]; then\x00              leader_status=$(/usr/bin/ovn-appctl -t /var/run/ovn/ovnsb_db.ctl --timeout=3 cluster/status OVN_Southbound  2>/dev/null | { grep \"Leader: unknown\" || true; })\x00              set -xeo pipefail\x00            - |\x00            - -c\x00            - /bin/bash\x00            command:\x00          exec:\x00          timeoutSeconds: 5\x00        readinessProbe:\x00                rm -f /var/run/ovn/ovnsb_db.pid\x00                echo \"$(date -Iseconds) - sbdb stopped\"\x00                /usr/share/ovn/scripts/ovn-ctl stop_sb_ovsdb\x00                echo \"$(date -Iseconds) - stopping sbdb\"\x00              - |\x00              - -c\x00              - /bin/bash\x00              command:\x00            exec:\x00          preStop:\x00                fi\x00                  fi\x00                      ovsdb-client -t 30 convert \"$DB_SERVER\" \"$DB_SCHEMA\"\x00                      echo \"Upgrading database $schema_name from schema version $db_version to $target_version\"\x00                  else\x00                      echo \"Database $schema_name has newer schema version ($db_version) than our local schema ($target_version), possibly an upgrade is partially complete?\"\x00                  elif ovsdb-tool compare-versions \"$db_version\" \">\" \"$target_version\"; then\x00                    :\x00                  if ovsdb-tool compare-versions \"$db_version\" == \"$target_version\"; then\x00\x00                  target_version=$(ovsdb-tool schema-version \"$DB_SCHEMA\")\x00                  db_version=$(ovsdb-client -t 10 get-schema-version \"$DB_SERVER\" \"$schema_name\")\x00                  schema_name=$(ovsdb-tool schema-name $DB_SCHEMA)\x00                  DB_SERVER=\"unix:/var/run/ovn/ovnsb_db.sock\"\x00                  DB_SCHEMA=\"/usr/share/ovn/ovn-sb.ovsschema\"\x00                  # Upgrade the db if required.\x00\x00                  done\x00                  sleep 2\x00                  fi\x00                      exit 1\x00                    echo \"$(date -Iseconds) - ERROR RESTARTING - sbdb - too many failed ovn-sbctl attempts, giving up\"\x00                  if [[ \"${retries}\" -gt 40 ]]; then\x00                    (( retries += 1 ))\x00                  while ! ovn-sbctl --no-leader-only -t 5 set-connection pssl:9642 -- set connection . inactivity_probe=180000; do\x00                  retries=0\x00                  # set the connection and inactivity probe\x00\x00                  echo \"$(date -Iseconds) - sdb - postStart - waiting for master to be selected\"\x00                if [[ \"${K8S_NODE_IP}\" == \"${CLUSTER_INITIATOR_IP}\" ]]; then\x00                rm -f /var/run/ovn/ovnsb_db.pid\x00                CLUSTER_INITIATOR_IP=\"10.73.116.66\"\x00                set -x\x00              - |\x00              - -c\x00              - /bin/bash\x00              command:\x00            exec:\x00          postStart:\x00        lifecycle:\x00          fi\x00            wait $!\x00\x00            run_sb_ovsdb &\x00            --ovn-sb-log=\"-vconsole:${OVN_LOG_LEVEL} -vfile:off -vPATTERN:console:%D{%Y-%m-%dT%H:%M:%S.###Z}|%05N|%c%T|%p|%m\" \\\x00            exec /usr/share/ovn/scripts/ovn-ctl ${OVN_ARGS} \\\x00          else\x00            fi\x00              fi\x00                wait $!\x00\x00                run_sb_ovsdb &\x00                --ovn-sb-log=\"-vconsole:${OVN_LOG_LEVEL} -vfile:off -vPATTERN:console:%D{%Y-%m-%dT%H:%M:%S.###Z}|%05N|%c%T|%p|%m\" \\\x00ad\x00\x00\x05\x00\x00\x00\xd1\x01\x00\x00\x00\x10\x00\x00l\x00\x00\x00\x00\x00\x00\x00\xd9\x0f\x00\x00\xb9\x0f\x00\x00\x9a\x0f\x00\x00z\x0f\x00\x00O\x0f\x00\x00+\x0f\x00\x00\x04\x0f\x00\x00\xe4\x0e\x00\x00\xc5\x0e\x00\x00\xad\x0e\x00\x00\x93\x0e\x00\x00u\x0e\x00\x00V\x0e\x00\x00=\x0e\x00\x00 \x0e\x00\x00\t\x0e\x00\x00\xfa\r\x00\x00\xdf\r\x00\x00\xc1\r\x00\x00\xa1\r\x00\x00\x83\r\x00\x00p\r\x00\x00\\\r\x00\x00G\r\x00\x00-\r\x00\x00\xf5\f\x00\x00\xf4\f\x00\x00\x9b\f\x00\x00~\f\x00\x00G\f\x00\x006\f\x00\x00\"\f\x00\x00\x15\f\x00\x00\t\f\x00\x00\xf7\v\x00\x00\xcc\v\x00\x00\xaf\v\x00\x00\x8d\v\x00\x00p\v\x00\x00c\v\x00\x00b\v\x00\x00\x13\v\x00\x00\x12\v\x00\x00\xa9\n\x00\x00\x87\n\x00\x00]\n\x00\x00 \n\x00\x00\xfc\t\x00\x00\xcb\t\x00\x00\x94\t\x00\x00o\t\x00\x00K\t\x00\x00\x18\t\x00\x00\xe4\b\x00\x00\xb3\b\x00\x00|\b\x00\x00R\b\x00\x00\x1f\b\x00\x00\xeb\a\x00\x00\xba\a\x00\x00\x83\a\x00\x00Y\a\x00\x008\a\x00\x00\x0e\a\x00\x00\xe4\x06\x00\x00\xce\x06\x00\x00\x9d\x06\x00\x00t\x06\x00\x00V\x06\x00\x00=\x06\x00\x00\x16\x06\x00\x00\xf6\x05\x00\x00\xd7\x05\x00\x00\xb7\x05\x00\x00\x8c\x05\x00\x00h\x05\x00\x00A\x05\x00\x00!\x05\x00\x00\x02\x05\x00\x00\xea\x04\x00\x00\xc0\x04\x00\x00\xa1\x04\x00\x00c\x04\x00\x00H\x04\x00\x00.\x04\x00\x00\x10\x04\x00\x00\xf1\x03\x00\x00\xd8\x03\x00\x00\xbb\x03\x00\x00\xa4\x03\x00\x00\x91\x03\x00\x00}\x03\x00\x00h\x03\x00\x00N\x03\x00\x00A\x03\x00\x00\x1e\x03\x00\x00\t\x03\x00\x00\xf0\x02\x00\x00\xdb\x02\x00\x00\xc5\x02\x00\x00\x9e\x02\x00\x00\x8f\x02\x00\x00r\x02\x00\x00S\x02\x00\x00\x1b\x02\x00\x00\a\x02\x00\x00\xe0\x01\x00\x00\xd1\x01\x00\x00\xd0\x01\x00\x00\x00\x00\x00\x00\x00      volumes:\x00        beta.kubernetes.io/os: \"linux\"\x00      nodeSelector:\x00        terminationMessagePolicy: FallbackToLogsOnError\x00          containerPort: 29102\x00        - name: metrics-port\x00        ports:\x00              fieldPath: spec.nodeName\x00            fieldRef:\x00          valueFrom:\x00        - name: K8S_NODE\x00          value: \"4\"\x00        - name: OVN_KUBE_LOG_LEVEL\x00        env:\x00            memory: 300Mi\x00            cpu: 10m\x00          requests:\x00        resources:\x00          name: ovn-ca\x00        - mountPath: /ovn-ca\x00          name: ovn-cert\x00        - mountPath: /ovn-cert\x00          name: env-overrides\x00        - mountPath: /env\x00          name: kubeconfig\x00        - mountPath: /var/lib/microshift/resources/kubeadmin/\x00          name: ovnkube-config\x00        - mountPath: /run/ovnkube-config/\x00          name: run-ovn\x00        - mountPath: /run/ovn/\x00          name: run-openvswitch\x00        - mountPath: /run/openvswitch/\x00          name: var-lib-openvswitch\x00        - mountPath: /var/lib/openvswitch/\x00          name: etc-openvswitch\x00        - mountPath: /etc/ovn/\x00          name: etc-openvswitch\x00        - mountPath: /etc/openvswitch/\x00          readOnly: true\x00          name: systemd-units\x00        - mountPath: /etc/systemd/system\x00        # for checking ovs-configuration service\x00        volumeMounts:\x00            --acl-logging-rate-limit \"20\"\x00            --disable-snat-multiple-gws \\\x00            --enable-multicast \\\x00            --nb-cert-common-name \"ovn\" \\\x00            --nb-client-cacert /ovn-ca/ca-bundle.crt \\\x00            --nb-client-cert /ovn-cert/tls.crt \\\x00            --nb-client-privkey /ovn-cert/tls.key \\\x00            --nb-address \"ssl:10.73.116.66:9641\" \\\x00            --sb-cert-common-name \"ovn\" \\\x00            --sb-client-cacert /ovn-ca/ca-bundle.crt \\\x00            --sb-client-cert /ovn-cert/tls.crt \\\x00            --sb-client-privkey /ovn-cert/tls.key \\\x00            --sb-address \"ssl:10.73.116.66:9642\" \\\x00            ${gateway_mode_flags} \\\x00            --metrics-enable-pprof \\\x00            --metrics-bind-address \"127.0.0.1:29102\" \\\x00            --loglevel \"${OVN_KUBE_LOG_LEVEL}\" \\\x00            --ovn-empty-lb-events \\\x00            --config-file=/run/ovnkube-config/ovnkube.conf \\\x00            --init-master \"${K8S_NODE}\" \\\x00          exec /usr/bin/ovnkube \\\x00          echo \"I$(date \"+%m%d %H:%M:%S.%N\") - ovnkube-master - start ovnkube --init-master ${K8S_NODE}\"\x00\x00          gateway_mode_flags=\"--gateway-mode shared --gateway-interface br-ex\"\x00\x00          fi\x00            set +o allexport\x00            source \"/env/_master\"\x00            set -o allexport\x00          if [[ -f \"/env/_master\" ]]; then\x00          set -xe\x00        - |\x00        - -c\x00        - /bin/bash\x00        command:\x00        image: \"quay.io/zshi/ovn-daemonset:microshift\"\x00      - name: ovnkube-master\x00      # ovnkube master: convert kubernetes objects in to nbdb logical network components\x00\x00        terminationMessagePolicy: FallbackToLogsOnError\x00            memory: 300Mi\x00            cpu: 10m\x00          requests:\x00        resources:\x00          containerPort: 9644\x00        - name: sb-db-raft-port\x00          containerPort: 9642\x00        - name: sb-db-port\x00        ports:\x00          name: ovn-ca\x00        - mountPath: /ovn-ca\x00          name: ovn-cert\x00        - mountPath: /ovn-cert\x00          name: env-overrides\x00        - mountPath: /env\x00          name: run-ovn\x00        - mountPath: /run/ovn/\x00          name: run-openvswitch\x00        - mountPath: /run/openvswitch/\x00          name: var-lib-openvswitch\x00        - mountPath: /var/lib/openvswitch/\x00          name: etc-openvswitch\x00        - mountPath: /etc/ovn/\x00          name: etc-openvswitch\x00        - mountPath: /etc/openvswitch/\x00ad\x00\x00'\x00\x00\x00\x9f\x01\x00\x00\x00\x10\x00\x00W\x00\x00\x00\x00\x00\x00\x00\xb6\x0f\x00\x00\xa3\x0f\x00\x00l\x0f\x00\x00[\x0f\x00\x00G\x0f\x00\x00:\x0f\x00\x00.\x0f\x00\x00\x1b\x0f\x00\x00\xf2\x0e\x00\x00\xd5\x0e\x00\x00\xb5\x0e\x00\x00\x98\x0e\x00\x00\x8b\x0e\x00\x00\x8a\x0e\x00\x00w\x0e\x00\x00B\x0e\x00\x00\t\x0e\x00\x00\xd5\r\x00\x00\xa9\r\x00\x00\x96\r\x00\x00\x8a\r\x00\x00r\r\x00\x00U\r\x00\x00T\r\x00\x00\x03\r\x00\x00\xe2\f\x00\x00\xa6\f\x00\x00D\f\x00\x00*\f\x00\x00\x01\f\x00\x00\xce\v\x00\x00\x9e\v\x00\x00\x91\v\x00\x00\u007f\v\x00\x00f\v\x00\x006\v\x00\x00\xfa\n\x00\x00\xd9\n\x00\x00\xbe\n\x00\x00\xa4\n\x00\x00\x88\n\x00\x00O\n\x00\x00\xd1\t\x00\x00\\\t\x00\x009\t\x00\x00\v\t\x00\x00\xf4\b\x00\x00\xe5\b\x00\x00\xb8\b\x00\x00\x8d\b\x00\x00\"\b\x00\x00\xd0\a\x00\x00p\a\x00\x001\a\x00\x00\x1a\a\x00\x00\v\a\x00\x00\xde\x06\x00\x00\xc9\x06\x00\x00\xbd\x06\x00\x00\x97\x06\x00\x00\x8c\x06\x00\x00P\x06\x00\x00\x03\x06\x00\x00\xe6\x05\x00\x00\xcc\x05\x00\x00\xb0\x05\x00\x002\x05\x00\x00\x86\x04\x00\x00\x85\x04\x00\x00^\x04\x00\x00\"\x04\x00\x00\xd1\x03\x00\x00\xb8\x03\x00\x00\xa7\x03\x00\x00\x96\x03\x00\x00K\x03\x00\x00\x13\x03\x00\x00\xfe\x02\x00\x00\xf2\x02\x00\x00\xce\x02\x00\x00\xcd\x02\x00\x00\x97\x02\x00\x00Q\x02\x00\x006\x02\x00\x00\b\x02\x00\x00\xd4\x01\x00\x00\x9f\x01\x00\x00\x9e\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00            --ovn-nb-db-ssl-cert=/ovn-cert/tls.crt \\\x00            --ovn-nb-db-ssl-key=/ovn-cert/tls.key \\\x00            --db-nb-cluster-local-proto=ssl \\\x00            --no-monitor \\\x00            --db-nb-cluster-local-addr=$(bracketify ${K8S_NODE_IP}) \\\x00          OVN_ARGS=\"--db-nb-cluster-local-port=9644 \\\x00\x00          # end of cluster_exists()\x00          }\x00            return 1\x00            init_ip=$(bracketify $CLUSTER_INITIATOR_IP)\x00            # if we get here  there is no cluster, set init_ip and get out\x00            done\x00              fi\x00                return 0\x00                echo \"${db_pod} is part of current cluster with ip: ${init_ip}!\"\x00              if db_part_of_cluster $db_pod $db $port; then\x00            for db_pod in $db_pods; do\x00\x00            db_pods=$(timeout 5 kubectl get pod -n ${ovn_kubernetes_namespace} -o=jsonpath='{.items[*].metadata.name}' | egrep -o 'ovnkube-master-\\w+' | grep -v \"metrics\")\x00            # TODO: change to use '--request-timeout=5s', if https://github.com/kubernetes/kubernetes/issues/49343 is fixed. \x00            local port=${2}\x00            local db=${1}\x00          cluster_exists() {\x00          # If not it returns false and sets init_ip to CLUSTER_INITIATOR_IP\x00          # Checks if cluster has already been initialized.\x00          \x00          # end of db_part_of_cluster\x00          }\x00            return 0\x00            echo \"${pod} is part of cluster\"\x00            fi\x00              return 1\x00              echo \"Unable to check correct target ${target} \"\x00            if [[ \"${target}\" != \"p${transport}:${port}${ovn_raft_conn_ip_url_suffix}\" ]]; then\x00                      --data=bare --no-headings --columns=target list connection)\x00            target=$(ovn-${db}ctl --timeout=5 --db=${transport}:${init_ip}:${port} ${ovndb_ctl_ssl_opts} \\\x00            init_ip=$(bracketify $init_ip)\x00            echo \"Found ${pod} ip: $init_ip\"\x00            fi\x00              return 1\x00              echo \"Unable to get ${pod} ip \"\x00            if [[ $? != 0 ]]; then\x00            init_ip=$(timeout 5 kubectl get pod -n ${ovn_kubernetes_namespace} ${pod} -o=jsonpath='{.status.podIP}')\x00            # TODO: change to use '--request-timeout=5s', if https://github.com/kubernetes/kubernetes/issues/49343 is fixed. \x00            echo \"Checking if ${pod} is part of cluster\"\x00            local port=${3}\x00            local db=${2}\x00            local pod=${1}\x00          db_part_of_cluster() {\x00          # checks if a db pod is part of a current cluster\x00          ovn_db_file=\"/etc/ovn/ovn${db}_db.db\"\x00          db_port=\"9641\"\x00          db=\"nb\"\x00          fi\x00            ovn_raft_conn_ip_url_suffix=\":[::]\"\x00          if [[ \"${K8S_NODE_IP}\" == *\":\"* ]]; then\x00          ovn_raft_conn_ip_url_suffix=\"\"\x00          transport=\"ssl\"\x00          ovndb_ctl_ssl_opts=\"-p /ovn-cert/tls.key -c /ovn-cert/tls.crt -C /ovn-ca/ca-bundle.crt\"\x00          ovn_kubernetes_namespace=openshift-ovn-kubernetes\x00          # initialize variables\x00          bracketify() { case \"$1\" in *:*) echo \"[$1]\" ;; *) echo \"$1\" ;; esac }\x00\x00          trap quit TERM INT\x00          # end of quit\x00          }\x00            exit 0\x00            rm -f /var/run/ovn/ovnnb_db.pid\x00            echo \"$(date -Iseconds) - nbdb stopped\"\x00            /usr/share/ovn/scripts/ovn-ctl stop_nb_ovsdb\x00            echo \"$(date -Iseconds) - stopping nbdb\"\x00          quit() {\x00\x00          fi\x00            set +o allexport\x00            source /env/_master\x00            set -o allexport\x00          if [[ -f /env/_master ]]; then\x00          set -xem\x00        - |\x00        - -c\x00        - /bin/bash\x00        command:\x00        image: \"quay.io/zshi/ovn-daemonset:microshift\"\x00      - name: nbdb\x00      # nbdb: the northbound, or logical network object DB. In raft mode \x00ad\x00\x00\r\x00\x00\x00\x89\x01\x00\x00\x00\x10\x00\x00X\x00\x00\x00\x00\x00\x00\x00\xc5\x0f\x00\x00\xc4\x0f\x00\x00\x96\x0f\x00\x00\x19\x0f\x00\x00\xf6\x0e\x00\x00\xd9\x0e\x00\x00\xce\x0e\x00\x00\xa1\x0e\x00\x00\x83\x0e\x00\x00v\x0e\x00\x00u\x0e\x00\x00B\x0e\x00\x00\xf0\r\x00\x00\xda\r\x00\x00\xba\r\x00\x00\x91\r\x00\x00Z\r\x00\x007\r\x00\x00!\r\x00\x00\x10\r\x00\x00\xfa\f\x00\x00\xd5\f\x00\x00\xc4\f\x00\x00\xc3\f\x00\x00\x9d\f\x00\x00c\f\x00\x00;\f\x00\x00\x15\f\x00\x00\xd5\v\x00\x00\xa4\v\x00\x00m\v\x00\x00<\v\x00\x00\xba\n\x00\x00\x9d\n\x00\x00\x9c\n\x00\x00\x86\n\x00\x00u\n\x00\x00\x1a\n\x00\x00\xcf\t\x00\x00\x80\t\x00\x00`\t\x00\x00\xee\b\x00\x00\xa7\b\x00\x00\x94\b\x00\x00\x93\b\x00\x00Q\b\x00\x00\xcd\a\x00\x00\xa9\a\x00\x00\x8a\a\x00\x00\x89\a\x00\x00q\a\x00\x00^\a\x00\x00\x13\a\x00\x00\xd1\x06\x00\x00\x9e\x06\x00\x00e\x06\x00\x002\x06\x00\x00\xae\x05\x00\x00\x8f\x05\x00\x00\x8e\x05\x00\x00v\x05\x00\x00e\x05\x00\x00V\x05\x00\x00G\x05\x00\x00\t\x05\x00\x00\x87\x04\x00\x00j\x04\x00\x00i\x04\x00\x00S\x04\x00\x00F\x04\x00\x00E\x04\x00\x002\x04\x00\x00\x1d\x04\x00\x00\v\x04\x00\x00\xf4\x03\x00\x00\xda\x03\x00\x00\xc7\x03\x00\x00\xb5\x03\x00\x00\x9e\x03\x00\x00j\x03\x00\x00:\x03\x00\x00\xed\x02\x00\x00\x8b\x02\x00\x00\x8a\x02\x00\x00N\x02\x00\x002\x02\x00\x00\xb0\x01\x00\x00\x89\x01\x00\x00\x88\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00                    (( retries += 1 ))\x00                  while ! ovn-nbctl --no-leader-only -t 5 set-connection pssl:9641 -- set connection . inactivity_probe=60000; do\x00                  retries=0\x00                  # set the connection and inactivity probe\x00\x00                  echo \"$(date -Iseconds) - nbdb - postStart - waiting for master to be selected\"\x00                if [[ \"${K8S_NODE_IP}\" == \"${CLUSTER_INITIATOR_IP}\" ]]; then\x00                rm -f /var/run/ovn/ovnnb_db.pid\x00                CLUSTER_INITIATOR_IP=\"10.73.116.66\"\x00                set -x\x00              - |\x00              - -c\x00              - /bin/bash\x00              command:\x00            exec:\x00          postStart:\x00        lifecycle:\x00\x00          fi\x00              wait $!\x00\x00              run_nb_ovsdb &\x00              --ovn-nb-log=\"-vconsole:${OVN_LOG_LEVEL} -vfile:off -vPATTERN:console:%D{%Y-%m-%dT%H:%M:%S.###Z}|%05N|%c%T|%p|%m\" \\\x00            exec /usr/share/ovn/scripts/ovn-ctl ${OVN_ARGS} \\\x00          else\x00            fi\x00              fi\x00                wait $!\x00\x00                run_nb_ovsdb &\x00                --ovn-nb-log=\"-vconsole:${OVN_LOG_LEVEL} -vfile:off -vPATTERN:console:%D{%Y-%m-%dT%H:%M:%S.###Z}|%05N|%c%T|%p|%m\" \\\x00                --db-nb-cluster-remote-proto=ssl \\\x00                --db-nb-cluster-remote-addr=${init_ip} \\\x00                --db-nb-cluster-remote-port=9643 \\\x00                exec /usr/share/ovn/scripts/ovn-ctl ${OVN_ARGS} \\\x00                echo \"Joining the nbdb cluster with init_ip=${init_ip}...\"\x00              else\x00                wait $!\x00\x00                run_nb_ovsdb &\x00                ${election_timer} \\\x00                --ovn-nb-log=\"-vconsole:${OVN_LOG_LEVEL} -vfile:off -vPATTERN:console:%D{%Y-%m-%dT%H:%M:%S.###Z}|%05N|%c%T|%p|%m\" \\\x00                exec /usr/share/ovn/scripts/ovn-ctl ${OVN_ARGS} \\\x00\x00                fi\x00                  election_timer=\"--db-nb-election-timer=$((10*1000))\"\x00                if test -n \"$(/usr/share/ovn/scripts/ovn-ctl --help 2>&1 | grep \"\\--db-nb-election-timer\")\"; then\x00                election_timer=\x00                # set DB election timer at DB creation time if OVN supports it\x00              if [[ \"${K8S_NODE_IP}\" == \"${CLUSTER_INITIATOR_IP}\" ]]; then\x00              # either we need to initialize a new cluster or wait for master to create it\x00            else\x00              wait $!\x00\x00              run_nb_ovsdb &\x00              --ovn-nb-log=\"-vconsole:${OVN_LOG_LEVEL} -vfile:off -vPATTERN:console:%D{%Y-%m-%dT%H:%M:%S.###Z}|%05N|%c%T|%p|%m\" \\\x00              --db-nb-cluster-remote-proto=ssl \\\x00              --db-nb-cluster-remote-addr=${init_ip} \\\x00              --db-nb-cluster-remote-port=9643 \\\x00              exec /usr/share/ovn/scripts/ovn-ctl ${OVN_ARGS} \\\x00              # join existing cluster\x00              initial_raft_create=false\x00              echo \"Cluster already exists for DB: ${db}\"\x00            if ${cluster_found}; then\x00\x00            done\x00              counter=$((counter+1))\x00              sleep 1\x00              fi\x00                break\x00                cluster_found=true\x00              if cluster_exists ${db} ${db_port}; then\x00            while [ $counter -lt 5 ]; do\x00            cluster_found=false\x00            counter=0\x00            # check to see if a cluster already exists. If it does, just join it.\x00          if [[ \"${initialize}\" == \"true\" ]]; then\x00\x00          fi\x00            initialize=\"true\"\x00          if [[ ! -e ${ovn_db_file} ]]; then\x00          \x00          initialize=\"false\"\x00          initial_raft_create=true\x00          echo \"$(date -Iseconds) - starting nbdb  CLUSTER_INITIATOR_IP=${CLUSTER_INITIATOR_IP}, K8S_NODE_IP=${K8S_NODE_IP}\"\x00          CLUSTER_INITIATOR_IP=\"10.73.116.66\"\x00\x00            --ovn-nb-db-ssl-ca-cert=/ovn-ca/ca-bundle.crt\"\x00ad\x00\x00\v\x00\x00\x00[\x01\x00\x00\x00\x10\x00\x00M\x00\x00\x00\x00\x00\x00\x00\xcb\x0f\x00\x00T\x0f\x00\x007\x0f\x00\x00\"\x0f\x00\x00\b\x0f\x00\x00\xf1\x0e\x00\x00\xf0\x0e\x00\x00\xc0\x0e\x00\x00\x82\x0e\x00\x00D\x0e\x00\x00\x01\x0e\x00\x00\x9f\r\x00\x00T\r\x00\x00S\r\x00\x00\xf9\f\x00\x00\xe3\f\x00\x00\x86\f\x00\x00\xd8\v\x00\x00\xc1\v\x00\x00Q\v\x00\x00\x06\v\x00\x00\xf1\n\x00\x00\xde\n\x00\x00\xad\n\x00\x00B\n\x00\x00\b\n\x00\x00\xbe\t\x00\x00j\t\x00\x00P\t\x00\x00'\t\x00\x00\xf3\b\x00\x00\u007f\b\x00\x00V\b\x00\x00\xfc\a\x00\x00\xe2\a\x00\x00\xcb\a\x00\x00\xaf\a\x00\x00\x88\a\x00\x00s\a\x00\x00^\a\x00\x00]\a\x00\x00\x04\a\x00\x00\xe8\x06\x00\x00\xb2\x06\x00\x00I\x06\x00\x00\x1e\x06\x00\x00\xb2\x05\x00\x00\x94\x05\x00\x00k\x05\x00\x00R\x05\x00\x00\xef\x04\x00\x00\xd3\x04\x00\x00\xbc\x04\x00\x00\xa5\x04\x00\x00\x92\x04\x00\x00\x91\x04\x00\x00~\x04\x00\x00l\x04\x00\x00U\x04\x00\x00;\x04\x00\x00(\x04\x00\x00\x16\x04\x00\x00\xdd\x03\x00\x00\xa0\x03\x00\x00h\x03\x00\x008\x03\x00\x00 \x03\x00\x00\x04\x03\x00\x00\xf4\x02\x00\x00\xdf\x02\x00\x00\xc7\x02\x00\x00\xb6\x02\x00\x00\xa6\x02\x00\x00\x86\x02\x00\x00\xd9\x01\x00\x00\xa4\x01\x00\x00[\x01\x00\x00Z\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00                echo \"NB DB Raft leader is unknown to the cluster node.\"\x00              if [[ ! -z \"${leader_status}\" ]]; then\x00              leader_status=$(/usr/bin/ovn-appctl -t /var/run/ovn/ovnnb_db.ctl --timeout=3 cluster/status OVN_Northbound  2>/dev/null | { grep \"Leader: unknown\" || true; })\x00              set -xeo pipefail\x00            - |\x00            - -c\x00            - /bin/bash\x00            command:\x00          exec:\x00          timeoutSeconds: 5\x00        readinessProbe:\x00                rm -f /var/run/ovn/ovnnb_db.pid\x00                echo \"$(date -Iseconds) - nbdb stopped\"\x00                /usr/share/ovn/scripts/ovn-ctl stop_nb_ovsdb\x00                echo \"$(date -Iseconds) - stopping nbdb\"\x00              - |\x00              - -c\x00              - /bin/bash\x00              command:\x00            exec:\x00          preStop:\x00\x00                fi\x00                  done\x00                    fi\x00                      break\x00                      echo \"Successfully set northd probe interval to ${northd_probe_interval} ms\"\x00                    else\x00                      (( retries += 1 ))\x00                      sleep 2\x00                      echo \"Failed to set northd probe interval to ${northd_probe_interval}. retrying.....\"\x00                    if [[ $? != 0 ]]; then\x00                    ${OVN_NB_CTL} set NB_GLOBAL . options:northd_probe_interval=${northd_probe_interval}\x00                  while [[ \"${retries}\" -lt 10 ]]; do\x00                  retries=0\x00                if [[ \"${current_probe_interval}\" != \"${northd_probe_interval}\" ]]; then\x00\x00                done\x00                  fi\x00                    (( retries += 1 ))\x00                    sleep 2\x00                  else\x00                    break\x00                    current_probe_interval=$(echo ${current_probe_interval} | tr -d '\\\"')\x00                  if [[ $? == 0 ]]; then\x00                  current_probe_interval=$(${OVN_NB_CTL} --if-exists get NB_GLOBAL . options:northd_probe_interval)\x00                while [[ \"${retries}\" -lt 10 ]]; do\x00                current_probe_interval=0\x00                retries=0\x00                echo \"Setting northd probe interval to ${northd_probe_interval} ms\"\x00                northd_probe_interval=${OVN_NORTHD_PROBE_INTERVAL:-10000}\x00                            --db \"ssl:10.73.116.66:9641\"\"\x00                OVN_NB_CTL=\"ovn-nbctl -p /ovn-cert/tls.key -c /ovn-cert/tls.crt -C /ovn-ca/ca-bundle.crt \\\x00                #configure northd_probe_interval\x00                fi\x00                  fi\x00                      ovsdb-client -t 30 convert \"$DB_SERVER\" \"$DB_SCHEMA\"\x00                      echo \"Upgrading database $schema_name from schema version $db_version to $target_version\"\x00                  else\x00                      echo \"Database $schema_name has newer schema version ($db_version) than our local schema ($target_version), possibly an upgrade is partially complete?\"\x00                  elif ovsdb-tool compare-versions \"$db_version\" \">\" \"$target_version\"; then\x00                    :\x00                  if ovsdb-tool compare-versions \"$db_version\" == \"$target_version\"; then\x00\x00                  target_version=$(ovsdb-tool schema-version \"$DB_SCHEMA\")\x00                  db_version=$(ovsdb-client -t 10 get-schema-version \"$DB_SERVER\" \"$schema_name\")\x00                  schema_name=$(ovsdb-tool schema-name $DB_SCHEMA)\x00                  DB_SERVER=\"unix:/var/run/ovn/ovnnb_db.sock\"\x00                  DB_SCHEMA=\"/usr/share/ovn/ovn-nb.ovsschema\"\x00                  # Upgrade the db if required.\x00\x00                  done\x00                  sleep 2\x00                  fi\x00                      exit 1\x00                    echo \"$(date -Iseconds) - ERROR RESTARTING - nbdb - too many failed ovn-nbctl attempts, giving up\"\x00                  if [[ \"${retries}\" -gt 40 ]]; then\x00ad\x00\x00R\x00\x00\x00\xb6\x01\x00\x00\x00\x10\x00\x00R\x00\x00\x00\x00\x00\x00\x00\xc4\x0f\x00\x00w\x0f\x00\x00Z\x0f\x00\x00@\x0f\x00\x00$\x0f\x00\x00\xa6\x0e\x00\x00\xfa\r\x00\x00\xf9\r\x00\x00\xd2\r\x00\x00\x96\r\x00\x00E\r\x00\x00,\r\x00\x00\x1b\r\x00\x00\n\r\x00\x00\xbf\f\x00\x00\x87\f\x00\x00r\f\x00\x00f\f\x00\x00B\f\x00\x00A\f\x00\x00\v\f\x00\x00\xc5\v\x00\x00\xaa\v\x00\x00|\v\x00\x00H\v\x00\x00\x13\v\x00\x00\xd8\n\x00\x00\xd7\n\x00\x00\xa9\n\x00\x00H\n\x00\x00%\n\x00\x00\b\n\x00\x00\a\n\x00\x00\xda\t\x00\x00\xbc\t\x00\x00\xaf\t\x00\x00\xae\t\x00\x00{\t\x00\x00)\t\x00\x00\x13\t\x00\x00\xf3\b\x00\x00\xca\b\x00\x00\x93\b\x00\x00p\b\x00\x00Z\b\x00\x00I\b\x00\x003\b\x00\x00\x0e\b\x00\x00\xfd\a\x00\x00\xfc\a\x00\x00\xd6\a\x00\x00\x9c\a\x00\x00t\a\x00\x00N\a\x00\x00\x0e\a\x00\x00\xdd\x06\x00\x00\xa6\x06\x00\x00u\x06\x00\x00\xf3\x05\x00\x00\xd6\x05\x00\x00\xd5\x05\x00\x00\xbf\x05\x00\x00\xae\x05\x00\x00S\x05\x00\x00\b\x05\x00\x00\xb9\x04\x00\x00\x99\x04\x00\x00'\x04\x00\x00\xe0\x03\x00\x00\xcd\x03\x00\x00\xcc\x03\x00\x00\x8a\x03\x00\x00\x06\x03\x00\x00\xe2\x02\x00\x00\xc3\x02\x00\x00\xc2\x02\x00\x00\xaa\x02\x00\x00\x97\x02\x00\x00U\x02\x00\x00\"\x02\x00\x00\xe9\x01\x00\x00\xb6\x01\x00\x00\xab\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00                          --db-sb-cluster-remote-proto=ssl \\\x00                --db-sb-cluster-remote-addr=${init_ip} \\\x00                --db-sb-cluster-remote-port=9644 \\\x00                exec /usr/share/ovn/scripts/ovn-ctl ${OVN_ARGS} \\\x00              else\x00                wait $!\x00\x00                run_sb_ovsdb &\x00                ${election_timer} \\\x00                --ovn-sb-log=\"-vconsole:${OVN_LOG_LEVEL} -vfile:off -vPATTERN:console:%D{%Y-%m-%dT%H:%M:%S.###Z}|%05N|%c%T|%p|%m\" \\\x00                exec /usr/share/ovn/scripts/ovn-ctl ${OVN_ARGS} \\\x00\x00                fi\x00                  election_timer=\"--db-sb-election-timer=$((16*1000))\"\x00                if test -n \"$(/usr/share/ovn/scripts/ovn-ctl --help 2>&1 | grep \"\\--db-sb-election-timer\")\"; then\x00                election_timer=\x00                # set DB election timer at DB creation time if OVN supports it\x00              if [[ \"${K8S_NODE_IP}\" == \"${CLUSTER_INITIATOR_IP}\" ]]; then\x00              # either we need to initialize a new cluster or wait for master to create it\x00            else\x00              wait $!\x00\x00              run_sb_ovsdb &\x00              --ovn-sb-log=\"-vconsole:${OVN_LOG_LEVEL} -vfile:off -vPATTERN:console:%D{%Y-%m-%dT%H:%M:%S.###Z}|%05N|%c%T|%p|%m\" \\\x00              --db-sb-cluster-remote-proto=ssl \\\x00              --db-sb-cluster-remote-addr=${init_ip} \\\x00              --db-sb-cluster-remote-port=9644 \\\x00              exec /usr/share/ovn/scripts/ovn-ctl ${OVN_ARGS} \\\x00              # join existing cluster\x00              initial_raft_create=false\x00              echo \"Cluster already exists for DB: ${db}\"\x00            if ${cluster_found}; then\x00\x00            done\x00              counter=$((counter+1))\x00              sleep 1\x00              fi\x00                break\x00                cluster_found=true\x00              if cluster_exists ${db} ${db_port}; then\x00            while [ $counter -lt 5 ]; do\x00            cluster_found=false\x00            counter=0\x00            # check to see if a cluster already exists. If it does, just join it.\x00          if [[ \"${initialize}\" == \"true\" ]]; then\x00\x00          fi\x00            initialize=\"true\"\x00          if [[ ! -e ${ovn_db_file} ]]; then\x00\x00          initialize=\"false\"\x00          initial_raft_create=true\x00          echo \"$(date -Iseconds) - starting sbdb  CLUSTER_INITIATOR_IP=${CLUSTER_INITIATOR_IP}\"\x00          CLUSTER_INITIATOR_IP=\"10.73.116.66\"\x00\x00            --ovn-sb-db-ssl-ca-cert=/ovn-ca/ca-bundle.crt\"\x00            --ovn-sb-db-ssl-cert=/ovn-cert/tls.crt \\\x00            --ovn-sb-db-ssl-key=/ovn-cert/tls.key \\\x00            --db-sb-cluster-local-proto=ssl \\\x00            --no-monitor \\\x00            --db-sb-cluster-local-addr=$(bracketify ${K8S_NODE_IP}) \\\x00          OVN_ARGS=\"--db-sb-cluster-local-port=9644 \\\x00\x00          # end of cluster_exists()\x00          }\x00            return 1\x00            init_ip=$(bracketify $CLUSTER_INITIATOR_IP)\x00            # if we get here  there is no cluster, set init_ip and get out\x00            done\x00              fi\x00                return 0\x00                echo \"${db_pod} is part of current cluster with ip: ${init_ip}!\"\x00              if db_part_of_cluster $db_pod $db $port; then\x00            for db_pod in $db_pods; do\x00\x00            db_pods=$(timeout 5 kubectl get pod -n ${ovn_kubernetes_namespace} -o=jsonpath='{.items[*].metadata.name}' | egrep -o 'ovnkube-master-\\w+' | grep -v \"metrics\")\x00            # TODO: change to use '--request-timeout=5s', if https://github.com/kubernetes/kubernetes/issues/49343 is fixed. \x00            local port=${2}\x00            local db=${1}\x00          cluster_exists() {\x00          # If not it returns false and sets init_ip to CLUSTER_INITIATOR_IP\x00          # Checks if cluster has already been initialized.\x00")
+
+func assetsComponentsOvnMasterDaemonsetYamlSwpBytes() ([]byte, error) {
+	return _assetsComponentsOvnMasterDaemonsetYamlSwp, nil
+}
+
+func assetsComponentsOvnMasterDaemonsetYamlSwp() (*asset, error) {
+	bytes, err := assetsComponentsOvnMasterDaemonsetYamlSwpBytes()
+	if err != nil {
+		return nil, err
+	}
+
+	info := bindataFileInfo{name: "assets/components/ovn/master/.daemonset.yaml.swp", size: 45056, mode: os.FileMode(420), modTime: time.Unix(1653814560, 0)}
+	a := &asset{bytes: bytes, info: info}
+	return a, nil
+}
+
+var _assetsComponentsOvnMasterDaemonsetYaml = []byte(`---
+# The ovnkube control-plane components
+
+kind: DaemonSet
+apiVersion: apps/v1
+metadata:
+  name: ovnkube-master
+  namespace: openshift-ovn-kubernetes
+  annotations:
+    kubernetes.io/description: |
+      This daemonset launches the ovn-kubernetes controller (master) networking components.
+    release.openshift.io/version: "4.11"
+spec:
+  selector:
+    matchLabels:
+      app: ovnkube-master
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      # by default, Deployments spin up the new pod before terminating the old one
+      # but we don't want that - because ovsdb holds the lock.
+      maxSurge: 0
+      maxUnavailable: 1
+  template:
+    metadata:
+      annotations:
+        target.workload.openshift.io/management: '{"effect": "PreferredDuringScheduling"}'
+      labels:
+        app: ovnkube-master
+        ovn-db-pod: "true"
+        component: network
+        type: infra
+        openshift.io/component: network
+        kubernetes.io/os: "linux"
+    spec:
+      serviceAccountName: ovn-kubernetes-controller
+      hostNetwork: true
+      dnsPolicy: Default
+      priorityClassName: "system-cluster-critical"
+      # volumes in all containers:
+      # (container) -> (host)
+      # /etc/openvswitch -> /var/lib/ovn/etc - ovsdb data
+      # /var/lib/openvswitch -> /var/lib/ovn/data - ovsdb pki state
+      # /run/openvswitch -> tmpfs - sockets
+      # /env -> configmap env-overrides - debug overrides
+      containers:
+      # ovn-northd: convert network objects in nbdb to flows in sbdb
+      - name: northd
+        image: "quay.io/zshi/ovn-daemonset:microshift"
+        command:
+        - /bin/bash
+        - -c
+        - |
+          set -xem
+          if [[ -f /env/_master ]]; then
+            set -o allexport
+            source /env/_master
+            set +o allexport
+          fi
+
+          quit() {
+            echo "$(date -Iseconds) - stopping ovn-northd"
+            OVN_MANAGE_OVSDB=no /usr/share/ovn/scripts/ovn-ctl stop_northd
+            echo "$(date -Iseconds) - ovn-northd stopped"
+            rm -f /var/run/ovn/ovn-northd.pid
+            exit 0
+          }
+          # end of quit
+          trap quit TERM INT
+
+          echo "$(date -Iseconds) - starting ovn-northd"
+          exec ovn-northd \
+            --no-chdir "-vconsole:${OVN_LOG_LEVEL}" -vfile:off "-vPATTERN:console:%D{%Y-%m-%dT%H:%M:%S.###Z}|%05N|%c%T|%p|%m" \
+            --ovnnb-db "ssl:10.73.116.66:9641" \
+            --ovnsb-db "ssl:10.73.116.66:9642" \
+            --pidfile /var/run/ovn/ovn-northd.pid \
+            -p /ovn-cert/tls.key \
+            -c /ovn-cert/tls.crt \
+            -C /ovn-ca/ca-bundle.crt &
+
+          wait $!
+        lifecycle:
+          preStop:
+            exec:
+              command:
+                - /bin/bash
+                - -c
+                - OVN_MANAGE_OVSDB=no /usr/share/ovn/scripts/ovn-ctl stop_northd
+        env:
+        - name: OVN_LOG_LEVEL
+          value: info 
+        volumeMounts:
+        - mountPath: /etc/openvswitch/
+          name: etc-openvswitch
+        - mountPath: /var/lib/openvswitch/
+          name: var-lib-openvswitch
+        - mountPath: /run/openvswitch/
+          name: run-openvswitch
+        - mountPath: /run/ovn/
+          name: run-ovn
+        - mountPath: /env
+          name: env-overrides
+        - mountPath: /ovn-cert # not needed, but useful when exec'ing in to pod.
+          name: ovn-cert
+        - mountPath: /ovn-ca
+          name: ovn-ca
+        resources:
+          requests:
+            cpu: 10m
+            memory: 300Mi
+        terminationMessagePolicy: FallbackToLogsOnError
+
+      # nbdb: the northbound, or logical network object DB. In raft mode 
+      - name: nbdb
+        image: "quay.io/zshi/ovn-daemonset:microshift"
+        command:
+        - /bin/bash
+        - -c
+        - |
+          set -xem
+          if [[ -f /env/_master ]]; then
+            set -o allexport
+            source /env/_master
+            set +o allexport
+          fi
+
+          quit() {
+            echo "$(date -Iseconds) - stopping nbdb"
+            /usr/share/ovn/scripts/ovn-ctl stop_nb_ovsdb
+            echo "$(date -Iseconds) - nbdb stopped"
+            rm -f /var/run/ovn/ovnnb_db.pid
+            exit 0
+          }
+          # end of quit
+          trap quit TERM INT
+
+          bracketify() { case "$1" in *:*) echo "[$1]" ;; *) echo "$1" ;; esac }
+          # initialize variables
+          ovn_kubernetes_namespace=openshift-ovn-kubernetes
+          ovndb_ctl_ssl_opts="-p /ovn-cert/tls.key -c /ovn-cert/tls.crt -C /ovn-ca/ca-bundle.crt"
+          transport="ssl"
+          ovn_raft_conn_ip_url_suffix=""
+          if [[ "${K8S_NODE_IP}" == *":"* ]]; then
+            ovn_raft_conn_ip_url_suffix=":[::]"
+          fi
+          db="nb"
+          db_port="9641"
+          ovn_db_file="/etc/ovn/ovn${db}_db.db"
+          # checks if a db pod is part of a current cluster
+          db_part_of_cluster() {
+            local pod=${1}
+            local db=${2}
+            local port=${3}
+            echo "Checking if ${pod} is part of cluster"
+            # TODO: change to use '--request-timeout=5s', if https://github.com/kubernetes/kubernetes/issues/49343 is fixed. 
+            init_ip=$(timeout 5 kubectl get pod -n ${ovn_kubernetes_namespace} ${pod} -o=jsonpath='{.status.podIP}')
+            if [[ $? != 0 ]]; then
+              echo "Unable to get ${pod} ip "
+              return 1
+            fi
+            echo "Found ${pod} ip: $init_ip"
+            init_ip=$(bracketify $init_ip)
+            target=$(ovn-${db}ctl --timeout=5 --db=${transport}:${init_ip}:${port} ${ovndb_ctl_ssl_opts} \
+                      --data=bare --no-headings --columns=target list connection)
+            if [[ "${target}" != "p${transport}:${port}${ovn_raft_conn_ip_url_suffix}" ]]; then
+              echo "Unable to check correct target ${target} "
+              return 1
+            fi
+            echo "${pod} is part of cluster"
+            return 0
+          }
+          # end of db_part_of_cluster
+          
+          # Checks if cluster has already been initialized.
+          # If not it returns false and sets init_ip to CLUSTER_INITIATOR_IP
+          cluster_exists() {
+            local db=${1}
+            local port=${2}
+            # TODO: change to use '--request-timeout=5s', if https://github.com/kubernetes/kubernetes/issues/49343 is fixed. 
+            db_pods=$(timeout 5 kubectl get pod -n ${ovn_kubernetes_namespace} -o=jsonpath='{.items[*].metadata.name}' | egrep -o 'ovnkube-master-\w+' | grep -v "metrics")
+
+            for db_pod in $db_pods; do
+              if db_part_of_cluster $db_pod $db $port; then
+                echo "${db_pod} is part of current cluster with ip: ${init_ip}!"
+                return 0
+              fi
+            done
+            # if we get here  there is no cluster, set init_ip and get out
+            init_ip=$(bracketify $CLUSTER_INITIATOR_IP)
+            return 1
+          }
+          # end of cluster_exists()
+
+          OVN_ARGS="--db-nb-cluster-local-port=9644 \
+            --db-nb-cluster-local-addr=$(bracketify ${K8S_NODE_IP}) \
+            --no-monitor \
+            --db-nb-cluster-local-proto=ssl \
+            --ovn-nb-db-ssl-key=/ovn-cert/tls.key \
+            --ovn-nb-db-ssl-cert=/ovn-cert/tls.crt \
+            --ovn-nb-db-ssl-ca-cert=/ovn-ca/ca-bundle.crt"
+
+          CLUSTER_INITIATOR_IP="10.73.116.66"
+          echo "$(date -Iseconds) - starting nbdb  CLUSTER_INITIATOR_IP=${CLUSTER_INITIATOR_IP}, K8S_NODE_IP=${K8S_NODE_IP}"
+          initial_raft_create=true
+          initialize="false"
+          
+          if [[ ! -e ${ovn_db_file} ]]; then
+            initialize="true"
+          fi
+
+          if [[ "${initialize}" == "true" ]]; then
+            # check to see if a cluster already exists. If it does, just join it.
+            counter=0
+            cluster_found=false
+            while [ $counter -lt 5 ]; do
+              if cluster_exists ${db} ${db_port}; then
+                cluster_found=true
+                break
+              fi
+              sleep 1
+              counter=$((counter+1))
+            done
+
+            if ${cluster_found}; then
+              echo "Cluster already exists for DB: ${db}"
+              initial_raft_create=false
+              # join existing cluster
+              exec /usr/share/ovn/scripts/ovn-ctl ${OVN_ARGS} \
+              --db-nb-cluster-remote-port=9643 \
+              --db-nb-cluster-remote-addr=${init_ip} \
+              --db-nb-cluster-remote-proto=ssl \
+              --ovn-nb-log="-vconsole:${OVN_LOG_LEVEL} -vfile:off -vPATTERN:console:%D{%Y-%m-%dT%H:%M:%S.###Z}|%05N|%c%T|%p|%m" \
+              run_nb_ovsdb &
+
+              wait $!
+            else
+              # either we need to initialize a new cluster or wait for master to create it
+              if [[ "${K8S_NODE_IP}" == "${CLUSTER_INITIATOR_IP}" ]]; then
+                # set DB election timer at DB creation time if OVN supports it
+                election_timer=
+                if test -n "$(/usr/share/ovn/scripts/ovn-ctl --help 2>&1 | grep "\--db-nb-election-timer")"; then
+                  election_timer="--db-nb-election-timer=$((10*1000))"
+                fi
+
+                exec /usr/share/ovn/scripts/ovn-ctl ${OVN_ARGS} \
+                --ovn-nb-log="-vconsole:${OVN_LOG_LEVEL} -vfile:off -vPATTERN:console:%D{%Y-%m-%dT%H:%M:%S.###Z}|%05N|%c%T|%p|%m" \
+                ${election_timer} \
+                run_nb_ovsdb &
+
+                wait $!
+              else
+                echo "Joining the nbdb cluster with init_ip=${init_ip}..."
+                exec /usr/share/ovn/scripts/ovn-ctl ${OVN_ARGS} \
+                --db-nb-cluster-remote-port=9643 \
+                --db-nb-cluster-remote-addr=${init_ip} \
+                --db-nb-cluster-remote-proto=ssl \
+                --ovn-nb-log="-vconsole:${OVN_LOG_LEVEL} -vfile:off -vPATTERN:console:%D{%Y-%m-%dT%H:%M:%S.###Z}|%05N|%c%T|%p|%m" \
+                run_nb_ovsdb &
+
+                wait $!
+              fi
+            fi
+          else
+            exec /usr/share/ovn/scripts/ovn-ctl ${OVN_ARGS} \
+              --ovn-nb-log="-vconsole:${OVN_LOG_LEVEL} -vfile:off -vPATTERN:console:%D{%Y-%m-%dT%H:%M:%S.###Z}|%05N|%c%T|%p|%m" \
+              run_nb_ovsdb &
+
+              wait $!
+          fi
+
+        lifecycle:
+          postStart:
+            exec:
+              command:
+              - /bin/bash
+              - -c
+              - |
+                set -x
+                CLUSTER_INITIATOR_IP="10.73.116.66"
+                rm -f /var/run/ovn/ovnnb_db.pid
+                if [[ "${K8S_NODE_IP}" == "${CLUSTER_INITIATOR_IP}" ]]; then
+                  echo "$(date -Iseconds) - nbdb - postStart - waiting for master to be selected"
+
+                  # set the connection and inactivity probe
+                  retries=0
+                  while ! ovn-nbctl --no-leader-only -t 5 set-connection pssl:9641 -- set connection . inactivity_probe=60000; do
+                    (( retries += 1 ))
+                  if [[ "${retries}" -gt 40 ]]; then
+                    echo "$(date -Iseconds) - ERROR RESTARTING - nbdb - too many failed ovn-nbctl attempts, giving up"
+                      exit 1
+                  fi
+                  sleep 2
+                  done
+
+                  # Upgrade the db if required.
+                  DB_SCHEMA="/usr/share/ovn/ovn-nb.ovsschema"
+                  DB_SERVER="unix:/var/run/ovn/ovnnb_db.sock"
+                  schema_name=$(ovsdb-tool schema-name $DB_SCHEMA)
+                  db_version=$(ovsdb-client -t 10 get-schema-version "$DB_SERVER" "$schema_name")
+                  target_version=$(ovsdb-tool schema-version "$DB_SCHEMA")
+
+                  if ovsdb-tool compare-versions "$db_version" == "$target_version"; then
+                    :
+                  elif ovsdb-tool compare-versions "$db_version" ">" "$target_version"; then
+                      echo "Database $schema_name has newer schema version ($db_version) than our local schema ($target_version), possibly an upgrade is partially complete?"
+                  else
+                      echo "Upgrading database $schema_name from schema version $db_version to $target_version"
+                      ovsdb-client -t 30 convert "$DB_SERVER" "$DB_SCHEMA"
+                  fi
+                fi
+                #configure northd_probe_interval
+                OVN_NB_CTL="ovn-nbctl -p /ovn-cert/tls.key -c /ovn-cert/tls.crt -C /ovn-ca/ca-bundle.crt \
+                            --db "ssl:10.73.116.66:9641""
+                northd_probe_interval=${OVN_NORTHD_PROBE_INTERVAL:-10000}
+                echo "Setting northd probe interval to ${northd_probe_interval} ms"
+                retries=0
+                current_probe_interval=0
+                while [[ "${retries}" -lt 10 ]]; do
+                  current_probe_interval=$(${OVN_NB_CTL} --if-exists get NB_GLOBAL . options:northd_probe_interval)
+                  if [[ $? == 0 ]]; then
+                    current_probe_interval=$(echo ${current_probe_interval} | tr -d '\"')
+                    break
+                  else
+                    sleep 2
+                    (( retries += 1 ))
+                  fi
+                done
+
+                if [[ "${current_probe_interval}" != "${northd_probe_interval}" ]]; then
+                  retries=0
+                  while [[ "${retries}" -lt 10 ]]; do
+                    ${OVN_NB_CTL} set NB_GLOBAL . options:northd_probe_interval=${northd_probe_interval}
+                    if [[ $? != 0 ]]; then
+                      echo "Failed to set northd probe interval to ${northd_probe_interval}. retrying....."
+                      sleep 2
+                      (( retries += 1 ))
+                    else
+                      echo "Successfully set northd probe interval to ${northd_probe_interval} ms"
+                      break
+                    fi
+                  done
+                fi
+
+          preStop:
+            exec:
+              command:
+              - /bin/bash
+              - -c
+              - |
+                echo "$(date -Iseconds) - stopping nbdb"
+                /usr/share/ovn/scripts/ovn-ctl stop_nb_ovsdb
+                echo "$(date -Iseconds) - nbdb stopped"
+                rm -f /var/run/ovn/ovnnb_db.pid
+        readinessProbe:
+          timeoutSeconds: 5
+          exec:
+            command:
+            - /bin/bash
+            - -c
+            - |
+              set -xeo pipefail
+              leader_status=$(/usr/bin/ovn-appctl -t /var/run/ovn/ovnnb_db.ctl --timeout=3 cluster/status OVN_Northbound  2>/dev/null | { grep "Leader: unknown" || true; })
+              if [[ ! -z "${leader_status}" ]]; then
+                echo "NB DB Raft leader is unknown to the cluster node."
+                exit 1
+              else
+                /usr/bin/ovn-appctl -t /var/run/ovn/ovnnb_db.ctl --timeout=5 ovsdb-server/memory-trim-on-compaction on 2>/dev/null
+              fi
+
+        env:
+        - name: OVN_LOG_LEVEL
+          value: info 
+        - name: OVN_NORTHD_PROBE_INTERVAL
+          value: "5000"
+        - name: K8S_NODE_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.hostIP
+        volumeMounts:
+        - mountPath: /etc/openvswitch/
+          name: etc-openvswitch
+        - mountPath: /etc/ovn/
+          name: etc-openvswitch
+        - mountPath: /var/lib/openvswitch/
+          name: var-lib-openvswitch
+        - mountPath: /run/openvswitch/
+          name: run-openvswitch
+        - mountPath: /run/ovn/
+          name: run-ovn
+        - mountPath: /env
+          name: env-overrides
+        - mountPath: /ovn-cert
+          name: ovn-cert
+        - mountPath: /ovn-ca
+          name: ovn-ca
+        resources:
+          requests:
+            cpu: 10m
+            memory: 300Mi
+        ports:
+        - name: nb-db-port
+          containerPort: 9641
+        - name: nb-db-raft-port
+          containerPort: 9643
+        terminationMessagePolicy: FallbackToLogsOnError
+
+      # sbdb: The southbound, or flow DB. In raft mode
+      - name: sbdb
+        image: "quay.io/zshi/ovn-daemonset:microshift"
+        command:
+        - /bin/bash
+        - -c
+        - |
+          set -xm
+          if [[ -f /env/_master ]]; then
+            set -o allexport
+            source /env/_master
+            set +o allexport
+          fi
+
+          quit() {
+            echo "$(date -Iseconds) - stopping sbdb"
+            /usr/share/ovn/scripts/ovn-ctl stop_sb_ovsdb
+            echo "$(date -Iseconds) - sbdb stopped"
+            rm -f /var/run/ovn/ovnsb_db.pid
+            exit 0
+          }
+          # end of quit
+          trap quit TERM INT
+
+          bracketify() { case "$1" in *:*) echo "[$1]" ;; *) echo "$1" ;; esac }
+
+          # initialize variables
+          ovn_kubernetes_namespace=openshift-ovn-kubernetes
+          ovndb_ctl_ssl_opts="-p /ovn-cert/tls.key -c /ovn-cert/tls.crt -C /ovn-ca/ca-bundle.crt"
+          transport="ssl"
+          ovn_raft_conn_ip_url_suffix=""
+          if [[ "${K8S_NODE_IP}" == *":"* ]]; then
+            ovn_raft_conn_ip_url_suffix=":[::]"
+          fi
+          db="sb"
+          db_port="9642"
+          ovn_db_file="/etc/ovn/ovn${db}_db.db"
+          # checks if a db pod is part of a current cluster
+          db_part_of_cluster() {
+            local pod=${1}
+            local db=${2}
+            local port=${3}
+            echo "Checking if ${pod} is part of cluster"
+            # TODO: change to use '--request-timeout=5s', if https://github.com/kubernetes/kubernetes/issues/49343 is fixed. 
+            init_ip=$(timeout 5 kubectl get pod -n ${ovn_kubernetes_namespace} ${pod} -o=jsonpath='{.status.podIP}')
+            if [[ $? != 0 ]]; then
+              echo "Unable to get ${pod} ip "
+              return 1
+            fi
+            echo "Found ${pod} ip: $init_ip"
+            init_ip=$(bracketify $init_ip)
+            target=$(ovn-${db}ctl --timeout=5 --db=${transport}:${init_ip}:${port} ${ovndb_ctl_ssl_opts} \
+                      --data=bare --no-headings --columns=target list connection)
+            if [[ "${target}" != "p${transport}:${port}${ovn_raft_conn_ip_url_suffix}" ]]; then
+              echo "Unable to check correct target ${target} "
+              return 1
+            fi
+            echo "${pod} is part of cluster"
+            return 0
+          }
+          # end of db_part_of_cluster
+
+          # Checks if cluster has already been initialized.
+          # If not it returns false and sets init_ip to CLUSTER_INITIATOR_IP
+          cluster_exists() {
+            local db=${1}
+            local port=${2}
+            # TODO: change to use '--request-timeout=5s', if https://github.com/kubernetes/kubernetes/issues/49343 is fixed. 
+            db_pods=$(timeout 5 kubectl get pod -n ${ovn_kubernetes_namespace} -o=jsonpath='{.items[*].metadata.name}' | egrep -o 'ovnkube-master-\w+' | grep -v "metrics")
+
+            for db_pod in $db_pods; do
+              if db_part_of_cluster $db_pod $db $port; then
+                echo "${db_pod} is part of current cluster with ip: ${init_ip}!"
+                return 0
+              fi
+            done
+            # if we get here  there is no cluster, set init_ip and get out
+            init_ip=$(bracketify $CLUSTER_INITIATOR_IP)
+            return 1
+          }
+          # end of cluster_exists()
+
+          OVN_ARGS="--db-sb-cluster-local-port=9644 \
+            --db-sb-cluster-local-addr=$(bracketify ${K8S_NODE_IP}) \
+            --no-monitor \
+            --db-sb-cluster-local-proto=ssl \
+            --ovn-sb-db-ssl-key=/ovn-cert/tls.key \
+            --ovn-sb-db-ssl-cert=/ovn-cert/tls.crt \
+            --ovn-sb-db-ssl-ca-cert=/ovn-ca/ca-bundle.crt"
+
+          CLUSTER_INITIATOR_IP="10.73.116.66"
+          echo "$(date -Iseconds) - starting sbdb  CLUSTER_INITIATOR_IP=${CLUSTER_INITIATOR_IP}"
+          initial_raft_create=true
+          initialize="false"
+
+          if [[ ! -e ${ovn_db_file} ]]; then
+            initialize="true"
+          fi
+
+          if [[ "${initialize}" == "true" ]]; then
+            # check to see if a cluster already exists. If it does, just join it.
+            counter=0
+            cluster_found=false
+            while [ $counter -lt 5 ]; do
+              if cluster_exists ${db} ${db_port}; then
+                cluster_found=true
+                break
+              fi
+              sleep 1
+              counter=$((counter+1))
+            done
+
+            if ${cluster_found}; then
+              echo "Cluster already exists for DB: ${db}"
+              initial_raft_create=false
+              # join existing cluster
+              exec /usr/share/ovn/scripts/ovn-ctl ${OVN_ARGS} \
+              --db-sb-cluster-remote-port=9644 \
+              --db-sb-cluster-remote-addr=${init_ip} \
+              --db-sb-cluster-remote-proto=ssl \
+              --ovn-sb-log="-vconsole:${OVN_LOG_LEVEL} -vfile:off -vPATTERN:console:%D{%Y-%m-%dT%H:%M:%S.###Z}|%05N|%c%T|%p|%m" \
+              run_sb_ovsdb &
+
+              wait $!
+            else
+              # either we need to initialize a new cluster or wait for master to create it
+              if [[ "${K8S_NODE_IP}" == "${CLUSTER_INITIATOR_IP}" ]]; then
+                # set DB election timer at DB creation time if OVN supports it
+                election_timer=
+                if test -n "$(/usr/share/ovn/scripts/ovn-ctl --help 2>&1 | grep "\--db-sb-election-timer")"; then
+                  election_timer="--db-sb-election-timer=$((16*1000))"
+                fi
+
+                exec /usr/share/ovn/scripts/ovn-ctl ${OVN_ARGS} \
+                --ovn-sb-log="-vconsole:${OVN_LOG_LEVEL} -vfile:off -vPATTERN:console:%D{%Y-%m-%dT%H:%M:%S.###Z}|%05N|%c%T|%p|%m" \
+                ${election_timer} \
+                run_sb_ovsdb &
+
+                wait $!
+              else
+                exec /usr/share/ovn/scripts/ovn-ctl ${OVN_ARGS} \
+                --db-sb-cluster-remote-port=9644 \
+                --db-sb-cluster-remote-addr=${init_ip} \
+                --db-sb-cluster-remote-proto=ssl \
+                --ovn-sb-log="-vconsole:${OVN_LOG_LEVEL} -vfile:off -vPATTERN:console:%D{%Y-%m-%dT%H:%M:%S.###Z}|%05N|%c%T|%p|%m" \
+                run_sb_ovsdb &
+
+                wait $!
+              fi
+            fi
+          else
+            exec /usr/share/ovn/scripts/ovn-ctl ${OVN_ARGS} \
+            --ovn-sb-log="-vconsole:${OVN_LOG_LEVEL} -vfile:off -vPATTERN:console:%D{%Y-%m-%dT%H:%M:%S.###Z}|%05N|%c%T|%p|%m" \
+            run_sb_ovsdb &
+
+            wait $!
+          fi
+        lifecycle:
+          postStart:
+            exec:
+              command:
+              - /bin/bash
+              - -c
+              - |
+                set -x
+                CLUSTER_INITIATOR_IP="10.73.116.66"
+                rm -f /var/run/ovn/ovnsb_db.pid
+                if [[ "${K8S_NODE_IP}" == "${CLUSTER_INITIATOR_IP}" ]]; then
+                  echo "$(date -Iseconds) - sdb - postStart - waiting for master to be selected"
+
+                  # set the connection and inactivity probe
+                  retries=0
+                  while ! ovn-sbctl --no-leader-only -t 5 set-connection pssl:9642 -- set connection . inactivity_probe=180000; do
+                    (( retries += 1 ))
+                  if [[ "${retries}" -gt 40 ]]; then
+                    echo "$(date -Iseconds) - ERROR RESTARTING - sbdb - too many failed ovn-sbctl attempts, giving up"
+                      exit 1
+                  fi
+                  sleep 2
+                  done
+
+                  # Upgrade the db if required.
+                  DB_SCHEMA="/usr/share/ovn/ovn-sb.ovsschema"
+                  DB_SERVER="unix:/var/run/ovn/ovnsb_db.sock"
+                  schema_name=$(ovsdb-tool schema-name $DB_SCHEMA)
+                  db_version=$(ovsdb-client -t 10 get-schema-version "$DB_SERVER" "$schema_name")
+                  target_version=$(ovsdb-tool schema-version "$DB_SCHEMA")
+
+                  if ovsdb-tool compare-versions "$db_version" == "$target_version"; then
+                    :
+                  elif ovsdb-tool compare-versions "$db_version" ">" "$target_version"; then
+                      echo "Database $schema_name has newer schema version ($db_version) than our local schema ($target_version), possibly an upgrade is partially complete?"
+                  else
+                      echo "Upgrading database $schema_name from schema version $db_version to $target_version"
+                      ovsdb-client -t 30 convert "$DB_SERVER" "$DB_SCHEMA"
+                  fi
+                fi
+          preStop:
+            exec:
+              command:
+              - /bin/bash
+              - -c
+              - |
+                echo "$(date -Iseconds) - stopping sbdb"
+                /usr/share/ovn/scripts/ovn-ctl stop_sb_ovsdb
+                echo "$(date -Iseconds) - sbdb stopped"
+                rm -f /var/run/ovn/ovnsb_db.pid
+        readinessProbe:
+          timeoutSeconds: 5
+          exec:
+            command:
+            - /bin/bash
+            - -c
+            - |
+              set -xeo pipefail
+              leader_status=$(/usr/bin/ovn-appctl -t /var/run/ovn/ovnsb_db.ctl --timeout=3 cluster/status OVN_Southbound  2>/dev/null | { grep "Leader: unknown" || true; })
+              if [[ ! -z "${leader_status}" ]]; then
+                echo "SB DB Raft leader is unknown to the cluster node."
+                exit 1
+              else
+                /usr/bin/ovn-appctl -t /var/run/ovn/ovnsb_db.ctl --timeout=5 ovsdb-server/memory-trim-on-compaction on 2>/dev/null
+              fi
+        env:
+        - name: OVN_LOG_LEVEL
+          value: info
+        - name: K8S_NODE_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.hostIP
+        volumeMounts:
+        - mountPath: /etc/openvswitch/
+          name: etc-openvswitch
+        - mountPath: /etc/ovn/
+          name: etc-openvswitch
+        - mountPath: /var/lib/openvswitch/
+          name: var-lib-openvswitch
+        - mountPath: /run/openvswitch/
+          name: run-openvswitch
+        - mountPath: /run/ovn/
+          name: run-ovn
+        - mountPath: /env
+          name: env-overrides
+        - mountPath: /ovn-cert
+          name: ovn-cert
+        - mountPath: /ovn-ca
+          name: ovn-ca
+        ports:
+        - name: sb-db-port
+          containerPort: 9642
+        - name: sb-db-raft-port
+          containerPort: 9644
+        resources:
+          requests:
+            cpu: 10m
+            memory: 300Mi
+        terminationMessagePolicy: FallbackToLogsOnError
+
+      # ovnkube master: convert kubernetes objects in to nbdb logical network components
+      - name: ovnkube-master
+        image: "quay.io/zshi/ovn-daemonset:microshift"
+        command:
+        - /bin/bash
+        - -c
+        - |
+          set -xe
+          if [[ -f "/env/_master" ]]; then
+            set -o allexport
+            source "/env/_master"
+            set +o allexport
+          fi
+
+          gateway_mode_flags="--gateway-mode shared --gateway-interface br-ex"
+
+          echo "I$(date "+%m%d %H:%M:%S.%N") - ovnkube-master - start ovnkube --init-master ${K8S_NODE}"
+          exec /usr/bin/ovnkube \
+            --init-master "${K8S_NODE}" \
+            --config-file=/run/ovnkube-config/ovnkube.conf \
+            --ovn-empty-lb-events \
+            --loglevel "${OVN_KUBE_LOG_LEVEL}" \
+            --metrics-bind-address "127.0.0.1:29102" \
+            --metrics-enable-pprof \
+            ${gateway_mode_flags} \
+            --sb-address "ssl:10.73.116.66:9642" \
+            --sb-client-privkey /ovn-cert/tls.key \
+            --sb-client-cert /ovn-cert/tls.crt \
+            --sb-client-cacert /ovn-ca/ca-bundle.crt \
+            --sb-cert-common-name "ovn" \
+            --nb-address "ssl:10.73.116.66:9641" \
+            --nb-client-privkey /ovn-cert/tls.key \
+            --nb-client-cert /ovn-cert/tls.crt \
+            --nb-client-cacert /ovn-ca/ca-bundle.crt \
+            --nb-cert-common-name "ovn" \
+            --enable-multicast \
+            --disable-snat-multiple-gws \
+            --acl-logging-rate-limit "20"
+        volumeMounts:
+        # for checking ovs-configuration service
+        - mountPath: /etc/systemd/system
+          name: systemd-units
+          readOnly: true
+        - mountPath: /etc/openvswitch/
+          name: etc-openvswitch
+        - mountPath: /etc/ovn/
+          name: etc-openvswitch
+        - mountPath: /var/lib/openvswitch/
+          name: var-lib-openvswitch
+        - mountPath: /run/openvswitch/
+          name: run-openvswitch
+        - mountPath: /run/ovn/
+          name: run-ovn
+        - mountPath: /run/ovnkube-config/
+          name: ovnkube-config
+        - mountPath: /var/lib/microshift/resources/kubeadmin/
+          name: kubeconfig
+        - mountPath: /env
+          name: env-overrides
+        - mountPath: /ovn-cert
+          name: ovn-cert
+        - mountPath: /ovn-ca
+          name: ovn-ca
+        resources:
+          requests:
+            cpu: 10m
+            memory: 300Mi
+        env:
+        - name: OVN_KUBE_LOG_LEVEL
+          value: "4"
+        - name: K8S_NODE
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        ports:
+        - name: metrics-port
+          containerPort: 29102
+        terminationMessagePolicy: FallbackToLogsOnError
+      nodeSelector:
+        beta.kubernetes.io/os: "linux"
+      volumes:
+      # for checking ovs-configuration service
+      - name: systemd-units
+        hostPath:
+          path: /etc/systemd/system
+      - name: etc-openvswitch
+        hostPath:
+          path: /var/lib/ovn/etc
+      - name: var-lib-openvswitch
+        hostPath:
+          path: /var/lib/ovn/data
+      - name: run-openvswitch
+        hostPath:
+          path: /var/run/openvswitch
+      - name: run-ovn
+        hostPath:
+          path: /var/run/ovn
+      - name: kubeconfig
+        hostPath:
+          path: /var/lib/microshift/resources/kubeadmin
+      - name: ovnkube-config
+        configMap:
+          name: ovnkube-config
+      - name: env-overrides
+        configMap:
+          name: env-overrides
+          optional: true
+      - name: ovn-ca
+        configMap:
+          name: ovn-ca
+      - name: ovn-cert
+        secret:
+          secretName: ovn-cert
+      - name: ovn-master-metrics-cert
+        secret:
+          secretName: ovn-master-metrics-cert
+          optional: true
+      tolerations:
+      - key: "node-role.kubernetes.io/master"
+        operator: "Exists"
+      - key: "node.kubernetes.io/not-ready"
+        operator: "Exists"
+      - key: "node.kubernetes.io/unreachable"
+        operator: "Exists"
+      - key: "node.kubernetes.io/network-unavailable"
+        operator: "Exists"
+`)
+
+func assetsComponentsOvnMasterDaemonsetYamlBytes() ([]byte, error) {
+	return _assetsComponentsOvnMasterDaemonsetYaml, nil
+}
+
+func assetsComponentsOvnMasterDaemonsetYaml() (*asset, error) {
+	bytes, err := assetsComponentsOvnMasterDaemonsetYamlBytes()
+	if err != nil {
+		return nil, err
+	}
+
+	info := bindataFileInfo{name: "assets/components/ovn/master/daemonset.yaml", size: 30637, mode: os.FileMode(436), modTime: time.Unix(1653814560, 0)}
+	a := &asset{bytes: bytes, info: info}
+	return a, nil
+}
+
+var _assetsComponentsOvnMasterServiceaccountYaml = []byte(`---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: ovn-kubernetes-controller
+  namespace: openshift-ovn-kubernetes
+`)
+
+func assetsComponentsOvnMasterServiceaccountYamlBytes() ([]byte, error) {
+	return _assetsComponentsOvnMasterServiceaccountYaml, nil
+}
+
+func assetsComponentsOvnMasterServiceaccountYaml() (*asset, error) {
+	bytes, err := assetsComponentsOvnMasterServiceaccountYamlBytes()
+	if err != nil {
+		return nil, err
+	}
+
+	info := bindataFileInfo{name: "assets/components/ovn/master/serviceaccount.yaml", size: 122, mode: os.FileMode(436), modTime: time.Unix(1653813677, 0)}
+	a := &asset{bytes: bytes, info: info}
+	return a, nil
+}
+
+var _assetsComponentsOvnNamespaceYaml = []byte(`apiVersion: v1
+kind: Namespace
+metadata:
+  # NOTE: ovnkube.sh in the OVN image currently hardcodes this namespace name
+  name: openshift-ovn-kubernetes
+  labels:
+    openshift.io/run-level: "0"
+    openshift.io/cluster-monitoring: "true"
+    pod-security.kubernetes.io/enforce: privileged
+    pod-security.kubernetes.io/audit: privileged
+    pod-security.kubernetes.io/warn: privileged
+  annotations:
+    openshift.io/node-selector: ""
+    openshift.io/description: "OVN Kubernetes components"
+    workload.openshift.io/allowed: "management"
+`)
+
+func assetsComponentsOvnNamespaceYamlBytes() ([]byte, error) {
+	return _assetsComponentsOvnNamespaceYaml, nil
+}
+
+func assetsComponentsOvnNamespaceYaml() (*asset, error) {
+	bytes, err := assetsComponentsOvnNamespaceYamlBytes()
+	if err != nil {
+		return nil, err
+	}
+
+	info := bindataFileInfo{name: "assets/components/ovn/namespace.yaml", size: 542, mode: os.FileMode(436), modTime: time.Unix(1653813484, 0)}
+	a := &asset{bytes: bytes, info: info}
+	return a, nil
+}
+
+var _assetsComponentsOvnNodeDaemonsetYaml = []byte(`---
+kind: DaemonSet
+apiVersion: apps/v1
+metadata:
+  name: ovnkube-node
+  namespace: openshift-ovn-kubernetes
+  annotations:
+    kubernetes.io/description: |
+      This daemonset launches the ovn-kubernetes per node networking components.
+    release.openshift.io/version: "4.11"
+spec:
+  selector:
+    matchLabels:
+      app: ovnkube-node
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 10%
+  template:
+    metadata:
+      annotations:
+        target.workload.openshift.io/management: '{"effect": "PreferredDuringScheduling"}'
+      labels:
+        app: ovnkube-node
+        component: network
+        type: infra
+        openshift.io/component: network
+        kubernetes.io/os: "linux"
+    spec:
+      serviceAccountName: ovn-kubernetes-node
+      hostNetwork: true
+      dnsPolicy: Default
+      hostPID: true
+      priorityClassName: "system-node-critical"
+      # volumes in all containers:
+      # (container) -> (host)
+      # /etc/openvswitch -> /etc/openvswitch - ovsdb system id
+      # /var/lib/openvswitch -> /var/lib/openvswitch/data - ovsdb data
+      # /run/openvswitch -> tmpfs - ovsdb sockets
+      # /env -> configmap env-overrides - debug overrides
+      containers:
+      # ovn-controller: programs the vswitch with flows from the sbdb
+      - name: ovn-controller
+        image: "quay.io/zshi/ovn-daemonset:microshift"
+        command:
+        - /bin/bash
+        - -c
+        - |
+          set -e
+          if [[ -f "/env/${K8S_NODE}" ]]; then
+            set -o allexport
+            source "/env/${K8S_NODE}"
+            set +o allexport
+          fi
+
+          echo "$(date -Iseconds) - starting ovn-controller"
+          exec ovn-controller unix:/var/run/openvswitch/db.sock -vfile:off \
+            --no-chdir --pidfile=/var/run/ovn/ovn-controller.pid \
+            --syslog-method="null" \
+            --log-file=/var/log/ovn/acl-audit-log.log \
+            -vFACILITY:"local0" \
+            -p /ovn-cert/tls.key -c /ovn-cert/tls.crt -C /ovn-ca/ca-bundle.crt \
+            -vconsole:"${OVN_LOG_LEVEL}" -vconsole:"acl_log:off" \
+            -vPATTERN:console:"%D{%Y-%m-%dT%H:%M:%S.###Z}|%05N|%c%T|%p|%m" \
+            -vsyslog:"acl_log:info" \
+            -vfile:"acl_log:info"
+        securityContext:
+          privileged: true
+        env:
+        - name: OVN_LOG_LEVEL
+          value: info
+        - name: K8S_NODE
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        volumeMounts:
+        - mountPath: /run/openvswitch
+          name: run-openvswitch
+        - mountPath: /run/ovn/
+          name: run-ovn
+        - mountPath: /etc/openvswitch
+          name: etc-openvswitch
+        - mountPath: /etc/ovn/
+          name: etc-openvswitch
+        - mountPath: /var/lib/openvswitch
+          name: var-lib-openvswitch
+        - mountPath: /env
+          name: env-overrides
+        - mountPath: /ovn-cert
+          name: ovn-cert
+        - mountPath: /ovn-ca
+          name: ovn-ca
+        - mountPath: /var/log/ovn
+          name: node-log
+        - mountPath: /dev/log
+          name: log-socket
+        terminationMessagePolicy: FallbackToLogsOnError
+        resources:
+          requests:
+            cpu: 10m
+            memory: 300Mi
+      # ovnkube-node: does node-level bookkeeping and configuration
+      - name: ovnkube-node
+        image: "quay.io/zshi/ovn-daemonset:microshift"
+        command:
+        - /bin/bash
+        - -c
+        - |
+          set -xe
+          if [[ -f "/env/${K8S_NODE}" ]]; then
+            set -o allexport
+            source "/env/${K8S_NODE}"
+            set +o allexport
+          fi
+          cp -f /usr/libexec/cni/ovn-k8s-cni-overlay /cni-bin-dir/
+          ovn_config_namespace=openshift-ovn-kubernetes
+          echo "I$(date "+%m%d %H:%M:%S.%N") - disable conntrack on geneve port"
+          iptables -t raw -A PREROUTING -p udp --dport 6081 -j NOTRACK
+          iptables -t raw -A OUTPUT -p udp --dport 6081 -j NOTRACK
+          ip6tables -t raw -A PREROUTING -p udp --dport 6081 -j NOTRACK
+          ip6tables -t raw -A OUTPUT -p udp --dport 6081 -j NOTRACK
+          echo "I$(date "+%m%d %H:%M:%S.%N") - starting ovnkube-node"
+
+          gateway_mode_flags="--gateway-mode shared --gateway-interface br-ex"
+
+          export_network_flows_flags=
+          if [[ -n "${NETFLOW_COLLECTORS}" ]] ; then
+            export_network_flows_flags="--netflow-targets ${NETFLOW_COLLECTORS}"
+          fi
+          if [[ -n "${SFLOW_COLLECTORS}" ]] ; then
+            export_network_flows_flags="$export_network_flows_flags --sflow-targets ${SFLOW_COLLECTORS}"
+          fi
+          if [[ -n "${IPFIX_COLLECTORS}" ]] ; then
+            export_network_flows_flags="$export_network_flows_flags --ipfix-targets ${IPFIX_COLLECTORS}"
+          fi
+          if [[ -n "${IPFIX_CACHE_MAX_FLOWS}" ]] ; then
+            export_network_flows_flags="$export_network_flows_flags --ipfix-cache-max-flows ${IPFIX_CACHE_MAX_FLOWS}"
+          fi
+          if [[ -n "${IPFIX_CACHE_ACTIVE_TIMEOUT}" ]] ; then
+            export_network_flows_flags="$export_network_flows_flags --ipfix-cache-active-timeout ${IPFIX_CACHE_ACTIVE_TIMEOUT}"
+          fi
+          if [[ -n "${IPFIX_SAMPLING}" ]] ; then
+            export_network_flows_flags="$export_network_flows_flags --ipfix-sampling ${IPFIX_SAMPLING}"
+          fi
+          gw_interface_flag=
+          # if br-ex1 is configured on the node, we want to use it for external gateway traffic
+          if [ -d /sys/class/net/br-ex1 ]; then
+            gw_interface_flag="--exgw-interface=br-ex1"
+          fi
+
+          node_mgmt_port_netdev_flags=
+          if [[ -n "${OVNKUBE_NODE_MGMT_PORT_NETDEV}" ]] ; then
+            node_mgmt_port_netdev_flags="--ovnkube-node-mgmt-port-netdev ${OVNKUBE_NODE_MGMT_PORT_NETDEV}"
+          fi
+
+          exec /usr/bin/ovnkube --init-node "${K8S_NODE}" \
+            --nb-address "ssl:10.73.116.66:9641" \
+            --sb-address "ssl:10.73.116.66:9642" \
+            --nb-client-privkey /ovn-cert/tls.key \
+            --nb-client-cert /ovn-cert/tls.crt \
+            --nb-client-cacert /ovn-ca/ca-bundle.crt \
+            --nb-cert-common-name "ovn" \
+            --sb-client-privkey /ovn-cert/tls.key \
+            --sb-client-cert /ovn-cert/tls.crt \
+            --sb-client-cacert /ovn-ca/ca-bundle.crt \
+            --sb-cert-common-name "ovn" \
+            --config-file=/run/ovnkube-config/ovnkube.conf \
+            --loglevel "${OVN_KUBE_LOG_LEVEL}" \
+            --inactivity-probe="${OVN_CONTROLLER_INACTIVITY_PROBE}" \
+            ${gateway_mode_flags} \
+            --metrics-bind-address "127.0.0.1:29103" \
+            --ovn-metrics-bind-address "127.0.0.1:29105" \
+            --metrics-enable-pprof \
+            --disable-snat-multiple-gws \
+            ${export_network_flows_flags} \
+            ${gw_interface_flag}
+        env:
+        # for kubectl
+        - name: KUBERNETES_SERVICE_PORT
+          value: "6443"
+        - name: KUBERNETES_SERVICE_HOST
+          value: "10.73.116.66"
+        - name: OVN_CONTROLLER_INACTIVITY_PROBE
+          value: "180000"
+        - name: OVN_KUBE_LOG_LEVEL
+          value: "4"
+        - name: K8S_NODE
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        ports:
+        - name: metrics-port
+          containerPort: 29103
+        securityContext:
+          privileged: true
+        terminationMessagePolicy: FallbackToLogsOnError
+        volumeMounts:
+        # for checking ovs-configuration service
+        - mountPath: /etc/systemd/system
+          name: systemd-units
+          readOnly: true
+        # for the iptables wrapper
+        - mountPath: /host
+          name: host-slash
+          readOnly: true
+          mountPropagation: HostToContainer
+        # for the CNI server socket
+        - mountPath: /run/ovn-kubernetes/
+          name: host-run-ovn-kubernetes
+        # accessing bind-mounted net namespaces
+        - mountPath: /run/netns
+          name: host-run-netns
+          readOnly: true
+          mountPropagation: HostToContainer
+        # for installing the CNI plugin binary
+        - mountPath: /cni-bin-dir
+          name: host-cni-bin
+        # for installing the CNI configuration file
+        - mountPath: /etc/cni/net.d
+          name: host-cni-netd
+        # Where we store IP allocations
+        - mountPath: /var/lib/cni/networks/ovn-k8s-cni-overlay
+          name: host-var-lib-cni-networks-ovn-kubernetes
+        - mountPath: /run/openvswitch
+          name: run-openvswitch
+        - mountPath: /run/ovn/
+          name: run-ovn
+        - mountPath: /etc/openvswitch
+          name: etc-openvswitch
+        - mountPath: /etc/ovn/
+          name: etc-openvswitch
+        - mountPath: /var/lib/openvswitch
+          name: var-lib-openvswitch
+        - mountPath: /run/ovnkube-config/
+          name: ovnkube-config
+        - mountPath: /var/lib/microshift/resources/kubeadmin/
+          name: kubeconfig
+        - mountPath: /env
+          name: env-overrides
+        - mountPath: /ovn-cert
+          name: ovn-cert
+        - mountPath: /ovn-ca
+          name: ovn-ca
+        resources:
+          requests:
+            cpu: 10m
+            memory: 300Mi
+        lifecycle:
+          preStop:
+            exec:
+              command: ["rm","-f","/etc/cni/net.d/10-ovn-kubernetes.conf"]
+        readinessProbe:
+          exec:
+            command: ["test", "-f", "/etc/cni/net.d/10-ovn-kubernetes.conf"]
+          initialDelaySeconds: 5
+          periodSeconds: 5
+      nodeSelector:
+        beta.kubernetes.io/os: "linux"
+      volumes:
+      # for checking ovs-configuration service
+      - name: systemd-units
+        hostPath:
+          path: /etc/systemd/system
+      # used for iptables wrapper scripts
+      - name: host-slash
+        hostPath:
+          path: /
+      - name: host-run-netns
+        hostPath:
+          path: /run/netns
+      - name: var-lib-openvswitch
+        hostPath:
+          path: /var/lib/openvswitch/data
+      - name: etc-openvswitch
+        hostPath:
+          path: /etc/openvswitch
+      - name: run-openvswitch
+        hostPath:
+          path: /var/run/openvswitch
+      - name: run-ovn
+        hostPath:
+          path: /var/run/ovn
+      # Used for placement of ACL audit logs 
+      - name: node-log
+        hostPath: 
+          path: /var/log/ovn
+      - name: log-socket
+        hostPath: 
+          path: /dev/log
+      # For CNI server
+      - name: host-run-ovn-kubernetes
+        hostPath:
+          path: /run/ovn-kubernetes
+      - name: host-cni-bin
+        hostPath:
+          path: "/var/lib/cni/bin"
+      - name: host-cni-netd
+        hostPath:
+          path: "/var/run/multus/cni/net.d"
+      - name: host-var-lib-cni-networks-ovn-kubernetes
+        hostPath:
+          path: /var/lib/cni/networks/ovn-k8s-cni-overlay
+      - name: kubeconfig
+        hostPath:
+          path: /var/lib/microshift/resources/kubeadmin
+      - name: ovnkube-config
+        configMap:
+          name: ovnkube-config
+      - name: env-overrides
+        configMap:
+          name: env-overrides
+          optional: true
+      - name: ovn-ca
+        configMap:
+          name: ovn-ca
+      - name: ovn-cert
+        secret:
+          secretName: ovn-cert
+      - name: ovn-node-metrics-cert
+        secret:
+          secretName: ovn-node-metrics-cert
+          optional: true
+      tolerations:
+      - operator: "Exists"
+`)
+
+func assetsComponentsOvnNodeDaemonsetYamlBytes() ([]byte, error) {
+	return _assetsComponentsOvnNodeDaemonsetYaml, nil
+}
+
+func assetsComponentsOvnNodeDaemonsetYaml() (*asset, error) {
+	bytes, err := assetsComponentsOvnNodeDaemonsetYamlBytes()
+	if err != nil {
+		return nil, err
+	}
+
+	info := bindataFileInfo{name: "assets/components/ovn/node/daemonset.yaml", size: 11400, mode: os.FileMode(436), modTime: time.Unix(1653814439, 0)}
+	a := &asset{bytes: bytes, info: info}
+	return a, nil
+}
+
+var _assetsComponentsOvnNodeServiceaccountYaml = []byte(`---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: ovn-kubernetes-node
+  namespace: openshift-ovn-kubernetes
+`)
+
+func assetsComponentsOvnNodeServiceaccountYamlBytes() ([]byte, error) {
+	return _assetsComponentsOvnNodeServiceaccountYaml, nil
+}
+
+func assetsComponentsOvnNodeServiceaccountYaml() (*asset, error) {
+	bytes, err := assetsComponentsOvnNodeServiceaccountYamlBytes()
+	if err != nil {
+		return nil, err
+	}
+
+	info := bindataFileInfo{name: "assets/components/ovn/node/serviceaccount.yaml", size: 116, mode: os.FileMode(436), modTime: time.Unix(1653813695, 0)}
+	a := &asset{bytes: bytes, info: info}
+	return a, nil
+}
+
+var _assetsComponentsOvnRoleYaml = []byte(`---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: openshift-ovn-kubernetes-node
+  namespace: openshift-ovn-kubernetes
+rules:
+- apiGroups: [""]
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups: [certificates.k8s.io]
+  resources: ['certificatesigningrequests']
+  verbs:
+    - create
+    - get
+    - delete
+    - update
+    - list
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: openshift-ovn-kubernetes-sbdb
+  namespace: openshift-ovn-kubernetes
+rules:
+- apiGroups: [""]
+  resources:
+  - endpoints
+  verbs:
+  - create
+  - update
+  - patch
+`)
+
+func assetsComponentsOvnRoleYamlBytes() ([]byte, error) {
+	return _assetsComponentsOvnRoleYaml, nil
+}
+
+func assetsComponentsOvnRoleYaml() (*asset, error) {
+	bytes, err := assetsComponentsOvnRoleYamlBytes()
+	if err != nil {
+		return nil, err
+	}
+
+	info := bindataFileInfo{name: "assets/components/ovn/role.yaml", size: 615, mode: os.FileMode(436), modTime: time.Unix(1653813593, 0)}
+	a := &asset{bytes: bytes, info: info}
+	return a, nil
+}
+
+var _assetsComponentsOvnRolebindingYaml = []byte(`---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: openshift-ovn-kubernetes-node
+  namespace: openshift-ovn-kubernetes
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: openshift-ovn-kubernetes-node
+subjects:
+- kind: ServiceAccount
+  name: ovn-kubernetes-node
+  namespace: openshift-ovn-kubernetes
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: openshift-ovn-kubernetes-sbdb
+  namespace: openshift-ovn-kubernetes
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: openshift-ovn-kubernetes-sbdb
+subjects:
+- kind: ServiceAccount
+  name: ovn-kubernetes-controller
+  namespace: openshift-ovn-kubernetes
+`)
+
+func assetsComponentsOvnRolebindingYamlBytes() ([]byte, error) {
+	return _assetsComponentsOvnRolebindingYaml, nil
+}
+
+func assetsComponentsOvnRolebindingYaml() (*asset, error) {
+	bytes, err := assetsComponentsOvnRolebindingYamlBytes()
+	if err != nil {
+		return nil, err
+	}
+
+	info := bindataFileInfo{name: "assets/components/ovn/rolebinding.yaml", size: 699, mode: os.FileMode(436), modTime: time.Unix(1653813608, 0)}
+	a := &asset{bytes: bytes, info: info}
+	return a, nil
+}
+
+var _assetsComponentsOvnServiceYaml = []byte(`---
+# service to expose the ovn-master pod
+# at present ovn-master is limited to a single instance so
+# when the cluster has multiple masters we can get to the
+# ovn-master via this service.
+apiVersion: v1
+kind: Service
+metadata:
+  name: ovnkube-db
+  namespace: openshift-ovn-kubernetes
+spec:
+  selector:
+    app: ovnkube-master
+  ports:
+  - name: north
+    port: 9641
+    protocol: TCP
+    targetPort: 9641
+  - name: south
+    port: 9642
+    protocol: TCP
+    targetPort: 9642
+  sessionAffinity: None
+  clusterIP: None
+  type: ClusterIP
+`)
+
+func assetsComponentsOvnServiceYamlBytes() ([]byte, error) {
+	return _assetsComponentsOvnServiceYaml, nil
+}
+
+func assetsComponentsOvnServiceYaml() (*asset, error) {
+	bytes, err := assetsComponentsOvnServiceYamlBytes()
+	if err != nil {
+		return nil, err
+	}
+
+	info := bindataFileInfo{name: "assets/components/ovn/service.yaml", size: 538, mode: os.FileMode(436), modTime: time.Unix(1653813645, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -1690,7 +3433,7 @@ func assetsComponentsServiceCaClusterroleYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/service-ca/clusterrole.yaml", size: 864, mode: os.FileMode(436), modTime: time.Unix(1653308373, 0)}
+	info := bindataFileInfo{name: "assets/components/service-ca/clusterrole.yaml", size: 864, mode: os.FileMode(436), modTime: time.Unix(1653632080, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -1719,7 +3462,7 @@ func assetsComponentsServiceCaClusterrolebindingYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/service-ca/clusterrolebinding.yaml", size: 298, mode: os.FileMode(436), modTime: time.Unix(1653308373, 0)}
+	info := bindataFileInfo{name: "assets/components/service-ca/clusterrolebinding.yaml", size: 298, mode: os.FileMode(436), modTime: time.Unix(1653632080, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -1804,7 +3547,7 @@ func assetsComponentsServiceCaDeploymentYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/service-ca/deployment.yaml", size: 1866, mode: os.FileMode(436), modTime: time.Unix(1653308373, 0)}
+	info := bindataFileInfo{name: "assets/components/service-ca/deployment.yaml", size: 1866, mode: os.FileMode(436), modTime: time.Unix(1653632080, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -1828,7 +3571,7 @@ func assetsComponentsServiceCaNsYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/service-ca/ns.yaml", size: 168, mode: os.FileMode(436), modTime: time.Unix(1653308373, 0)}
+	info := bindataFileInfo{name: "assets/components/service-ca/ns.yaml", size: 168, mode: os.FileMode(436), modTime: time.Unix(1653632080, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -1891,7 +3634,7 @@ func assetsComponentsServiceCaRoleYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/service-ca/role.yaml", size: 634, mode: os.FileMode(436), modTime: time.Unix(1653308373, 0)}
+	info := bindataFileInfo{name: "assets/components/service-ca/role.yaml", size: 634, mode: os.FileMode(436), modTime: time.Unix(1653632080, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -1921,7 +3664,7 @@ func assetsComponentsServiceCaRolebindingYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/service-ca/rolebinding.yaml", size: 343, mode: os.FileMode(436), modTime: time.Unix(1653308373, 0)}
+	info := bindataFileInfo{name: "assets/components/service-ca/rolebinding.yaml", size: 343, mode: os.FileMode(436), modTime: time.Unix(1653632080, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -1943,7 +3686,7 @@ func assetsComponentsServiceCaSaYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/service-ca/sa.yaml", size: 99, mode: os.FileMode(436), modTime: time.Unix(1653308373, 0)}
+	info := bindataFileInfo{name: "assets/components/service-ca/sa.yaml", size: 99, mode: os.FileMode(436), modTime: time.Unix(1653632080, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -1967,7 +3710,7 @@ func assetsComponentsServiceCaSigningCabundleYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/service-ca/signing-cabundle.yaml", size: 123, mode: os.FileMode(436), modTime: time.Unix(1653308373, 0)}
+	info := bindataFileInfo{name: "assets/components/service-ca/signing-cabundle.yaml", size: 123, mode: os.FileMode(436), modTime: time.Unix(1653632080, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -1993,7 +3736,7 @@ func assetsComponentsServiceCaSigningSecretYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/service-ca/signing-secret.yaml", size: 144, mode: os.FileMode(436), modTime: time.Unix(1653308373, 0)}
+	info := bindataFileInfo{name: "assets/components/service-ca/signing-secret.yaml", size: 144, mode: os.FileMode(436), modTime: time.Unix(1653632080, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -2019,7 +3762,7 @@ func assetsCore0000_50_clusterOpenshiftControllerManager_00_namespaceYaml() (*as
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/core/0000_50_cluster-openshift-controller-manager_00_namespace.yaml", size: 254, mode: os.FileMode(436), modTime: time.Unix(1653308373, 0)}
+	info := bindataFileInfo{name: "assets/core/0000_50_cluster-openshift-controller-manager_00_namespace.yaml", size: 254, mode: os.FileMode(436), modTime: time.Unix(1653632080, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -2192,7 +3935,7 @@ func assetsCrd0000_03_authorizationOpenshift_01_rolebindingrestrictionCrdYaml() 
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/crd/0000_03_authorization-openshift_01_rolebindingrestriction.crd.yaml", size: 9898, mode: os.FileMode(436), modTime: time.Unix(1653308373, 0)}
+	info := bindataFileInfo{name: "assets/crd/0000_03_authorization-openshift_01_rolebindingrestriction.crd.yaml", size: 9898, mode: os.FileMode(436), modTime: time.Unix(1653646266, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -2287,7 +4030,7 @@ func assetsCrd0000_03_configOperator_01_proxyCrdYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/crd/0000_03_config-operator_01_proxy.crd.yaml", size: 4790, mode: os.FileMode(436), modTime: time.Unix(1653308373, 0)}
+	info := bindataFileInfo{name: "assets/crd/0000_03_config-operator_01_proxy.crd.yaml", size: 4790, mode: os.FileMode(436), modTime: time.Unix(1653646266, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -2499,7 +4242,7 @@ func assetsCrd0000_03_quotaOpenshift_01_clusterresourcequotaCrdYaml() (*asset, e
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/crd/0000_03_quota-openshift_01_clusterresourcequota.crd.yaml", size: 11773, mode: os.FileMode(436), modTime: time.Unix(1653308373, 0)}
+	info := bindataFileInfo{name: "assets/crd/0000_03_quota-openshift_01_clusterresourcequota.crd.yaml", size: 11773, mode: os.FileMode(436), modTime: time.Unix(1653646266, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -2795,7 +4538,7 @@ func assetsCrd0000_03_securityOpenshift_01_sccCrdYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/crd/0000_03_security-openshift_01_scc.crd.yaml", size: 16010, mode: os.FileMode(436), modTime: time.Unix(1653308373, 0)}
+	info := bindataFileInfo{name: "assets/crd/0000_03_security-openshift_01_scc.crd.yaml", size: 16010, mode: os.FileMode(436), modTime: time.Unix(1653646266, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -3083,7 +4826,7 @@ func assetsCrd0000_10_configOperator_01_buildCrdYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/crd/0000_10_config-operator_01_build.crd.yaml", size: 20246, mode: os.FileMode(436), modTime: time.Unix(1653308373, 0)}
+	info := bindataFileInfo{name: "assets/crd/0000_10_config-operator_01_build.crd.yaml", size: 20246, mode: os.FileMode(436), modTime: time.Unix(1653646266, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -3163,7 +4906,7 @@ func assetsCrd0000_10_configOperator_01_featuregateCrdYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/crd/0000_10_config-operator_01_featuregate.crd.yaml", size: 3438, mode: os.FileMode(436), modTime: time.Unix(1653308373, 0)}
+	info := bindataFileInfo{name: "assets/crd/0000_10_config-operator_01_featuregate.crd.yaml", size: 3438, mode: os.FileMode(436), modTime: time.Unix(1653646266, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -3288,7 +5031,7 @@ func assetsCrd0000_10_configOperator_01_imageCrdYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/crd/0000_10_config-operator_01_image.crd.yaml", size: 7808, mode: os.FileMode(436), modTime: time.Unix(1653308373, 0)}
+	info := bindataFileInfo{name: "assets/crd/0000_10_config-operator_01_image.crd.yaml", size: 7808, mode: os.FileMode(436), modTime: time.Unix(1653646266, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -3364,7 +5107,7 @@ func assetsCrd0000_10_configOperator_01_imagecontentsourcepolicyCrdYaml() (*asse
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/crd/0000_10_config-operator_01_imagecontentsourcepolicy.crd.yaml", size: 4754, mode: os.FileMode(436), modTime: time.Unix(1653308373, 0)}
+	info := bindataFileInfo{name: "assets/crd/0000_10_config-operator_01_imagecontentsourcepolicy.crd.yaml", size: 4754, mode: os.FileMode(436), modTime: time.Unix(1653646266, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -4924,7 +6667,7 @@ func assetsCrd0000_11_imageregistryConfigsCrdYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/crd/0000_11_imageregistry-configs.crd.yaml", size: 90225, mode: os.FileMode(436), modTime: time.Unix(1653308373, 0)}
+	info := bindataFileInfo{name: "assets/crd/0000_11_imageregistry-configs.crd.yaml", size: 90225, mode: os.FileMode(436), modTime: time.Unix(1653632080, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -4983,7 +6726,7 @@ func assetsScc0000_20_kubeApiserverOperator_00_sccAnyuidYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/scc/0000_20_kube-apiserver-operator_00_scc-anyuid.yaml", size: 1048, mode: os.FileMode(436), modTime: time.Unix(1653308373, 0)}
+	info := bindataFileInfo{name: "assets/scc/0000_20_kube-apiserver-operator_00_scc-anyuid.yaml", size: 1048, mode: os.FileMode(436), modTime: time.Unix(1653632080, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -5047,7 +6790,7 @@ func assetsScc0000_20_kubeApiserverOperator_00_sccHostaccessYaml() (*asset, erro
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/scc/0000_20_kube-apiserver-operator_00_scc-hostaccess.yaml", size: 1267, mode: os.FileMode(436), modTime: time.Unix(1653308373, 0)}
+	info := bindataFileInfo{name: "assets/scc/0000_20_kube-apiserver-operator_00_scc-hostaccess.yaml", size: 1267, mode: os.FileMode(436), modTime: time.Unix(1653632080, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -5111,7 +6854,7 @@ func assetsScc0000_20_kubeApiserverOperator_00_sccHostmountAnyuidYaml() (*asset,
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/scc/0000_20_kube-apiserver-operator_00_scc-hostmount-anyuid.yaml", size: 1298, mode: os.FileMode(436), modTime: time.Unix(1653308373, 0)}
+	info := bindataFileInfo{name: "assets/scc/0000_20_kube-apiserver-operator_00_scc-hostmount-anyuid.yaml", size: 1298, mode: os.FileMode(436), modTime: time.Unix(1653632080, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -5173,7 +6916,7 @@ func assetsScc0000_20_kubeApiserverOperator_00_sccHostnetworkYaml() (*asset, err
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/scc/0000_20_kube-apiserver-operator_00_scc-hostnetwork.yaml", size: 1123, mode: os.FileMode(436), modTime: time.Unix(1653308373, 0)}
+	info := bindataFileInfo{name: "assets/scc/0000_20_kube-apiserver-operator_00_scc-hostnetwork.yaml", size: 1123, mode: os.FileMode(436), modTime: time.Unix(1653632080, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -5235,7 +6978,7 @@ func assetsScc0000_20_kubeApiserverOperator_00_sccNonrootYaml() (*asset, error) 
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/scc/0000_20_kube-apiserver-operator_00_scc-nonroot.yaml", size: 1166, mode: os.FileMode(436), modTime: time.Unix(1653308373, 0)}
+	info := bindataFileInfo{name: "assets/scc/0000_20_kube-apiserver-operator_00_scc-nonroot.yaml", size: 1166, mode: os.FileMode(436), modTime: time.Unix(1653632080, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -5299,7 +7042,7 @@ func assetsScc0000_20_kubeApiserverOperator_00_sccPrivilegedYaml() (*asset, erro
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/scc/0000_20_kube-apiserver-operator_00_scc-privileged.yaml", size: 1291, mode: os.FileMode(436), modTime: time.Unix(1653308373, 0)}
+	info := bindataFileInfo{name: "assets/scc/0000_20_kube-apiserver-operator_00_scc-privileged.yaml", size: 1291, mode: os.FileMode(436), modTime: time.Unix(1653632080, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -5362,7 +7105,7 @@ func assetsScc0000_20_kubeApiserverOperator_00_sccRestrictedYaml() (*asset, erro
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/scc/0000_20_kube-apiserver-operator_00_scc-restricted.yaml", size: 1213, mode: os.FileMode(436), modTime: time.Unix(1653308373, 0)}
+	info := bindataFileInfo{name: "assets/scc/0000_20_kube-apiserver-operator_00_scc-restricted.yaml", size: 1213, mode: os.FileMode(436), modTime: time.Unix(1653632080, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -5449,6 +7192,19 @@ var _bindata = map[string]func() (*asset, error){
 	"assets/components/openshift-router/service-account.yaml":                       assetsComponentsOpenshiftRouterServiceAccountYaml,
 	"assets/components/openshift-router/service-cloud.yaml":                         assetsComponentsOpenshiftRouterServiceCloudYaml,
 	"assets/components/openshift-router/service-internal.yaml":                      assetsComponentsOpenshiftRouterServiceInternalYaml,
+	"assets/components/ovn/clusterrole.yaml":                                        assetsComponentsOvnClusterroleYaml,
+	"assets/components/ovn/clusterrolebinding.yaml":                                 assetsComponentsOvnClusterrolebindingYaml,
+	"assets/components/ovn/configmap-ovn-ca.yaml":                                   assetsComponentsOvnConfigmapOvnCaYaml,
+	"assets/components/ovn/configmap.yaml":                                          assetsComponentsOvnConfigmapYaml,
+	"assets/components/ovn/master/.daemonset.yaml.swp":                              assetsComponentsOvnMasterDaemonsetYamlSwp,
+	"assets/components/ovn/master/daemonset.yaml":                                   assetsComponentsOvnMasterDaemonsetYaml,
+	"assets/components/ovn/master/serviceaccount.yaml":                              assetsComponentsOvnMasterServiceaccountYaml,
+	"assets/components/ovn/namespace.yaml":                                          assetsComponentsOvnNamespaceYaml,
+	"assets/components/ovn/node/daemonset.yaml":                                     assetsComponentsOvnNodeDaemonsetYaml,
+	"assets/components/ovn/node/serviceaccount.yaml":                                assetsComponentsOvnNodeServiceaccountYaml,
+	"assets/components/ovn/role.yaml":                                               assetsComponentsOvnRoleYaml,
+	"assets/components/ovn/rolebinding.yaml":                                        assetsComponentsOvnRolebindingYaml,
+	"assets/components/ovn/service.yaml":                                            assetsComponentsOvnServiceYaml,
 	"assets/components/service-ca/clusterrole.yaml":                                 assetsComponentsServiceCaClusterroleYaml,
 	"assets/components/service-ca/clusterrolebinding.yaml":                          assetsComponentsServiceCaClusterrolebindingYaml,
 	"assets/components/service-ca/deployment.yaml":                                  assetsComponentsServiceCaDeploymentYaml,
@@ -5561,6 +7317,25 @@ var _bintree = &bintree{nil, map[string]*bintree{
 				"service-account.yaml":      {assetsComponentsOpenshiftRouterServiceAccountYaml, map[string]*bintree{}},
 				"service-cloud.yaml":        {assetsComponentsOpenshiftRouterServiceCloudYaml, map[string]*bintree{}},
 				"service-internal.yaml":     {assetsComponentsOpenshiftRouterServiceInternalYaml, map[string]*bintree{}},
+			}},
+			"ovn": {nil, map[string]*bintree{
+				"clusterrole.yaml":        {assetsComponentsOvnClusterroleYaml, map[string]*bintree{}},
+				"clusterrolebinding.yaml": {assetsComponentsOvnClusterrolebindingYaml, map[string]*bintree{}},
+				"configmap-ovn-ca.yaml":   {assetsComponentsOvnConfigmapOvnCaYaml, map[string]*bintree{}},
+				"configmap.yaml":          {assetsComponentsOvnConfigmapYaml, map[string]*bintree{}},
+				"master": {nil, map[string]*bintree{
+					".daemonset.yaml.swp": {assetsComponentsOvnMasterDaemonsetYamlSwp, map[string]*bintree{}},
+					"daemonset.yaml":      {assetsComponentsOvnMasterDaemonsetYaml, map[string]*bintree{}},
+					"serviceaccount.yaml": {assetsComponentsOvnMasterServiceaccountYaml, map[string]*bintree{}},
+				}},
+				"namespace.yaml": {assetsComponentsOvnNamespaceYaml, map[string]*bintree{}},
+				"node": {nil, map[string]*bintree{
+					"daemonset.yaml":      {assetsComponentsOvnNodeDaemonsetYaml, map[string]*bintree{}},
+					"serviceaccount.yaml": {assetsComponentsOvnNodeServiceaccountYaml, map[string]*bintree{}},
+				}},
+				"role.yaml":        {assetsComponentsOvnRoleYaml, map[string]*bintree{}},
+				"rolebinding.yaml": {assetsComponentsOvnRolebindingYaml, map[string]*bintree{}},
+				"service.yaml":     {assetsComponentsOvnServiceYaml, map[string]*bintree{}},
 			}},
 			"service-ca": {nil, map[string]*bintree{
 				"clusterrole.yaml":        {assetsComponentsServiceCaClusterroleYaml, map[string]*bintree{}},
