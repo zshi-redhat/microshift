@@ -60,14 +60,6 @@ Some hardcoded values need to change in ovnk manifests:
 
 2. (Optional) `/var/lib/microshift/resources/kubeadmin/kubeconfig` is mounted to `master/daemonset.yaml` and `node/daemonset.yaml`, Change it if you have customized microshift data directory (cfg.DataDir)
 
-3. Update `ca-bundle.crt` data in `assets/components/ovn/config-ovn-ca.yaml`. (I took that from a running ovn-k cluster `oc -n openshift-ovn-kubernetes get configmap ovn-ca -o yaml`)
-
-Some manifests to create manually for later use:
-
-4. Create `ovn-cert` secret yaml file (ovn-cert.yaml) which will be applied manually later after starting microshift, this is taken from the same running ovn-k cluster where `ca-bundle.crt` is taken (`oc -n openshift-ovn-kubernetes get secret ovn-cert -o yaml > ovn-cert.yaml`)
-
-5. Create ovnk CRDs yaml file (ovn-crd.yaml) which will be applied later manually after starting microshift, this is taken from openshift cluster-network-operator repo (https://github.com/openshift/cluster-network-operator/blob/master/bindata/network/ovn-kubernetes/common/001-crd.yaml)
-
 
 #### make and run microshift
 
@@ -76,21 +68,6 @@ $ ./script/bindata.sh
 $ make clean; make
 $ ./hack/cleanup.sh
 $ ./microshift run
-```
-
-#### apply secret and crds
-
-Apply ovn-crd.yaml once kube api is available:
-
-```
-$ oc create -f ovn-crd.yaml
-```
-
-
-Apply ovn-cert secret once ovnk namespace (openshift-ovn-kubernetes) is created:
-
-```
-$ oc create -f ovn-cert.yaml
 ```
 
 Wait for CNI pods to be created, for example `dns-default-xxxx` in `openshift-dns` namespace
