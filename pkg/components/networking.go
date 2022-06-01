@@ -1,11 +1,14 @@
 package components
 
 import (
+	"os"
+
 	"github.com/openshift/microshift/pkg/assets"
+	"github.com/openshift/microshift/pkg/config"
 	"k8s.io/klog/v2"
 )
 
-func startOVN(kubeconfigPath string) error {
+func startOVN(cfg *config.MicroshiftConfig, kubeconfigPath string) error {
 	var (
 		ns = []string{
 			"assets/components/ovn/namespace.yaml",
@@ -37,20 +40,31 @@ func startOVN(kubeconfigPath string) error {
 			"assets/components/ovn/master/daemonset.yaml",
 			"assets/components/ovn/node/daemonset.yaml",
 		}
+		secret = "assets/components/ovn/secret-ovn-cert.yaml"
+		cacm   = "assets/components/ovn/configmap-ovn-ca.yaml"
 	)
-	//     secretData := map[string][]byte{}
-	//     tlsCrtPath := "/root/microshift/assets/components/ovn/ovn-cert/tls.crt"
-	//     tlsKeyPath := "/root/microshift/assets/components/ovn/ovn-cert/tls.key"
-	//     tlscrt, err := os.ReadFile(tlsCrtPath)
-	//     if err != nil {
-	//             return err
-	//     }
-	//     tlskey, err := os.ReadFile(tlsKeyPath)
-	//     if err != nil {
-	//             return err
-	//     }
-	//     secretData["tls.crt"] = tlscrt
-	//     secretData["tls.key"] = tlskey
+
+	cmData := map[string]string{}
+	caPath := cfg.DataDir + "/certs/ca-bundle/ca-bundle.crt"
+	cabundle, err := os.ReadFile(caPath)
+	if err != nil {
+		return err
+	}
+	cmData["ca-bundle.crt"] = string(cabundle)
+
+	secretData := map[string][]byte{}
+	tlsCrtPath := cfg.DataDir + "/resources/openshift-ovn-kubernetes/secrets/tls.crt"
+	tlsKeyPath := cfg.DataDir + "/resources/openshift-ovn-kubernetes/secrets/tls.key"
+	tlscrt, err := os.ReadFile(tlsCrtPath)
+	if err != nil {
+		return err
+	}
+	tlskey, err := os.ReadFile(tlsKeyPath)
+	if err != nil {
+		return err
+	}
+	secretData["tls.crt"] = tlscrt
+	secretData["tls.key"] = tlskey
 
 	if err := assets.ApplyNamespaces(ns, kubeconfigPath); err != nil {
 		klog.Warningf("Failed to apply ns %v: %v", ns, err)
@@ -80,10 +94,14 @@ func startOVN(kubeconfigPath string) error {
 		klog.Warningf("Failed to apply configMap %v %v", cm, err)
 		return err
 	}
-	//     if err := assets.ApplySecretWithData(secret, secretData, kubeconfigPath); err != nil {
-	//             klog.Warningf("Failed to apply secret %v: %v", secret, err)
-	//             return err
-	//     }
+	if err := assets.ApplyConfigMapWithData(cacm, cmData, kubeconfigPath); err != nil {
+		klog.Warningf("Failed to apply sa %v: %v", cacm, err)
+		return err
+	}
+	if err := assets.ApplySecretWithData(secret, secretData, kubeconfigPath); err != nil {
+		klog.Warningf("Failed to apply secret %v: %v", secret, err)
+		return err
+	}
 	if err := assets.ApplyServices(svc, nil, nil, kubeconfigPath); err != nil {
 		klog.Warningf("Failed to apply service %v %v", svc, err)
 		return err

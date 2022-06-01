@@ -38,6 +38,9 @@ var (
 		"assets/crd/0000_10_config-operator_01_image.crd.yaml",
 		"assets/crd/0000_03_config-operator_01_proxy.crd.yaml",
 		"assets/crd/0000_03_quota-openshift_01_clusterresourcequota.crd.yaml",
+		"assets/crd/0000_20_ovnkubernetes_egressfirewalls.crd.yaml",
+		"assets/crd/0000_20_ovnkubernetes_egressips.crd.yaml",
+		"assets/crd/0000_20_ovnkubernetes_egressqoses.crd.yaml",
 	}
 )
 
