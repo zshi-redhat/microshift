@@ -139,6 +139,9 @@ func initCerts(cfg *config.MicroshiftConfig) error {
 			"openshift-oauth-apiserver.svc", "kubernetes.default.svc", "kubernetes.default", "kubernetes", "localhost"}); err != nil {
 		return err
 	}
+	if err := util.GenCerts("ovn", cfg.DataDir+"/resources/openshift-ovn-kubernetes/secrets", "tls.crt", "tls.key", []string{"ovn"}); err != nil {
+		return err
+	}
 	return nil
 }
 
