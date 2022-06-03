@@ -516,8 +516,6 @@ spec:
             --config-file=/run/ovnkube-config/ovnkube.conf \
             --ovn-empty-lb-events \
             --loglevel "${OVN_KUBE_LOG_LEVEL}" \
-            --metrics-bind-address "127.0.0.1:29102" \
-            --metrics-enable-pprof \
             ${gateway_mode_flags} \
             --sb-address "ssl:127.0.0.1:9642" \
             --sb-client-privkey /ovn-cert/tls.key \
