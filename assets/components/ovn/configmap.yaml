@@ -12,7 +12,7 @@ data:
     cluster-subnets="10.128.0.0/14/23"
     encap-port="6081"
     enable-lflow-cache=true
-    lflow-cache-limit-kb=1048576
+    lflow-cache-limit-kb=870
 
     [kubernetes]
     service-cidrs="172.30.0.0/16"

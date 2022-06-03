@@ -30,6 +30,21 @@
 // assets/components/openshift-router/service-account.yaml
 // assets/components/openshift-router/service-cloud.yaml
 // assets/components/openshift-router/service-internal.yaml
+// assets/components/ovn/Dockerfile
+// assets/components/ovn/README.md
+// assets/components/ovn/clusterrole.yaml
+// assets/components/ovn/clusterrolebinding.yaml
+// assets/components/ovn/configmap-ovn-ca.yaml
+// assets/components/ovn/configmap.yaml
+// assets/components/ovn/master/daemonset.yaml
+// assets/components/ovn/master/serviceaccount.yaml
+// assets/components/ovn/namespace.yaml
+// assets/components/ovn/node/daemonset.yaml
+// assets/components/ovn/node/serviceaccount.yaml
+// assets/components/ovn/role.yaml
+// assets/components/ovn/rolebinding.yaml
+// assets/components/ovn/secret-ovn-cert.yaml
+// assets/components/ovn/service.yaml
 // assets/components/service-ca/clusterrole.yaml
 // assets/components/service-ca/clusterrolebinding.yaml
 // assets/components/service-ca/deployment.yaml
@@ -43,6 +58,9 @@
 // assets/crd/0000_03_authorization-openshift_01_rolebindingrestriction.crd.yaml
 // assets/crd/0000_03_security-openshift_01_scc.crd.yaml
 // assets/crd/0000_10_config-operator_01_featuregate.crd.yaml
+// assets/crd/0000_20_ovnkubernetes_egressfirewalls.crd.yaml
+// assets/crd/0000_20_ovnkubernetes_egressips.crd.yaml
+// assets/crd/0000_20_ovnkubernetes_egressqoses.crd.yaml
 // assets/scc/0000_20_kube-apiserver-operator_00_scc-anyuid.yaml
 // assets/scc/0000_20_kube-apiserver-operator_00_scc-hostaccess.yaml
 // assets/scc/0000_20_kube-apiserver-operator_00_scc-hostmount-anyuid.yaml
@@ -142,7 +160,7 @@ func assetsComponentsFlannelClusterroleYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/flannel/clusterrole.yaml", size: 418, mode: os.FileMode(420), modTime: time.Unix(1648137870, 0)}
+	info := bindataFileInfo{name: "assets/components/flannel/clusterrole.yaml", size: 418, mode: os.FileMode(436), modTime: time.Unix(1653635092, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -170,7 +188,7 @@ func assetsComponentsFlannelClusterrolebindingYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/flannel/clusterrolebinding.yaml", size: 248, mode: os.FileMode(420), modTime: time.Unix(1648137870, 0)}
+	info := bindataFileInfo{name: "assets/components/flannel/clusterrolebinding.yaml", size: 248, mode: os.FileMode(436), modTime: time.Unix(1653635092, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -223,7 +241,7 @@ func assetsComponentsFlannelConfigmapYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/flannel/configmap.yaml", size: 674, mode: os.FileMode(420), modTime: time.Unix(1648137870, 0)}
+	info := bindataFileInfo{name: "assets/components/flannel/configmap.yaml", size: 674, mode: os.FileMode(436), modTime: time.Unix(1653635092, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -346,7 +364,7 @@ func assetsComponentsFlannelDaemonsetYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/flannel/daemonset.yaml", size: 2657, mode: os.FileMode(420), modTime: time.Unix(1653503271, 0)}
+	info := bindataFileInfo{name: "assets/components/flannel/daemonset.yaml", size: 2657, mode: os.FileMode(436), modTime: time.Unix(1653635092, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -408,7 +426,7 @@ func assetsComponentsFlannelPodsecuritypolicyYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/flannel/podsecuritypolicy.yaml", size: 1195, mode: os.FileMode(420), modTime: time.Unix(1648137870, 0)}
+	info := bindataFileInfo{name: "assets/components/flannel/podsecuritypolicy.yaml", size: 1195, mode: os.FileMode(436), modTime: time.Unix(1653635092, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -429,7 +447,7 @@ func assetsComponentsFlannelServiceAccountYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/flannel/service-account.yaml", size: 86, mode: os.FileMode(420), modTime: time.Unix(1648137870, 0)}
+	info := bindataFileInfo{name: "assets/components/flannel/service-account.yaml", size: 86, mode: os.FileMode(436), modTime: time.Unix(1653635092, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -468,7 +486,7 @@ func assetsComponentsHostpathProvisionerClusterroleYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/hostpath-provisioner/clusterrole.yaml", size: 609, mode: os.FileMode(420), modTime: time.Unix(1648137870, 0)}
+	info := bindataFileInfo{name: "assets/components/hostpath-provisioner/clusterrole.yaml", size: 609, mode: os.FileMode(436), modTime: time.Unix(1653635092, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -496,7 +514,7 @@ func assetsComponentsHostpathProvisionerClusterrolebindingYaml() (*asset, error)
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/hostpath-provisioner/clusterrolebinding.yaml", size: 338, mode: os.FileMode(420), modTime: time.Unix(1648137870, 0)}
+	info := bindataFileInfo{name: "assets/components/hostpath-provisioner/clusterrolebinding.yaml", size: 338, mode: os.FileMode(436), modTime: time.Unix(1653635092, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -552,7 +570,7 @@ func assetsComponentsHostpathProvisionerDaemonsetYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/hostpath-provisioner/daemonset.yaml", size: 1231, mode: os.FileMode(420), modTime: time.Unix(1653503271, 0)}
+	info := bindataFileInfo{name: "assets/components/hostpath-provisioner/daemonset.yaml", size: 1231, mode: os.FileMode(436), modTime: time.Unix(1653635092, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -572,7 +590,7 @@ func assetsComponentsHostpathProvisionerNamespaceYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/hostpath-provisioner/namespace.yaml", size: 78, mode: os.FileMode(420), modTime: time.Unix(1648137870, 0)}
+	info := bindataFileInfo{name: "assets/components/hostpath-provisioner/namespace.yaml", size: 78, mode: os.FileMode(436), modTime: time.Unix(1653635092, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -613,7 +631,7 @@ func assetsComponentsHostpathProvisionerSccYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/hostpath-provisioner/scc.yaml", size: 480, mode: os.FileMode(420), modTime: time.Unix(1648137870, 0)}
+	info := bindataFileInfo{name: "assets/components/hostpath-provisioner/scc.yaml", size: 480, mode: os.FileMode(436), modTime: time.Unix(1653635092, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -634,7 +652,7 @@ func assetsComponentsHostpathProvisionerServiceAccountYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/hostpath-provisioner/service-account.yaml", size: 132, mode: os.FileMode(420), modTime: time.Unix(1648137870, 0)}
+	info := bindataFileInfo{name: "assets/components/hostpath-provisioner/service-account.yaml", size: 132, mode: os.FileMode(436), modTime: time.Unix(1653635092, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -660,7 +678,7 @@ func assetsComponentsHostpathProvisionerStorageclassYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/hostpath-provisioner/storageclass.yaml", size: 276, mode: os.FileMode(420), modTime: time.Unix(1652799551, 0)}
+	info := bindataFileInfo{name: "assets/components/hostpath-provisioner/storageclass.yaml", size: 276, mode: os.FileMode(436), modTime: time.Unix(1653635092, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -688,7 +706,7 @@ func assetsComponentsOpenshiftDnsDnsClusterRoleBindingYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/openshift-dns/dns/cluster-role-binding.yaml", size: 223, mode: os.FileMode(420), modTime: time.Unix(1648137870, 0)}
+	info := bindataFileInfo{name: "assets/components/openshift-dns/dns/cluster-role-binding.yaml", size: 223, mode: os.FileMode(436), modTime: time.Unix(1653635092, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -742,7 +760,7 @@ func assetsComponentsOpenshiftDnsDnsClusterRoleYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/openshift-dns/dns/cluster-role.yaml", size: 492, mode: os.FileMode(420), modTime: time.Unix(1648137870, 0)}
+	info := bindataFileInfo{name: "assets/components/openshift-dns/dns/cluster-role.yaml", size: 492, mode: os.FileMode(436), modTime: time.Unix(1653635092, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -788,7 +806,7 @@ func assetsComponentsOpenshiftDnsDnsConfigmapYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/openshift-dns/dns/configmap.yaml", size: 610, mode: os.FileMode(420), modTime: time.Unix(1648137870, 0)}
+	info := bindataFileInfo{name: "assets/components/openshift-dns/dns/configmap.yaml", size: 610, mode: os.FileMode(436), modTime: time.Unix(1653635092, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -911,7 +929,7 @@ func assetsComponentsOpenshiftDnsDnsDaemonsetYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/openshift-dns/dns/daemonset.yaml", size: 3217, mode: os.FileMode(420), modTime: time.Unix(1653503271, 0)}
+	info := bindataFileInfo{name: "assets/components/openshift-dns/dns/daemonset.yaml", size: 3217, mode: os.FileMode(436), modTime: time.Unix(1653635092, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -940,7 +958,7 @@ func assetsComponentsOpenshiftDnsDnsNamespaceYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/openshift-dns/dns/namespace.yaml", size: 417, mode: os.FileMode(420), modTime: time.Unix(1648137870, 0)}
+	info := bindataFileInfo{name: "assets/components/openshift-dns/dns/namespace.yaml", size: 417, mode: os.FileMode(436), modTime: time.Unix(1653635092, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -962,7 +980,7 @@ func assetsComponentsOpenshiftDnsDnsServiceAccountYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/openshift-dns/dns/service-account.yaml", size: 85, mode: os.FileMode(420), modTime: time.Unix(1648137870, 0)}
+	info := bindataFileInfo{name: "assets/components/openshift-dns/dns/service-account.yaml", size: 85, mode: os.FileMode(436), modTime: time.Unix(1653635092, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -1009,7 +1027,7 @@ func assetsComponentsOpenshiftDnsDnsServiceYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/openshift-dns/dns/service.yaml", size: 691, mode: os.FileMode(420), modTime: time.Unix(1648137870, 0)}
+	info := bindataFileInfo{name: "assets/components/openshift-dns/dns/service.yaml", size: 691, mode: os.FileMode(436), modTime: time.Unix(1653635092, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -1153,7 +1171,7 @@ func assetsComponentsOpenshiftDnsNodeResolverDaemonsetYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/openshift-dns/node-resolver/daemonset.yaml", size: 4823, mode: os.FileMode(420), modTime: time.Unix(1648137870, 0)}
+	info := bindataFileInfo{name: "assets/components/openshift-dns/node-resolver/daemonset.yaml", size: 4823, mode: os.FileMode(436), modTime: time.Unix(1653635092, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -1175,7 +1193,7 @@ func assetsComponentsOpenshiftDnsNodeResolverServiceAccountYaml() (*asset, error
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/openshift-dns/node-resolver/service-account.yaml", size: 95, mode: os.FileMode(420), modTime: time.Unix(1648137870, 0)}
+	info := bindataFileInfo{name: "assets/components/openshift-dns/node-resolver/service-account.yaml", size: 95, mode: os.FileMode(436), modTime: time.Unix(1653635092, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -1205,7 +1223,7 @@ func assetsComponentsOpenshiftRouterClusterRoleBindingYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/openshift-router/cluster-role-binding.yaml", size: 329, mode: os.FileMode(420), modTime: time.Unix(1648137870, 0)}
+	info := bindataFileInfo{name: "assets/components/openshift-router/cluster-role-binding.yaml", size: 329, mode: os.FileMode(436), modTime: time.Unix(1653635092, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -1283,7 +1301,7 @@ func assetsComponentsOpenshiftRouterClusterRoleYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/openshift-router/cluster-role.yaml", size: 883, mode: os.FileMode(420), modTime: time.Unix(1648137870, 0)}
+	info := bindataFileInfo{name: "assets/components/openshift-router/cluster-role.yaml", size: 883, mode: os.FileMode(436), modTime: time.Unix(1653635092, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -1307,7 +1325,7 @@ func assetsComponentsOpenshiftRouterConfigmapYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/openshift-router/configmap.yaml", size: 168, mode: os.FileMode(420), modTime: time.Unix(1648137870, 0)}
+	info := bindataFileInfo{name: "assets/components/openshift-router/configmap.yaml", size: 168, mode: os.FileMode(436), modTime: time.Unix(1653635092, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -1464,7 +1482,7 @@ func assetsComponentsOpenshiftRouterDeploymentYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/openshift-router/deployment.yaml", size: 4746, mode: os.FileMode(420), modTime: time.Unix(1648137870, 0)}
+	info := bindataFileInfo{name: "assets/components/openshift-router/deployment.yaml", size: 4746, mode: os.FileMode(436), modTime: time.Unix(1653635092, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -1495,7 +1513,7 @@ func assetsComponentsOpenshiftRouterNamespaceYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/openshift-router/namespace.yaml", size: 499, mode: os.FileMode(420), modTime: time.Unix(1648137870, 0)}
+	info := bindataFileInfo{name: "assets/components/openshift-router/namespace.yaml", size: 499, mode: os.FileMode(436), modTime: time.Unix(1653635092, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -1519,7 +1537,7 @@ func assetsComponentsOpenshiftRouterServiceAccountYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/openshift-router/service-account.yaml", size: 213, mode: os.FileMode(420), modTime: time.Unix(1648137870, 0)}
+	info := bindataFileInfo{name: "assets/components/openshift-router/service-account.yaml", size: 213, mode: os.FileMode(436), modTime: time.Unix(1653635092, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -1558,7 +1576,7 @@ func assetsComponentsOpenshiftRouterServiceCloudYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/openshift-router/service-cloud.yaml", size: 567, mode: os.FileMode(420), modTime: time.Unix(1648137870, 0)}
+	info := bindataFileInfo{name: "assets/components/openshift-router/service-cloud.yaml", size: 567, mode: os.FileMode(436), modTime: time.Unix(1653635092, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -1603,7 +1621,1734 @@ func assetsComponentsOpenshiftRouterServiceInternalYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/openshift-router/service-internal.yaml", size: 727, mode: os.FileMode(420), modTime: time.Unix(1648137870, 0)}
+	info := bindataFileInfo{name: "assets/components/openshift-router/service-internal.yaml", size: 727, mode: os.FileMode(436), modTime: time.Unix(1653635092, 0)}
+	a := &asset{bytes: bytes, info: info}
+	return a, nil
+}
+
+var _assetsComponentsOvnDockerfile = []byte(`#
+# This is the OpenShift ovn overlay network image.
+# it provides an overlay network using ovs/ovn/ovn-kube
+#
+# The standard name for this image is ovn-kube
+
+# Notes:
+# This is for a build where the ovn-kubernetes utilities
+# are built in this Dockerfile and included in the image (instead of the rpm)
+#
+
+FROM registry.ci.openshift.org/ocp/builder:rhel-8-golang-1.17-openshift-4.10 AS builder
+
+WORKDIR /go/src/github.com/openshift/ovn-kubernetes
+COPY . .
+
+# build the binaries
+RUN cd go-controller; CGO_ENABLED=0 make
+
+FROM registry.ci.openshift.org/ocp/4.10:cli AS cli
+
+FROM registry.ci.openshift.org/ocp/4.10:base
+
+USER root
+
+ENV PYTHONDONTWRITEBYTECODE yes
+
+# install needed rpms - openvswitch must be 2.10.4 or higher
+# install selinux-policy first to avoid a race
+RUN yum install -y  \
+	selinux-policy && \
+	yum clean all
+
+RUN INSTALL_PKGS=" \
+	openssl python3-pyOpenSSL firewalld-filesystem \
+	iproute \
+	iputils \
+	" && \
+	yum install -y --setopt=tsflags=nodocs --setopt=skip_missing_names_on_install=False $INSTALL_PKGS && \
+	yum install -y http://download.eng.bos.redhat.com/brewroot/vol/rhel-8/packages/openvswitch2.17/2.17.0/8.el8fdp/x86_64/openvswitch2.17-2.17.0-8.el8fdp.x86_64.rpm http://download.eng.bos.redhat.com/brewroot/vol/rhel-8/packages/openvswitch2.17/2.17.0/8.el8fdp/x86_64/python3-openvswitch2.17-2.17.0-8.el8fdp.x86_64.rpm && \
+	yum install -y http://download.eng.bos.redhat.com/brewroot/vol/rhel-8/packages/ovn22.06/22.06.0/preview.branched.38.el8fdp/x86_64/ovn22.06-22.06.0-preview.branched.38.el8fdp.x86_64.rpm http://download.eng.bos.redhat.com/brewroot/vol/rhel-8/packages/ovn22.06/22.06.0/preview.branched.38.el8fdp/x86_64/ovn22.06-central-22.06.0-preview.branched.38.el8fdp.x86_64.rpm http://download.eng.bos.redhat.com/brewroot/vol/rhel-8/packages/ovn22.06/22.06.0/preview.branched.38.el8fdp/x86_64/ovn22.06-host-22.06.0-preview.branched.38.el8fdp.x86_64.rpm && \
+	yum clean all && rm -rf /var/cache/*
+
+RUN mkdir -p /var/run/openvswitch && \
+    mkdir -p /var/run/ovn && \
+    mkdir -p /etc/cni/net.d && \
+    mkdir -p /opt/cni/bin && \
+    mkdir -p /usr/libexec/cni/
+
+COPY --from=builder /go/src/github.com/openshift/ovn-kubernetes/go-controller/_output/go/bin/ovnkube /usr/bin/
+COPY --from=builder /go/src/github.com/openshift/ovn-kubernetes/go-controller/_output/go/bin/ovn-k8s-cni-overlay /usr/libexec/cni/
+
+
+# copy git commit number into image
+COPY .git/HEAD /root/.git/HEAD
+COPY .git/refs/heads/ /root/.git/refs/heads/
+
+# ovnkube.sh is the entry point. This script examines environment
+# variables to direct operation and configure ovn
+COPY dist/images/ovnkube.sh /root/
+
+# iptables wrappers
+COPY ./dist/images/iptables-scripts/iptables /usr/sbin/
+COPY ./dist/images/iptables-scripts/iptables-save /usr/sbin/
+COPY ./dist/images/iptables-scripts/iptables-restore /usr/sbin/
+COPY ./dist/images/iptables-scripts/ip6tables /usr/sbin/
+COPY ./dist/images/iptables-scripts/ip6tables-save /usr/sbin/
+COPY ./dist/images/iptables-scripts/ip6tables-restore /usr/sbin/
+COPY ./dist/images/iptables-scripts/iptables /usr/sbin/
+
+WORKDIR /root
+ENTRYPOINT /root/ovnkube.sh
+`)
+
+func assetsComponentsOvnDockerfileBytes() ([]byte, error) {
+	return _assetsComponentsOvnDockerfile, nil
+}
+
+func assetsComponentsOvnDockerfile() (*asset, error) {
+	bytes, err := assetsComponentsOvnDockerfileBytes()
+	if err != nil {
+		return nil, err
+	}
+
+	info := bindataFileInfo{name: "assets/components/ovn/Dockerfile", size: 3097, mode: os.FileMode(436), modTime: time.Unix(1654250874, 0)}
+	a := &asset{bytes: bytes, info: info}
+	return a, nil
+}
+
+var _assetsComponentsOvnReadmeMd = []byte(`### Steps to run ovn-kubernetes as default CNI
+
+#### cni config
+
+1. add ovn-kubernetes cni config to ` + "`" + `/etc/cni/net.d/` + "`" + `
+
+` + "`" + `` + "`" + `` + "`" + `
+$ cat > /etc/cni/net.d/00-ovn.conf << EOF
+{
+  "cniVersion": "0.4.0",
+  "name": "ovn-kubernetes",
+  "type": "ovn-k8s-cni-overlay",
+  "ipam": {},
+  "dns": {},
+  "logFile": "/var/log/ovn-kubernetes/ovn-k8s-cni-overlay.log",
+  "logLevel": "4",
+  "logfile-maxsize": 100,
+  "logfile-maxbackups": 5,
+  "logfile-maxage": 5
+}
+EOF
+` + "`" + `` + "`" + `` + "`" + `
+
+2. build and copy ovnk cni plugin binary
+
+` + "`" + `` + "`" + `` + "`" + `
+$ git clone https://github.com/openshift/ovn-kubernetes.git
+$ cd ovn-kubernetes
+$ cd go-controller; CGO_ENABLED=0 make
+$ cp _output/go/bin/ovn-k8s-cni-overlay /opt/cni/bin
+` + "`" + `` + "`" + `` + "`" + `
+
+#### host ovs configuration
+
+1. install ovs packages on the host
+
+` + "`" + `` + "`" + `` + "`" + `
+$ ovs=http://download.eng.bos.redhat.com/brewroot/vol/rhel-8/packages/openvswitch2.17/2.17.0/8.el8fdp/x86_64/openvswitch2.17-2.17.0-8.el8fdp.x86_64.rpm
+$ selinux=http://download.eng.bos.redhat.com/brewroot/vol/rhel-8/packages/openvswitch-selinux-extra-policy/1.0/28.el8fdp/noarch/openvswitch-selinux-extra-policy-1.0-28.el8fdp.noarch.rpm
+$ yum install -y $ovs $selinux
+` + "`" + `` + "`" + `` + "`" + `
+
+2. configure ovs
+
+` + "`" + `` + "`" + `` + "`" + `
+$ systemctl start openvswitch
+$ ovs-vsctl add-br br-ex
+$ ovs-vsctl add-port br-ex eno1; ip addr flush dev eno1; pkill dhclient; dhclient -v br-ex
+$ ovs-vsctl set interface eno1 type=system
+` + "`" + `` + "`" + `` + "`" + `
+
+> Replace ` + "`" + `eno1` + "`" + ` with the default route interface on your host system.
+> Adding ` + "`" + `eno1` + "`" + ` to ` + "`" + `br-ex` + "`" + ` will disconnect host from external network temporarily if default interface is used for ssh into the host. The above cmds may fail so make sure you have other ways to access the system and revert the change if needed.
+
+#### update ovnk manifests
+
+1. (Optional) ` + "`" + `/var/lib/microshift/resources/kubeadmin/kubeconfig` + "`" + ` is mounted to ` + "`" + `master/daemonset.yaml` + "`" + ` and ` + "`" + `node/daemonset.yaml` + "`" + `, Change it if you have customized microshift data directory (cfg.DataDir)
+
+
+#### make and run microshift
+
+` + "`" + `` + "`" + `` + "`" + `
+$ ./script/bindata.sh
+$ make clean; make
+$ ./hack/cleanup.sh
+$ (optional) crio wipe -f && sleep 1 && systemctl restart crio
+$ ./microshift run
+` + "`" + `` + "`" + `` + "`" + `
+
+Wait for CNI pods to be created, for example ` + "`" + `dns-default-xxxx` + "`" + ` in ` + "`" + `openshift-dns` + "`" + ` namespace
+`)
+
+func assetsComponentsOvnReadmeMdBytes() ([]byte, error) {
+	return _assetsComponentsOvnReadmeMd, nil
+}
+
+func assetsComponentsOvnReadmeMd() (*asset, error) {
+	bytes, err := assetsComponentsOvnReadmeMdBytes()
+	if err != nil {
+		return nil, err
+	}
+
+	info := bindataFileInfo{name: "assets/components/ovn/README.md", size: 2160, mode: os.FileMode(436), modTime: time.Unix(1654250847, 0)}
+	a := &asset{bytes: bytes, info: info}
+	return a, nil
+}
+
+var _assetsComponentsOvnClusterroleYaml = []byte(`---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: openshift-ovn-kubernetes-node
+rules:
+- apiGroups: [""]
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+  - watch
+  - patch
+- apiGroups: [""]
+  resources:
+  - namespaces
+  - endpoints
+  - services
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - discovery.k8s.io
+  resources:
+  - endpointslices
+  verbs:
+  - list
+  - watch
+- apiGroups: ["networking.k8s.io"]
+  resources:
+  - networkpolicies
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups: ["", "events.k8s.io"]
+  resources:
+  - events
+  verbs:
+  - create
+  - patch
+  - update
+- apiGroups: [""]
+  resources:
+  - nodes
+  verbs:
+  - get
+  - list
+  - watch
+  - patch
+  - update
+- apiGroups: ["k8s.ovn.org"]
+  resources:
+  - egressips
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups: ["apiextensions.k8s.io"]
+  resources:
+  - customresourcedefinitions
+  verbs:
+    - get
+    - list
+    - watch
+- apiGroups: ['authentication.k8s.io']
+  resources: ['tokenreviews']
+  verbs: ['create']
+- apiGroups: ['authorization.k8s.io']
+  resources: ['subjectaccessreviews']
+  verbs: ['create']
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: openshift-ovn-kubernetes-controller
+rules:
+- apiGroups: [""]
+  resources:
+  - namespaces
+  - nodes
+  - pods
+  verbs:
+  - get
+  - list
+  - patch
+  - watch
+  - update
+- apiGroups: [""]
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+  - patch
+  - watch
+  - delete
+- apiGroups: [""]
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - create
+  - update
+  - patch
+- apiGroups: [""]
+  resources:
+  - services
+  - endpoints
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - discovery.k8s.io
+  resources:
+  - endpointslices
+  verbs:
+  - list
+  - watch
+- apiGroups: ["networking.k8s.io"]
+  resources:
+  - networkpolicies
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups: ["", "events.k8s.io"]
+  resources:
+  - events
+  verbs:
+  - create
+  - patch
+  - update
+- apiGroups: ["security.openshift.io"]
+  resources:
+  - securitycontextconstraints
+  verbs:
+  - use
+  resourceNames:
+  - privileged
+- apiGroups: [""]
+  resources:
+  - "nodes/status"
+  verbs:
+  - patch
+  - update
+- apiGroups: ["k8s.ovn.org"]
+  resources:
+  - egressfirewalls
+  - egressips
+  - egressqoses
+  verbs:
+  - get
+  - list
+  - watch
+  - update
+  - patch
+- apiGroups: ["cloud.network.openshift.io"]
+  resources:
+  - cloudprivateipconfigs
+  verbs:
+  - create
+  - patch
+  - update
+  - delete
+  - get
+  - list
+  - watch
+- apiGroups: ["apiextensions.k8s.io"]
+  resources:
+  - customresourcedefinitions
+  verbs:
+    - get
+    - list
+    - watch
+- apiGroups: ['authentication.k8s.io']
+  resources: ['tokenreviews']
+  verbs: ['create']
+- apiGroups: ['authorization.k8s.io']
+  resources: ['subjectaccessreviews']
+  verbs: ['create']
+`)
+
+func assetsComponentsOvnClusterroleYamlBytes() ([]byte, error) {
+	return _assetsComponentsOvnClusterroleYaml, nil
+}
+
+func assetsComponentsOvnClusterroleYaml() (*asset, error) {
+	bytes, err := assetsComponentsOvnClusterroleYamlBytes()
+	if err != nil {
+		return nil, err
+	}
+
+	info := bindataFileInfo{name: "assets/components/ovn/clusterrole.yaml", size: 2771, mode: os.FileMode(436), modTime: time.Unix(1654250635, 0)}
+	a := &asset{bytes: bytes, info: info}
+	return a, nil
+}
+
+var _assetsComponentsOvnClusterrolebindingYaml = []byte(`---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: openshift-ovn-kubernetes-node
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: openshift-ovn-kubernetes-node
+subjects:
+- kind: ServiceAccount
+  name: ovn-kubernetes-node
+  namespace: openshift-ovn-kubernetes
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: openshift-ovn-kubernetes-controller
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: openshift-ovn-kubernetes-controller
+subjects:
+- kind: ServiceAccount
+  name: ovn-kubernetes-controller
+  namespace: openshift-ovn-kubernetes
+`)
+
+func assetsComponentsOvnClusterrolebindingYamlBytes() ([]byte, error) {
+	return _assetsComponentsOvnClusterrolebindingYaml, nil
+}
+
+func assetsComponentsOvnClusterrolebindingYaml() (*asset, error) {
+	bytes, err := assetsComponentsOvnClusterrolebindingYamlBytes()
+	if err != nil {
+		return nil, err
+	}
+
+	info := bindataFileInfo{name: "assets/components/ovn/clusterrolebinding.yaml", size: 663, mode: os.FileMode(436), modTime: time.Unix(1654250635, 0)}
+	a := &asset{bytes: bytes, info: info}
+	return a, nil
+}
+
+var _assetsComponentsOvnConfigmapOvnCaYaml = []byte(`apiVersion: v1
+data:
+  ca-bundle.crt:
+kind: ConfigMap
+metadata:
+  labels:
+    auth.openshift.io/managed-certificate-type: ca-bundle
+  name: ovn-ca
+  namespace: openshift-ovn-kubernetes
+`)
+
+func assetsComponentsOvnConfigmapOvnCaYamlBytes() ([]byte, error) {
+	return _assetsComponentsOvnConfigmapOvnCaYaml, nil
+}
+
+func assetsComponentsOvnConfigmapOvnCaYaml() (*asset, error) {
+	bytes, err := assetsComponentsOvnConfigmapOvnCaYamlBytes()
+	if err != nil {
+		return nil, err
+	}
+
+	info := bindataFileInfo{name: "assets/components/ovn/configmap-ovn-ca.yaml", size: 185, mode: os.FileMode(436), modTime: time.Unix(1654250796, 0)}
+	a := &asset{bytes: bytes, info: info}
+	return a, nil
+}
+
+var _assetsComponentsOvnConfigmapYaml = []byte(`---
+# The ovnconfig config file. Used by both node and master processes.
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: ovnkube-config
+  namespace: openshift-ovn-kubernetes
+data:
+  ovnkube.conf:   |-
+    [default]
+    mtu="1400"
+    cluster-subnets="10.128.0.0/14/23"
+    encap-port="6081"
+    enable-lflow-cache=true
+    lflow-cache-limit-kb=870
+
+    [kubernetes]
+    service-cidrs="172.30.0.0/16"
+    ovn-config-namespace="openshift-ovn-kubernetes"
+    # apiserver="https://10.73.116.66:6443"
+    kubeconfig="/var/lib/microshift/resources/kubeadmin/kubeconfig"
+    host-network-namespace="openshift-host-network"
+    platform-type="BareMetal"
+ 
+    [ovnkubernetesfeature]
+    enable-egress-ip=true
+    enable-egress-firewall=true
+    enable-egress-qos=true
+
+    [gateway]
+    mode=shared
+    nodeport=true
+
+    [masterha]
+    election-lease-duration=137
+    election-renew-deadline=107
+    election-retry-period=26
+`)
+
+func assetsComponentsOvnConfigmapYamlBytes() ([]byte, error) {
+	return _assetsComponentsOvnConfigmapYaml, nil
+}
+
+func assetsComponentsOvnConfigmapYaml() (*asset, error) {
+	bytes, err := assetsComponentsOvnConfigmapYamlBytes()
+	if err != nil {
+		return nil, err
+	}
+
+	info := bindataFileInfo{name: "assets/components/ovn/configmap.yaml", size: 919, mode: os.FileMode(436), modTime: time.Unix(1654250901, 0)}
+	a := &asset{bytes: bytes, info: info}
+	return a, nil
+}
+
+var _assetsComponentsOvnMasterDaemonsetYaml = []byte(`---
+# The ovnkube control-plane components
+
+kind: DaemonSet
+apiVersion: apps/v1
+metadata:
+  name: ovnkube-master
+  namespace: openshift-ovn-kubernetes
+  annotations:
+    kubernetes.io/description: |
+      This daemonset launches the ovn-kubernetes controller (master) networking components.
+    release.openshift.io/version: "4.11"
+spec:
+  selector:
+    matchLabels:
+      app: ovnkube-master
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      # by default, Deployments spin up the new pod before terminating the old one
+      # but we don't want that - because ovsdb holds the lock.
+      maxSurge: 0
+      maxUnavailable: 1
+  template:
+    metadata:
+      annotations:
+        target.workload.openshift.io/management: '{"effect": "PreferredDuringScheduling"}'
+      labels:
+        app: ovnkube-master
+        ovn-db-pod: "true"
+        component: network
+        type: infra
+        openshift.io/component: network
+        kubernetes.io/os: "linux"
+    spec:
+      serviceAccountName: ovn-kubernetes-controller
+      hostNetwork: true
+      dnsPolicy: Default
+      priorityClassName: "system-cluster-critical"
+      # volumes in all containers:
+      # (container) -> (host)
+      # /etc/openvswitch -> /var/lib/ovn/etc - ovsdb data
+      # /var/lib/openvswitch -> /var/lib/ovn/data - ovsdb pki state
+      # /run/openvswitch -> tmpfs - sockets
+      # /env -> configmap env-overrides - debug overrides
+      containers:
+      # ovn-northd: convert network objects in nbdb to flows in sbdb
+      - name: northd
+        image: "quay.io/zshi/ovn-daemonset:microshift"
+        command:
+        - /bin/bash
+        - -c
+        - |
+          set -xem
+          if [[ -f /env/_master ]]; then
+            set -o allexport
+            source /env/_master
+            set +o allexport
+          fi
+
+          quit() {
+            echo "$(date -Iseconds) - stopping ovn-northd"
+            OVN_MANAGE_OVSDB=no /usr/share/ovn/scripts/ovn-ctl stop_northd
+            echo "$(date -Iseconds) - ovn-northd stopped"
+            rm -f /var/run/ovn/ovn-northd.pid
+            exit 0
+          }
+          # end of quit
+          trap quit TERM INT
+
+          echo "$(date -Iseconds) - starting ovn-northd"
+          exec ovn-northd \
+            --no-chdir "-vconsole:${OVN_LOG_LEVEL}" -vfile:off "-vPATTERN:console:%D{%Y-%m-%dT%H:%M:%S.###Z}|%05N|%c%T|%p|%m" \
+            --ovnnb-db "ssl:127.0.0.1:9641" \
+            --ovnsb-db "ssl:127.0.0.1:9642" \
+            --pidfile /var/run/ovn/ovn-northd.pid \
+            -p /ovn-cert/tls.key \
+            -c /ovn-cert/tls.crt \
+            -C /ovn-ca/ca-bundle.crt &
+
+          wait $!
+        lifecycle:
+          preStop:
+            exec:
+              command:
+                - /bin/bash
+                - -c
+                - OVN_MANAGE_OVSDB=no /usr/share/ovn/scripts/ovn-ctl stop_northd
+        env:
+        - name: OVN_LOG_LEVEL
+          value: info 
+        volumeMounts:
+        - mountPath: /etc/openvswitch/
+          name: etc-openvswitch
+        - mountPath: /var/lib/openvswitch/
+          name: var-lib-openvswitch
+        - mountPath: /run/openvswitch/
+          name: run-openvswitch
+        - mountPath: /run/ovn/
+          name: run-ovn
+        - mountPath: /env
+          name: env-overrides
+        - mountPath: /ovn-cert # not needed, but useful when exec'ing in to pod.
+          name: ovn-cert
+        - mountPath: /ovn-ca
+          name: ovn-ca
+        resources:
+          requests:
+            cpu: 10m
+            memory: 300Mi
+        terminationMessagePolicy: FallbackToLogsOnError
+
+      # nbdb: the northbound, or logical network object DB. In raft mode 
+      - name: nbdb
+        image: "quay.io/zshi/ovn-daemonset:microshift"
+        command:
+        - /bin/bash
+        - -c
+        - |
+          set -xem
+          if [[ -f /env/_master ]]; then
+            set -o allexport
+            source /env/_master
+            set +o allexport
+          fi
+
+          quit() {
+            echo "$(date -Iseconds) - stopping nbdb"
+            /usr/share/ovn/scripts/ovn-ctl stop_nb_ovsdb
+            echo "$(date -Iseconds) - nbdb stopped"
+            rm -f /var/run/ovn/ovnnb_db.pid
+            exit 0
+          }
+          # end of quit
+          trap quit TERM INT
+
+          bracketify() { case "$1" in *:*) echo "[$1]" ;; *) echo "$1" ;; esac }
+          # initialize variables
+          ovn_kubernetes_namespace=openshift-ovn-kubernetes
+          ovndb_ctl_ssl_opts="-p /ovn-cert/tls.key -c /ovn-cert/tls.crt -C /ovn-ca/ca-bundle.crt"
+          transport="ssl"
+          ovn_raft_conn_ip_url_suffix=""
+          if [[ "${K8S_NODE_IP}" == *":"* ]]; then
+            ovn_raft_conn_ip_url_suffix=":[::]"
+          fi
+          db="nb"
+          db_port="9641"
+          ovn_db_file="/etc/ovn/ovn${db}_db.db"
+          
+          OVN_ARGS="--db-nb-cluster-local-port=9644 \
+            --db-nb-cluster-local-addr=$(bracketify ${K8S_NODE_IP}) \
+            --no-monitor \
+            --db-nb-cluster-local-proto=ssl \
+            --ovn-nb-db-ssl-key=/ovn-cert/tls.key \
+            --ovn-nb-db-ssl-cert=/ovn-cert/tls.crt \
+            --ovn-nb-db-ssl-ca-cert=/ovn-ca/ca-bundle.crt"
+
+          CLUSTER_INITIATOR_IP="127.0.0.1"
+          echo "$(date -Iseconds) - starting nbdb  CLUSTER_INITIATOR_IP=${CLUSTER_INITIATOR_IP}, K8S_NODE_IP=${K8S_NODE_IP}"
+          initial_raft_create=true
+          initialize="false"
+          
+          if [[ ! -e ${ovn_db_file} ]]; then
+            initialize="true"
+          fi
+
+          if [[ "${initialize}" == "true" ]]; then
+              # either we need to initialize a new cluster or wait for master to create it
+                # set DB election timer at DB creation time if OVN supports it
+                election_timer=
+                if test -n "$(/usr/share/ovn/scripts/ovn-ctl --help 2>&1 | grep "\--db-nb-election-timer")"; then
+                  election_timer="--db-nb-election-timer=$((10*1000))"
+                fi
+
+                exec /usr/share/ovn/scripts/ovn-ctl ${OVN_ARGS} \
+                --ovn-nb-log="-vconsole:${OVN_LOG_LEVEL} -vfile:off -vPATTERN:console:%D{%Y-%m-%dT%H:%M:%S.###Z}|%05N|%c%T|%p|%m" \
+                ${election_timer} \
+                run_nb_ovsdb &
+
+                wait $!
+          else
+            exec /usr/share/ovn/scripts/ovn-ctl ${OVN_ARGS} \
+              --ovn-nb-log="-vconsole:${OVN_LOG_LEVEL} -vfile:off -vPATTERN:console:%D{%Y-%m-%dT%H:%M:%S.###Z}|%05N|%c%T|%p|%m" \
+              run_nb_ovsdb &
+
+              wait $!
+          fi
+
+        lifecycle:
+          postStart:
+            exec:
+              command:
+              - /bin/bash
+              - -c
+              - |
+                set -x
+                CLUSTER_INITIATOR_IP="127.0.0.1"
+                rm -f /var/run/ovn/ovnnb_db.pid
+                  echo "$(date -Iseconds) - nbdb - postStart - waiting for master to be selected"
+
+                  # set the connection and inactivity probe
+                  retries=0
+                  while ! ovn-nbctl --no-leader-only -t 5 set-connection pssl:9641 -- set connection . inactivity_probe=60000; do
+                    (( retries += 1 ))
+                  if [[ "${retries}" -gt 40 ]]; then
+                    echo "$(date -Iseconds) - ERROR RESTARTING - nbdb - too many failed ovn-nbctl attempts, giving up"
+                      exit 1
+                  fi
+                  sleep 2
+                  done
+
+                  # Upgrade the db if required.
+                  DB_SCHEMA="/usr/share/ovn/ovn-nb.ovsschema"
+                  DB_SERVER="unix:/var/run/ovn/ovnnb_db.sock"
+                  schema_name=$(ovsdb-tool schema-name $DB_SCHEMA)
+                  db_version=$(ovsdb-client -t 10 get-schema-version "$DB_SERVER" "$schema_name")
+                  target_version=$(ovsdb-tool schema-version "$DB_SCHEMA")
+
+                  if ovsdb-tool compare-versions "$db_version" == "$target_version"; then
+                    :
+                  elif ovsdb-tool compare-versions "$db_version" ">" "$target_version"; then
+                      echo "Database $schema_name has newer schema version ($db_version) than our local schema ($target_version), possibly an upgrade is partially complete?"
+                  else
+                      echo "Upgrading database $schema_name from schema version $db_version to $target_version"
+                      ovsdb-client -t 30 convert "$DB_SERVER" "$DB_SCHEMA"
+                  fi
+                #configure northd_probe_interval
+                OVN_NB_CTL="ovn-nbctl -p /ovn-cert/tls.key -c /ovn-cert/tls.crt -C /ovn-ca/ca-bundle.crt \
+                            --db "ssl:127.0.0.1:9641""
+                northd_probe_interval=${OVN_NORTHD_PROBE_INTERVAL:-10000}
+                echo "Setting northd probe interval to ${northd_probe_interval} ms"
+                retries=0
+                current_probe_interval=0
+                while [[ "${retries}" -lt 10 ]]; do
+                  current_probe_interval=$(${OVN_NB_CTL} --if-exists get NB_GLOBAL . options:northd_probe_interval)
+                  if [[ $? == 0 ]]; then
+                    current_probe_interval=$(echo ${current_probe_interval} | tr -d '\"')
+                    break
+                  else
+                    sleep 2
+                    (( retries += 1 ))
+                  fi
+                done
+
+                if [[ "${current_probe_interval}" != "${northd_probe_interval}" ]]; then
+                  retries=0
+                  while [[ "${retries}" -lt 10 ]]; do
+                    ${OVN_NB_CTL} set NB_GLOBAL . options:northd_probe_interval=${northd_probe_interval}
+                    if [[ $? != 0 ]]; then
+                      echo "Failed to set northd probe interval to ${northd_probe_interval}. retrying....."
+                      sleep 2
+                      (( retries += 1 ))
+                    else
+                      echo "Successfully set northd probe interval to ${northd_probe_interval} ms"
+                      break
+                    fi
+                  done
+                fi
+
+          preStop:
+            exec:
+              command:
+              - /bin/bash
+              - -c
+              - |
+                echo "$(date -Iseconds) - stopping nbdb"
+                /usr/share/ovn/scripts/ovn-ctl stop_nb_ovsdb
+                echo "$(date -Iseconds) - nbdb stopped"
+                rm -f /var/run/ovn/ovnnb_db.pid
+        readinessProbe:
+          timeoutSeconds: 5
+          exec:
+            command:
+            - /bin/bash
+            - -c
+            - |
+              set -xeo pipefail
+              leader_status=$(/usr/bin/ovn-appctl -t /var/run/ovn/ovnnb_db.ctl --timeout=3 cluster/status OVN_Northbound  2>/dev/null | { grep "Leader: unknown" || true; })
+              if [[ ! -z "${leader_status}" ]]; then
+                echo "NB DB Raft leader is unknown to the cluster node."
+                exit 1
+              else
+                /usr/bin/ovn-appctl -t /var/run/ovn/ovnnb_db.ctl --timeout=5 ovsdb-server/memory-trim-on-compaction on 2>/dev/null
+              fi
+
+        env:
+        - name: OVN_LOG_LEVEL
+          value: info 
+        - name: OVN_NORTHD_PROBE_INTERVAL
+          value: "5000"
+        - name: K8S_NODE_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.hostIP
+        volumeMounts:
+        - mountPath: /etc/openvswitch/
+          name: etc-openvswitch
+        - mountPath: /etc/ovn/
+          name: etc-openvswitch
+        - mountPath: /var/lib/openvswitch/
+          name: var-lib-openvswitch
+        - mountPath: /run/openvswitch/
+          name: run-openvswitch
+        - mountPath: /run/ovn/
+          name: run-ovn
+        - mountPath: /env
+          name: env-overrides
+        - mountPath: /ovn-cert
+          name: ovn-cert
+        - mountPath: /ovn-ca
+          name: ovn-ca
+        resources:
+          requests:
+            cpu: 10m
+            memory: 300Mi
+        ports:
+        - name: nb-db-port
+          containerPort: 9641
+        - name: nb-db-raft-port
+          containerPort: 9643
+        terminationMessagePolicy: FallbackToLogsOnError
+
+      # sbdb: The southbound, or flow DB. In raft mode
+      - name: sbdb
+        image: "quay.io/zshi/ovn-daemonset:microshift"
+        command:
+        - /bin/bash
+        - -c
+        - |
+          set -xm
+          if [[ -f /env/_master ]]; then
+            set -o allexport
+            source /env/_master
+            set +o allexport
+          fi
+
+          quit() {
+            echo "$(date -Iseconds) - stopping sbdb"
+            /usr/share/ovn/scripts/ovn-ctl stop_sb_ovsdb
+            echo "$(date -Iseconds) - sbdb stopped"
+            rm -f /var/run/ovn/ovnsb_db.pid
+            exit 0
+          }
+          # end of quit
+          trap quit TERM INT
+
+          bracketify() { case "$1" in *:*) echo "[$1]" ;; *) echo "$1" ;; esac }
+
+          # initialize variables
+          ovn_kubernetes_namespace=openshift-ovn-kubernetes
+          ovndb_ctl_ssl_opts="-p /ovn-cert/tls.key -c /ovn-cert/tls.crt -C /ovn-ca/ca-bundle.crt"
+          transport="ssl"
+          ovn_raft_conn_ip_url_suffix=""
+          if [[ "${K8S_NODE_IP}" == *":"* ]]; then
+            ovn_raft_conn_ip_url_suffix=":[::]"
+          fi
+          db="sb"
+          db_port="9642"
+          ovn_db_file="/etc/ovn/ovn${db}_db.db"
+
+          OVN_ARGS="--db-sb-cluster-local-port=9644 \
+            --db-sb-cluster-local-addr=$(bracketify ${K8S_NODE_IP}) \
+            --no-monitor \
+            --db-sb-cluster-local-proto=ssl \
+            --ovn-sb-db-ssl-key=/ovn-cert/tls.key \
+            --ovn-sb-db-ssl-cert=/ovn-cert/tls.crt \
+            --ovn-sb-db-ssl-ca-cert=/ovn-ca/ca-bundle.crt"
+
+          CLUSTER_INITIATOR_IP="127.0.0.1"
+          echo "$(date -Iseconds) - starting sbdb  CLUSTER_INITIATOR_IP=${CLUSTER_INITIATOR_IP}"
+          initial_raft_create=true
+          initialize="false"
+
+          if [[ ! -e ${ovn_db_file} ]]; then
+            initialize="true"
+          fi
+
+          if [[ "${initialize}" == "true" ]]; then
+              # either we need to initialize a new cluster or wait for master to create it
+                # set DB election timer at DB creation time if OVN supports it
+                election_timer=
+                if test -n "$(/usr/share/ovn/scripts/ovn-ctl --help 2>&1 | grep "\--db-sb-election-timer")"; then
+                  election_timer="--db-sb-election-timer=$((16*1000))"
+                fi
+
+                exec /usr/share/ovn/scripts/ovn-ctl ${OVN_ARGS} \
+                --ovn-sb-log="-vconsole:${OVN_LOG_LEVEL} -vfile:off -vPATTERN:console:%D{%Y-%m-%dT%H:%M:%S.###Z}|%05N|%c%T|%p|%m" \
+                ${election_timer} \
+                run_sb_ovsdb &
+
+                wait $!
+          else
+            exec /usr/share/ovn/scripts/ovn-ctl ${OVN_ARGS} \
+            --ovn-sb-log="-vconsole:${OVN_LOG_LEVEL} -vfile:off -vPATTERN:console:%D{%Y-%m-%dT%H:%M:%S.###Z}|%05N|%c%T|%p|%m" \
+            run_sb_ovsdb &
+
+            wait $!
+          fi
+        lifecycle:
+          postStart:
+            exec:
+              command:
+              - /bin/bash
+              - -c
+              - |
+                set -x
+                CLUSTER_INITIATOR_IP="127.0.0.1"
+                rm -f /var/run/ovn/ovnsb_db.pid
+                  echo "$(date -Iseconds) - sdb - postStart - waiting for master to be selected"
+
+                  # set the connection and inactivity probe
+                  retries=0
+                  while ! ovn-sbctl --no-leader-only -t 5 set-connection pssl:9642 -- set connection . inactivity_probe=180000; do
+                    (( retries += 1 ))
+                  if [[ "${retries}" -gt 40 ]]; then
+                    echo "$(date -Iseconds) - ERROR RESTARTING - sbdb - too many failed ovn-sbctl attempts, giving up"
+                      exit 1
+                  fi
+                  sleep 2
+                  done
+
+                  # Upgrade the db if required.
+                  DB_SCHEMA="/usr/share/ovn/ovn-sb.ovsschema"
+                  DB_SERVER="unix:/var/run/ovn/ovnsb_db.sock"
+                  schema_name=$(ovsdb-tool schema-name $DB_SCHEMA)
+                  db_version=$(ovsdb-client -t 10 get-schema-version "$DB_SERVER" "$schema_name")
+                  target_version=$(ovsdb-tool schema-version "$DB_SCHEMA")
+
+                  if ovsdb-tool compare-versions "$db_version" == "$target_version"; then
+                    :
+                  elif ovsdb-tool compare-versions "$db_version" ">" "$target_version"; then
+                      echo "Database $schema_name has newer schema version ($db_version) than our local schema ($target_version), possibly an upgrade is partially complete?"
+                  else
+                      echo "Upgrading database $schema_name from schema version $db_version to $target_version"
+                      ovsdb-client -t 30 convert "$DB_SERVER" "$DB_SCHEMA"
+                  fi
+          preStop:
+            exec:
+              command:
+              - /bin/bash
+              - -c
+              - |
+                echo "$(date -Iseconds) - stopping sbdb"
+                /usr/share/ovn/scripts/ovn-ctl stop_sb_ovsdb
+                echo "$(date -Iseconds) - sbdb stopped"
+                rm -f /var/run/ovn/ovnsb_db.pid
+        readinessProbe:
+          timeoutSeconds: 5
+          exec:
+            command:
+            - /bin/bash
+            - -c
+            - |
+              set -xeo pipefail
+              leader_status=$(/usr/bin/ovn-appctl -t /var/run/ovn/ovnsb_db.ctl --timeout=3 cluster/status OVN_Southbound  2>/dev/null | { grep "Leader: unknown" || true; })
+              if [[ ! -z "${leader_status}" ]]; then
+                echo "SB DB Raft leader is unknown to the cluster node."
+                exit 1
+              else
+                /usr/bin/ovn-appctl -t /var/run/ovn/ovnsb_db.ctl --timeout=5 ovsdb-server/memory-trim-on-compaction on 2>/dev/null
+              fi
+        env:
+        - name: OVN_LOG_LEVEL
+          value: info
+        - name: K8S_NODE_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.hostIP
+        volumeMounts:
+        - mountPath: /etc/openvswitch/
+          name: etc-openvswitch
+        - mountPath: /etc/ovn/
+          name: etc-openvswitch
+        - mountPath: /var/lib/openvswitch/
+          name: var-lib-openvswitch
+        - mountPath: /run/openvswitch/
+          name: run-openvswitch
+        - mountPath: /run/ovn/
+          name: run-ovn
+        - mountPath: /env
+          name: env-overrides
+        - mountPath: /ovn-cert
+          name: ovn-cert
+        - mountPath: /ovn-ca
+          name: ovn-ca
+        ports:
+        - name: sb-db-port
+          containerPort: 9642
+        - name: sb-db-raft-port
+          containerPort: 9644
+        resources:
+          requests:
+            cpu: 10m
+            memory: 300Mi
+        terminationMessagePolicy: FallbackToLogsOnError
+
+      # ovnkube master: convert kubernetes objects in to nbdb logical network components
+      - name: ovnkube-master
+        image: "quay.io/zshi/ovn-daemonset:microshift"
+        command:
+        - /bin/bash
+        - -c
+        - |
+          set -xe
+          if [[ -f "/env/_master" ]]; then
+            set -o allexport
+            source "/env/_master"
+            set +o allexport
+          fi
+
+          gateway_mode_flags="--gateway-mode shared --gateway-interface br-ex"
+
+          echo "I$(date "+%m%d %H:%M:%S.%N") - ovnkube-master - start ovnkube --init-master ${K8S_NODE}"
+          exec /usr/bin/ovnkube \
+            --init-master "${K8S_NODE}" \
+            --config-file=/run/ovnkube-config/ovnkube.conf \
+            --ovn-empty-lb-events \
+            --loglevel "${OVN_KUBE_LOG_LEVEL}" \
+            ${gateway_mode_flags} \
+            --sb-address "ssl:127.0.0.1:9642" \
+            --sb-client-privkey /ovn-cert/tls.key \
+            --sb-client-cert /ovn-cert/tls.crt \
+            --sb-client-cacert /ovn-ca/ca-bundle.crt \
+            --sb-cert-common-name "ovn" \
+            --nb-address "ssl:127.0.0.1:9641" \
+            --nb-client-privkey /ovn-cert/tls.key \
+            --nb-client-cert /ovn-cert/tls.crt \
+            --nb-client-cacert /ovn-ca/ca-bundle.crt \
+            --nb-cert-common-name "ovn" \
+            --enable-multicast \
+            --disable-snat-multiple-gws \
+            --acl-logging-rate-limit "20"
+        volumeMounts:
+        # for checking ovs-configuration service
+        - mountPath: /etc/systemd/system
+          name: systemd-units
+          readOnly: true
+        - mountPath: /etc/openvswitch/
+          name: etc-openvswitch
+        - mountPath: /etc/ovn/
+          name: etc-openvswitch
+        - mountPath: /var/lib/openvswitch/
+          name: var-lib-openvswitch
+        - mountPath: /run/openvswitch/
+          name: run-openvswitch
+        - mountPath: /run/ovn/
+          name: run-ovn
+        - mountPath: /run/ovnkube-config/
+          name: ovnkube-config
+        - mountPath: /var/lib/microshift/resources/kubeadmin/
+          name: kubeconfig
+        - mountPath: /env
+          name: env-overrides
+        - mountPath: /ovn-cert
+          name: ovn-cert
+        - mountPath: /ovn-ca
+          name: ovn-ca
+        resources:
+          requests:
+            cpu: 10m
+            memory: 300Mi
+        env:
+        - name: OVN_KUBE_LOG_LEVEL
+          value: "4"
+        - name: K8S_NODE
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        ports:
+        - name: metrics-port
+          containerPort: 29102
+        terminationMessagePolicy: FallbackToLogsOnError
+      nodeSelector:
+        beta.kubernetes.io/os: "linux"
+      volumes:
+      # for checking ovs-configuration service
+      - name: systemd-units
+        hostPath:
+          path: /etc/systemd/system
+      - name: etc-openvswitch
+        hostPath:
+          path: /var/lib/ovn/etc
+      - name: var-lib-openvswitch
+        hostPath:
+          path: /var/lib/ovn/data
+      - name: run-openvswitch
+        hostPath:
+          path: /var/run/openvswitch
+      - name: run-ovn
+        hostPath:
+          path: /var/run/ovn
+      - name: kubeconfig
+        hostPath:
+          path: /var/lib/microshift/resources/kubeadmin
+      - name: ovnkube-config
+        configMap:
+          name: ovnkube-config
+      - name: env-overrides
+        configMap:
+          name: env-overrides
+          optional: true
+      - name: ovn-ca
+        configMap:
+          name: ovn-ca
+      - name: ovn-cert
+        secret:
+          secretName: ovn-cert
+      - name: ovn-master-metrics-cert
+        secret:
+          secretName: ovn-master-metrics-cert
+          optional: true
+      tolerations:
+      - key: "node-role.kubernetes.io/master"
+        operator: "Exists"
+      - key: "node.kubernetes.io/not-ready"
+        operator: "Exists"
+      - key: "node.kubernetes.io/unreachable"
+        operator: "Exists"
+      - key: "node.kubernetes.io/network-unavailable"
+        operator: "Exists"
+`)
+
+func assetsComponentsOvnMasterDaemonsetYamlBytes() ([]byte, error) {
+	return _assetsComponentsOvnMasterDaemonsetYaml, nil
+}
+
+func assetsComponentsOvnMasterDaemonsetYaml() (*asset, error) {
+	bytes, err := assetsComponentsOvnMasterDaemonsetYamlBytes()
+	if err != nil {
+		return nil, err
+	}
+
+	info := bindataFileInfo{name: "assets/components/ovn/master/daemonset.yaml", size: 22943, mode: os.FileMode(436), modTime: time.Unix(1654250882, 0)}
+	a := &asset{bytes: bytes, info: info}
+	return a, nil
+}
+
+var _assetsComponentsOvnMasterServiceaccountYaml = []byte(`---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: ovn-kubernetes-controller
+  namespace: openshift-ovn-kubernetes
+`)
+
+func assetsComponentsOvnMasterServiceaccountYamlBytes() ([]byte, error) {
+	return _assetsComponentsOvnMasterServiceaccountYaml, nil
+}
+
+func assetsComponentsOvnMasterServiceaccountYaml() (*asset, error) {
+	bytes, err := assetsComponentsOvnMasterServiceaccountYamlBytes()
+	if err != nil {
+		return nil, err
+	}
+
+	info := bindataFileInfo{name: "assets/components/ovn/master/serviceaccount.yaml", size: 122, mode: os.FileMode(436), modTime: time.Unix(1654250635, 0)}
+	a := &asset{bytes: bytes, info: info}
+	return a, nil
+}
+
+var _assetsComponentsOvnNamespaceYaml = []byte(`apiVersion: v1
+kind: Namespace
+metadata:
+  # NOTE: ovnkube.sh in the OVN image currently hardcodes this namespace name
+  name: openshift-ovn-kubernetes
+  labels:
+    openshift.io/run-level: "0"
+    openshift.io/cluster-monitoring: "true"
+    pod-security.kubernetes.io/enforce: privileged
+    pod-security.kubernetes.io/audit: privileged
+    pod-security.kubernetes.io/warn: privileged
+  annotations:
+    openshift.io/node-selector: ""
+    openshift.io/description: "OVN Kubernetes components"
+    workload.openshift.io/allowed: "management"
+`)
+
+func assetsComponentsOvnNamespaceYamlBytes() ([]byte, error) {
+	return _assetsComponentsOvnNamespaceYaml, nil
+}
+
+func assetsComponentsOvnNamespaceYaml() (*asset, error) {
+	bytes, err := assetsComponentsOvnNamespaceYamlBytes()
+	if err != nil {
+		return nil, err
+	}
+
+	info := bindataFileInfo{name: "assets/components/ovn/namespace.yaml", size: 542, mode: os.FileMode(436), modTime: time.Unix(1654250635, 0)}
+	a := &asset{bytes: bytes, info: info}
+	return a, nil
+}
+
+var _assetsComponentsOvnNodeDaemonsetYaml = []byte(`---
+kind: DaemonSet
+apiVersion: apps/v1
+metadata:
+  name: ovnkube-node
+  namespace: openshift-ovn-kubernetes
+  annotations:
+    kubernetes.io/description: |
+      This daemonset launches the ovn-kubernetes per node networking components.
+    release.openshift.io/version: "4.11"
+spec:
+  selector:
+    matchLabels:
+      app: ovnkube-node
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 10%
+  template:
+    metadata:
+      annotations:
+        target.workload.openshift.io/management: '{"effect": "PreferredDuringScheduling"}'
+      labels:
+        app: ovnkube-node
+        component: network
+        type: infra
+        openshift.io/component: network
+        kubernetes.io/os: "linux"
+    spec:
+      serviceAccountName: ovn-kubernetes-node
+      hostNetwork: true
+      dnsPolicy: Default
+      hostPID: true
+      priorityClassName: "system-node-critical"
+      # volumes in all containers:
+      # (container) -> (host)
+      # /etc/openvswitch -> /etc/openvswitch - ovsdb system id
+      # /var/lib/openvswitch -> /var/lib/openvswitch/data - ovsdb data
+      # /run/openvswitch -> tmpfs - ovsdb sockets
+      # /env -> configmap env-overrides - debug overrides
+      containers:
+      # ovn-controller: programs the vswitch with flows from the sbdb
+      - name: ovn-controller
+        image: "quay.io/zshi/ovn-daemonset:microshift"
+        command:
+        - /bin/bash
+        - -c
+        - |
+          set -e
+          if [[ -f "/env/${K8S_NODE}" ]]; then
+            set -o allexport
+            source "/env/${K8S_NODE}"
+            set +o allexport
+          fi
+
+          echo "$(date -Iseconds) - starting ovn-controller"
+          exec ovn-controller unix:/var/run/openvswitch/db.sock -vfile:off \
+            --no-chdir --pidfile=/var/run/ovn/ovn-controller.pid \
+            --syslog-method="null" \
+            --log-file=/var/log/ovn/acl-audit-log.log \
+            -vFACILITY:"local0" \
+            -p /ovn-cert/tls.key -c /ovn-cert/tls.crt -C /ovn-ca/ca-bundle.crt \
+            -vconsole:"${OVN_LOG_LEVEL}" -vconsole:"acl_log:off" \
+            -vPATTERN:console:"%D{%Y-%m-%dT%H:%M:%S.###Z}|%05N|%c%T|%p|%m" \
+            -vsyslog:"acl_log:info" \
+            -vfile:"acl_log:info"
+        securityContext:
+          privileged: true
+        env:
+        - name: OVN_LOG_LEVEL
+          value: info
+        - name: K8S_NODE
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        volumeMounts:
+        - mountPath: /run/openvswitch
+          name: run-openvswitch
+        - mountPath: /run/ovn/
+          name: run-ovn
+        - mountPath: /etc/openvswitch
+          name: etc-openvswitch
+        - mountPath: /etc/ovn/
+          name: etc-openvswitch
+        - mountPath: /var/lib/openvswitch
+          name: var-lib-openvswitch
+        - mountPath: /env
+          name: env-overrides
+        - mountPath: /ovn-cert
+          name: ovn-cert
+        - mountPath: /ovn-ca
+          name: ovn-ca
+        - mountPath: /var/log/ovn
+          name: node-log
+        - mountPath: /dev/log
+          name: log-socket
+        terminationMessagePolicy: FallbackToLogsOnError
+        resources:
+          requests:
+            cpu: 10m
+            memory: 300Mi
+      # ovnkube-node: does node-level bookkeeping and configuration
+      - name: ovnkube-node
+        image: "quay.io/zshi/ovn-daemonset:microshift"
+        command:
+        - /bin/bash
+        - -c
+        - |
+          set -xe
+          if [[ -f "/env/${K8S_NODE}" ]]; then
+            set -o allexport
+            source "/env/${K8S_NODE}"
+            set +o allexport
+          fi
+          cp -f /usr/libexec/cni/ovn-k8s-cni-overlay /cni-bin-dir/
+          ovn_config_namespace=openshift-ovn-kubernetes
+          echo "I$(date "+%m%d %H:%M:%S.%N") - disable conntrack on geneve port"
+          iptables -t raw -A PREROUTING -p udp --dport 6081 -j NOTRACK
+          iptables -t raw -A OUTPUT -p udp --dport 6081 -j NOTRACK
+          ip6tables -t raw -A PREROUTING -p udp --dport 6081 -j NOTRACK
+          ip6tables -t raw -A OUTPUT -p udp --dport 6081 -j NOTRACK
+          echo "I$(date "+%m%d %H:%M:%S.%N") - starting ovnkube-node"
+
+          gateway_mode_flags="--gateway-mode shared --gateway-interface br-ex"
+
+          export_network_flows_flags=
+          if [[ -n "${NETFLOW_COLLECTORS}" ]] ; then
+            export_network_flows_flags="--netflow-targets ${NETFLOW_COLLECTORS}"
+          fi
+          if [[ -n "${SFLOW_COLLECTORS}" ]] ; then
+            export_network_flows_flags="$export_network_flows_flags --sflow-targets ${SFLOW_COLLECTORS}"
+          fi
+          if [[ -n "${IPFIX_COLLECTORS}" ]] ; then
+            export_network_flows_flags="$export_network_flows_flags --ipfix-targets ${IPFIX_COLLECTORS}"
+          fi
+          if [[ -n "${IPFIX_CACHE_MAX_FLOWS}" ]] ; then
+            export_network_flows_flags="$export_network_flows_flags --ipfix-cache-max-flows ${IPFIX_CACHE_MAX_FLOWS}"
+          fi
+          if [[ -n "${IPFIX_CACHE_ACTIVE_TIMEOUT}" ]] ; then
+            export_network_flows_flags="$export_network_flows_flags --ipfix-cache-active-timeout ${IPFIX_CACHE_ACTIVE_TIMEOUT}"
+          fi
+          if [[ -n "${IPFIX_SAMPLING}" ]] ; then
+            export_network_flows_flags="$export_network_flows_flags --ipfix-sampling ${IPFIX_SAMPLING}"
+          fi
+          gw_interface_flag=
+          # if br-ex1 is configured on the node, we want to use it for external gateway traffic
+          if [ -d /sys/class/net/br-ex1 ]; then
+            gw_interface_flag="--exgw-interface=br-ex1"
+          fi
+
+          node_mgmt_port_netdev_flags=
+          if [[ -n "${OVNKUBE_NODE_MGMT_PORT_NETDEV}" ]] ; then
+            node_mgmt_port_netdev_flags="--ovnkube-node-mgmt-port-netdev ${OVNKUBE_NODE_MGMT_PORT_NETDEV}"
+          fi
+
+          exec /usr/bin/ovnkube --init-node "${K8S_NODE}" \
+            --nb-address "ssl:10.73.116.66:9641" \
+            --sb-address "ssl:10.73.116.66:9642" \
+            --nb-client-privkey /ovn-cert/tls.key \
+            --nb-client-cert /ovn-cert/tls.crt \
+            --nb-client-cacert /ovn-ca/ca-bundle.crt \
+            --nb-cert-common-name "ovn" \
+            --sb-client-privkey /ovn-cert/tls.key \
+            --sb-client-cert /ovn-cert/tls.crt \
+            --sb-client-cacert /ovn-ca/ca-bundle.crt \
+            --sb-cert-common-name "ovn" \
+            --config-file=/run/ovnkube-config/ovnkube.conf \
+            --loglevel "${OVN_KUBE_LOG_LEVEL}" \
+            --inactivity-probe="${OVN_CONTROLLER_INACTIVITY_PROBE}" \
+            ${gateway_mode_flags} \
+            --disable-snat-multiple-gws \
+            ${export_network_flows_flags} \
+            ${gw_interface_flag}
+        env:
+        # for kubectl
+        - name: KUBERNETES_SERVICE_PORT
+          value: "6443"
+        - name: KUBERNETES_SERVICE_HOST
+          value: "10.73.116.66"
+        - name: OVN_CONTROLLER_INACTIVITY_PROBE
+          value: "180000"
+        - name: OVN_KUBE_LOG_LEVEL
+          value: "4"
+        - name: K8S_NODE
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        ports:
+        - name: metrics-port
+          containerPort: 29103
+        securityContext:
+          privileged: true
+        terminationMessagePolicy: FallbackToLogsOnError
+        volumeMounts:
+        # for checking ovs-configuration service
+        - mountPath: /etc/systemd/system
+          name: systemd-units
+          readOnly: true
+        # for the iptables wrapper
+        - mountPath: /host
+          name: host-slash
+          readOnly: true
+          mountPropagation: HostToContainer
+        # for the CNI server socket
+        - mountPath: /run/ovn-kubernetes/
+          name: host-run-ovn-kubernetes
+        # accessing bind-mounted net namespaces
+        - mountPath: /run/netns
+          name: host-run-netns
+          readOnly: true
+          mountPropagation: HostToContainer
+        # for installing the CNI plugin binary
+        - mountPath: /cni-bin-dir
+          name: host-cni-bin
+        # for installing the CNI configuration file
+        - mountPath: /etc/cni/net.d
+          name: host-cni-netd
+        # Where we store IP allocations
+        - mountPath: /var/lib/cni/networks/ovn-k8s-cni-overlay
+          name: host-var-lib-cni-networks-ovn-kubernetes
+        - mountPath: /run/openvswitch
+          name: run-openvswitch
+        - mountPath: /run/ovn/
+          name: run-ovn
+        - mountPath: /etc/openvswitch
+          name: etc-openvswitch
+        - mountPath: /etc/ovn/
+          name: etc-openvswitch
+        - mountPath: /var/lib/openvswitch
+          name: var-lib-openvswitch
+        - mountPath: /run/ovnkube-config/
+          name: ovnkube-config
+        - mountPath: /var/lib/microshift/resources/kubeadmin/
+          name: kubeconfig
+        - mountPath: /env
+          name: env-overrides
+        - mountPath: /ovn-cert
+          name: ovn-cert
+        - mountPath: /ovn-ca
+          name: ovn-ca
+        resources:
+          requests:
+            cpu: 10m
+            memory: 300Mi
+        lifecycle:
+          preStop:
+            exec:
+              command: ["rm","-f","/etc/cni/net.d/10-ovn-kubernetes.conf"]
+        readinessProbe:
+          exec:
+            command: ["test", "-f", "/etc/cni/net.d/10-ovn-kubernetes.conf"]
+          initialDelaySeconds: 5
+          periodSeconds: 5
+      nodeSelector:
+        beta.kubernetes.io/os: "linux"
+      volumes:
+      # for checking ovs-configuration service
+      - name: systemd-units
+        hostPath:
+          path: /etc/systemd/system
+      # used for iptables wrapper scripts
+      - name: host-slash
+        hostPath:
+          path: /
+      - name: host-run-netns
+        hostPath:
+          path: /run/netns
+      - name: var-lib-openvswitch
+        hostPath:
+          path: /var/lib/openvswitch/data
+      - name: etc-openvswitch
+        hostPath:
+          path: /etc/openvswitch
+      - name: run-openvswitch
+        hostPath:
+          path: /var/run/openvswitch
+      - name: run-ovn
+        hostPath:
+          path: /var/run/ovn
+      # Used for placement of ACL audit logs 
+      - name: node-log
+        hostPath: 
+          path: /var/log/ovn
+      - name: log-socket
+        hostPath: 
+          path: /dev/log
+      # For CNI server
+      - name: host-run-ovn-kubernetes
+        hostPath:
+          path: /run/ovn-kubernetes
+      - name: host-cni-bin
+        hostPath:
+          path: "/var/lib/cni/bin"
+      - name: host-cni-netd
+        hostPath:
+          path: "/var/run/multus/cni/net.d"
+      - name: host-var-lib-cni-networks-ovn-kubernetes
+        hostPath:
+          path: /var/lib/cni/networks/ovn-k8s-cni-overlay
+      - name: kubeconfig
+        hostPath:
+          path: /var/lib/microshift/resources/kubeadmin
+      - name: ovnkube-config
+        configMap:
+          name: ovnkube-config
+      - name: env-overrides
+        configMap:
+          name: env-overrides
+          optional: true
+      - name: ovn-ca
+        configMap:
+          name: ovn-ca
+      - name: ovn-cert
+        secret:
+          secretName: ovn-cert
+      - name: ovn-node-metrics-cert
+        secret:
+          secretName: ovn-node-metrics-cert
+          optional: true
+      tolerations:
+      - operator: "Exists"
+`)
+
+func assetsComponentsOvnNodeDaemonsetYamlBytes() ([]byte, error) {
+	return _assetsComponentsOvnNodeDaemonsetYaml, nil
+}
+
+func assetsComponentsOvnNodeDaemonsetYaml() (*asset, error) {
+	bytes, err := assetsComponentsOvnNodeDaemonsetYamlBytes()
+	if err != nil {
+		return nil, err
+	}
+
+	info := bindataFileInfo{name: "assets/components/ovn/node/daemonset.yaml", size: 11249, mode: os.FileMode(436), modTime: time.Unix(1654250882, 0)}
+	a := &asset{bytes: bytes, info: info}
+	return a, nil
+}
+
+var _assetsComponentsOvnNodeServiceaccountYaml = []byte(`---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: ovn-kubernetes-node
+  namespace: openshift-ovn-kubernetes
+`)
+
+func assetsComponentsOvnNodeServiceaccountYamlBytes() ([]byte, error) {
+	return _assetsComponentsOvnNodeServiceaccountYaml, nil
+}
+
+func assetsComponentsOvnNodeServiceaccountYaml() (*asset, error) {
+	bytes, err := assetsComponentsOvnNodeServiceaccountYamlBytes()
+	if err != nil {
+		return nil, err
+	}
+
+	info := bindataFileInfo{name: "assets/components/ovn/node/serviceaccount.yaml", size: 116, mode: os.FileMode(436), modTime: time.Unix(1654250635, 0)}
+	a := &asset{bytes: bytes, info: info}
+	return a, nil
+}
+
+var _assetsComponentsOvnRoleYaml = []byte(`---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: openshift-ovn-kubernetes-node
+  namespace: openshift-ovn-kubernetes
+rules:
+- apiGroups: [""]
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups: [certificates.k8s.io]
+  resources: ['certificatesigningrequests']
+  verbs:
+    - create
+    - get
+    - delete
+    - update
+    - list
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: openshift-ovn-kubernetes-sbdb
+  namespace: openshift-ovn-kubernetes
+rules:
+- apiGroups: [""]
+  resources:
+  - endpoints
+  verbs:
+  - create
+  - update
+  - patch
+`)
+
+func assetsComponentsOvnRoleYamlBytes() ([]byte, error) {
+	return _assetsComponentsOvnRoleYaml, nil
+}
+
+func assetsComponentsOvnRoleYaml() (*asset, error) {
+	bytes, err := assetsComponentsOvnRoleYamlBytes()
+	if err != nil {
+		return nil, err
+	}
+
+	info := bindataFileInfo{name: "assets/components/ovn/role.yaml", size: 615, mode: os.FileMode(436), modTime: time.Unix(1654250635, 0)}
+	a := &asset{bytes: bytes, info: info}
+	return a, nil
+}
+
+var _assetsComponentsOvnRolebindingYaml = []byte(`---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: openshift-ovn-kubernetes-node
+  namespace: openshift-ovn-kubernetes
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: openshift-ovn-kubernetes-node
+subjects:
+- kind: ServiceAccount
+  name: ovn-kubernetes-node
+  namespace: openshift-ovn-kubernetes
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: openshift-ovn-kubernetes-sbdb
+  namespace: openshift-ovn-kubernetes
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: openshift-ovn-kubernetes-sbdb
+subjects:
+- kind: ServiceAccount
+  name: ovn-kubernetes-controller
+  namespace: openshift-ovn-kubernetes
+`)
+
+func assetsComponentsOvnRolebindingYamlBytes() ([]byte, error) {
+	return _assetsComponentsOvnRolebindingYaml, nil
+}
+
+func assetsComponentsOvnRolebindingYaml() (*asset, error) {
+	bytes, err := assetsComponentsOvnRolebindingYamlBytes()
+	if err != nil {
+		return nil, err
+	}
+
+	info := bindataFileInfo{name: "assets/components/ovn/rolebinding.yaml", size: 699, mode: os.FileMode(436), modTime: time.Unix(1654250635, 0)}
+	a := &asset{bytes: bytes, info: info}
+	return a, nil
+}
+
+var _assetsComponentsOvnSecretOvnCertYaml = []byte(`apiVersion: v1
+data:
+  tls.crt:
+  tls.key:
+kind: Secret
+metadata:
+  annotations:
+    auth.openshift.io/certificate-hostnames: ovn
+  labels:
+    auth.openshift.io/managed-certificate-type: target
+  name: ovn-cert
+  namespace: openshift-ovn-kubernetes
+type: kubernetes.io/tls
+`)
+
+func assetsComponentsOvnSecretOvnCertYamlBytes() ([]byte, error) {
+	return _assetsComponentsOvnSecretOvnCertYaml, nil
+}
+
+func assetsComponentsOvnSecretOvnCertYaml() (*asset, error) {
+	bytes, err := assetsComponentsOvnSecretOvnCertYamlBytes()
+	if err != nil {
+		return nil, err
+	}
+
+	info := bindataFileInfo{name: "assets/components/ovn/secret-ovn-cert.yaml", size: 274, mode: os.FileMode(436), modTime: time.Unix(1654250796, 0)}
+	a := &asset{bytes: bytes, info: info}
+	return a, nil
+}
+
+var _assetsComponentsOvnServiceYaml = []byte(`---
+# service to expose the ovn-master pod
+# at present ovn-master is limited to a single instance so
+# when the cluster has multiple masters we can get to the
+# ovn-master via this service.
+apiVersion: v1
+kind: Service
+metadata:
+  name: ovnkube-db
+  namespace: openshift-ovn-kubernetes
+spec:
+  selector:
+    app: ovnkube-master
+  ports:
+  - name: north
+    port: 9641
+    protocol: TCP
+    targetPort: 9641
+  - name: south
+    port: 9642
+    protocol: TCP
+    targetPort: 9642
+  sessionAffinity: None
+  clusterIP: None
+  type: ClusterIP
+`)
+
+func assetsComponentsOvnServiceYamlBytes() ([]byte, error) {
+	return _assetsComponentsOvnServiceYaml, nil
+}
+
+func assetsComponentsOvnServiceYaml() (*asset, error) {
+	bytes, err := assetsComponentsOvnServiceYamlBytes()
+	if err != nil {
+		return nil, err
+	}
+
+	info := bindataFileInfo{name: "assets/components/ovn/service.yaml", size: 538, mode: os.FileMode(436), modTime: time.Unix(1654250635, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -1684,7 +3429,7 @@ func assetsComponentsServiceCaClusterroleYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/service-ca/clusterrole.yaml", size: 864, mode: os.FileMode(420), modTime: time.Unix(1648137870, 0)}
+	info := bindataFileInfo{name: "assets/components/service-ca/clusterrole.yaml", size: 864, mode: os.FileMode(436), modTime: time.Unix(1653635092, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -1713,7 +3458,7 @@ func assetsComponentsServiceCaClusterrolebindingYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/service-ca/clusterrolebinding.yaml", size: 298, mode: os.FileMode(420), modTime: time.Unix(1648137870, 0)}
+	info := bindataFileInfo{name: "assets/components/service-ca/clusterrolebinding.yaml", size: 298, mode: os.FileMode(436), modTime: time.Unix(1653635092, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -1798,7 +3543,7 @@ func assetsComponentsServiceCaDeploymentYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/service-ca/deployment.yaml", size: 1866, mode: os.FileMode(420), modTime: time.Unix(1648137870, 0)}
+	info := bindataFileInfo{name: "assets/components/service-ca/deployment.yaml", size: 1866, mode: os.FileMode(436), modTime: time.Unix(1653635092, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -1822,7 +3567,7 @@ func assetsComponentsServiceCaNsYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/service-ca/ns.yaml", size: 168, mode: os.FileMode(420), modTime: time.Unix(1648137870, 0)}
+	info := bindataFileInfo{name: "assets/components/service-ca/ns.yaml", size: 168, mode: os.FileMode(436), modTime: time.Unix(1653635092, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -1885,7 +3630,7 @@ func assetsComponentsServiceCaRoleYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/service-ca/role.yaml", size: 634, mode: os.FileMode(420), modTime: time.Unix(1648137870, 0)}
+	info := bindataFileInfo{name: "assets/components/service-ca/role.yaml", size: 634, mode: os.FileMode(436), modTime: time.Unix(1653635092, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -1915,7 +3660,7 @@ func assetsComponentsServiceCaRolebindingYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/service-ca/rolebinding.yaml", size: 343, mode: os.FileMode(420), modTime: time.Unix(1648137870, 0)}
+	info := bindataFileInfo{name: "assets/components/service-ca/rolebinding.yaml", size: 343, mode: os.FileMode(436), modTime: time.Unix(1653635092, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -1937,7 +3682,7 @@ func assetsComponentsServiceCaSaYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/service-ca/sa.yaml", size: 99, mode: os.FileMode(420), modTime: time.Unix(1648137870, 0)}
+	info := bindataFileInfo{name: "assets/components/service-ca/sa.yaml", size: 99, mode: os.FileMode(436), modTime: time.Unix(1653635092, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -1961,7 +3706,7 @@ func assetsComponentsServiceCaSigningCabundleYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/service-ca/signing-cabundle.yaml", size: 123, mode: os.FileMode(420), modTime: time.Unix(1648137870, 0)}
+	info := bindataFileInfo{name: "assets/components/service-ca/signing-cabundle.yaml", size: 123, mode: os.FileMode(436), modTime: time.Unix(1653635092, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -1987,7 +3732,7 @@ func assetsComponentsServiceCaSigningSecretYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/service-ca/signing-secret.yaml", size: 144, mode: os.FileMode(420), modTime: time.Unix(1648137870, 0)}
+	info := bindataFileInfo{name: "assets/components/service-ca/signing-secret.yaml", size: 144, mode: os.FileMode(436), modTime: time.Unix(1653635092, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -2013,7 +3758,7 @@ func assetsCore0000_50_clusterOpenshiftControllerManager_00_namespaceYaml() (*as
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/core/0000_50_cluster-openshift-controller-manager_00_namespace.yaml", size: 254, mode: os.FileMode(420), modTime: time.Unix(1624916338, 0)}
+	info := bindataFileInfo{name: "assets/core/0000_50_cluster-openshift-controller-manager_00_namespace.yaml", size: 254, mode: os.FileMode(436), modTime: time.Unix(1653635092, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -2186,7 +3931,7 @@ func assetsCrd0000_03_authorizationOpenshift_01_rolebindingrestrictionCrdYaml() 
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/crd/0000_03_authorization-openshift_01_rolebindingrestriction.crd.yaml", size: 9898, mode: os.FileMode(420), modTime: time.Unix(1652799551, 0)}
+	info := bindataFileInfo{name: "assets/crd/0000_03_authorization-openshift_01_rolebindingrestriction.crd.yaml", size: 9898, mode: os.FileMode(436), modTime: time.Unix(1653635092, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -2482,7 +4227,7 @@ func assetsCrd0000_03_securityOpenshift_01_sccCrdYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/crd/0000_03_security-openshift_01_scc.crd.yaml", size: 16010, mode: os.FileMode(420), modTime: time.Unix(1652799551, 0)}
+	info := bindataFileInfo{name: "assets/crd/0000_03_security-openshift_01_scc.crd.yaml", size: 16010, mode: os.FileMode(436), modTime: time.Unix(1653635092, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -2562,7 +4307,439 @@ func assetsCrd0000_10_configOperator_01_featuregateCrdYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/crd/0000_10_config-operator_01_featuregate.crd.yaml", size: 3438, mode: os.FileMode(420), modTime: time.Unix(1652799551, 0)}
+	info := bindataFileInfo{name: "assets/crd/0000_10_config-operator_01_featuregate.crd.yaml", size: 3438, mode: os.FileMode(436), modTime: time.Unix(1653635092, 0)}
+	a := &asset{bytes: bytes, info: info}
+	return a, nil
+}
+
+var _assetsCrd0000_20_ovnkubernetes_egressfirewallsCrdYaml = []byte(`---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.4.0
+  creationTimestamp: null
+  name: egressfirewalls.k8s.ovn.org
+spec:
+  group: k8s.ovn.org
+  names:
+    kind: EgressFirewall
+    listKind: EgressFirewallList
+    plural: egressfirewalls
+    singular: egressfirewall
+  scope: Namespaced
+  versions:
+  - additionalPrinterColumns:
+    - jsonPath: .status.status
+      name: EgressFirewall Status
+      type: string
+    name: v1
+    schema:
+      openAPIV3Schema:
+        description: EgressFirewall describes the current egress firewall for a Namespace. Traffic from a pod to an IP address outside the cluster will be checked against each EgressFirewallRule in the pod's namespace's EgressFirewall, in order. If no rule matches (or no EgressFirewall is present) then the traffic will be allowed by default.
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+            properties:
+              name:
+                type: string
+                pattern: ^default$
+          spec:
+            description: Specification of the desired behavior of EgressFirewall.
+            properties:
+              egress:
+                description: a collection of egress firewall rule objects
+                items:
+                  description: EgressFirewallRule is a single egressfirewall rule object
+                  properties:
+                    ports:
+                      description: ports specify what ports and protocols the rule applies to
+                      items:
+                        description: EgressFirewallPort specifies the port to allow or deny traffic to
+                        properties:
+                          port:
+                            description: port that the traffic must match
+                            format: int32
+                            maximum: 65535
+                            minimum: 1
+                            type: integer
+                          protocol:
+                            description: protocol (tcp, udp, sctp) that the traffic must match.
+                            pattern: ^TCP|UDP|SCTP$
+                            type: string
+                        required:
+                        - port
+                        - protocol
+                        type: object
+                      type: array
+                    to:
+                      description: to is the target that traffic is allowed/denied to
+                      properties:
+                        cidrSelector:
+                          description: cidrSelector is the CIDR range to allow/deny traffic to. If this is set, dnsName must be unset.
+                          type: string
+                        dnsName:
+                          description: dnsName is the domain name to allow/deny traffic to. If this is set, cidrSelector must be unset.
+                          pattern: ^([A-Za-z0-9-]+\.)*[A-Za-z0-9-]+\.?$
+                          type: string
+                      type: object
+                      minProperties: 1
+                      maxProperties: 1
+                    type:
+                      description: type marks this as an "Allow" or "Deny" rule
+                      pattern: ^Allow|Deny$
+                      type: string
+                  required:
+                  - to
+                  - type
+                  type: object
+                type: array
+            required:
+            - egress
+            type: object
+          status:
+            description: Observed status of EgressFirewall
+            properties:
+              status:
+                type: string
+            type: object
+        required:
+        - spec
+        type: object
+    served: true
+    storage: true
+    subresources: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []
+`)
+
+func assetsCrd0000_20_ovnkubernetes_egressfirewallsCrdYamlBytes() ([]byte, error) {
+	return _assetsCrd0000_20_ovnkubernetes_egressfirewallsCrdYaml, nil
+}
+
+func assetsCrd0000_20_ovnkubernetes_egressfirewallsCrdYaml() (*asset, error) {
+	bytes, err := assetsCrd0000_20_ovnkubernetes_egressfirewallsCrdYamlBytes()
+	if err != nil {
+		return nil, err
+	}
+
+	info := bindataFileInfo{name: "assets/crd/0000_20_ovnkubernetes_egressfirewalls.crd.yaml", size: 4625, mode: os.FileMode(436), modTime: time.Unix(1654250796, 0)}
+	a := &asset{bytes: bytes, info: info}
+	return a, nil
+}
+
+var _assetsCrd0000_20_ovnkubernetes_egressipsCrdYaml = []byte(`---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: egressips.k8s.ovn.org
+spec:
+  group: k8s.ovn.org
+  names:
+    kind: EgressIP
+    listKind: EgressIPList
+    plural: egressips
+    shortNames:
+    - eip
+    singular: egressip
+  scope: Cluster
+  versions:
+  - name: v1
+    additionalPrinterColumns:
+    - jsonPath: .spec.egressIPs[*]
+      name: EgressIPs
+      type: string
+    - jsonPath: .status.items[*].node
+      name: Assigned Node
+      type: string
+    - jsonPath: .status.items[*].egressIP
+      name: Assigned EgressIPs
+      type: string
+    served: true
+    storage: true
+    schema:
+      openAPIV3Schema:
+        description: EgressIP is a CRD allowing the user to define a fixed source IP for all egress traffic originating from any pods which match the EgressIP resource according to its spec definition.
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: Specification of the desired behavior of EgressIP.
+            properties:
+              egressIPs:
+                description: EgressIPs is the list of egress IP addresses requested. Can be IPv4 and/or IPv6. This field is mandatory.
+                items:
+                  type: string
+                type: array
+              namespaceSelector:
+                description: NamespaceSelector applies the egress IP only to the namespace(s) whose label matches this definition. This field is mandatory.
+                properties:
+                  matchExpressions:
+                    description: matchExpressions is a list of label selector requirements. The requirements are ANDed.
+                    items:
+                      description: A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+                      properties:
+                        key:
+                          description: key is the label key that the selector applies to.
+                          type: string
+                        operator:
+                          description: operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+                          type: string
+                        values:
+                          description: values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.
+                          items:
+                            type: string
+                          type: array
+                      required:
+                      - key
+                      - operator
+                      type: object
+                    type: array
+                  matchLabels:
+                    additionalProperties:
+                      type: string
+                    description: matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+                    type: object
+                type: object
+              podSelector:
+                description: 'PodSelector applies the egress IP only to the pods whose label matches this definition. This field is optional, and in case it is not set: results in the egress IP being applied to all pods in the namespace(s) matched by the NamespaceSelector. In case it is set: is intersected with the NamespaceSelector, thus applying the egress IP to the pods (in the namespace(s) already matched by the NamespaceSelector) which match this pod selector.'
+                properties:
+                  matchExpressions:
+                    description: matchExpressions is a list of label selector requirements. The requirements are ANDed.
+                    items:
+                      description: A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+                      properties:
+                        key:
+                          description: key is the label key that the selector applies to.
+                          type: string
+                        operator:
+                          description: operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+                          type: string
+                        values:
+                          description: values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.
+                          items:
+                            type: string
+                          type: array
+                      required:
+                      - key
+                      - operator
+                      type: object
+                    type: array
+                  matchLabels:
+                    additionalProperties:
+                      type: string
+                    description: matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+                    type: object
+                type: object
+            required:
+            - egressIPs
+            - namespaceSelector
+            type: object
+          status:
+            description: Observed status of EgressIP. Read-only.
+            properties:
+              items:
+                description: The list of assigned egress IPs and their corresponding node assignment.
+                items:
+                  description: The per node status, for those egress IPs who have been assigned.
+                  properties:
+                    egressIP:
+                      description: Assigned egress IP
+                      type: string
+                    node:
+                      description: Assigned node name
+                      type: string
+                  required:
+                  - egressIP
+                  - node
+                  type: object
+                type: array
+            required:
+            - items
+            type: object
+        required:
+        - spec
+        type: object
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []
+`)
+
+func assetsCrd0000_20_ovnkubernetes_egressipsCrdYamlBytes() ([]byte, error) {
+	return _assetsCrd0000_20_ovnkubernetes_egressipsCrdYaml, nil
+}
+
+func assetsCrd0000_20_ovnkubernetes_egressipsCrdYaml() (*asset, error) {
+	bytes, err := assetsCrd0000_20_ovnkubernetes_egressipsCrdYamlBytes()
+	if err != nil {
+		return nil, err
+	}
+
+	info := bindataFileInfo{name: "assets/crd/0000_20_ovnkubernetes_egressips.crd.yaml", size: 7412, mode: os.FileMode(436), modTime: time.Unix(1654250796, 0)}
+	a := &asset{bytes: bytes, info: info}
+	return a, nil
+}
+
+var _assetsCrd0000_20_ovnkubernetes_egressqosesCrdYaml = []byte(`---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.8.0
+  creationTimestamp: null
+  name: egressqoses.k8s.ovn.org
+spec:
+  group: k8s.ovn.org
+  names:
+    kind: EgressQoS
+    listKind: EgressQoSList
+    plural: egressqoses
+    singular: egressqos
+  scope: Namespaced
+  versions:
+  - name: v1
+    schema:
+      openAPIV3Schema:
+        description: EgressQoS is a CRD that allows the user to define a DSCP value
+          for pods egress traffic on its namespace to specified CIDRs. Traffic from
+          these pods will be checked against each EgressQoSRule in the namespace's
+          EgressQoS, and if there is a match the traffic is marked with the relevant
+          DSCP value.
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+            properties:
+              name:
+                type: string
+                pattern: ^default$
+          spec:
+            description: EgressQoSSpec defines the desired state of EgressQoS
+            properties:
+              egress:
+                description: a collection of Egress QoS rule objects
+                items:
+                  properties:
+                    dscp:
+                      description: DSCP marking value for matching pods' traffic.
+                      maximum: 63
+                      minimum: 0
+                      type: integer
+                    dstCIDR:
+                      description: DstCIDR specifies the destination's CIDR. Only
+                        traffic heading to this CIDR will be marked with the DSCP
+                        value. This field is optional, and in case it is not set the
+                        rule is applied to all egress traffic regardless of the destination.
+                      type: string
+                    podSelector:
+                      description: PodSelector applies the QoS rule only to the pods
+                        in the namespace whose label matches this definition. This
+                        field is optional, and in case it is not set results in the
+                        rule being applied to all pods in the namespace.
+                      properties:
+                        matchExpressions:
+                          description: matchExpressions is a list of label selector
+                            requirements. The requirements are ANDed.
+                          items:
+                            description: A label selector requirement is a selector
+                              that contains values, a key, and an operator that relates
+                              the key and values.
+                            properties:
+                              key:
+                                description: key is the label key that the selector
+                                  applies to.
+                                type: string
+                              operator:
+                                description: operator represents a key's relationship
+                                  to a set of values. Valid operators are In, NotIn,
+                                  Exists and DoesNotExist.
+                                type: string
+                              values:
+                                description: values is an array of string values.
+                                  If the operator is In or NotIn, the values array
+                                  must be non-empty. If the operator is Exists or
+                                  DoesNotExist, the values array must be empty. This
+                                  array is replaced during a strategic merge patch.
+                                items:
+                                  type: string
+                                type: array
+                            required:
+                            - key
+                            - operator
+                            type: object
+                          type: array
+                        matchLabels:
+                          additionalProperties:
+                            type: string
+                          description: matchLabels is a map of {key,value} pairs.
+                            A single {key,value} in the matchLabels map is equivalent
+                            to an element of matchExpressions, whose key field is
+                            "key", the operator is "In", and the values array contains
+                            only "value". The requirements are ANDed.
+                          type: object
+                      type: object
+                  required:
+                  - dscp
+                  type: object
+                type: array
+            required:
+            - egress
+            type: object
+          status:
+            description: EgressQoSStatus defines the observed state of EgressQoS
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []
+`)
+
+func assetsCrd0000_20_ovnkubernetes_egressqosesCrdYamlBytes() ([]byte, error) {
+	return _assetsCrd0000_20_ovnkubernetes_egressqosesCrdYaml, nil
+}
+
+func assetsCrd0000_20_ovnkubernetes_egressqosesCrdYaml() (*asset, error) {
+	bytes, err := assetsCrd0000_20_ovnkubernetes_egressqosesCrdYamlBytes()
+	if err != nil {
+		return nil, err
+	}
+
+	info := bindataFileInfo{name: "assets/crd/0000_20_ovnkubernetes_egressqoses.crd.yaml", size: 5880, mode: os.FileMode(436), modTime: time.Unix(1654250796, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -2621,7 +4798,7 @@ func assetsScc0000_20_kubeApiserverOperator_00_sccAnyuidYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/scc/0000_20_kube-apiserver-operator_00_scc-anyuid.yaml", size: 1048, mode: os.FileMode(420), modTime: time.Unix(1633965440, 0)}
+	info := bindataFileInfo{name: "assets/scc/0000_20_kube-apiserver-operator_00_scc-anyuid.yaml", size: 1048, mode: os.FileMode(436), modTime: time.Unix(1653635092, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -2685,7 +4862,7 @@ func assetsScc0000_20_kubeApiserverOperator_00_sccHostaccessYaml() (*asset, erro
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/scc/0000_20_kube-apiserver-operator_00_scc-hostaccess.yaml", size: 1267, mode: os.FileMode(420), modTime: time.Unix(1633965440, 0)}
+	info := bindataFileInfo{name: "assets/scc/0000_20_kube-apiserver-operator_00_scc-hostaccess.yaml", size: 1267, mode: os.FileMode(436), modTime: time.Unix(1653635092, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -2749,7 +4926,7 @@ func assetsScc0000_20_kubeApiserverOperator_00_sccHostmountAnyuidYaml() (*asset,
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/scc/0000_20_kube-apiserver-operator_00_scc-hostmount-anyuid.yaml", size: 1298, mode: os.FileMode(420), modTime: time.Unix(1633965440, 0)}
+	info := bindataFileInfo{name: "assets/scc/0000_20_kube-apiserver-operator_00_scc-hostmount-anyuid.yaml", size: 1298, mode: os.FileMode(436), modTime: time.Unix(1653635092, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -2811,7 +4988,7 @@ func assetsScc0000_20_kubeApiserverOperator_00_sccHostnetworkYaml() (*asset, err
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/scc/0000_20_kube-apiserver-operator_00_scc-hostnetwork.yaml", size: 1123, mode: os.FileMode(420), modTime: time.Unix(1633965440, 0)}
+	info := bindataFileInfo{name: "assets/scc/0000_20_kube-apiserver-operator_00_scc-hostnetwork.yaml", size: 1123, mode: os.FileMode(436), modTime: time.Unix(1653635092, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -2873,7 +5050,7 @@ func assetsScc0000_20_kubeApiserverOperator_00_sccNonrootYaml() (*asset, error) 
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/scc/0000_20_kube-apiserver-operator_00_scc-nonroot.yaml", size: 1166, mode: os.FileMode(420), modTime: time.Unix(1633965440, 0)}
+	info := bindataFileInfo{name: "assets/scc/0000_20_kube-apiserver-operator_00_scc-nonroot.yaml", size: 1166, mode: os.FileMode(436), modTime: time.Unix(1653635092, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -2937,7 +5114,7 @@ func assetsScc0000_20_kubeApiserverOperator_00_sccPrivilegedYaml() (*asset, erro
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/scc/0000_20_kube-apiserver-operator_00_scc-privileged.yaml", size: 1291, mode: os.FileMode(420), modTime: time.Unix(1633965440, 0)}
+	info := bindataFileInfo{name: "assets/scc/0000_20_kube-apiserver-operator_00_scc-privileged.yaml", size: 1291, mode: os.FileMode(436), modTime: time.Unix(1653635092, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -3000,7 +5177,7 @@ func assetsScc0000_20_kubeApiserverOperator_00_sccRestrictedYaml() (*asset, erro
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/scc/0000_20_kube-apiserver-operator_00_scc-restricted.yaml", size: 1213, mode: os.FileMode(420), modTime: time.Unix(1633965440, 0)}
+	info := bindataFileInfo{name: "assets/scc/0000_20_kube-apiserver-operator_00_scc-restricted.yaml", size: 1213, mode: os.FileMode(436), modTime: time.Unix(1653635092, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -3087,6 +5264,21 @@ var _bindata = map[string]func() (*asset, error){
 	"assets/components/openshift-router/service-account.yaml":                       assetsComponentsOpenshiftRouterServiceAccountYaml,
 	"assets/components/openshift-router/service-cloud.yaml":                         assetsComponentsOpenshiftRouterServiceCloudYaml,
 	"assets/components/openshift-router/service-internal.yaml":                      assetsComponentsOpenshiftRouterServiceInternalYaml,
+	"assets/components/ovn/Dockerfile":                                              assetsComponentsOvnDockerfile,
+	"assets/components/ovn/README.md":                                               assetsComponentsOvnReadmeMd,
+	"assets/components/ovn/clusterrole.yaml":                                        assetsComponentsOvnClusterroleYaml,
+	"assets/components/ovn/clusterrolebinding.yaml":                                 assetsComponentsOvnClusterrolebindingYaml,
+	"assets/components/ovn/configmap-ovn-ca.yaml":                                   assetsComponentsOvnConfigmapOvnCaYaml,
+	"assets/components/ovn/configmap.yaml":                                          assetsComponentsOvnConfigmapYaml,
+	"assets/components/ovn/master/daemonset.yaml":                                   assetsComponentsOvnMasterDaemonsetYaml,
+	"assets/components/ovn/master/serviceaccount.yaml":                              assetsComponentsOvnMasterServiceaccountYaml,
+	"assets/components/ovn/namespace.yaml":                                          assetsComponentsOvnNamespaceYaml,
+	"assets/components/ovn/node/daemonset.yaml":                                     assetsComponentsOvnNodeDaemonsetYaml,
+	"assets/components/ovn/node/serviceaccount.yaml":                                assetsComponentsOvnNodeServiceaccountYaml,
+	"assets/components/ovn/role.yaml":                                               assetsComponentsOvnRoleYaml,
+	"assets/components/ovn/rolebinding.yaml":                                        assetsComponentsOvnRolebindingYaml,
+	"assets/components/ovn/secret-ovn-cert.yaml":                                    assetsComponentsOvnSecretOvnCertYaml,
+	"assets/components/ovn/service.yaml":                                            assetsComponentsOvnServiceYaml,
 	"assets/components/service-ca/clusterrole.yaml":                                 assetsComponentsServiceCaClusterroleYaml,
 	"assets/components/service-ca/clusterrolebinding.yaml":                          assetsComponentsServiceCaClusterrolebindingYaml,
 	"assets/components/service-ca/deployment.yaml":                                  assetsComponentsServiceCaDeploymentYaml,
@@ -3100,6 +5292,9 @@ var _bindata = map[string]func() (*asset, error){
 	"assets/crd/0000_03_authorization-openshift_01_rolebindingrestriction.crd.yaml": assetsCrd0000_03_authorizationOpenshift_01_rolebindingrestrictionCrdYaml,
 	"assets/crd/0000_03_security-openshift_01_scc.crd.yaml":                         assetsCrd0000_03_securityOpenshift_01_sccCrdYaml,
 	"assets/crd/0000_10_config-operator_01_featuregate.crd.yaml":                    assetsCrd0000_10_configOperator_01_featuregateCrdYaml,
+	"assets/crd/0000_20_ovnkubernetes_egressfirewalls.crd.yaml":                     assetsCrd0000_20_ovnkubernetes_egressfirewallsCrdYaml,
+	"assets/crd/0000_20_ovnkubernetes_egressips.crd.yaml":                           assetsCrd0000_20_ovnkubernetes_egressipsCrdYaml,
+	"assets/crd/0000_20_ovnkubernetes_egressqoses.crd.yaml":                         assetsCrd0000_20_ovnkubernetes_egressqosesCrdYaml,
 	"assets/scc/0000_20_kube-apiserver-operator_00_scc-anyuid.yaml":                 assetsScc0000_20_kubeApiserverOperator_00_sccAnyuidYaml,
 	"assets/scc/0000_20_kube-apiserver-operator_00_scc-hostaccess.yaml":             assetsScc0000_20_kubeApiserverOperator_00_sccHostaccessYaml,
 	"assets/scc/0000_20_kube-apiserver-operator_00_scc-hostmount-anyuid.yaml":       assetsScc0000_20_kubeApiserverOperator_00_sccHostmountAnyuidYaml,
@@ -3194,6 +5389,27 @@ var _bintree = &bintree{nil, map[string]*bintree{
 				"service-cloud.yaml":        {assetsComponentsOpenshiftRouterServiceCloudYaml, map[string]*bintree{}},
 				"service-internal.yaml":     {assetsComponentsOpenshiftRouterServiceInternalYaml, map[string]*bintree{}},
 			}},
+			"ovn": {nil, map[string]*bintree{
+				"Dockerfile":              {assetsComponentsOvnDockerfile, map[string]*bintree{}},
+				"README.md":               {assetsComponentsOvnReadmeMd, map[string]*bintree{}},
+				"clusterrole.yaml":        {assetsComponentsOvnClusterroleYaml, map[string]*bintree{}},
+				"clusterrolebinding.yaml": {assetsComponentsOvnClusterrolebindingYaml, map[string]*bintree{}},
+				"configmap-ovn-ca.yaml":   {assetsComponentsOvnConfigmapOvnCaYaml, map[string]*bintree{}},
+				"configmap.yaml":          {assetsComponentsOvnConfigmapYaml, map[string]*bintree{}},
+				"master": {nil, map[string]*bintree{
+					"daemonset.yaml":      {assetsComponentsOvnMasterDaemonsetYaml, map[string]*bintree{}},
+					"serviceaccount.yaml": {assetsComponentsOvnMasterServiceaccountYaml, map[string]*bintree{}},
+				}},
+				"namespace.yaml": {assetsComponentsOvnNamespaceYaml, map[string]*bintree{}},
+				"node": {nil, map[string]*bintree{
+					"daemonset.yaml":      {assetsComponentsOvnNodeDaemonsetYaml, map[string]*bintree{}},
+					"serviceaccount.yaml": {assetsComponentsOvnNodeServiceaccountYaml, map[string]*bintree{}},
+				}},
+				"role.yaml":            {assetsComponentsOvnRoleYaml, map[string]*bintree{}},
+				"rolebinding.yaml":     {assetsComponentsOvnRolebindingYaml, map[string]*bintree{}},
+				"secret-ovn-cert.yaml": {assetsComponentsOvnSecretOvnCertYaml, map[string]*bintree{}},
+				"service.yaml":         {assetsComponentsOvnServiceYaml, map[string]*bintree{}},
+			}},
 			"service-ca": {nil, map[string]*bintree{
 				"clusterrole.yaml":        {assetsComponentsServiceCaClusterroleYaml, map[string]*bintree{}},
 				"clusterrolebinding.yaml": {assetsComponentsServiceCaClusterrolebindingYaml, map[string]*bintree{}},
@@ -3213,6 +5429,9 @@ var _bintree = &bintree{nil, map[string]*bintree{
 			"0000_03_authorization-openshift_01_rolebindingrestriction.crd.yaml": {assetsCrd0000_03_authorizationOpenshift_01_rolebindingrestrictionCrdYaml, map[string]*bintree{}},
 			"0000_03_security-openshift_01_scc.crd.yaml":                         {assetsCrd0000_03_securityOpenshift_01_sccCrdYaml, map[string]*bintree{}},
 			"0000_10_config-operator_01_featuregate.crd.yaml":                    {assetsCrd0000_10_configOperator_01_featuregateCrdYaml, map[string]*bintree{}},
+			"0000_20_ovnkubernetes_egressfirewalls.crd.yaml":                     {assetsCrd0000_20_ovnkubernetes_egressfirewallsCrdYaml, map[string]*bintree{}},
+			"0000_20_ovnkubernetes_egressips.crd.yaml":                           {assetsCrd0000_20_ovnkubernetes_egressipsCrdYaml, map[string]*bintree{}},
+			"0000_20_ovnkubernetes_egressqoses.crd.yaml":                         {assetsCrd0000_20_ovnkubernetes_egressqosesCrdYaml, map[string]*bintree{}},
 		}},
 		"scc": {nil, map[string]*bintree{
 			"0000_20_kube-apiserver-operator_00_scc-anyuid.yaml":           {assetsScc0000_20_kubeApiserverOperator_00_sccAnyuidYaml, map[string]*bintree{}},
