@@ -54,11 +54,7 @@ $ ovs-vsctl set interface eno1 type=system
 
 #### update ovnk manifests
 
-Some hardcoded values need to change in ovnk manifests:
-
-1. Replace `10.73.116.66` in `assets/components/ovn/master/daemonset.yaml` and `assets/components/ovn/node/daemonset.yaml` to the ip address of your test env.
-
-2. (Optional) `/var/lib/microshift/resources/kubeadmin/kubeconfig` is mounted to `master/daemonset.yaml` and `node/daemonset.yaml`, Change it if you have customized microshift data directory (cfg.DataDir)
+1. (Optional) `/var/lib/microshift/resources/kubeadmin/kubeconfig` is mounted to `master/daemonset.yaml` and `node/daemonset.yaml`, Change it if you have customized microshift data directory (cfg.DataDir)
 
 
 #### make and run microshift
@@ -67,6 +63,7 @@ Some hardcoded values need to change in ovnk manifests:
 $ ./script/bindata.sh
 $ make clean; make
 $ ./hack/cleanup.sh
+$ (optional) crio wipe -f && sleep 1 && systemctl restart crio
 $ ./microshift run
 ```
 

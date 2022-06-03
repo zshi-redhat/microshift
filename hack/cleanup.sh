@@ -38,6 +38,7 @@ sudo bash -c '
 
     echo "Removing /var/lib/microshift"
     rm -rf /var/lib/microshift
+    rm -rf /var/lib/ovn
     rm -rf /var/run/ovn
     rm -rf /var/run/openvswitch
 
