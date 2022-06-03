@@ -1693,14 +1693,6 @@ Some hardcoded values need to change in ovnk manifests:
 
 2. (Optional) ` + "`" + `/var/lib/microshift/resources/kubeadmin/kubeconfig` + "`" + ` is mounted to ` + "`" + `master/daemonset.yaml` + "`" + ` and ` + "`" + `node/daemonset.yaml` + "`" + `, Change it if you have customized microshift data directory (cfg.DataDir)
 
-3. Update ` + "`" + `ca-bundle.crt` + "`" + ` data in ` + "`" + `assets/components/ovn/config-ovn-ca.yaml` + "`" + `. (I took that from a running ovn-k cluster ` + "`" + `oc -n openshift-ovn-kubernetes get configmap ovn-ca -o yaml` + "`" + `)
-
-Some manifests to create manually for later use:
-
-4. Create ` + "`" + `ovn-cert` + "`" + ` secret yaml file (ovn-cert.yaml) which will be applied manually later after starting microshift, this is taken from the same running ovn-k cluster where ` + "`" + `ca-bundle.crt` + "`" + ` is taken (` + "`" + `oc -n openshift-ovn-kubernetes get secret ovn-cert -o yaml > ovn-cert.yaml` + "`" + `)
-
-5. Create ovnk CRDs yaml file (ovn-crd.yaml) which will be applied later manually after starting microshift, this is taken from openshift cluster-network-operator repo (https://github.com/openshift/cluster-network-operator/blob/master/bindata/network/ovn-kubernetes/common/001-crd.yaml)
-
 
 #### make and run microshift
 
@@ -1709,21 +1701,6 @@ $ ./script/bindata.sh
 $ make clean; make
 $ ./hack/cleanup.sh
 $ ./microshift run
-` + "`" + `` + "`" + `` + "`" + `
-
-#### apply secret and crds
-
-Apply ovn-crd.yaml once kube api is available:
-
-` + "`" + `` + "`" + `` + "`" + `
-$ oc create -f ovn-crd.yaml
-` + "`" + `` + "`" + `` + "`" + `
-
-
-Apply ovn-cert secret once ovnk namespace (openshift-ovn-kubernetes) is created:
-
-` + "`" + `` + "`" + `` + "`" + `
-$ oc create -f ovn-cert.yaml
 ` + "`" + `` + "`" + `` + "`" + `
 
 Wait for CNI pods to be created, for example ` + "`" + `dns-default-xxxx` + "`" + ` in ` + "`" + `openshift-dns` + "`" + ` namespace
@@ -1739,7 +1716,7 @@ func assetsComponentsOvnReadmeMd() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/ovn/README.md", size: 3349, mode: os.FileMode(436), modTime: time.Unix(1653865836, 0)}
+	info := bindataFileInfo{name: "assets/components/ovn/README.md", size: 2314, mode: os.FileMode(436), modTime: time.Unix(1654082203, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -2143,8 +2120,8 @@ spec:
           echo "$(date -Iseconds) - starting ovn-northd"
           exec ovn-northd \
             --no-chdir "-vconsole:${OVN_LOG_LEVEL}" -vfile:off "-vPATTERN:console:%D{%Y-%m-%dT%H:%M:%S.###Z}|%05N|%c%T|%p|%m" \
-            --ovnnb-db "ssl:10.73.116.66:9641" \
-            --ovnsb-db "ssl:10.73.116.66:9642" \
+            --ovnnb-db "ssl:127.0.0.1:9641" \
+            --ovnsb-db "ssl:127.0.0.1:9642" \
             --pidfile /var/run/ovn/ovn-northd.pid \
             -p /ovn-cert/tls.key \
             -c /ovn-cert/tls.crt \
@@ -2218,51 +2195,7 @@ spec:
           db="nb"
           db_port="9641"
           ovn_db_file="/etc/ovn/ovn${db}_db.db"
-          # checks if a db pod is part of a current cluster
-          db_part_of_cluster() {
-            local pod=${1}
-            local db=${2}
-            local port=${3}
-            echo "Checking if ${pod} is part of cluster"
-            # TODO: change to use '--request-timeout=5s', if https://github.com/kubernetes/kubernetes/issues/49343 is fixed. 
-            init_ip=$(timeout 5 kubectl get pod -n ${ovn_kubernetes_namespace} ${pod} -o=jsonpath='{.status.podIP}')
-            if [[ $? != 0 ]]; then
-              echo "Unable to get ${pod} ip "
-              return 1
-            fi
-            echo "Found ${pod} ip: $init_ip"
-            init_ip=$(bracketify $init_ip)
-            target=$(ovn-${db}ctl --timeout=5 --db=${transport}:${init_ip}:${port} ${ovndb_ctl_ssl_opts} \
-                      --data=bare --no-headings --columns=target list connection)
-            if [[ "${target}" != "p${transport}:${port}${ovn_raft_conn_ip_url_suffix}" ]]; then
-              echo "Unable to check correct target ${target} "
-              return 1
-            fi
-            echo "${pod} is part of cluster"
-            return 0
-          }
-          # end of db_part_of_cluster
           
-          # Checks if cluster has already been initialized.
-          # If not it returns false and sets init_ip to CLUSTER_INITIATOR_IP
-          cluster_exists() {
-            local db=${1}
-            local port=${2}
-            # TODO: change to use '--request-timeout=5s', if https://github.com/kubernetes/kubernetes/issues/49343 is fixed. 
-            db_pods=$(timeout 5 kubectl get pod -n ${ovn_kubernetes_namespace} -o=jsonpath='{.items[*].metadata.name}' | egrep -o 'ovnkube-master-\w+' | grep -v "metrics")
-
-            for db_pod in $db_pods; do
-              if db_part_of_cluster $db_pod $db $port; then
-                echo "${db_pod} is part of current cluster with ip: ${init_ip}!"
-                return 0
-              fi
-            done
-            # if we get here  there is no cluster, set init_ip and get out
-            init_ip=$(bracketify $CLUSTER_INITIATOR_IP)
-            return 1
-          }
-          # end of cluster_exists()
-
           OVN_ARGS="--db-nb-cluster-local-port=9644 \
             --db-nb-cluster-local-addr=$(bracketify ${K8S_NODE_IP}) \
             --no-monitor \
@@ -2271,7 +2204,7 @@ spec:
             --ovn-nb-db-ssl-cert=/ovn-cert/tls.crt \
             --ovn-nb-db-ssl-ca-cert=/ovn-ca/ca-bundle.crt"
 
-          CLUSTER_INITIATOR_IP="10.73.116.66"
+          CLUSTER_INITIATOR_IP="127.0.0.1"
           echo "$(date -Iseconds) - starting nbdb  CLUSTER_INITIATOR_IP=${CLUSTER_INITIATOR_IP}, K8S_NODE_IP=${K8S_NODE_IP}"
           initial_raft_create=true
           initialize="false"
@@ -2281,33 +2214,7 @@ spec:
           fi
 
           if [[ "${initialize}" == "true" ]]; then
-            # check to see if a cluster already exists. If it does, just join it.
-            counter=0
-            cluster_found=false
-            while [ $counter -lt 5 ]; do
-              if cluster_exists ${db} ${db_port}; then
-                cluster_found=true
-                break
-              fi
-              sleep 1
-              counter=$((counter+1))
-            done
-
-            if ${cluster_found}; then
-              echo "Cluster already exists for DB: ${db}"
-              initial_raft_create=false
-              # join existing cluster
-              exec /usr/share/ovn/scripts/ovn-ctl ${OVN_ARGS} \
-              --db-nb-cluster-remote-port=9643 \
-              --db-nb-cluster-remote-addr=${init_ip} \
-              --db-nb-cluster-remote-proto=ssl \
-              --ovn-nb-log="-vconsole:${OVN_LOG_LEVEL} -vfile:off -vPATTERN:console:%D{%Y-%m-%dT%H:%M:%S.###Z}|%05N|%c%T|%p|%m" \
-              run_nb_ovsdb &
-
-              wait $!
-            else
               # either we need to initialize a new cluster or wait for master to create it
-              if [[ "${K8S_NODE_IP}" == "${CLUSTER_INITIATOR_IP}" ]]; then
                 # set DB election timer at DB creation time if OVN supports it
                 election_timer=
                 if test -n "$(/usr/share/ovn/scripts/ovn-ctl --help 2>&1 | grep "\--db-nb-election-timer")"; then
@@ -2320,18 +2227,6 @@ spec:
                 run_nb_ovsdb &
 
                 wait $!
-              else
-                echo "Joining the nbdb cluster with init_ip=${init_ip}..."
-                exec /usr/share/ovn/scripts/ovn-ctl ${OVN_ARGS} \
-                --db-nb-cluster-remote-port=9643 \
-                --db-nb-cluster-remote-addr=${init_ip} \
-                --db-nb-cluster-remote-proto=ssl \
-                --ovn-nb-log="-vconsole:${OVN_LOG_LEVEL} -vfile:off -vPATTERN:console:%D{%Y-%m-%dT%H:%M:%S.###Z}|%05N|%c%T|%p|%m" \
-                run_nb_ovsdb &
-
-                wait $!
-              fi
-            fi
           else
             exec /usr/share/ovn/scripts/ovn-ctl ${OVN_ARGS} \
               --ovn-nb-log="-vconsole:${OVN_LOG_LEVEL} -vfile:off -vPATTERN:console:%D{%Y-%m-%dT%H:%M:%S.###Z}|%05N|%c%T|%p|%m" \
@@ -2348,7 +2243,7 @@ spec:
               - -c
               - |
                 set -x
-                CLUSTER_INITIATOR_IP="10.73.116.66"
+                CLUSTER_INITIATOR_IP="127.0.0.1"
                 rm -f /var/run/ovn/ovnnb_db.pid
                 if [[ "${K8S_NODE_IP}" == "${CLUSTER_INITIATOR_IP}" ]]; then
                   echo "$(date -Iseconds) - nbdb - postStart - waiting for master to be selected"
@@ -2382,7 +2277,7 @@ spec:
                 fi
                 #configure northd_probe_interval
                 OVN_NB_CTL="ovn-nbctl -p /ovn-cert/tls.key -c /ovn-cert/tls.crt -C /ovn-ca/ca-bundle.crt \
-                            --db "ssl:10.73.116.66:9641""
+                            --db "ssl:127.0.0.1:9641""
                 northd_probe_interval=${OVN_NORTHD_PROBE_INTERVAL:-10000}
                 echo "Setting northd probe interval to ${northd_probe_interval} ms"
                 retries=0
@@ -2513,50 +2408,6 @@ spec:
           db="sb"
           db_port="9642"
           ovn_db_file="/etc/ovn/ovn${db}_db.db"
-          # checks if a db pod is part of a current cluster
-          db_part_of_cluster() {
-            local pod=${1}
-            local db=${2}
-            local port=${3}
-            echo "Checking if ${pod} is part of cluster"
-            # TODO: change to use '--request-timeout=5s', if https://github.com/kubernetes/kubernetes/issues/49343 is fixed. 
-            init_ip=$(timeout 5 kubectl get pod -n ${ovn_kubernetes_namespace} ${pod} -o=jsonpath='{.status.podIP}')
-            if [[ $? != 0 ]]; then
-              echo "Unable to get ${pod} ip "
-              return 1
-            fi
-            echo "Found ${pod} ip: $init_ip"
-            init_ip=$(bracketify $init_ip)
-            target=$(ovn-${db}ctl --timeout=5 --db=${transport}:${init_ip}:${port} ${ovndb_ctl_ssl_opts} \
-                      --data=bare --no-headings --columns=target list connection)
-            if [[ "${target}" != "p${transport}:${port}${ovn_raft_conn_ip_url_suffix}" ]]; then
-              echo "Unable to check correct target ${target} "
-              return 1
-            fi
-            echo "${pod} is part of cluster"
-            return 0
-          }
-          # end of db_part_of_cluster
-
-          # Checks if cluster has already been initialized.
-          # If not it returns false and sets init_ip to CLUSTER_INITIATOR_IP
-          cluster_exists() {
-            local db=${1}
-            local port=${2}
-            # TODO: change to use '--request-timeout=5s', if https://github.com/kubernetes/kubernetes/issues/49343 is fixed. 
-            db_pods=$(timeout 5 kubectl get pod -n ${ovn_kubernetes_namespace} -o=jsonpath='{.items[*].metadata.name}' | egrep -o 'ovnkube-master-\w+' | grep -v "metrics")
-
-            for db_pod in $db_pods; do
-              if db_part_of_cluster $db_pod $db $port; then
-                echo "${db_pod} is part of current cluster with ip: ${init_ip}!"
-                return 0
-              fi
-            done
-            # if we get here  there is no cluster, set init_ip and get out
-            init_ip=$(bracketify $CLUSTER_INITIATOR_IP)
-            return 1
-          }
-          # end of cluster_exists()
 
           OVN_ARGS="--db-sb-cluster-local-port=9644 \
             --db-sb-cluster-local-addr=$(bracketify ${K8S_NODE_IP}) \
@@ -2566,7 +2417,7 @@ spec:
             --ovn-sb-db-ssl-cert=/ovn-cert/tls.crt \
             --ovn-sb-db-ssl-ca-cert=/ovn-ca/ca-bundle.crt"
 
-          CLUSTER_INITIATOR_IP="10.73.116.66"
+          CLUSTER_INITIATOR_IP="127.0.0.1"
           echo "$(date -Iseconds) - starting sbdb  CLUSTER_INITIATOR_IP=${CLUSTER_INITIATOR_IP}"
           initial_raft_create=true
           initialize="false"
@@ -2576,33 +2427,7 @@ spec:
           fi
 
           if [[ "${initialize}" == "true" ]]; then
-            # check to see if a cluster already exists. If it does, just join it.
-            counter=0
-            cluster_found=false
-            while [ $counter -lt 5 ]; do
-              if cluster_exists ${db} ${db_port}; then
-                cluster_found=true
-                break
-              fi
-              sleep 1
-              counter=$((counter+1))
-            done
-
-            if ${cluster_found}; then
-              echo "Cluster already exists for DB: ${db}"
-              initial_raft_create=false
-              # join existing cluster
-              exec /usr/share/ovn/scripts/ovn-ctl ${OVN_ARGS} \
-              --db-sb-cluster-remote-port=9644 \
-              --db-sb-cluster-remote-addr=${init_ip} \
-              --db-sb-cluster-remote-proto=ssl \
-              --ovn-sb-log="-vconsole:${OVN_LOG_LEVEL} -vfile:off -vPATTERN:console:%D{%Y-%m-%dT%H:%M:%S.###Z}|%05N|%c%T|%p|%m" \
-              run_sb_ovsdb &
-
-              wait $!
-            else
               # either we need to initialize a new cluster or wait for master to create it
-              if [[ "${K8S_NODE_IP}" == "${CLUSTER_INITIATOR_IP}" ]]; then
                 # set DB election timer at DB creation time if OVN supports it
                 election_timer=
                 if test -n "$(/usr/share/ovn/scripts/ovn-ctl --help 2>&1 | grep "\--db-sb-election-timer")"; then
@@ -2615,17 +2440,6 @@ spec:
                 run_sb_ovsdb &
 
                 wait $!
-              else
-                exec /usr/share/ovn/scripts/ovn-ctl ${OVN_ARGS} \
-                --db-sb-cluster-remote-port=9644 \
-                --db-sb-cluster-remote-addr=${init_ip} \
-                --db-sb-cluster-remote-proto=ssl \
-                --ovn-sb-log="-vconsole:${OVN_LOG_LEVEL} -vfile:off -vPATTERN:console:%D{%Y-%m-%dT%H:%M:%S.###Z}|%05N|%c%T|%p|%m" \
-                run_sb_ovsdb &
-
-                wait $!
-              fi
-            fi
           else
             exec /usr/share/ovn/scripts/ovn-ctl ${OVN_ARGS} \
             --ovn-sb-log="-vconsole:${OVN_LOG_LEVEL} -vfile:off -vPATTERN:console:%D{%Y-%m-%dT%H:%M:%S.###Z}|%05N|%c%T|%p|%m" \
@@ -2641,7 +2455,7 @@ spec:
               - -c
               - |
                 set -x
-                CLUSTER_INITIATOR_IP="10.73.116.66"
+                CLUSTER_INITIATOR_IP="127.0.0.1"
                 rm -f /var/run/ovn/ovnsb_db.pid
                 if [[ "${K8S_NODE_IP}" == "${CLUSTER_INITIATOR_IP}" ]]; then
                   echo "$(date -Iseconds) - sdb - postStart - waiting for master to be selected"
@@ -2758,12 +2572,12 @@ spec:
             --metrics-bind-address "127.0.0.1:29102" \
             --metrics-enable-pprof \
             ${gateway_mode_flags} \
-            --sb-address "ssl:10.73.116.66:9642" \
+            --sb-address "ssl:127.0.0.1:9642" \
             --sb-client-privkey /ovn-cert/tls.key \
             --sb-client-cert /ovn-cert/tls.crt \
             --sb-client-cacert /ovn-ca/ca-bundle.crt \
             --sb-cert-common-name "ovn" \
-            --nb-address "ssl:10.73.116.66:9641" \
+            --nb-address "ssl:127.0.0.1:9641" \
             --nb-client-privkey /ovn-cert/tls.key \
             --nb-client-cert /ovn-cert/tls.crt \
             --nb-client-cacert /ovn-ca/ca-bundle.crt \
@@ -2871,7 +2685,7 @@ func assetsComponentsOvnMasterDaemonsetYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/ovn/master/daemonset.yaml", size: 30637, mode: os.FileMode(436), modTime: time.Unix(1653864220, 0)}
+	info := bindataFileInfo{name: "assets/components/ovn/master/daemonset.yaml", size: 23227, mode: os.FileMode(436), modTime: time.Unix(1654238045, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
