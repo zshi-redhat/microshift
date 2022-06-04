@@ -6,6 +6,10 @@ import (
 )
 
 func StartComponents(cfg *config.MicroshiftConfig) error {
+	if err := startOVN(cfg, cfg.DataDir+"/resources/kubeadmin/kubeconfig"); err != nil {
+		klog.Warningf("Failed to start OVN: %v", err)
+		return err
+	}
 	if err := startServiceCAController(cfg, cfg.DataDir+"/resources/kubeadmin/kubeconfig"); err != nil {
 		klog.Warningf("Failed to start service-ca controller: %v", err)
 		return err
@@ -22,10 +26,6 @@ func StartComponents(cfg *config.MicroshiftConfig) error {
 	}
 	if err := startDNSController(cfg, cfg.DataDir+"/resources/kubeadmin/kubeconfig"); err != nil {
 		klog.Warningf("Failed to start DNS controller: %v", err)
-		return err
-	}
-	if err := startOVN(cfg, cfg.DataDir+"/resources/kubeadmin/kubeconfig"); err != nil {
-		klog.Warningf("Failed to start OVN: %v", err)
 		return err
 	}
 	return nil
