@@ -11,7 +11,7 @@ data:
     mtu="1400"
     cluster-subnets="10.128.0.0/14/23"
     encap-port="6081"
-    enable-lflow-cache=true
+    enable-lflow-cache=false
     lflow-cache-limit-kb=870
 
     [kubernetes]
@@ -23,9 +23,9 @@ data:
     platform-type="BareMetal"
  
     [ovnkubernetesfeature]
-    enable-egress-ip=true
-    enable-egress-firewall=true
-    enable-egress-qos=true
+    enable-egress-ip=false
+    enable-egress-firewall=false
+    enable-egress-qos=false
 
     [gateway]
     mode=shared
