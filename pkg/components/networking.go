@@ -31,9 +31,9 @@ func startOVN(cfg *config.MicroshiftConfig, kubeconfigPath string) error {
 			"assets/components/ovn/configmap.yaml",
 			//	"assets/components/ovn/configmap-ovn-ca.yaml",
 		}
-		svc = []string{
-			"assets/components/ovn/service.yaml",
-		}
+		// svc = []string{
+		// 	"assets/components/ovn/service.yaml",
+		// }
 		ds = []string{
 			"assets/components/ovn/master/daemonset.yaml",
 			"assets/components/ovn/node/daemonset.yaml",
@@ -100,10 +100,10 @@ func startOVN(cfg *config.MicroshiftConfig, kubeconfigPath string) error {
 	// 	klog.Warningf("Failed to apply secret %v: %v", secret, err)
 	// 	return err
 	// }
-	if err := assets.ApplyServices(svc, nil, nil, kubeconfigPath); err != nil {
-		klog.Warningf("Failed to apply service %v %v", svc, err)
-		return err
-	}
+	// if err := assets.ApplyServices(svc, nil, nil, kubeconfigPath); err != nil {
+	// 	klog.Warningf("Failed to apply service %v %v", svc, err)
+	// 	return err
+	// }
 	if err := assets.ApplyDaemonSets(ds, renderReleaseImage, nil, kubeconfigPath); err != nil {
 		klog.Warningf("Failed to apply daemonSet %v %v", ds, err)
 		return err

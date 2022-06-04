@@ -107,8 +107,6 @@ spec:
             source "/env/${K8S_NODE}"
             set +o allexport
           fi
-          cp -f /usr/libexec/cni/ovn-k8s-cni-overlay /cni-bin-dir/
-          ovn_config_namespace=openshift-ovn-kubernetes
           echo "I$(date "+%m%d %H:%M:%S.%N") - disable conntrack on geneve port"
           iptables -t raw -A PREROUTING -p udp --dport 6081 -j NOTRACK
           iptables -t raw -A OUTPUT -p udp --dport 6081 -j NOTRACK
@@ -118,36 +116,6 @@ spec:
 
           gateway_mode_flags="--gateway-mode shared --gateway-interface br-ex"
 
-          export_network_flows_flags=
-          if [[ -n "${NETFLOW_COLLECTORS}" ]] ; then
-            export_network_flows_flags="--netflow-targets ${NETFLOW_COLLECTORS}"
-          fi
-          if [[ -n "${SFLOW_COLLECTORS}" ]] ; then
-            export_network_flows_flags="$export_network_flows_flags --sflow-targets ${SFLOW_COLLECTORS}"
-          fi
-          if [[ -n "${IPFIX_COLLECTORS}" ]] ; then
-            export_network_flows_flags="$export_network_flows_flags --ipfix-targets ${IPFIX_COLLECTORS}"
-          fi
-          if [[ -n "${IPFIX_CACHE_MAX_FLOWS}" ]] ; then
-            export_network_flows_flags="$export_network_flows_flags --ipfix-cache-max-flows ${IPFIX_CACHE_MAX_FLOWS}"
-          fi
-          if [[ -n "${IPFIX_CACHE_ACTIVE_TIMEOUT}" ]] ; then
-            export_network_flows_flags="$export_network_flows_flags --ipfix-cache-active-timeout ${IPFIX_CACHE_ACTIVE_TIMEOUT}"
-          fi
-          if [[ -n "${IPFIX_SAMPLING}" ]] ; then
-            export_network_flows_flags="$export_network_flows_flags --ipfix-sampling ${IPFIX_SAMPLING}"
-          fi
-          gw_interface_flag=
-          # if br-ex1 is configured on the node, we want to use it for external gateway traffic
-          if [ -d /sys/class/net/br-ex1 ]; then
-            gw_interface_flag="--exgw-interface=br-ex1"
-          fi
-
-          node_mgmt_port_netdev_flags=
-          if [[ -n "${OVNKUBE_NODE_MGMT_PORT_NETDEV}" ]] ; then
-            node_mgmt_port_netdev_flags="--ovnkube-node-mgmt-port-netdev ${OVNKUBE_NODE_MGMT_PORT_NETDEV}"
-          fi
-
           exec /usr/bin/ovnkube --init-node "${K8S_NODE}" \
             --nb-address "" \
             --sb-address "" \
@@ -155,9 +123,7 @@ spec:
             --loglevel "${OVN_KUBE_LOG_LEVEL}" \
             --inactivity-probe="${OVN_CONTROLLER_INACTIVITY_PROBE}" \
             ${gateway_mode_flags} \
-            --disable-snat-multiple-gws \
-            ${export_network_flows_flags} \
-            ${gw_interface_flag}
+            --disable-snat-multiple-gws
         env:
         # for kubectl
         - name: KUBERNETES_SERVICE_PORT
@@ -194,9 +160,6 @@ spec:
           name: host-run-netns
           readOnly: true
           mountPropagation: HostToContainer
-        # for installing the CNI plugin binary
-        - mountPath: /cni-bin-dir
-          name: host-cni-bin
         # for installing the CNI configuration file
         - mountPath: /etc/cni/net.d
           name: host-cni-netd
@@ -269,9 +232,6 @@ spec:
       - name: host-run-ovn-kubernetes
         hostPath:
           path: /run/ovn-kubernetes
-      - name: host-cni-bin
-        hostPath:
-          path: "/var/lib/cni/bin"
       - name: host-cni-netd
         hostPath:
           path: "/var/run/multus/cni/net.d"
