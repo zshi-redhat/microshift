@@ -71,12 +71,7 @@ spec:
           echo "$(date -Iseconds) - starting ovn-northd"
           exec ovn-northd \
             --no-chdir "-vconsole:${OVN_LOG_LEVEL}" -vfile:off "-vPATTERN:console:%D{%Y-%m-%dT%H:%M:%S.###Z}|%05N|%c%T|%p|%m" \
-            --ovnnb-db "ssl:127.0.0.1:9641" \
-            --ovnsb-db "ssl:127.0.0.1:9642" \
-            --pidfile /var/run/ovn/ovn-northd.pid \
-            -p /ovn-cert/tls.key \
-            -c /ovn-cert/tls.crt \
-            -C /ovn-ca/ca-bundle.crt &
+            --pidfile /var/run/ovn/ovn-northd.pid &
 
           wait $!
         lifecycle:
@@ -100,10 +95,6 @@ spec:
           name: run-ovn
         - mountPath: /env
           name: env-overrides
-        - mountPath: /ovn-cert # not needed, but useful when exec'ing in to pod.
-          name: ovn-cert
-        - mountPath: /ovn-ca
-          name: ovn-ca
         resources:
           requests:
             cpu: 10m
@@ -136,24 +127,12 @@ spec:
 
           bracketify() { case "$1" in *:*) echo "[$1]" ;; *) echo "$1" ;; esac }
           # initialize variables
-          ovn_kubernetes_namespace=openshift-ovn-kubernetes
-          ovndb_ctl_ssl_opts="-p /ovn-cert/tls.key -c /ovn-cert/tls.crt -C /ovn-ca/ca-bundle.crt"
-          transport="ssl"
-          ovn_raft_conn_ip_url_suffix=""
-          if [[ "${K8S_NODE_IP}" == *":"* ]]; then
-            ovn_raft_conn_ip_url_suffix=":[::]"
-          fi
           db="nb"
-          db_port="9641"
           ovn_db_file="/etc/ovn/ovn${db}_db.db"
           
           OVN_ARGS="--db-nb-cluster-local-port=9644 \
             --db-nb-cluster-local-addr=$(bracketify ${K8S_NODE_IP}) \
-            --no-monitor \
-            --db-nb-cluster-local-proto=ssl \
-            --ovn-nb-db-ssl-key=/ovn-cert/tls.key \
-            --ovn-nb-db-ssl-cert=/ovn-cert/tls.crt \
-            --ovn-nb-db-ssl-ca-cert=/ovn-ca/ca-bundle.crt"
+            --no-monitor"
 
           CLUSTER_INITIATOR_IP="127.0.0.1"
           echo "$(date -Iseconds) - starting nbdb  CLUSTER_INITIATOR_IP=${CLUSTER_INITIATOR_IP}, K8S_NODE_IP=${K8S_NODE_IP}"
@@ -198,17 +177,6 @@ spec:
                 rm -f /var/run/ovn/ovnnb_db.pid
                   echo "$(date -Iseconds) - nbdb - postStart - waiting for master to be selected"
 
-                  # set the connection and inactivity probe
-                  retries=0
-                  while ! ovn-nbctl --no-leader-only -t 5 set-connection pssl:9641 -- set connection . inactivity_probe=60000; do
-                    (( retries += 1 ))
-                  if [[ "${retries}" -gt 40 ]]; then
-                    echo "$(date -Iseconds) - ERROR RESTARTING - nbdb - too many failed ovn-nbctl attempts, giving up"
-                      exit 1
-                  fi
-                  sleep 2
-                  done
-
                   # Upgrade the db if required.
                   DB_SCHEMA="/usr/share/ovn/ovn-nb.ovsschema"
                   DB_SERVER="unix:/var/run/ovn/ovnnb_db.sock"
@@ -225,14 +193,12 @@ spec:
                       ovsdb-client -t 30 convert "$DB_SERVER" "$DB_SCHEMA"
                   fi
                 #configure northd_probe_interval
-                OVN_NB_CTL="ovn-nbctl -p /ovn-cert/tls.key -c /ovn-cert/tls.crt -C /ovn-ca/ca-bundle.crt \
-                            --db "ssl:127.0.0.1:9641""
                 northd_probe_interval=${OVN_NORTHD_PROBE_INTERVAL:-10000}
                 echo "Setting northd probe interval to ${northd_probe_interval} ms"
                 retries=0
                 current_probe_interval=0
                 while [[ "${retries}" -lt 10 ]]; do
-                  current_probe_interval=$(${OVN_NB_CTL} --if-exists get NB_GLOBAL . options:northd_probe_interval)
+                  current_probe_interval=$(ovn-nbctl --if-exists get NB_GLOBAL . options:northd_probe_interval)
                   if [[ $? == 0 ]]; then
                     current_probe_interval=$(echo ${current_probe_interval} | tr -d '\"')
                     break
@@ -245,7 +211,7 @@ spec:
                 if [[ "${current_probe_interval}" != "${northd_probe_interval}" ]]; then
                   retries=0
                   while [[ "${retries}" -lt 10 ]]; do
-                    ${OVN_NB_CTL} set NB_GLOBAL . options:northd_probe_interval=${northd_probe_interval}
+                    ovn-nbctl set NB_GLOBAL . options:northd_probe_interval=${northd_probe_interval}
                     if [[ $? != 0 ]]; then
                       echo "Failed to set northd probe interval to ${northd_probe_interval}. retrying....."
                       sleep 2
@@ -305,10 +271,6 @@ spec:
           name: run-ovn
         - mountPath: /env
           name: env-overrides
-        - mountPath: /ovn-cert
-          name: ovn-cert
-        - mountPath: /ovn-ca
-          name: ovn-ca
         resources:
           requests:
             cpu: 10m
@@ -347,24 +309,12 @@ spec:
           bracketify() { case "$1" in *:*) echo "[$1]" ;; *) echo "$1" ;; esac }
 
           # initialize variables
-          ovn_kubernetes_namespace=openshift-ovn-kubernetes
-          ovndb_ctl_ssl_opts="-p /ovn-cert/tls.key -c /ovn-cert/tls.crt -C /ovn-ca/ca-bundle.crt"
-          transport="ssl"
-          ovn_raft_conn_ip_url_suffix=""
-          if [[ "${K8S_NODE_IP}" == *":"* ]]; then
-            ovn_raft_conn_ip_url_suffix=":[::]"
-          fi
           db="sb"
-          db_port="9642"
           ovn_db_file="/etc/ovn/ovn${db}_db.db"
 
           OVN_ARGS="--db-sb-cluster-local-port=9644 \
             --db-sb-cluster-local-addr=$(bracketify ${K8S_NODE_IP}) \
-            --no-monitor \
-            --db-sb-cluster-local-proto=ssl \
-            --ovn-sb-db-ssl-key=/ovn-cert/tls.key \
-            --ovn-sb-db-ssl-cert=/ovn-cert/tls.crt \
-            --ovn-sb-db-ssl-ca-cert=/ovn-ca/ca-bundle.crt"
+            --no-monitor"
 
           CLUSTER_INITIATOR_IP="127.0.0.1"
           echo "$(date -Iseconds) - starting sbdb  CLUSTER_INITIATOR_IP=${CLUSTER_INITIATOR_IP}"
@@ -407,17 +357,6 @@ spec:
                 CLUSTER_INITIATOR_IP="127.0.0.1"
                 rm -f /var/run/ovn/ovnsb_db.pid
                   echo "$(date -Iseconds) - sdb - postStart - waiting for master to be selected"
-
-                  # set the connection and inactivity probe
-                  retries=0
-                  while ! ovn-sbctl --no-leader-only -t 5 set-connection pssl:9642 -- set connection . inactivity_probe=180000; do
-                    (( retries += 1 ))
-                  if [[ "${retries}" -gt 40 ]]; then
-                    echo "$(date -Iseconds) - ERROR RESTARTING - sbdb - too many failed ovn-sbctl attempts, giving up"
-                      exit 1
-                  fi
-                  sleep 2
-                  done
 
                   # Upgrade the db if required.
                   DB_SCHEMA="/usr/share/ovn/ovn-sb.ovsschema"
@@ -479,10 +418,6 @@ spec:
           name: run-ovn
         - mountPath: /env
           name: env-overrides
-        - mountPath: /ovn-cert
-          name: ovn-cert
-        - mountPath: /ovn-ca
-          name: ovn-ca
         ports:
         - name: sb-db-port
           containerPort: 9642
@@ -517,16 +452,8 @@ spec:
             --ovn-empty-lb-events \
             --loglevel "${OVN_KUBE_LOG_LEVEL}" \
             ${gateway_mode_flags} \
-            --sb-address "ssl:127.0.0.1:9642" \
-            --sb-client-privkey /ovn-cert/tls.key \
-            --sb-client-cert /ovn-cert/tls.crt \
-            --sb-client-cacert /ovn-ca/ca-bundle.crt \
-            --sb-cert-common-name "ovn" \
-            --nb-address "ssl:127.0.0.1:9641" \
-            --nb-client-privkey /ovn-cert/tls.key \
-            --nb-client-cert /ovn-cert/tls.crt \
-            --nb-client-cacert /ovn-ca/ca-bundle.crt \
-            --nb-cert-common-name "ovn" \
+            --nb-address "" \
+            --sb-address "" \
             --enable-multicast \
             --disable-snat-multiple-gws \
             --acl-logging-rate-limit "20"
@@ -551,10 +478,6 @@ spec:
           name: kubeconfig
         - mountPath: /env
           name: env-overrides
-        - mountPath: /ovn-cert
-          name: ovn-cert
-        - mountPath: /ovn-ca
-          name: ovn-ca
         resources:
           requests:
             cpu: 10m
@@ -598,16 +521,6 @@ spec:
       - name: env-overrides
         configMap:
           name: env-overrides
-          optional: true
-      - name: ovn-ca
-        configMap:
-          name: ovn-ca
-      - name: ovn-cert
-        secret:
-          secretName: ovn-cert
-      - name: ovn-master-metrics-cert
-        secret:
-          secretName: ovn-master-metrics-cert
           optional: true
       tolerations:
       - key: "node-role.kubernetes.io/master"

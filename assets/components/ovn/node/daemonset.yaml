@@ -59,7 +59,6 @@ spec:
             --syslog-method="null" \
             --log-file=/var/log/ovn/acl-audit-log.log \
             -vFACILITY:"local0" \
-            -p /ovn-cert/tls.key -c /ovn-cert/tls.crt -C /ovn-ca/ca-bundle.crt \
             -vconsole:"${OVN_LOG_LEVEL}" -vconsole:"acl_log:off" \
             -vPATTERN:console:"%D{%Y-%m-%dT%H:%M:%S.###Z}|%05N|%c%T|%p|%m" \
             -vsyslog:"acl_log:info" \
@@ -86,10 +85,6 @@ spec:
           name: var-lib-openvswitch
         - mountPath: /env
           name: env-overrides
-        - mountPath: /ovn-cert
-          name: ovn-cert
-        - mountPath: /ovn-ca
-          name: ovn-ca
         - mountPath: /var/log/ovn
           name: node-log
         - mountPath: /dev/log
@@ -154,16 +149,8 @@ spec:
           fi
 
           exec /usr/bin/ovnkube --init-node "${K8S_NODE}" \
-            --nb-address "ssl:10.73.116.66:9641" \
-            --sb-address "ssl:10.73.116.66:9642" \
-            --nb-client-privkey /ovn-cert/tls.key \
-            --nb-client-cert /ovn-cert/tls.crt \
-            --nb-client-cacert /ovn-ca/ca-bundle.crt \
-            --nb-cert-common-name "ovn" \
-            --sb-client-privkey /ovn-cert/tls.key \
-            --sb-client-cert /ovn-cert/tls.crt \
-            --sb-client-cacert /ovn-ca/ca-bundle.crt \
-            --sb-cert-common-name "ovn" \
+            --nb-address "" \
+            --sb-address "" \
             --config-file=/run/ovnkube-config/ovnkube.conf \
             --loglevel "${OVN_KUBE_LOG_LEVEL}" \
             --inactivity-probe="${OVN_CONTROLLER_INACTIVITY_PROBE}" \
@@ -175,8 +162,6 @@ spec:
         # for kubectl
         - name: KUBERNETES_SERVICE_PORT
           value: "6443"
-        - name: KUBERNETES_SERVICE_HOST
-          value: "10.73.116.66"
         - name: OVN_CONTROLLER_INACTIVITY_PROBE
           value: "180000"
         - name: OVN_KUBE_LOG_LEVEL
@@ -234,10 +219,6 @@ spec:
           name: kubeconfig
         - mountPath: /env
           name: env-overrides
-        - mountPath: /ovn-cert
-          name: ovn-cert
-        - mountPath: /ovn-ca
-          name: ovn-ca
         resources:
           requests:
             cpu: 10m
@@ -306,16 +287,6 @@ spec:
       - name: env-overrides
         configMap:
           name: env-overrides
-          optional: true
-      - name: ovn-ca
-        configMap:
-          name: ovn-ca
-      - name: ovn-cert
-        secret:
-          secretName: ovn-cert
-      - name: ovn-node-metrics-cert
-        secret:
-          secretName: ovn-node-metrics-cert
           optional: true
       tolerations:
       - operator: "Exists"
