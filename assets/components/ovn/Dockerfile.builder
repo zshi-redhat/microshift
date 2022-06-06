@@ -17,7 +17,7 @@ COPY . .
 # build the binaries
 RUN cd go-controller; CGO_ENABLED=0 make
 
-FROM registry.ci.openshift.org/ocp/4.10:base
+FROM registry.ci.openshift.org/ocp/builder:rhel-8-base-openshift-4.10
 
 USER root
 
