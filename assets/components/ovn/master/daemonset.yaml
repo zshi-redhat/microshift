@@ -98,7 +98,7 @@ spec:
         resources:
           requests:
             cpu: 10m
-            memory: 300Mi
+            memory: 10Mi
         terminationMessagePolicy: FallbackToLogsOnError
 
       # nbdb: the northbound, or logical network object DB. In raft mode 
@@ -272,7 +272,7 @@ spec:
         resources:
           requests:
             cpu: 10m
-            memory: 300Mi
+            memory: 10Mi
         ports:
         - name: nb-db-port
           containerPort: 9641
@@ -422,7 +422,7 @@ spec:
         resources:
           requests:
             cpu: 10m
-            memory: 300Mi
+            memory: 10Mi
         terminationMessagePolicy: FallbackToLogsOnError
 
       # ovnkube master: convert kubernetes objects in to nbdb logical network components
@@ -477,7 +477,7 @@ spec:
         resources:
           requests:
             cpu: 10m
-            memory: 300Mi
+            memory: 60Mi
         env:
         - name: OVN_KUBE_LOG_LEVEL
           value: "4"
