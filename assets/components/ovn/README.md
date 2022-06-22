@@ -104,6 +104,7 @@ CPUAffinity=0
 5. restart ovs services
 
 ```
+$ systemctl daemon-reload
 $ systemctl restart ovs-vswitchd
 $ systemctl restart ovsdb-server
 $ systemctl restart openvswitch
