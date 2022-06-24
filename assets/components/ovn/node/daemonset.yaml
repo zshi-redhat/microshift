@@ -234,7 +234,7 @@ spec:
           path: /run/ovn-kubernetes
       - name: host-cni-netd
         hostPath:
-          path: "/var/run/multus/cni/net.d"
+          path: "/etc/microshift/cni/net.d"
       - name: host-var-lib-cni-networks-ovn-kubernetes
         hostPath:
           path: /var/lib/cni/networks/ovn-k8s-cni-overlay

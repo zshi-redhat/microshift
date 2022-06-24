@@ -25,25 +25,21 @@ $ systemctl enable crio --now
 
 #### cni config
 
-1. add ovn-kubernetes cni config to `/etc/cni/net.d/`
+1. create new crio network dir
 
 ```
-$ cat > /etc/cni/net.d/00-ovn.conf << EOF
-{
-  "cniVersion": "0.4.0",
-  "name": "ovn-kubernetes",
-  "type": "ovn-k8s-cni-overlay",
-  "ipam": {},
-  "dns": {},
-  "logFile": "/var/log/ovn-kubernetes/ovn-k8s-cni-overlay.log",
-  "logLevel": "4",
-  "logfile-maxsize": 100,
-  "logfile-maxbackups": 5,
-  "logfile-maxage": 5
-}
-EOF
+mkdir -p /etc/microshift/cni/net.d/
 ```
-2. add workload partitioning config to `/etc/crio/crio.conf` (or `/etc/crio/crio.conf.d/*.conf`)
+
+2. update crio network_dir to `/etc/microshift/cni/net.d/`
+
+```
+[crio.network]
+
+network_dir="/etc/microshift/cni/net.d"
+```
+
+3. add workload partitioning config to `/etc/crio/crio.conf` (or `/etc/crio/crio.conf.d/*.conf`)
 
 ```
 cat >> /etc/crio/crio.conf << EOF
