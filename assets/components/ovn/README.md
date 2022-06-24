@@ -172,17 +172,50 @@ $ ./microshift run
 Wait for CNI pods to be created, for example `dns-default-xxxx` in `openshift-dns` namespace
 
 
-### metrics
+#### metrics
 
 ```
 $ mkdir -p ~/.kube
 $ cat /var/lib/microshift/resources/kubeadmin/kubeconfig > ~/.kube/config
 ```
 
-Copy oc & kubectl to /usr/local/bin/
-
+Download oc & kubectl to /usr/local/bin/
+```
+$ curl -O https://mirror.openshift.com/pub/openshift-v4/$(uname -m)/clients/ocp/stable/openshift-client-linux.tar.gz
+$ tar -xf openshift-client-linux.tar.gz -C /usr/local/bin oc kubectl
+$ rm -f openshift-client-linux.tar.gz
+```
 
 ```
 $ oc apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
 $ kubectl top pods -A --containers
+```
+
+Install Prometheus stack
+```
+$ git clone https://github.com/prometheus-operator/kube-prometheus.git
+$ kubectl apply --server-side -f manifests/setup
+$ until kubectl get servicemonitors --all-namespaces ; do date; sleep 1; echo ""; done
+$ kubectl apply -f manifests/
+```
+
+Forward grafana port
+```
+kubectl --namespace monitoring port-forward svc/grafana 3000
+```
+
+In case the microshift node is not local and grafana dashboard cannot be accessed directly, establish ssh tunnel to microshift node from your local system, then access grafana port 3000 from local web.
+```
+ssh -NL 3000:127.0.0.1:3000 root@10.73.116.66
+```
+
+> 10.73.116.66 is the microshift node IP where ssh tunnel is established to
+> 127.0.0.1 is the local microshift node IP where k8s control plane runs on, if microshift uses node public IP for k8s control plane, replace 127.0.0.1 to that public IP (e.g. 10.73.116.66)
+
+#### ovnk debug
+
+
+Forward ovnkube-node port for pprof debugging
+```
+oc -n openshift-ovn-kubernetes port-forward ovnkube-node-75qj8 29103:29103
 ```
