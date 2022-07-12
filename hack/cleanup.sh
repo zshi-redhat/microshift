@@ -37,6 +37,8 @@ sudo bash -c '
     pkill -9 ovsdb-server
 
     echo "Removing /var/lib/microshift"
+    crio wipe -f
+    systemctl restart crio
     rm -rf /var/lib/microshift
     rm -rf /var/lib/ovn
     rm -rf /var/run/ovn
