@@ -127,7 +127,7 @@ spec:
           db="nb"
           ovn_db_file="/etc/ovn/ovn${db}_db.db"
           
-          OVN_ARGS="--db-nb-cluster-local-port=9644 \
+          OVN_ARGS="--db-nb-cluster-local-port=9643 \
             --db-nb-cluster-local-addr=$(bracketify ${K8S_NODE_IP}) \
             --no-monitor"
 
@@ -264,11 +264,6 @@ spec:
           requests:
             cpu: 10m
             memory: 10Mi
-        ports:
-        - name: nb-db-port
-          containerPort: 9641
-        - name: nb-db-raft-port
-          containerPort: 9643
         terminationMessagePolicy: FallbackToLogsOnError
 
       # sbdb: The southbound, or flow DB. In raft mode
@@ -345,21 +340,6 @@ spec:
                 rm -f /var/run/ovn/ovnsb_db.pid
                   echo "$(date -Iseconds) - sdb - postStart - waiting for master to be selected"
 
-                #  # Upgrade the db if required.
-                #  DB_SCHEMA="/usr/share/ovn/ovn-sb.ovsschema"
-                #  DB_SERVER="unix:/var/run/ovn/ovnsb_db.sock"
-                #  schema_name=$(ovsdb-tool schema-name $DB_SCHEMA)
-                #  db_version=$(ovsdb-client -t 10 get-schema-version "$DB_SERVER" "$schema_name")
-                #  target_version=$(ovsdb-tool schema-version "$DB_SCHEMA")
-
-                #  if ovsdb-tool compare-versions "$db_version" == "$target_version"; then
-                #    :
-                #  elif ovsdb-tool compare-versions "$db_version" ">" "$target_version"; then
-                #      echo "Database $schema_name has newer schema version ($db_version) than our local schema ($target_version), possibly an upgrade is partially complete?"
-                #  else
-                #      echo "Upgrading database $schema_name from schema version $db_version to $target_version"
-                #      ovsdb-client -t 30 convert "$DB_SERVER" "$DB_SCHEMA"
-                #  fi
           preStop:
             exec:
               command:
@@ -399,11 +379,6 @@ spec:
           name: run-ovn
         - mountPath: /env
           name: env-overrides
-        ports:
-        - name: sb-db-port
-          containerPort: 9642
-        - name: sb-db-raft-port
-          containerPort: 9644
         resources:
           requests:
             cpu: 10m
@@ -424,6 +399,8 @@ spec:
             set +o allexport
           fi
 
+          cp -f /usr/libexec/cni/ovn-k8s-cni-overlay /cni-bin-dir/
+
           echo "I$(date "+%m%d %H:%M:%S.%N") - disable conntrack on geneve port"
           iptables -t raw -A PREROUTING -p udp --dport 6081 -j NOTRACK
           iptables -t raw -A OUTPUT -p udp --dport 6081 -j NOTRACK
@@ -433,7 +410,7 @@ spec:
 
           gateway_mode_flags="--gateway-mode shared --gateway-interface br-ex"
 
-          echo "I$(date "+%m%d %H:%M:%S.%N") - ovnkube-master - start ovnkube --init-master ${K8S_NODE}"
+          echo "I$(date "+%m%d %H:%M:%S.%N") - ovnkube-master - start ovnkube --init-master ${K8S_NODE} --init-node ${K8S_NODE}"
           exec /usr/bin/ovnkube \
             --init-master "${K8S_NODE}" \
             --init-node "${K8S_NODE}" \
@@ -472,8 +449,13 @@ spec:
           name: env-overrides
         - mountPath: /var/lib/cni/networks/ovn-k8s-cni-overlay
           name: host-var-lib-cni-networks-ovn-kubernetes
+
         - mountPath: /etc/cni/net.d
           name: host-cni-netd
+        # for installing the CNI plugin binary
+        - mountPath: /cni-bin-dir
+          name: host-cni-bin
+
         - mountPath: /run/ovn-kubernetes/
           name: host-run-ovn-kubernetes
         - mountPath: /dev/log
@@ -502,9 +484,6 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: spec.nodeName
-        ports:
-        - name: metrics-port
-          containerPort: 29102
         securityContext:
           privileged: true
         terminationMessagePolicy: FallbackToLogsOnError
@@ -543,9 +522,14 @@ spec:
       - name: host-run-ovn-kubernetes
         hostPath:
           path: /run/ovn-kubernetes
+
       - name: host-cni-netd
         hostPath:
-          path: "/var/run/multus/cni/net.d"
+          path: "/etc/cni/net.d"
+      - name: host-cni-bin
+        hostPath:
+          path: "/opt/cni/bin"
+
       - name: host-var-lib-cni-networks-ovn-kubernetes
         hostPath:
           path: /var/lib/cni/networks/ovn-k8s-cni-overlay
