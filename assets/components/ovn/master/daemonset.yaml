@@ -47,7 +47,7 @@ spec:
       containers:
       # ovn-northd: convert network objects in nbdb to flows in sbdb
       - name: northd
-        image: "quay.io/zshi/ovn-daemonset:microshift"
+        image: {{ .ReleaseImage.ovn_kubernetes }}
         command:
         - /bin/bash
         - -c
@@ -100,7 +100,7 @@ spec:
 
       # nbdb: the northbound, or logical network object DB. In raft mode
       - name: nbdb
-        image: "quay.io/zshi/ovn-daemonset:microshift"
+        image: {{ .ReleaseImage.ovn_kubernetes }}
         command:
         - /bin/bash
         - -c
@@ -268,7 +268,7 @@ spec:
 
       # sbdb: The southbound, or flow DB. In raft mode
       - name: sbdb
-        image: "quay.io/zshi/ovn-daemonset:microshift"
+        image: {{ .ReleaseImage.ovn_kubernetes }}
         command:
         - /bin/bash
         - -c
@@ -402,7 +402,7 @@ spec:
 
       # ovnkube master: convert kubernetes objects in to nbdb logical network components
       - name: ovnkube-master
-        image: "quay.io/zshi/ovn-daemonset:microshift"
+        image: {{ .ReleaseImage.ovn_kubernetes }}
         command:
         - /bin/bash
         - -c

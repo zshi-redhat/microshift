@@ -9,15 +9,15 @@ data:
   ovnkube.conf:   |-
     [default]
     mtu="1400"
-    cluster-subnets="10.128.0.0/14/23"
+    cluster-subnets={{.ClusterCIDR}}
     encap-port="6081"
     enable-lflow-cache=false
     lflow-cache-limit-kb=870
 
     [kubernetes]
-    service-cidrs="172.30.0.0/16"
+    service-cidrs={{.ServiceCIDR}}
     ovn-config-namespace="openshift-ovn-kubernetes"
-    kubeconfig="/var/lib/microshift/resources/kubeadmin/kubeconfig"
+    kubeconfig={{.KubeconfigPath}}
     host-network-namespace="openshift-host-network"
     platform-type="BareMetal"
 

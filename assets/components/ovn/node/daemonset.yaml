@@ -41,7 +41,7 @@ spec:
       containers:
       # ovn-controller: programs the vswitch with flows from the sbdb
       - name: ovn-controller
-        image: "quay.io/zshi/ovn-daemonset:microshift"
+        image: {{ .ReleaseImage.ovn_kubernetes }}
         command:
         - /bin/bash
         - -c
