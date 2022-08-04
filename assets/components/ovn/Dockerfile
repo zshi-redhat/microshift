@@ -9,7 +9,7 @@
 # are built in this Dockerfile and included in the image (instead of the rpm)
 #
 
-FROM registry.ci.openshift.org/ocp/builder:rhel-8-golang-1.17-openshift-4.10 AS builder
+FROM registry.ci.openshift.org/ocp/builder:rhel-8-golang-1.18-openshift-4.12 AS builder
 
 WORKDIR /go/src/github.com/openshift/ovn-kubernetes
 COPY . .
@@ -17,7 +17,7 @@ COPY . .
 # build the binaries
 RUN cd go-controller; CGO_ENABLED=0 make
 
-FROM registry.ci.openshift.org/ocp/4.10:base
+FROM registry.ci.openshift.org/ocp/4.12:base
 
 USER root
 
@@ -30,8 +30,8 @@ RUN yum install -y  \
 	yum clean all
 
 RUN INSTALL_PKGS="" && \
-	yum install -y http://download.eng.bos.redhat.com/brewroot/vol/rhel-8/packages/openvswitch2.17/2.17.0/8.el8fdp/x86_64/openvswitch2.17-2.17.0-8.el8fdp.x86_64.rpm http://download.eng.bos.redhat.com/brewroot/vol/rhel-8/packages/openvswitch2.17/2.17.0/8.el8fdp/x86_64/python3-openvswitch2.17-2.17.0-8.el8fdp.x86_64.rpm && \
-	yum install -y http://download.eng.bos.redhat.com/brewroot/vol/rhel-8/packages/ovn22.06/22.06.0/preview.branched.38.el8fdp/x86_64/ovn22.06-22.06.0-preview.branched.38.el8fdp.x86_64.rpm http://download.eng.bos.redhat.com/brewroot/vol/rhel-8/packages/ovn22.06/22.06.0/preview.branched.38.el8fdp/x86_64/ovn22.06-central-22.06.0-preview.branched.38.el8fdp.x86_64.rpm http://download.eng.bos.redhat.com/brewroot/vol/rhel-8/packages/ovn22.06/22.06.0/preview.branched.38.el8fdp/x86_64/ovn22.06-host-22.06.0-preview.branched.38.el8fdp.x86_64.rpm && \
+	yum install -y http://download.eng.bos.redhat.com/brewroot/vol/rhel-8/packages/openvswitch2.17/2.17.0/22.el8fdp/x86_64/openvswitch2.17-2.17.0-22.el8fdp.x86_64.rpm http://download.eng.bos.redhat.com/brewroot/vol/rhel-8/packages/openvswitch2.17/2.17.0/22.el8fdp/x86_64/python3-openvswitch2.17-2.17.0-22.el8fdp.x86_64.rpm && \
+	yum install -y http://download.eng.bos.redhat.com/brewroot/vol/rhel-8/packages/ovn22.06/22.06.0/27.el8fdp/x86_64/ovn22.06-22.06.0-27.el8fdp.x86_64.rpm http://download.eng.bos.redhat.com/brewroot/vol/rhel-8/packages/ovn22.06/22.06.0/27.el8fdp/x86_64/ovn22.06-central-22.06.0-27.el8fdp.x86_64.rpm http://download.eng.bos.redhat.com/brewroot/vol/rhel-8/packages/ovn22.06/22.06.0/27.el8fdp/x86_64/ovn22.06-host-22.06.0-27.el8fdp.x86_64.rpm && \
 	yum clean all && rm -rf /var/cache/*
 
 RUN mkdir -p /var/run/openvswitch && \
@@ -41,7 +41,7 @@ RUN mkdir -p /var/run/openvswitch && \
     mkdir -p /usr/libexec/cni/
 
 COPY --from=builder /go/src/github.com/openshift/ovn-kubernetes/go-controller/_output/go/bin/ovnkube /usr/bin/
-# COPY --from=builder /go/src/github.com/openshift/ovn-kubernetes/go-controller/_output/go/bin/ovn-k8s-cni-overlay /usr/libexec/cni/
+COPY --from=builder /go/src/github.com/openshift/ovn-kubernetes/go-controller/_output/go/bin/ovn-k8s-cni-overlay /usr/libexec/cni/
 
 
 # copy git commit number into image
