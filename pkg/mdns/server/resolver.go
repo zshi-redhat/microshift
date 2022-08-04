@@ -45,12 +45,14 @@ func (r *Resolver) AddDomain(name string, ipStrs []string) {
 		ips = append(ips, net.ParseIP(ip))
 	}
 	r.domain[name] = ips
+	klog.Infof("resolver domain: %v ", r.domain)
 }
 
 func (r *Resolver) DeleteDomain(name string) {
 	r.Lock()
 	defer r.Unlock()
 	delete(r.domain, name)
+	klog.Infof("resolver domain: %v ", r.domain)
 }
 
 func (r *Resolver) HasDomain(name string) bool {

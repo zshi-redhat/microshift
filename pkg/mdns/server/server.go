@@ -96,6 +96,7 @@ func (s *Server) handlemDNSPacket(conn *net.UDPConn, packet []byte, from net.Add
 	}
 
 	klog.Infof("query is valid")
+	klog.Infof("server.responder: %v", s.responder)
 	// Handle all the questions and construct the answers
 	for _, q := range query.Question {
 		klog.Infof("query question: %v", q)
