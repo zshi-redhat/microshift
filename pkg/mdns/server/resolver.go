@@ -100,7 +100,9 @@ func (r *Resolver) answerAAAARecord(name string) (rr []dns.RR) {
 }
 
 func (r *Resolver) getIPs(name string, ipvlen int) []net.IP {
+	klog.Infof("get IPs")
 	ips, ok := r.domain[name]
+	klog.Infof("len of ips: %d, ok: %v", len(ips), ok)
 	if !ok || len(ips) == 0 {
 		return nil
 	}
@@ -108,21 +110,30 @@ func (r *Resolver) getIPs(name string, ipvlen int) []net.IP {
 	var filteredIps []net.IP
 
 	for _, ip := range ips {
+		klog.Infof("ip: %v", ip)
 		switch ipvlen {
 		case net.IPv4len:
+			klog.Infof("ipv4 len")
 			if ip4 := ip.To4(); ip4 != nil {
+				klog.Infof("ipv4: %v", ip4)
 				filteredIps = append(filteredIps, ip4)
 			}
+			klog.Infof("ipv4 == nil")
 
 		case net.IPv6len:
+			klog.Infof("ipv6 len")
 			if ip4 := ip.To4(); ip4 != nil {
+				klog.Infof("ip4 in ipv6 len")
 				// net.To16 will convert ipv4 addresses to ::ffff:ipv4
 				continue
 			}
 			if ip16 := ip.To16(); ip16 != nil {
+				klog.Infof("ip16: %v", ip16)
 				filteredIps = append(filteredIps, ip16)
 			}
+			klog.Infof("ip16 == nil")
 		}
 	}
+	klog.Infof("filtered ips: %v", filteredIps)
 	return filteredIps
 }
