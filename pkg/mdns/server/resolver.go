@@ -20,6 +20,7 @@ import (
 	"sync"
 
 	"github.com/miekg/dns"
+	"k8s.io/klog/v2"
 )
 
 const defaultTTL = 120
@@ -60,6 +61,7 @@ func (r *Resolver) HasDomain(name string) bool {
 }
 
 func (r *Resolver) Answer(q dns.Question) []dns.RR {
+	klog.Infof("answering dns: %v ", q)
 	r.Lock()
 	defer r.Unlock()
 
@@ -74,22 +76,26 @@ func (r *Resolver) Answer(q dns.Question) []dns.RR {
 }
 
 func (r *Resolver) answerARecord(name string) (rr []dns.RR) {
+	klog.Infof("answering A record: %v ", name)
 	for _, ip4 := range r.getIPs(name, net.IPv4len) {
 		rr = append(rr, &dns.A{
 			Hdr: dns.RR_Header{Name: name, Rrtype: dns.TypeA, Class: dns.ClassINET, Ttl: defaultTTL},
 			A:   ip4,
 		})
 	}
+	klog.Infof("answering A rr: %v ", rr)
 	return rr
 }
 
 func (r *Resolver) answerAAAARecord(name string) (rr []dns.RR) {
+	klog.Infof("answering AAAA record: %v ", name)
 	for _, ip6 := range r.getIPs(name, net.IPv6len) {
 		rr = append(rr, &dns.AAAA{
 			Hdr:  dns.RR_Header{Name: name, Rrtype: dns.TypeAAAA, Class: dns.ClassINET, Ttl: defaultTTL},
 			AAAA: ip6,
 		})
 	}
+	klog.Infof("answering AAAA rr: %v ", rr)
 	return rr
 }
 

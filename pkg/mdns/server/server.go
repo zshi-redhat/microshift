@@ -58,6 +58,8 @@ func New(iface *net.Interface, responder Responder, stopCh chan struct{}) (*Serv
 				listener.Close()
 			}()
 
+			klog.Infof("start listener loop for iface: %v", iface.Name)
+
 			go srv.listenerLoop(listener)
 		}
 	}
@@ -88,17 +90,23 @@ func (s *Server) handlemDNSPacket(conn *net.UDPConn, packet []byte, from net.Add
 	if err := query.Unpack(packet); err != nil {
 		return err
 	}
+	klog.Infof("unpacked mdns query")
 	if query.Opcode != dns.OpcodeQuery || query.Rcode != 0 || query.Truncated {
 		return nil
 	}
 
+	klog.Infof("query is valid")
 	// Handle all the questions and construct the answers
 	for _, q := range query.Question {
+		klog.Infof("query question: %v", q)
 		for _, a := range s.responder.Answer(q) {
 			answers = append(answers, a)
 		}
 		unicast = unicast || q.Qclass&(1<<15) != 0
+		klog.Infof("query answers: %v", answers)
+		klog.Infof("query answers len: %v", len(answers))
 	}
+	klog.Infof("handled all queries")
 
 	// Build into a DNS packet
 	dnsMsg := &dns.Msg{
@@ -115,10 +123,12 @@ func (s *Server) handlemDNSPacket(conn *net.UDPConn, packet []byte, from net.Add
 	if len(answers) == 0 {
 		return nil
 	}
+	klog.Infof("answer is not zero")
 
 	if err := s.sendmDNSResponse(conn, dnsMsg, from, unicast); err != nil {
 		return fmt.Errorf("mdns: error sending response unicast=%v: %v", unicast, err)
 	}
+	klog.Infof("sent mDNS response")
 
 	return nil
 }
@@ -131,6 +141,7 @@ func (s *Server) sendmDNSResponse(conn *net.UDPConn, resp *dns.Msg, from net.Add
 	if err != nil {
 		return err
 	}
+	klog.Infof("packed buf")
 
 	if !unicast {
 		if destAddr.IP.To4() != nil {
@@ -139,11 +150,14 @@ func (s *Server) sendmDNSResponse(conn *net.UDPConn, resp *dns.Msg, from net.Add
 			destAddr.IP = net.ParseIP(ipV6MDNSAddr)
 		}
 	}
+	klog.Infof("parsed destAddr")
 
 	_, err = conn.WriteToUDP(buf, destAddr)
 	if unicast {
+		klog.Infof("unicast, return err")
 		return err
 	} else {
+		klog.Infof("not unicast, return nil")
 		/* multicast sometimes fails when listening on multiple interfaces */
 		return nil
 	}
