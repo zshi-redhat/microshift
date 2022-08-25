@@ -78,3 +78,24 @@ func startOVNKubernetes(cfg *config.MicroshiftConfig, kubeconfigPath string) err
 	}
 	return nil
 }
+
+func StopOVNKubernetes(cfg *config.MicroshiftConfig, kubeconfigPath string) error {
+	var (
+		apps = []string{
+			"assets/components/ovn/master/daemonset.yaml",
+			"assets/components/ovn/node/daemonset.yaml",
+		}
+	)
+
+	params := assets.RenderParams{
+		"ClusterCIDR":    cfg.Cluster.ClusterCIDR,
+		"ServiceCIDR":    cfg.Cluster.ServiceCIDR,
+		"KubeconfigPath": kubeconfigPath,
+		"KubeconfigDir":  filepath.Join(cfg.DataDir, "/resources/kubeadmin"),
+	}
+	if err := assets.DeleteDaemonSets(apps, renderOVNKManifests, params, kubeconfigPath); err != nil {
+		klog.Warningf("Failed to delete apps %v %v", apps, err)
+		return err
+	}
+	return nil
+}

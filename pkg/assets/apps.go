@@ -5,6 +5,7 @@ import (
 	"fmt"
 
 	appsv1 "k8s.io/api/apps/v1"
+	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/runtime/serializer"
 	appsclientv1 "k8s.io/client-go/kubernetes/typed/apps/v1"
@@ -79,6 +80,7 @@ func (d *dsApplier) Reader(objBytes []byte, render RenderFunc, params RenderPara
 	}
 	d.ds = obj.(*appsv1.DaemonSet)
 }
+
 func (d *dsApplier) Applier() error {
 	_, _, err := resourceapply.ApplyDaemonSet(context.TODO(), d.Client, assetsEventRecorder, d.ds, 0)
 	return err
@@ -114,4 +116,24 @@ func ApplyDaemonSets(apps []string, render RenderFunc, params RenderParams, kube
 	ds := &dsApplier{}
 	ds.Client = appsClient(kubeconfigPath)
 	return applyApps(apps, ds, render, params)
+}
+
+func DeleteDaemonSets(apps []string, render RenderFunc, params RenderParams, kubeconfigPath string) error {
+	ds := &dsApplier{}
+	ds.Client = appsClient(kubeconfigPath)
+
+	for _, app := range apps {
+		klog.Infof("Deleting apps api %s", app)
+		objBytes, err := Asset(app)
+		if err != nil {
+			return fmt.Errorf("error getting asset %s: %v", app, err)
+		}
+		ds.Reader(objBytes, render, params)
+		if err := ds.Client.DaemonSets(ds.ds.Namespace).Delete(context.TODO(), ds.ds.Name, metav1.DeleteOptions{}); err != nil {
+			klog.Warningf("Failed to delete apps api %s: %v", app, err)
+			return err
+		}
+	}
+
+	return nil
 }

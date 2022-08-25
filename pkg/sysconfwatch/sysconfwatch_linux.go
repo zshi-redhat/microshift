@@ -22,6 +22,7 @@ import (
 	"os"
 	"time"
 
+	"github.com/openshift/microshift/pkg/components"
 	"github.com/openshift/microshift/pkg/config"
 	"github.com/openshift/microshift/pkg/util"
 	"golang.org/x/sys/unix"
@@ -32,8 +33,8 @@ const sysConfigCheckInterval = time.Second * 5
 const sysConfigAllowedTimeDrift = time.Second * 10
 
 type SysConfWatchController struct {
-	NodeIP  string
-	timerFd int
+	MicroShiftConfig *config.MicroshiftConfig
+	timerFd          int
 }
 
 func NewSysConfWatchController(cfg *config.MicroshiftConfig) *SysConfWatchController {
@@ -55,8 +56,8 @@ func NewSysConfWatchController(cfg *config.MicroshiftConfig) *SysConfWatchContro
 	}
 
 	return &SysConfWatchController{
-		NodeIP:  cfg.NodeIP,
-		timerFd: fd,
+		MicroShiftConfig: cfg,
+		timerFd:          fd,
 	}
 }
 
@@ -86,7 +87,7 @@ func (c *SysConfWatchController) Run(ctx context.Context, ready chan<- struct{},
 	ticker := time.NewTicker(sysConfigCheckInterval)
 	defer ticker.Stop()
 
-	klog.Infof("starting sysconfwatch-controller with IP address %q", c.NodeIP)
+	klog.Infof("starting sysconfwatch-controller with IP address %q", c.MicroShiftConfig.NodeIP)
 
 	var buf []byte = make([]byte, 8)
 	// Take a snapshot of the system and monototic clocks as a base reference
@@ -99,8 +100,10 @@ func (c *SysConfWatchController) Run(ctx context.Context, ready chan<- struct{},
 		case <-ticker.C:
 			// Check the IP change
 			currentIP, _ := util.GetHostIP()
-			if c.NodeIP != currentIP {
-				klog.Warningf("IP address has changed from %q to %q, restarting MicroShift", c.NodeIP, currentIP)
+			if c.MicroShiftConfig.NodeIP != currentIP {
+				klog.Warningf("IP address has changed from %q to %q, restarting MicroShift", c.MicroShiftConfig.NodeIP, currentIP)
+				// Stop ovnk when Node IP changed, ignore error since it will exit anyway
+				components.StopOVNKubernetes(c.MicroShiftConfig, c.MicroShiftConfig.DataDir+"/resources/kubeadmin/kubeconfig")
 				os.Exit(0)
 				return nil
 			}
