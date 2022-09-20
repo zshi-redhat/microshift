@@ -3411,6 +3411,12 @@ spec:
 
           gateway_mode_flags="--gateway-mode shared --gateway-interface br-ex"
 
+          gw_interface_flag=
+          # if br-ex1 is configured on the node, we want to use it for external gateway traffic
+          if [ -d /sys/class/net/br-ex1 ]; then
+            gw_interface_flag="--exgw-interface=br-ex1"
+          fi
+
           echo "I$(date "+%m%d %H:%M:%S.%N") - ovnkube-master - start ovnkube --init-master ${K8S_NODE} --init-node ${K8S_NODE}"
           exec /usr/bin/ovnkube \
             --init-master "${K8S_NODE}" \
@@ -3418,6 +3424,7 @@ spec:
             --config-file=/run/ovnkube-config/ovnkube.conf \
             --loglevel "${OVN_KUBE_LOG_LEVEL}" \
             ${gateway_mode_flags} \
+            ${gw_interface_flag}
             --inactivity-probe="180000" \
             --nb-address "" \
             --sb-address "" \
@@ -3553,7 +3560,7 @@ func assetsComponentsOvnMasterDaemonsetYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "assets/components/ovn/master/daemonset.yaml", size: 15887, mode: os.FileMode(420), modTime: time.Unix(1654679854, 0)}
+	info := bindataFileInfo{name: "assets/components/ovn/master/daemonset.yaml", size: 16163, mode: os.FileMode(420), modTime: time.Unix(1654679854, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
