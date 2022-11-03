@@ -69,7 +69,7 @@ The following configs are supported in ovn-kubernetes config file:
 |mtu            |N        |uint32  |1400    |MTU value to be used for the Pods                                 |1300   |
 
 > When `disableOVSInit` is true, OVS bridge "br-ex" needs to be configured manually. This OVS bridge is required by ovn-kubernetes CNI.
-> See section [OVS bridge](#ovs-bridge) for guidance on configuring the OVS gateway bridge manually.
+> See section **[OVS bridge](#ovs-bridge)** for guidance on configuring the OVS gateway bridge manually.
 
 Below is an example of `ovn.yaml`:
 
