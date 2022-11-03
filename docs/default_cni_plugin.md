@@ -58,21 +58,17 @@ Systemd services and configurations are included in microshift-networking rpm pa
 
 ### Configuring ovn-kubernetes
 
-The user provided ovn-kubernetes config should be written to the same directory as the MicroShift config.
+The user provided ovn-kubernetes config should be written to `/etc/microshift/ovn.yaml`.
 MicroShift will assume default ovn-kubernetes config values if ovn-kubernetes config file is not provided.
-These paths will be checked in order for the ovn-kubernetes config.
-
-1. User config dir: `~/.microshift/ovn.yaml`
-2. Global config dir: `/etc/microshift/ovn.yaml`
 
 The following configs are supported in ovn-kubernetes config file:
 
 |Field          |Required |Type    |Default |Description                                                       |Example|
 |:--------------|:--------|:-------|:-------|:-----------------------------------------------------------------|:------|
 |disableOVSInit |N        |bool    |false   |Skip configuring OVS bridge "br-ex" in microshift-ovs-init.service|true   |
-|mtu            |N        |uint32  |1400    |MTU value to be used for the Pods                  |1300   |
+|mtu            |N        |uint32  |1400    |MTU value to be used for the Pods                                 |1300   |
 
-> When `disableOVSInit` is true, OVS bridge "br-ex" needs to be configured manually. This OVS bridge is required by ovn-kubernetes CNI. See section **[OVS bridge](#OVS bridge)** for guidance on configuring the OVS gateway bridge.
+> When `disableOVSInit` is true, OVS bridge "br-ex" needs to be configured manually. This OVS bridge is required by ovn-kubernetes CNI. See section **[OVS bridge](#OVS bridge)** for guidance on configuring the OVS gateway bridge manually.
 
 Below is an example of `ovn.yaml`:
 
@@ -84,6 +80,8 @@ mtu: 1300
 ### Configuring Host
 
 #### OVS bridge
+
+[comment]: # (TODO: replace OVS commands with nmcli which can be easily installed under /etc)
 
 When `disableOVSInit` is set to true in ovn-kubernetes CNI config file, OVS bridge "br-ex" needs to be manually configured:
 
@@ -142,7 +140,7 @@ The first bridge is created by `microshift-ovs-init.service` or manually.
 The second bridge is created by ovn-kubernetes (ovnkube-master container).
 
 `br-ex` contains statically programmed openflow rules which distinguish traffic to/from host network (underlay) and ovn network (overlay).
-`br-int` contains dynamically programmed openflow rules which handls cluster network traffic.
+`br-int` contains dynamically programmed openflow rules which handles cluster network traffic.
 `br-ex` and `br-int` bridges are connected via OVS patch ports. Traffic from external to cluster network traves from `br-ex` to `br-int` via patch port, vice versa.
 Kubernetes pods are connected to `br-int` bridge via veth pair, one end of the veth pair is attached to pod namespace, the other end is attached to `br-int` bridge.
 
@@ -195,11 +193,10 @@ A wide range of networking features are available with ovn-kubernetes, including
 * Kubernetes network policy
 * Dynamic node IP
 * Cluster network on specified host interface
-* Egress via additional host interface
+* Secondary gateway interface
 * Dual stack
 * Service idling (disabled)
 * Egress firewall/QOS/IP (disabled)
-* East-west multicast
 
 ### Cluster network on specified host interface
 
@@ -208,9 +205,9 @@ This is done by specifying the desired host interface name in a hint file `/var/
 The specified interface will be added in OVS bridge `br-ex` which acts as gateway bridge for ovn-kubernetes CNI network.
 
 
-### Egress via additional host interface
+### Secondary gateway interface
 
-microshift-ovs-init.service is able to setup one additional host interface for cluster egress traffic.
+microshift-ovs-init.service is able to setup one additional host interface for cluster ingress/egress traffic.
 This is done by adding the additional host interface name in another hint file `/etc/ovnk/extra_bridge`.
 The additional interface will be added in a second OVS bridge `br-ex1`. Cluster pod traffic destinated to additional host subnet will be routed through `br-ex1`.
 
