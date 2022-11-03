@@ -68,7 +68,8 @@ The following configs are supported in ovn-kubernetes config file:
 |disableOVSInit |N        |bool    |false   |Skip configuring OVS bridge "br-ex" in microshift-ovs-init.service|true   |
 |mtu            |N        |uint32  |1400    |MTU value to be used for the Pods                                 |1300   |
 
-> When `disableOVSInit` is true, OVS bridge "br-ex" needs to be configured manually. This OVS bridge is required by ovn-kubernetes CNI. See section **[OVS bridge](#OVS bridge)** for guidance on configuring the OVS gateway bridge manually.
+> When `disableOVSInit` is true, OVS bridge "br-ex" needs to be configured manually. This OVS bridge is required by ovn-kubernetes CNI.
+> See section [OVS bridge](#OVS bridge) for guidance on configuring the OVS gateway bridge manually.
 
 Below is an example of `ovn.yaml`:
 
@@ -81,7 +82,7 @@ mtu: 1300
 
 #### OVS bridge
 
-[comment]: # (TODO: replace OVS commands with nmcli which can be easily installed under /etc)
+[comment]: # (TODO: replace OVS commands with nmcli which can be easily installed under '/etc')
 
 When `disableOVSInit` is set to true in ovn-kubernetes CNI config file, OVS bridge "br-ex" needs to be manually configured:
 
