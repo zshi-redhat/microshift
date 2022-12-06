@@ -1,6 +1,6 @@
 # Host Networking in MicroShift
 
-## Table of Contents
+__TOC__
 
 ## Host Ports
 
