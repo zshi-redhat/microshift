@@ -22,9 +22,8 @@ func startCNIPlugin(cfg *config.MicroshiftConfig, kubeconfigPath string, plugin 
 		return fmt.Errorf("failed to validate %s CNI config", plugin.GetName())
 	}
 
-	mtu := plugin.GetRenderParams()
 	extraParams := assets.RenderParams{
-		"MTU":            mtu,
+		"MTU":            plugin.GetRenderParams(),
 		"KubeconfigPath": kubeconfigPath,
 		"KubeconfigDir":  filepath.Join(microshiftDataDir, "/resources/kubeadmin"),
 	}
@@ -34,42 +33,42 @@ func startCNIPlugin(cfg *config.MicroshiftConfig, kubeconfigPath string, plugin 
 		for kind, manifest := range v {
 			switch kind {
 			case "namespace":
-				if err := assets.ApplyNamespaces(manifest, kubeconfigPath); err != nil {
+				if err := assets.ApplyNamespaces(manifest, kubeconfigPath, false); err != nil {
 					klog.Warningf("Failed to apply namespace %v: %v", manifest, err)
 					return err
 				}
 			case "serviceaccount":
-				if err := assets.ApplyServiceAccounts(manifest, kubeconfigPath); err != nil {
+				if err := assets.ApplyServiceAccounts(manifest, kubeconfigPath, false); err != nil {
 					klog.Warningf("Failed to apply serviceAccount %v %v", manifest, err)
 					return err
 				}
 			case "role":
-				if err := assets.ApplyRoles(manifest, kubeconfigPath); err != nil {
+				if err := assets.ApplyRoles(manifest, kubeconfigPath, false); err != nil {
 					klog.Warningf("Failed to apply role %v: %v", manifest, err)
 					return err
 				}
 			case "rolebinding":
-				if err := assets.ApplyRoleBindings(manifest, kubeconfigPath); err != nil {
+				if err := assets.ApplyRoleBindings(manifest, kubeconfigPath, false); err != nil {
 					klog.Warningf("Failed to apply rolebinding %v: %v", manifest, err)
 					return err
 				}
 			case "clusterrole":
-				if err := assets.ApplyClusterRoles(manifest, kubeconfigPath); err != nil {
+				if err := assets.ApplyClusterRoles(manifest, kubeconfigPath, false); err != nil {
 					klog.Warningf("Failed to apply clusterRole %v %v", manifest, err)
 					return err
 				}
 			case "clusterrolebinding":
-				if err := assets.ApplyClusterRoleBindings(manifest, kubeconfigPath); err != nil {
+				if err := assets.ApplyClusterRoleBindings(manifest, kubeconfigPath, false); err != nil {
 					klog.Warningf("Failed to apply clusterRoleBinding %v %v", manifest, err)
 					return err
 				}
 			case "configmap":
-				if err := assets.ApplyConfigMaps(manifest, renderTemplate, renderParamsFromConfig(cfg, extraParams), kubeconfigPath); err != nil {
+				if err := assets.ApplyConfigMaps(manifest, renderTemplate, renderParamsFromConfig(cfg, extraParams), kubeconfigPath, false); err != nil {
 					klog.Warningf("Failed to apply configMap %v %v", manifest, err)
 					return err
 				}
 			case "daemonset":
-				if err := assets.ApplyDaemonSets(manifest, renderTemplate, renderParamsFromConfig(cfg, extraParams), kubeconfigPath); err != nil {
+				if err := assets.ApplyDaemonSets(manifest, renderTemplate, renderParamsFromConfig(cfg, extraParams), kubeconfigPath, false); err != nil {
 					klog.Warningf("Failed to apply apps %v %v", manifest, err)
 					return err
 				}

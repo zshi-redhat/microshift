@@ -3,6 +3,7 @@ package assets
 import (
 	"context"
 	"fmt"
+	"io/ioutil"
 
 	embedded "github.com/openshift/microshift/assets"
 
@@ -136,15 +137,25 @@ func (r *roleApplier) Applier() error {
 	return err
 }
 
-func applyRbac(rbacs []string, applier readerApplier) error {
+func applyRbac(rbacs []string, applier readerApplier, embed bool) error {
 	lock.Lock()
 	defer lock.Unlock()
 
+	var objBytes []byte
+	var err error
+
 	for _, rbac := range rbacs {
 		klog.Infof("Applying rbac %s", rbac)
-		objBytes, err := embedded.Asset(rbac)
-		if err != nil {
-			return fmt.Errorf("error getting asset %s: %v", rbac, err)
+		if embed {
+			objBytes, err = embedded.Asset(rbac)
+			if err != nil {
+				return fmt.Errorf("error getting asset %s: %v", rbac, err)
+			}
+		} else {
+			objBytes, err = ioutil.ReadFile(rbac)
+			if err != nil {
+				return fmt.Errorf("error reading asset %s: %v", rbac, err)
+			}
 		}
 		applier.Reader(objBytes, nil, nil)
 		if err := applier.Applier(); err != nil {
@@ -156,25 +167,41 @@ func applyRbac(rbacs []string, applier readerApplier) error {
 	return nil
 }
 
-func ApplyClusterRoleBindings(rbacs []string, kubeconfigPath string) error {
+func ApplyClusterRoleBindings(rbacs []string, kubeconfigPath string, embedArg ...bool) error {
+	embed := true
+	if len(embedArg) > 0 {
+		embed = embedArg[0]
+	}
 	crb := &clusterRoleBindingApplier{}
 	crb.New(kubeconfigPath)
-	return applyRbac(rbacs, crb)
+	return applyRbac(rbacs, crb, embed)
 }
 
-func ApplyClusterRoles(rbacs []string, kubeconfigPath string) error {
+func ApplyClusterRoles(rbacs []string, kubeconfigPath string, embedArg ...bool) error {
+	embed := true
+	if len(embedArg) > 0 {
+		embed = embedArg[0]
+	}
 	cr := &clusterRoleApplier{}
 	cr.New(kubeconfigPath)
-	return applyRbac(rbacs, cr)
+	return applyRbac(rbacs, cr, embed)
 }
-func ApplyRoleBindings(rbacs []string, kubeconfigPath string) error {
+func ApplyRoleBindings(rbacs []string, kubeconfigPath string, embedArg ...bool) error {
+	embed := true
+	if len(embedArg) > 0 {
+		embed = embedArg[0]
+	}
 	rb := &roleBindingApplier{}
 	rb.New(kubeconfigPath)
-	return applyRbac(rbacs, rb)
+	return applyRbac(rbacs, rb, embed)
 }
 
-func ApplyRoles(rbacs []string, kubeconfigPath string) error {
+func ApplyRoles(rbacs []string, kubeconfigPath string, embedArg ...bool) error {
+	embed := true
+	if len(embedArg) > 0 {
+		embed = embedArg[0]
+	}
 	r := &roleApplier{}
 	r.New(kubeconfigPath)
-	return applyRbac(rbacs, r)
+	return applyRbac(rbacs, r, embed)
 }

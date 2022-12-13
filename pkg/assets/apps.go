@@ -3,6 +3,7 @@ package assets
 import (
 	"context"
 	"fmt"
+	"io/ioutil"
 
 	embedded "github.com/openshift/microshift/assets"
 
@@ -86,15 +87,25 @@ func (d *dsApplier) Applier() error {
 	return err
 }
 
-func applyApps(apps []string, applier readerApplier, render RenderFunc, params RenderParams) error {
+func applyApps(apps []string, applier readerApplier, render RenderFunc, params RenderParams, embed bool) error {
 	lock.Lock()
 	defer lock.Unlock()
 
+	var objBytes []byte
+	var err error
+
 	for _, app := range apps {
 		klog.Infof("Applying apps api %s", app)
-		objBytes, err := embedded.Asset(app)
-		if err != nil {
-			return fmt.Errorf("error getting asset %s: %v", app, err)
+		if embed {
+			objBytes, err = embedded.Asset(app)
+			if err != nil {
+				return fmt.Errorf("error getting asset %s: %v", app, err)
+			}
+		} else {
+			objBytes, err = ioutil.ReadFile(app)
+			if err != nil {
+				return fmt.Errorf("error reading asset %s: %v", app, err)
+			}
 		}
 		applier.Reader(objBytes, render, params)
 		if err := applier.Applier(); err != nil {
@@ -106,14 +117,22 @@ func applyApps(apps []string, applier readerApplier, render RenderFunc, params R
 	return nil
 }
 
-func ApplyDeployments(dps []string, render RenderFunc, params RenderParams, kubeconfigPath string) error {
+func ApplyDeployments(dps []string, render RenderFunc, params RenderParams, kubeconfigPath string, embedArg ...bool) error {
+	embed := true
+	if len(embedArg) > 0 {
+		embed = embedArg[0]
+	}
 	dp := &dpApplier{}
 	dp.Client = appsClient(kubeconfigPath)
-	return applyApps(dps, dp, render, params)
+	return applyApps(dps, dp, render, params, embed)
 }
 
-func ApplyDaemonSets(apps []string, render RenderFunc, params RenderParams, kubeconfigPath string) error {
+func ApplyDaemonSets(apps []string, render RenderFunc, params RenderParams, kubeconfigPath string, embedArg ...bool) error {
+	embed := true
+	if len(embedArg) > 0 {
+		embed = embedArg[0]
+	}
 	ds := &dsApplier{}
 	ds.Client = appsClient(kubeconfigPath)
-	return applyApps(apps, ds, render, params)
+	return applyApps(apps, ds, render, params, embed)
 }
