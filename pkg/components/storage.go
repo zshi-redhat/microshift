@@ -88,11 +88,11 @@ func startCSIPlugin(cfg *config.MicroshiftConfig, kubeconfigPath string) error {
 		return fmt.Errorf("rendering lvmd params: %v", err)
 	}
 
-	if err := assets.ApplyStorageClasses(sc, nil, nil, kubeconfigPath); err != nil {
+	if err := assets.ApplyCoreResources(sc, nil, nil, kubeconfigPath); err != nil {
 		klog.Warningf("Failed to apply storage cass %v: %v", sc, err)
 		return err
 	}
-	if err := assets.ApplyCSIDrivers(cd, nil, nil, kubeconfigPath); err != nil {
+	if err := assets.ApplyCoreResources(cd, nil, nil, kubeconfigPath); err != nil {
 		klog.Warningf("Failed to apply csiDriver %v: %v", sc, err)
 		return err
 	}

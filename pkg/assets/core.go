@@ -17,6 +17,7 @@ import (
 	corev1 "k8s.io/api/core/v1"
 	rbacv1 "k8s.io/api/rbac/v1"
 	sv1 "k8s.io/api/scheduling/v1"
+	storagev1 "k8s.io/api/storage/v1"
 	apierrors "k8s.io/apimachinery/pkg/api/errors"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
@@ -25,6 +26,7 @@ import (
 	appsclientv1 "k8s.io/client-go/kubernetes/typed/apps/v1"
 	coreclientv1 "k8s.io/client-go/kubernetes/typed/core/v1"
 	scv1 "k8s.io/client-go/kubernetes/typed/scheduling/v1"
+	storageclientv1 "k8s.io/client-go/kubernetes/typed/storage/v1"
 	"k8s.io/client-go/rest"
 	"k8s.io/client-go/tools/clientcmd"
 	"k8s.io/klog/v2"
@@ -50,6 +52,7 @@ func init() {
 	resourceApplier.rbacClient = k8sClient(kubeconfigPath)
 	resourceApplier.pcClient = pcClient(kubeconfigPath)
 	resourceApplier.sccClient = sccClient(kubeconfigPath)
+	resourceApplier.storageClient = storageClient(kubeconfigPath)
 
 }
 
@@ -105,13 +108,23 @@ func sccClient(kubeconfigPath string) *sccclientv1.SecurityV1Client {
 	return sccclientv1.NewForConfigOrDie(rest.AddUserAgent(restConfig, "scc-agent"))
 }
 
+func storageClient(kubeconfigPath string) *storageclientv1.StorageV1Client {
+	restConfig, err := clientcmd.BuildConfigFromFlags("", kubeconfigPath)
+	if err != nil {
+		panic(err)
+	}
+
+	return storageclientv1.NewForConfigOrDie(rest.AddUserAgent(restConfig, "sc-agent"))
+}
+
 type coreApplier struct {
-	coreClient *coreclientv1.CoreV1Client
-	appsClient *appsclientv1.AppsV1Client
-	rbacClient *kubernetes.Clientset
-	pcClient   *scv1.SchedulingV1Client
-	sccClient  *sccclientv1.SecurityV1Client
-	object     runtime.Object
+	coreClient    *coreclientv1.CoreV1Client
+	appsClient    *appsclientv1.AppsV1Client
+	rbacClient    *kubernetes.Clientset
+	pcClient      *scv1.SchedulingV1Client
+	sccClient     *sccclientv1.SecurityV1Client
+	storageClient *storageclientv1.StorageV1Client
+	object        runtime.Object
 }
 
 func (ca *coreApplier) Reader(objBytes []byte, render RenderFunc, params RenderParams) {
@@ -150,6 +163,10 @@ func (ca *coreApplier) Applier() error {
 		_, _, err = resourceapply.ApplyRole(context.TODO(), ca.rbacClient.RbacV1(), assetsEventRecorder, ca.object.(*rbacv1.Role))
 	case "RoleBinding":
 		_, _, err = resourceapply.ApplyRoleBinding(context.TODO(), ca.rbacClient.RbacV1(), assetsEventRecorder, ca.object.(*rbacv1.RoleBinding))
+	case "StorageClass":
+		_, _, err = resourceapply.ApplyStorageClass(context.TODO(), ca.storageClient, assetsEventRecorder, ca.object.(*storagev1.StorageClass))
+	case "CSIDriver":
+		_, _, err = resourceapply.ApplyCSIDriver(context.TODO(), ca.storageClient, assetsEventRecorder, ca.object.(*storagev1.CSIDriver))
 	case "PriorityClass":
 		// adapted from cvo
 		existing, err := ca.pcClient.PriorityClasses().Get(context.TODO(), ca.object.(*sv1.PriorityClass).Name, metav1.GetOptions{})
@@ -185,7 +202,6 @@ func (ca *coreApplier) Applier() error {
 		}
 
 		_, err = ca.sccClient.SecurityContextConstraints().Update(context.TODO(), existing, metav1.UpdateOptions{})
-		return err
 	}
 	return err
 }
