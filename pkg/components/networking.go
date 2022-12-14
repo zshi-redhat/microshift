@@ -52,11 +52,11 @@ func startCNIPlugin(cfg *config.MicroshiftConfig, kubeconfigPath string) error {
 		}
 	}
 
-	if err := assets.ApplyNamespaces(ns, kubeconfigPath); err != nil {
+	if err := assets.ApplyCoreResources(ns, nil, nil, kubeconfigPath); err != nil {
 		klog.Warningf("Failed to apply ns %v: %v", ns, err)
 		return err
 	}
-	if err := assets.ApplyServiceAccounts(sa, kubeconfigPath); err != nil {
+	if err := assets.ApplyCoreResources(sa, nil, nil, kubeconfigPath); err != nil {
 		klog.Warningf("Failed to apply serviceAccount %v %v", sa, err)
 		return err
 	}
@@ -81,7 +81,7 @@ func startCNIPlugin(cfg *config.MicroshiftConfig, kubeconfigPath string) error {
 		"KubeconfigPath": kubeconfigPath,
 		"KubeconfigDir":  filepath.Join(microshiftDataDir, "/resources/kubeadmin"),
 	}
-	if err := assets.ApplyConfigMaps(cm, renderTemplate, renderParamsFromConfig(cfg, extraParams), kubeconfigPath); err != nil {
+	if err := assets.ApplyCoreResources(cm, renderTemplate, renderParamsFromConfig(cfg, extraParams), kubeconfigPath); err != nil {
 		klog.Warningf("Failed to apply configMap %v %v", cm, err)
 		return err
 	}

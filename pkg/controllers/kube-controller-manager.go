@@ -99,10 +99,10 @@ func configure(cfg *config.MicroshiftConfig) (args []string, applyFn func() erro
 
 	args, err = mergeAndConvertToArgs(overrides)
 	applyFn = func() error {
-		return assets.ApplyNamespaces([]string{
+		return assets.ApplyCoreResources([]string{
 			"controllers/kube-controller-manager/namespace-openshift-kube-controller-manager.yaml",
 			"core/namespace-openshift-infra.yaml",
-		}, cfg.KubeConfigPath(config.KubeAdmin))
+		}, nil, nil, cfg.KubeConfigPath(config.KubeAdmin))
 	}
 	return args, applyFn, err
 }

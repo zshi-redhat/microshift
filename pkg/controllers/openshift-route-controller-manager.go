@@ -108,9 +108,9 @@ func (s *OCPRouteControllerManager) Run(ctx context.Context, ready chan<- struct
 		close(ready)
 	}()
 
-	if err := assets.ApplyNamespaces([]string{
+	if err := assets.ApplyCoreResources([]string{
 		"controllers/route-controller-manager/0000_50_cluster-openshift-route-controller-manager_00_namespace.yaml",
-	}, s.kubeadmconfig); err != nil {
+	}, nil, nil, s.kubeadmconfig); err != nil {
 		klog.Fatalf("failed to apply openshift namespaces %v", err)
 	}
 	if err := assets.ApplyClusterRoles([]string{
@@ -143,9 +143,9 @@ func (s *OCPRouteControllerManager) Run(ctx context.Context, ready chan<- struct
 		klog.Fatalf("failed to apply route controller manager role bindings %v", err)
 	}
 
-	if err := assets.ApplyServiceAccounts([]string{
+	if err := assets.ApplyCoreResources([]string{
 		"controllers/route-controller-manager/route-controller-sa.yaml",
-	}, s.kubeadmconfig); err != nil {
+	}, nil, nil, s.kubeadmconfig); err != nil {
 		klog.Fatalf("failed to apply route controller manager service account %v", err)
 	}
 

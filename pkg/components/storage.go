@@ -96,11 +96,11 @@ func startCSIPlugin(cfg *config.MicroshiftConfig, kubeconfigPath string) error {
 		klog.Warningf("Failed to apply csiDriver %v: %v", sc, err)
 		return err
 	}
-	if err := assets.ApplyNamespaces(ns, kubeconfigPath); err != nil {
+	if err := assets.ApplyCoreResources(ns, nil, nil, kubeconfigPath); err != nil {
 		klog.Warningf("Failed to apply ns %v: %v", ns, err)
 		return err
 	}
-	if err := assets.ApplyServiceAccounts(sa, kubeconfigPath); err != nil {
+	if err := assets.ApplyCoreResources(sa, nil, nil, kubeconfigPath); err != nil {
 		klog.Warningf("Failed to apply sa %v: %v", sa, err)
 		return err
 	}
@@ -120,7 +120,7 @@ func startCSIPlugin(cfg *config.MicroshiftConfig, kubeconfigPath string) error {
 		klog.Warningf("Failed to apply clusterrolebinding %v: %v", crb, err)
 		return err
 	}
-	if err := assets.ApplyConfigMaps(cm, renderTemplate, lvmdRenderParams, kubeconfigPath); err != nil {
+	if err := assets.ApplyCoreResources(cm, renderTemplate, lvmdRenderParams, kubeconfigPath); err != nil {
 		klog.Warningf("Failed to apply configMap %v: %v", crb, err)
 		return err
 	}

@@ -58,7 +58,7 @@ func startServiceCAController(cfg *config.MicroshiftConfig, kubeconfigPath strin
 	secretData["tls.crt"] = caCertPEM
 	secretData["tls.key"] = caKeyPEM
 
-	if err := assets.ApplyNamespaces(ns, kubeconfigPath); err != nil {
+	if err := assets.ApplyCoreResources(ns, nil, nil, kubeconfigPath); err != nil {
 		klog.Warningf("Failed to apply ns %v: %v", ns, err)
 		return err
 	}
@@ -78,7 +78,7 @@ func startServiceCAController(cfg *config.MicroshiftConfig, kubeconfigPath strin
 		klog.Warningf("Failed to apply role %v: %v", role, err)
 		return err
 	}
-	if err := assets.ApplyServiceAccounts(sa, kubeconfigPath); err != nil {
+	if err := assets.ApplyCoreResources(sa, nil, nil, kubeconfigPath); err != nil {
 		klog.Warningf("Failed to apply sa %v: %v", sa, err)
 		return err
 	}
@@ -126,7 +126,7 @@ func startIngressController(cfg *config.MicroshiftConfig, kubeconfigPath string)
 		}
 		servingKeypairSecret = "components/openshift-router/serving-certificate.yaml"
 	)
-	if err := assets.ApplyNamespaces(ns, kubeconfigPath); err != nil {
+	if err := assets.ApplyCoreResources(ns, nil, nil, kubeconfigPath); err != nil {
 		klog.Warningf("Failed to apply namespaces %v: %v", ns, err)
 		return err
 	}
@@ -138,15 +138,15 @@ func startIngressController(cfg *config.MicroshiftConfig, kubeconfigPath string)
 		klog.Warningf("Failed to apply clusterRolebinding %v: %v", clusterRoleBinding, err)
 		return err
 	}
-	if err := assets.ApplyServiceAccounts(sa, kubeconfigPath); err != nil {
+	if err := assets.ApplyCoreResources(sa, nil, nil, kubeconfigPath); err != nil {
 		klog.Warningf("Failed to apply serviceAccount %v %v", sa, err)
 		return err
 	}
-	if err := assets.ApplyConfigMaps(cm, nil, nil, kubeconfigPath); err != nil {
+	if err := assets.ApplyCoreResources(cm, nil, nil, kubeconfigPath); err != nil {
 		klog.Warningf("Failed to apply configMap %v, %v", cm, err)
 		return err
 	}
-	if err := assets.ApplyServices(svc, nil, nil, kubeconfigPath); err != nil {
+	if err := assets.ApplyCoreResources(svc, nil, nil, kubeconfigPath); err != nil {
 		klog.Warningf("Failed to apply service %v %v", svc, err)
 		return err
 	}
@@ -195,14 +195,14 @@ func startDNSController(cfg *config.MicroshiftConfig, kubeconfigPath string) err
 			"components/openshift-dns/dns/service.yaml",
 		}
 	)
-	if err := assets.ApplyNamespaces(ns, kubeconfigPath); err != nil {
+	if err := assets.ApplyCoreResources(ns, nil, nil, kubeconfigPath); err != nil {
 		klog.Warningf("Failed to apply", "namespace", ns, "err", err)
 		return err
 	}
 	extraParams := assets.RenderParams{
 		"ClusterIP": cfg.Cluster.DNS,
 	}
-	if err := assets.ApplyServices(svc, renderTemplate, renderParamsFromConfig(cfg, extraParams), kubeconfigPath); err != nil {
+	if err := assets.ApplyCoreResources(svc, renderTemplate, renderParamsFromConfig(cfg, extraParams), kubeconfigPath); err != nil {
 		klog.Warningf("Failed to apply service %v %v", svc, err)
 		// service already created by coreDNS, not re-create it.
 		return nil
@@ -215,11 +215,11 @@ func startDNSController(cfg *config.MicroshiftConfig, kubeconfigPath string) err
 		klog.Warningf("Failed to apply clusterRoleBinding %v %v", clusterRoleBinding, err)
 		return err
 	}
-	if err := assets.ApplyServiceAccounts(sa, kubeconfigPath); err != nil {
+	if err := assets.ApplyCoreResources(sa, nil, nil, kubeconfigPath); err != nil {
 		klog.Warningf("Failed to apply serviceAccount %v %v", sa, err)
 		return err
 	}
-	if err := assets.ApplyConfigMaps(cm, nil, nil, kubeconfigPath); err != nil {
+	if err := assets.ApplyCoreResources(cm, nil, nil, kubeconfigPath); err != nil {
 		klog.Warningf("Failed to apply configMap %v %v", cm, err)
 		return err
 	}
