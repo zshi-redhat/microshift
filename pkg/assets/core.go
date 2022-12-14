@@ -14,16 +14,21 @@ import (
 	appsv1 "k8s.io/api/apps/v1"
 	corev1 "k8s.io/api/core/v1"
 	rbacv1 "k8s.io/api/rbac/v1"
+	sv1 "k8s.io/api/scheduling/v1"
+	apierrors "k8s.io/apimachinery/pkg/api/errors"
+	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/kubernetes/scheme"
 	appsclientv1 "k8s.io/client-go/kubernetes/typed/apps/v1"
 	coreclientv1 "k8s.io/client-go/kubernetes/typed/core/v1"
+	scv1 "k8s.io/client-go/kubernetes/typed/scheduling/v1"
 	"k8s.io/client-go/rest"
 	"k8s.io/client-go/tools/clientcmd"
 	"k8s.io/klog/v2"
 
 	"github.com/openshift/library-go/pkg/operator/resource/resourceapply"
+	"github.com/openshift/library-go/pkg/operator/resource/resourcemerge"
 )
 
 var (
@@ -41,6 +46,7 @@ func init() {
 	resourceApplier.coreClient = coreClient(kubeconfigPath)
 	resourceApplier.appsClient = appsClient(kubeconfigPath)
 	resourceApplier.rbacClient = k8sClient(kubeconfigPath)
+	resourceApplier.pcClient = pcClient(kubeconfigPath)
 
 }
 
@@ -80,10 +86,19 @@ func k8sClient(kubeconfigPath string) *kubernetes.Clientset {
 	return kubernetes.NewForConfigOrDie(rest.AddUserAgent(restConfig, "rbac-agent"))
 }
 
+func pcClient(kubeconfigPath string) *scv1.SchedulingV1Client {
+	restConfig, err := clientcmd.BuildConfigFromFlags("", kubeconfigPath)
+	if err != nil {
+		panic(err)
+	}
+	return scv1.NewForConfigOrDie(rest.AddUserAgent(restConfig, "pc-agent"))
+}
+
 type coreApplier struct {
 	coreClient *coreclientv1.CoreV1Client
 	appsClient *appsclientv1.AppsV1Client
 	rbacClient *kubernetes.Clientset
+	pcClient   *scv1.SchedulingV1Client
 	object     runtime.Object
 }
 
@@ -123,6 +138,23 @@ func (ca *coreApplier) Applier() error {
 		_, _, err = resourceapply.ApplyRole(context.TODO(), ca.rbacClient.RbacV1(), assetsEventRecorder, ca.object.(*rbacv1.Role))
 	case "RoleBinding":
 		_, _, err = resourceapply.ApplyRoleBinding(context.TODO(), ca.rbacClient.RbacV1(), assetsEventRecorder, ca.object.(*rbacv1.RoleBinding))
+	case "PriorityClass":
+		// adapted from cvo
+		existing, err := ca.pcClient.PriorityClasses().Get(context.TODO(), ca.object.(*sv1.PriorityClass).Name, metav1.GetOptions{})
+		if apierrors.IsNotFound(err) {
+			_, err := ca.pcClient.PriorityClasses().Create(context.TODO(), ca.object.(*sv1.PriorityClass), metav1.CreateOptions{})
+			return err
+		}
+		if err != nil {
+			return err
+		}
+
+		var modified bool
+		resourcemerge.EnsureObjectMeta(&modified, &existing.ObjectMeta, ca.object.(*sv1.PriorityClass).ObjectMeta)
+		if !modified {
+			return nil
+		}
+		_, err = ca.pcClient.PriorityClasses().Update(context.TODO(), existing, metav1.UpdateOptions{})
 	}
 	return err
 }

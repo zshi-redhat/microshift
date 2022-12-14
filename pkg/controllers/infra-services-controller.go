@@ -49,7 +49,7 @@ func (s *InfrastructureServicesManager) Run(ctx context.Context, ready chan<- st
 	}
 
 	priorityClasses := []string{"core/priority-class-openshift-user-critical.yaml"}
-	if err := assets.ApplyPriorityClasses(priorityClasses, s.cfg.KubeConfigPath(config.KubeAdmin)); err != nil {
+	if err := assets.ApplyCoreResources(priorityClasses, nil, nil, s.cfg.KubeConfigPath(config.KubeAdmin)); err != nil {
 		klog.Errorf("%s unable to apply PriorityClasses: %v", s.Name(), err)
 		return err
 	}
