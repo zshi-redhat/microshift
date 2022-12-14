@@ -62,19 +62,19 @@ func startServiceCAController(cfg *config.MicroshiftConfig, kubeconfigPath strin
 		klog.Warningf("Failed to apply ns %v: %v", ns, err)
 		return err
 	}
-	if err := assets.ApplyClusterRoleBindings(clusterRoleBinding, kubeconfigPath); err != nil {
+	if err := assets.ApplyCoreResources(clusterRoleBinding, nil, nil, kubeconfigPath); err != nil {
 		klog.Warningf("Failed to apply clusterRolebinding %v: %v", clusterRoleBinding, err)
 		return err
 	}
-	if err := assets.ApplyClusterRoles(clusterRole, kubeconfigPath); err != nil {
+	if err := assets.ApplyCoreResources(clusterRole, nil, nil, kubeconfigPath); err != nil {
 		klog.Warningf("Failed to apply clusterRole %v: %v", clusterRole, err)
 		return err
 	}
-	if err := assets.ApplyRoleBindings(roleBinding, kubeconfigPath); err != nil {
+	if err := assets.ApplyCoreResources(roleBinding, nil, nil, kubeconfigPath); err != nil {
 		klog.Warningf("Failed to apply rolebinding %v: %v", roleBinding, err)
 		return err
 	}
-	if err := assets.ApplyRoles(role, kubeconfigPath); err != nil {
+	if err := assets.ApplyCoreResources(role, nil, nil, kubeconfigPath); err != nil {
 		klog.Warningf("Failed to apply role %v: %v", role, err)
 		return err
 	}
@@ -130,11 +130,11 @@ func startIngressController(cfg *config.MicroshiftConfig, kubeconfigPath string)
 		klog.Warningf("Failed to apply namespaces %v: %v", ns, err)
 		return err
 	}
-	if err := assets.ApplyClusterRoles(clusterRole, kubeconfigPath); err != nil {
+	if err := assets.ApplyCoreResources(clusterRole, nil, nil, kubeconfigPath); err != nil {
 		klog.Warningf("Failed to apply clusterRole %v: %v", clusterRole, err)
 		return err
 	}
-	if err := assets.ApplyClusterRoleBindings(clusterRoleBinding, kubeconfigPath); err != nil {
+	if err := assets.ApplyCoreResources(clusterRoleBinding, nil, nil, kubeconfigPath); err != nil {
 		klog.Warningf("Failed to apply clusterRolebinding %v: %v", clusterRoleBinding, err)
 		return err
 	}
@@ -207,11 +207,11 @@ func startDNSController(cfg *config.MicroshiftConfig, kubeconfigPath string) err
 		// service already created by coreDNS, not re-create it.
 		return nil
 	}
-	if err := assets.ApplyClusterRoles(clusterRole, kubeconfigPath); err != nil {
+	if err := assets.ApplyCoreResources(clusterRole, nil, nil, kubeconfigPath); err != nil {
 		klog.Warningf("Failed to apply clusterRole %v %v", clusterRole, err)
 		return err
 	}
-	if err := assets.ApplyClusterRoleBindings(clusterRoleBinding, kubeconfigPath); err != nil {
+	if err := assets.ApplyCoreResources(clusterRoleBinding, nil, nil, kubeconfigPath); err != nil {
 		klog.Warningf("Failed to apply clusterRoleBinding %v %v", clusterRoleBinding, err)
 		return err
 	}

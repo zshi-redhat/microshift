@@ -76,11 +76,11 @@ func applyDefaultRBACs(cfg *config.MicroshiftConfig) error {
 			"controllers/cluster-policy-controller/podsecurity-admission-label-syncer-controller-clusterrolebinding.yaml",
 		}
 	)
-	if err := assets.ApplyClusterRoles(cr, kubeconfigPath); err != nil {
+	if err := assets.ApplyCoreResources(cr, nil, nil, kubeconfigPath); err != nil {
 		klog.Warningf("failed to apply cluster roles %v", err)
 		return err
 	}
-	if err := assets.ApplyClusterRoleBindings(crb, kubeconfigPath); err != nil {
+	if err := assets.ApplyCoreResources(crb, nil, nil, kubeconfigPath); err != nil {
 		klog.Warningf("failed to apply cluster roles %v", err)
 		return err
 	}

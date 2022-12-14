@@ -13,7 +13,9 @@ import (
 
 	appsv1 "k8s.io/api/apps/v1"
 	corev1 "k8s.io/api/core/v1"
+	rbacv1 "k8s.io/api/rbac/v1"
 	"k8s.io/apimachinery/pkg/runtime"
+	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/kubernetes/scheme"
 	appsclientv1 "k8s.io/client-go/kubernetes/typed/apps/v1"
 	coreclientv1 "k8s.io/client-go/kubernetes/typed/core/v1"
@@ -38,6 +40,7 @@ func init() {
 	kubeconfigPath := filepath.Join(config.DataDir, "resources", string(config.KubeAdmin), "kubeconfig")
 	resourceApplier.coreClient = coreClient(kubeconfigPath)
 	resourceApplier.appsClient = appsClient(kubeconfigPath)
+	resourceApplier.rbacClient = k8sClient(kubeconfigPath)
 
 }
 
@@ -69,9 +72,18 @@ func appsClient(kubeconfigPath string) *appsclientv1.AppsV1Client {
 	return appsclientv1.NewForConfigOrDie(rest.AddUserAgent(restConfig, "apps-agent"))
 }
 
+func k8sClient(kubeconfigPath string) *kubernetes.Clientset {
+	restConfig, err := clientcmd.BuildConfigFromFlags("", kubeconfigPath)
+	if err != nil {
+		panic(err)
+	}
+	return kubernetes.NewForConfigOrDie(rest.AddUserAgent(restConfig, "rbac-agent"))
+}
+
 type coreApplier struct {
 	coreClient *coreclientv1.CoreV1Client
 	appsClient *appsclientv1.AppsV1Client
+	rbacClient *kubernetes.Clientset
 	object     runtime.Object
 }
 
@@ -103,6 +115,14 @@ func (ca *coreApplier) Applier() error {
 		_, _, err = resourceapply.ApplyDeployment(context.TODO(), ca.appsClient, assetsEventRecorder, ca.object.(*appsv1.Deployment), 0)
 	case "DaemonSet":
 		_, _, err = resourceapply.ApplyDaemonSet(context.TODO(), ca.appsClient, assetsEventRecorder, ca.object.(*appsv1.DaemonSet), 0)
+	case "ClusterRole":
+		_, _, err = resourceapply.ApplyClusterRole(context.TODO(), ca.rbacClient.RbacV1(), assetsEventRecorder, ca.object.(*rbacv1.ClusterRole))
+	case "ClusterRoleBinding":
+		_, _, err = resourceapply.ApplyClusterRoleBinding(context.TODO(), ca.rbacClient.RbacV1(), assetsEventRecorder, ca.object.(*rbacv1.ClusterRoleBinding))
+	case "Role":
+		_, _, err = resourceapply.ApplyRole(context.TODO(), ca.rbacClient.RbacV1(), assetsEventRecorder, ca.object.(*rbacv1.Role))
+	case "RoleBinding":
+		_, _, err = resourceapply.ApplyRoleBinding(context.TODO(), ca.rbacClient.RbacV1(), assetsEventRecorder, ca.object.(*rbacv1.RoleBinding))
 	}
 	return err
 }

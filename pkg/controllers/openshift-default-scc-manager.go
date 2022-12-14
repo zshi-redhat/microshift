@@ -86,11 +86,11 @@ func ApplyDefaultSCCs(cfg *config.MicroshiftConfig) error {
 		klog.Warningf("failed to apply sccs %v", err)
 		return err
 	}
-	if err := assets.ApplyClusterRoles(clusterRole, kubeconfigPath); err != nil {
+	if err := assets.ApplyCoreResources(clusterRole, nil, nil, kubeconfigPath); err != nil {
 		klog.Warningf("Failed to apply clusterRole %v: %v", clusterRole, err)
 		return err
 	}
-	if err := assets.ApplyClusterRoleBindings(clusterRoleBinding, kubeconfigPath); err != nil {
+	if err := assets.ApplyCoreResources(clusterRoleBinding, nil, nil, kubeconfigPath); err != nil {
 		klog.Warningf("Failed to apply clusterRolebinding %v: %v", clusterRoleBinding, err)
 		return err
 	}

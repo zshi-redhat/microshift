@@ -60,19 +60,19 @@ func startCNIPlugin(cfg *config.MicroshiftConfig, kubeconfigPath string) error {
 		klog.Warningf("Failed to apply serviceAccount %v %v", sa, err)
 		return err
 	}
-	if err := assets.ApplyRoles(r, kubeconfigPath); err != nil {
+	if err := assets.ApplyCoreResources(r, nil, nil, kubeconfigPath); err != nil {
 		klog.Warningf("Failed to apply role %v: %v", r, err)
 		return err
 	}
-	if err := assets.ApplyRoleBindings(rb, kubeconfigPath); err != nil {
+	if err := assets.ApplyCoreResources(rb, nil, nil, kubeconfigPath); err != nil {
 		klog.Warningf("Failed to apply rolebinding %v: %v", rb, err)
 		return err
 	}
-	if err := assets.ApplyClusterRoles(cr, kubeconfigPath); err != nil {
+	if err := assets.ApplyCoreResources(cr, nil, nil, kubeconfigPath); err != nil {
 		klog.Warningf("Failed to apply clusterRole %v %v", cr, err)
 		return err
 	}
-	if err := assets.ApplyClusterRoleBindings(crb, kubeconfigPath); err != nil {
+	if err := assets.ApplyCoreResources(crb, nil, nil, kubeconfigPath); err != nil {
 		klog.Warningf("Failed to apply clusterRoleBinding %v %v", crb, err)
 		return err
 	}
