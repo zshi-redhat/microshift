@@ -82,7 +82,7 @@ func ApplyDefaultSCCs(cfg *config.MicroshiftConfig) error {
 			"controllers/openshift-default-scc-manager/0000_20_kube-apiserver-operator_00_scc-restricted.yaml",
 		}
 	)
-	if err := assets.ApplySCCs(sccs, nil, nil, kubeconfigPath); err != nil {
+	if err := assets.ApplyCoreResources(sccs, nil, nil, kubeconfigPath); err != nil {
 		klog.Warningf("failed to apply sccs %v", err)
 		return err
 	}

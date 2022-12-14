@@ -132,7 +132,7 @@ func startCSIPlugin(cfg *config.MicroshiftConfig, kubeconfigPath string) error {
 		klog.Warningf("Failed to apply daemonsets %v: %v", ds, err)
 		return err
 	}
-	if err := assets.ApplySCCs(scc, nil, nil, kubeconfigPath); err != nil {
+	if err := assets.ApplyCoreResources(scc, nil, nil, kubeconfigPath); err != nil {
 		klog.Warningf("Failed to apply sccs %v: %v", scc, err)
 		return err
 	}

@@ -11,6 +11,8 @@ import (
 	embedded "github.com/openshift/microshift/assets"
 	"github.com/openshift/microshift/pkg/config"
 
+	sccv1 "github.com/openshift/api/security/v1"
+	sccclientv1 "github.com/openshift/client-go/security/clientset/versioned/typed/security/v1"
 	appsv1 "k8s.io/api/apps/v1"
 	corev1 "k8s.io/api/core/v1"
 	rbacv1 "k8s.io/api/rbac/v1"
@@ -47,6 +49,7 @@ func init() {
 	resourceApplier.appsClient = appsClient(kubeconfigPath)
 	resourceApplier.rbacClient = k8sClient(kubeconfigPath)
 	resourceApplier.pcClient = pcClient(kubeconfigPath)
+	resourceApplier.sccClient = sccClient(kubeconfigPath)
 
 }
 
@@ -94,11 +97,20 @@ func pcClient(kubeconfigPath string) *scv1.SchedulingV1Client {
 	return scv1.NewForConfigOrDie(rest.AddUserAgent(restConfig, "pc-agent"))
 }
 
+func sccClient(kubeconfigPath string) *sccclientv1.SecurityV1Client {
+	restConfig, err := clientcmd.BuildConfigFromFlags("", kubeconfigPath)
+	if err != nil {
+		panic(err)
+	}
+	return sccclientv1.NewForConfigOrDie(rest.AddUserAgent(restConfig, "scc-agent"))
+}
+
 type coreApplier struct {
 	coreClient *coreclientv1.CoreV1Client
 	appsClient *appsclientv1.AppsV1Client
 	rbacClient *kubernetes.Clientset
 	pcClient   *scv1.SchedulingV1Client
+	sccClient  *sccclientv1.SecurityV1Client
 	object     runtime.Object
 }
 
@@ -155,6 +167,25 @@ func (ca *coreApplier) Applier() error {
 			return nil
 		}
 		_, err = ca.pcClient.PriorityClasses().Update(context.TODO(), existing, metav1.UpdateOptions{})
+	case "SecurityContextConstraints":
+		// adapted from cvo
+		existing, err := ca.sccClient.SecurityContextConstraints().Get(context.TODO(), ca.object.(*sccv1.SecurityContextConstraints).Name, metav1.GetOptions{})
+		if apierrors.IsNotFound(err) {
+			_, err := ca.sccClient.SecurityContextConstraints().Create(context.TODO(), ca.object.(*sccv1.SecurityContextConstraints), metav1.CreateOptions{})
+			return err
+		}
+		if err != nil {
+			return err
+		}
+
+		var modified bool
+		resourcemerge.EnsureObjectMeta(&modified, &existing.ObjectMeta, ca.object.(*sccv1.SecurityContextConstraints).ObjectMeta)
+		if !modified {
+			return nil
+		}
+
+		_, err = ca.sccClient.SecurityContextConstraints().Update(context.TODO(), existing, metav1.UpdateOptions{})
+		return err
 	}
 	return err
 }
