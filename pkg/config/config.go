@@ -41,6 +41,7 @@ const (
 var (
 	configFile   = findConfigFile()
 	dataDir      = findDataDir()
+	DataDir      = findDataDir()
 	manifestsDir = findManifestsDir()
 )
 

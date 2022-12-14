@@ -94,7 +94,7 @@ func startServiceCAController(cfg *config.MicroshiftConfig, kubeconfigPath strin
 		"CAConfigMap": cmName,
 		"TLSSecret":   secretName,
 	}
-	if err := assets.ApplyDeployments(apps, renderTemplate, renderParamsFromConfig(cfg, extraParams), kubeconfigPath); err != nil {
+	if err := assets.ApplyCoreResources(apps, renderTemplate, renderParamsFromConfig(cfg, extraParams), kubeconfigPath); err != nil {
 		klog.Warningf("Failed to apply apps %v: %v", apps, err)
 		return err
 	}
@@ -162,7 +162,7 @@ func startIngressController(cfg *config.MicroshiftConfig, kubeconfigPath string)
 		return err
 	}
 
-	if err := assets.ApplyDeployments(apps, renderTemplate, renderParamsFromConfig(cfg, nil), kubeconfigPath); err != nil {
+	if err := assets.ApplyCoreResources(apps, renderTemplate, renderParamsFromConfig(cfg, nil), kubeconfigPath); err != nil {
 		klog.Warningf("Failed to apply apps %v: %v", apps, err)
 		return err
 	}
@@ -223,7 +223,7 @@ func startDNSController(cfg *config.MicroshiftConfig, kubeconfigPath string) err
 		klog.Warningf("Failed to apply configMap %v %v", cm, err)
 		return err
 	}
-	if err := assets.ApplyDaemonSets(apps, renderTemplate, renderParamsFromConfig(cfg, extraParams), kubeconfigPath); err != nil {
+	if err := assets.ApplyCoreResources(apps, renderTemplate, renderParamsFromConfig(cfg, extraParams), kubeconfigPath); err != nil {
 		klog.Warningf("Failed to apply apps %v %v", apps, err)
 		return err
 	}
