@@ -6,6 +6,7 @@ import (
 
 	"github.com/openshift/microshift/pkg/assets"
 	"github.com/openshift/microshift/pkg/config"
+	"github.com/openshift/microshift/pkg/util"
 	"k8s.io/klog/v2"
 )
 
@@ -13,8 +14,9 @@ type CNIPlugin interface {
 	GetName() string
 	GetVersion() string
 	GetManifests() []map[string][]string
-	GetRenderParams() string
+	GetRenderParams() map[string]string
 	ValidateConfig() bool
+	GetInitScript() []string
 }
 
 func startCNIPlugin(cfg *config.MicroshiftConfig, kubeconfigPath string, plugin CNIPlugin) error {
@@ -22,10 +24,20 @@ func startCNIPlugin(cfg *config.MicroshiftConfig, kubeconfigPath string, plugin 
 		return fmt.Errorf("failed to validate %s CNI config", plugin.GetName())
 	}
 
+	cniScript := plugin.GetInitScript()
+
+	if err := util.RunCommand(cniScript[0], cniScript[1:]...); err != nil {
+		return err
+	}
+
 	extraParams := assets.RenderParams{
-		"MTU":            plugin.GetRenderParams(),
 		"KubeconfigPath": kubeconfigPath,
 		"KubeconfigDir":  filepath.Join(microshiftDataDir, "/resources/kubeadmin"),
+	}
+
+	cniParams := plugin.GetRenderParams()
+	for k, v := range cniParams {
+		extraParams[k] = v
 	}
 
 	manifests := plugin.GetManifests()

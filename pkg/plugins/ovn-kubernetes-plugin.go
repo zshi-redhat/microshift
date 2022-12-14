@@ -43,60 +43,69 @@ func (p *OVNKubernetesPlugin) GetManifests() []map[string][]string {
 
 	manifests = append(manifests, map[string][]string{
 		"namespace": []string{
-			"components/ovn/namespace.yaml",
+			"/etc/microshift/ovn/namespace.yaml",
 		},
 	})
 	manifests = append(manifests, map[string][]string{
 		"serviceaccount": []string{
-			"components/ovn/node/serviceaccount.yaml",
-			"components/ovn/master/serviceaccount.yaml",
+			"/etc/microshift/ovn/node/serviceaccount.yaml",
+			"/etc/microshift/ovn/master/serviceaccount.yaml",
 		},
 	})
 	manifests = append(manifests, map[string][]string{
 		"role": []string{
-			"components/ovn/role.yaml",
+			"/etc/microshift/ovn/role.yaml",
 		},
 	})
 	manifests = append(manifests, map[string][]string{
 		"rolebinding": []string{
-			"components/ovn/rolebinding.yaml",
+			"/etc/microshift/ovn/rolebinding.yaml",
 		},
 	})
 	manifests = append(manifests, map[string][]string{
 		"clusterrole": []string{
-			"components/ovn/clusterrole.yaml",
+			"/etc/microshift/ovn/clusterrole.yaml",
 		},
 	})
 	manifests = append(manifests, map[string][]string{
 		"clusterrolebinding": []string{
-			"components/ovn/clusterrolebinding.yaml",
+			"/etc/microshift/ovn/clusterrolebinding.yaml",
 		},
 	})
 	manifests = append(manifests, map[string][]string{
 		"configmap": []string{
-			"components/ovn/configmap.yaml",
+			"/etc/microshift/ovn/configmap.yaml",
 		},
 	})
 	manifests = append(manifests, map[string][]string{
 		"daemonset": []string{
-			"components/ovn/master/daemonset.yaml",
-			"components/ovn/node/daemonset.yaml",
+			"/etc/microshift/ovn/master/daemonset.yaml",
+			"/etc/microshift/ovn/node/daemonset.yaml",
 		},
 	})
 
 	return manifests
 }
 
-func (p *OVNKubernetesPlugin) GetRenderParams() string {
+func (p *OVNKubernetesPlugin) GetRenderParams() map[string]string {
+	params := make(map[string]string, 0)
 	c, err := NewOVNKubernetesConfigFromFileOrDefault("/etc/microshift/ovn.yaml")
 	if err != nil {
-		return string(1400)
+		return params
 	}
-	return fmt.Sprint(c.MTU)
+	params["MTU"] = fmt.Sprint(c.MTU)
+	return params
 }
 
 func (p *OVNKubernetesPlugin) ValidateConfig() bool {
 	return true
+}
+
+func (p *OVNKubernetesPlugin) GetInitScript() []string {
+	cmdStr := make([]string, 0)
+	cmdStr = append(cmdStr, "configure-ovs.sh")
+	cmdStr = append(cmdStr, "OVNKubernetes")
+	return cmdStr
 }
 
 type OVNKubernetesConfig struct {
