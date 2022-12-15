@@ -35,6 +35,6 @@ func RunCommand(bin string, args ...string) error {
 		return fmt.Errorf("failed to run '%s %s': %v\n  %q", path, argStr, err, stderrStr)
 	}
 	stdoutStr := stdout.String()
-	klog.V(4).Infof("Exec: %s %s: stdout: %q", path, argStr, stdoutStr)
+	klog.Infof("Exec: %s %s: stdout: %q", path, argStr, stdoutStr)
 	return nil
 }

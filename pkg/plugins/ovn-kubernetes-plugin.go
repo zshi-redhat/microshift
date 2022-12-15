@@ -6,6 +6,7 @@ import (
 	"net"
 	"os"
 
+	"github.com/openshift/microshift/pkg/util"
 	"gopkg.in/yaml.v2"
 	"k8s.io/klog/v2"
 )
@@ -106,6 +107,10 @@ func (p *OVNKubernetesPlugin) GetInitScript() []string {
 	cmdStr = append(cmdStr, "configure-ovs.sh")
 	cmdStr = append(cmdStr, "OVNKubernetes")
 	return cmdStr
+}
+
+func (p *OVNKubernetesPlugin) PreStartHook() error {
+	return util.RunCommand("configure-ovs.sh", "OVNKubernetes")
 }
 
 type OVNKubernetesConfig struct {
