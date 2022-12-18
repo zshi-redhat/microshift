@@ -30,6 +30,7 @@ const (
 func addRunFlags(cmd *cobra.Command, cfg *config.MicroshiftConfig) {
 	flags := cmd.Flags()
 	// All other flags will be read after reading both config file and env vars.
+	flags.String("network-type", cfg.Network.Type, "The network CNI plugin name.")
 	flags.String("hostname-override", cfg.NodeName, "The name to use to identify this node instead of the hostname.")
 	flags.String("node-ip", cfg.NodeIP, "The IP address of the node.")
 	flags.String("cluster-cidr", cfg.Cluster.ClusterCIDR, "The IP range in CIDR notation for pods in the cluster.")

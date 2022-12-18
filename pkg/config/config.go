@@ -56,6 +56,10 @@ type IngressConfig struct {
 	ServingKey         []byte
 }
 
+type NetworkConfig struct {
+	Type string `json:"type"`
+}
+
 type MicroshiftConfig struct {
 	LogVLevel int `json:"logVLevel"`
 
@@ -64,6 +68,7 @@ type MicroshiftConfig struct {
 	NodeIP          string        `json:"nodeIP"`
 	BaseDomain      string        `json:"baseDomain"`
 	Cluster         ClusterConfig `json:"cluster"`
+	Network         NetworkConfig `json:"network"`
 
 	Ingress IngressConfig `json:"-"`
 }
@@ -394,6 +399,9 @@ func (c *MicroshiftConfig) ReadFromCmdLine(flags *pflag.FlagSet) error {
 	}
 	if s, err := flags.GetString("base-domain"); err == nil && flags.Changed("base-domain") {
 		c.BaseDomain = s
+	}
+	if s, err := flags.GetString("network-type"); err == nil && flags.Changed("network-type") {
+		c.Network.Type = s
 	}
 
 	return nil
