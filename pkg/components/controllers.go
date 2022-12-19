@@ -1,6 +1,7 @@
 package components
 
 import (
+	"errors"
 	"os"
 
 	"github.com/openshift/microshift/pkg/assets"
@@ -199,6 +200,7 @@ func startDNSController(cfg *config.MicroshiftConfig, kubeconfigPath string) err
 		klog.Warningf("Failed to apply", "namespace", ns, "err", err)
 		return err
 	}
+
 	extraParams := assets.RenderParams{
 		"ClusterIP": cfg.Cluster.DNS,
 	}
@@ -219,7 +221,14 @@ func startDNSController(cfg *config.MicroshiftConfig, kubeconfigPath string) err
 		klog.Warningf("Failed to apply serviceAccount %v %v", sa, err)
 		return err
 	}
-	if err := assets.ApplyConfigMaps(cm, nil, nil, kubeconfigPath); err != nil {
+	// set DNS forward to systemd-resolved resolver if exists
+	// https://github.com/coredns/coredns/blob/master/plugin/loop/README.md#troubleshooting-loops-in-kubernetes-clusters
+	if _, err := os.Stat(config.DefaultSystemdResolvedFile); !errors.Is(err, os.ErrNotExist) {
+		extraParams["UpstreamResolver"] = config.DefaultSystemdResolvedFile
+	} else {
+		extraParams["UpstreamResolver"] = ""
+	}
+	if err := assets.ApplyConfigMaps(cm, renderTemplate, renderParamsFromConfig(cfg, extraParams), kubeconfigPath); err != nil {
 		klog.Warningf("Failed to apply configMap %v %v", cm, err)
 		return err
 	}
