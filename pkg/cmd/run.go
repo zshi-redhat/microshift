@@ -9,12 +9,8 @@ import (
 
 	"github.com/coreos/go-systemd/daemon"
 	"github.com/openshift/microshift/pkg/config"
-	"github.com/openshift/microshift/pkg/controllers"
-	"github.com/openshift/microshift/pkg/kustomize"
-	"github.com/openshift/microshift/pkg/mdns"
 	"github.com/openshift/microshift/pkg/node"
 	"github.com/openshift/microshift/pkg/servicemanager"
-	"github.com/openshift/microshift/pkg/sysconfwatch"
 	"github.com/openshift/microshift/pkg/util"
 	"github.com/openshift/microshift/pkg/util/cryptomaterial/certchains"
 	"github.com/spf13/cobra"
@@ -79,20 +75,20 @@ func RunMicroshift(cfg *config.MicroshiftConfig) error {
 	}
 
 	m := servicemanager.NewServiceManager()
-	util.Must(m.AddService(node.NewNetworkConfiguration(cfg)))
-	util.Must(m.AddService(controllers.NewEtcd(cfg)))
-	util.Must(m.AddService(sysconfwatch.NewSysConfWatchController(cfg)))
-	util.Must(m.AddService(controllers.NewKubeAPIServer(cfg)))
-	util.Must(m.AddService(controllers.NewKubeScheduler(cfg)))
-	util.Must(m.AddService(controllers.NewKubeControllerManager(cfg)))
-	util.Must(m.AddService(controllers.NewOpenShiftCRDManager(cfg)))
-	util.Must(m.AddService(controllers.NewRouteControllerManager(cfg)))
-	util.Must(m.AddService(controllers.NewClusterPolicyController(cfg)))
-	util.Must(m.AddService(controllers.NewOpenShiftDefaultSCCManager(cfg)))
-	util.Must(m.AddService(mdns.NewMicroShiftmDNSController(cfg)))
-	util.Must(m.AddService(controllers.NewInfrastructureServices(cfg)))
-	util.Must(m.AddService((controllers.NewVersionManager((cfg)))))
-	util.Must(m.AddService(kustomize.NewKustomizer(cfg)))
+	// util.Must(m.AddService(node.NewNetworkConfiguration(cfg)))
+	// util.Must(m.AddService(controllers.NewEtcd(cfg)))
+	// util.Must(m.AddService(sysconfwatch.NewSysConfWatchController(cfg)))
+	// util.Must(m.AddService(controllers.NewKubeAPIServer(cfg)))
+	// util.Must(m.AddService(controllers.NewKubeScheduler(cfg)))
+	// util.Must(m.AddService(controllers.NewKubeControllerManager(cfg)))
+	// util.Must(m.AddService(controllers.NewOpenShiftCRDManager(cfg)))
+	// util.Must(m.AddService(controllers.NewRouteControllerManager(cfg)))
+	// util.Must(m.AddService(controllers.NewClusterPolicyController(cfg)))
+	// util.Must(m.AddService(controllers.NewOpenShiftDefaultSCCManager(cfg)))
+	// util.Must(m.AddService(mdns.NewMicroShiftmDNSController(cfg)))
+	// util.Must(m.AddService(controllers.NewInfrastructureServices(cfg)))
+	// util.Must(m.AddService((controllers.NewVersionManager((cfg)))))
+	// util.Must(m.AddService(kustomize.NewKustomizer(cfg)))
 	util.Must(m.AddService(node.NewKubeletServer(cfg)))
 
 	// Storing and clearing the env, so other components don't send the READY=1 until MicroShift is fully ready

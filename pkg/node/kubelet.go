@@ -79,9 +79,7 @@ func (s *KubeletServer) configure(cfg *config.MicroshiftConfig) {
 	kubeletFlags.NodeIP = cfg.NodeIP
 	kubeletFlags.ContainerRuntime = "remote"
 	kubeletFlags.RemoteRuntimeEndpoint = "unix:///var/run/crio/crio.sock"
-	kubeletFlags.NodeLabels["node-role.kubernetes.io/control-plane"] = ""
 	kubeletFlags.NodeLabels["node-role.kubernetes.io/master"] = ""
-	kubeletFlags.NodeLabels["node-role.kubernetes.io/worker"] = ""
 	kubeletFlags.NodeLabels["node.openshift.io/os_id"] = osID
 
 	kubeletConfig, err := loadConfigFile(microshiftDataDir + "/resources/kubelet/config/config.yaml")
