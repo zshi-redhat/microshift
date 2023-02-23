@@ -2,11 +2,13 @@ package components
 
 import (
 	"fmt"
+	"os"
 	"path/filepath"
 
 	"github.com/openshift/microshift/pkg/assets"
 	"github.com/openshift/microshift/pkg/config"
 	"github.com/openshift/microshift/pkg/config/ovn"
+	"github.com/openshift/microshift/pkg/util/cryptomaterial"
 	"k8s.io/klog/v2"
 )
 
@@ -38,7 +40,28 @@ func startCNIPlugin(cfg *config.MicroshiftConfig, kubeconfigPath string) error {
 			"components/ovn/master/daemonset.yaml",
 			"components/ovn/node/daemonset.yaml",
 		}
+		secret = "components/ovn/secret-ovn-cert.yaml"
+		cacm   = "components/ovn/configmap-ovn-ca.yaml"
 	)
+
+	serviceCADir := cryptomaterial.ServiceCADir(cryptomaterial.CertsDirectory(microshiftDataDir))
+	caCertPath := cryptomaterial.CACertPath(serviceCADir)
+	caKeyPath := cryptomaterial.CAKeyPath(serviceCADir)
+
+	cmData := map[string]string{}
+	secretData := map[string][]byte{}
+
+	caCertPEM, err := os.ReadFile(caCertPath)
+	if err != nil {
+		return err
+	}
+	caKeyPEM, err := os.ReadFile(caKeyPath)
+	if err != nil {
+		return err
+	}
+	cmData["ca-bundle.crt"] = string(caCertPEM)
+	secretData["tls.crt"] = caCertPEM
+	secretData["tls.key"] = caKeyPEM
 
 	ovnConfig, err := ovn.NewOVNKubernetesConfigFromFileOrDefault(filepath.Dir(config.DefaultGlobalConfigFile))
 	if err != nil {
@@ -77,9 +100,19 @@ func startCNIPlugin(cfg *config.MicroshiftConfig, kubeconfigPath string) error {
 		"OVNConfig":      ovnConfig,
 		"KubeconfigPath": kubeconfigPath,
 		"KubeconfigDir":  filepath.Join(microshiftDataDir, "/resources/kubeadmin"),
+		"OVN_NB_DB_LIST": fmt.Sprintf("ssl:%s:%s", cfg.NodeIP, ovn.OVN_NB_PORT),
+		"OVN_SB_DB_LIST": fmt.Sprintf("ssl:%s:%s", cfg.NodeIP, ovn.OVN_SB_PORT),
 	}
 	if err := assets.ApplyConfigMaps(cm, renderTemplate, renderParamsFromConfig(cfg, extraParams), kubeconfigPath); err != nil {
 		klog.Warningf("Failed to apply configMap %v %v", cm, err)
+		return err
+	}
+	if err := assets.ApplyConfigMapWithData(cacm, cmData, kubeconfigPath); err != nil {
+		klog.Warningf("Failed to apply configMap %v: %v", cacm, err)
+		return err
+	}
+	if err := assets.ApplySecretWithData(secret, secretData, kubeconfigPath); err != nil {
+		klog.Warningf("Failed to apply secret %v: %v", secret, err)
 		return err
 	}
 	if err := assets.ApplyDaemonSets(apps, renderTemplate, renderParamsFromConfig(cfg, extraParams), kubeconfigPath); err != nil {

@@ -19,6 +19,11 @@ const (
 	defaultMTU                  = 1500
 	OVNKubernetesV4MasqueradeIP = "169.254.169.2"
 	OVNKubernetesV6MasqueradeIP = "fd69::2"
+
+	OVN_NB_PORT      = "9641"
+	OVN_SB_PORT      = "9642"
+	OVN_NB_RAFT_PORT = "9643"
+	OVN_SB_RAFT_PORT = "9644"
 )
 
 type OVNKubernetesConfig struct {
