@@ -32,7 +32,6 @@ spec:
     spec:
       serviceAccountName: ovn-kubernetes-controller
       hostNetwork: true
-      hostPID: true
       dnsPolicy: Default
       priorityClassName: "system-cluster-critical"
       # volumes in all containers:
@@ -69,6 +68,11 @@ spec:
           echo "$(date -Iseconds) - starting ovn-northd"
           exec ovn-northd \
             --no-chdir "-vconsole:${OVN_LOG_LEVEL}" -vfile:off "-vPATTERN:console:%D{%Y-%m-%dT%H:%M:%S.###Z}|%05N|%c%T|%p|%m" \
+            --ovnnb-db "{{.OVN_NB_DB_LIST}}" \
+            --ovnsb-db "{{.OVN_SB_DB_LIST}}" \
+            -p /ovn-cert/tls.key \
+            -c /ovn-cert/tls.crt \
+            -C /ovn-ca/ca-bundle.crt \
             --pidfile /var/run/ovn/ovn-northd.pid &
 
           wait $!
@@ -82,6 +86,10 @@ spec:
         env:
         - name: OVN_LOG_LEVEL
           value: info
+        - name: K8S_NODE_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.hostIP
         volumeMounts:
         - mountPath: /run/openvswitch/
           name: run-openvswitch
@@ -89,6 +97,12 @@ spec:
           name: run-ovn
         - mountPath: /env
           name: env-overrides
+
+        - mountPath: /ovn-cert
+          name: ovn-cert
+        - mountPath: /ovn-ca
+          name: ovn-ca
+
         resources:
           requests:
             cpu: 10m
@@ -130,12 +144,21 @@ spec:
           # initialize variables
           db="nb"
           ovn_db_file="/etc/ovn/ovn${db}_db.db"
-          OVN_ARGS="--db-nb-cluster-local-port=9643 --no-monitor"
+
+          OVN_ARGS="--db-nb-cluster-local-port=9643 \
+            --db-nb-cluster-local-addr=$(bracketify ${K8S_NODE_IP}) \
+            --db-nb-cluster-local-proto=ssl \
+            --ovn-nb-db-ssl-key=/ovn-cert/tls.key \
+            --ovn-nb-db-ssl-cert=/ovn-cert/tls.crt \
+            --ovn-nb-db-ssl-ca-cert=/ovn-ca/ca-bundle.crt \
+            --no-monitor"
 
           echo "$(date -Iseconds) - starting nbdb"
+
           exec /usr/share/ovn/scripts/ovn-ctl \
             ${OVN_ARGS} \
             --ovn-nb-log="-vconsole:${OVN_LOG_LEVEL} -vfile:off -vPATTERN:console:%D{%Y-%m-%dT%H:%M:%S.###Z}|%05N|%c%T|%p|%m" \
+            --db-nb-election-timer=10000 \
             run_nb_ovsdb &
 
           db_pid=$!
@@ -152,13 +175,27 @@ spec:
                 set -x
                 rm -f /var/run/ovn/ovnnb_db.pid
 
+                retries=0
+                while [[ "${retries}" -lt 60 ]]; do
+                  ovn-nbctl --no-leader-only -t 5 set-connection pssl:{{.OVN_NB_PORT}} -- set connection . inactivity_probe=60000
+                  if [[ $? == 0 ]]; then
+                    echo "Successfully set nbdb connection"
+                    break
+                  else
+                    sleep 2
+                    (( retries += 1 ))
+                  fi
+                  echo "Failed to set nbdb connection"
+                done
+
                 #configure northd_probe_interval
+                OVN_NB_CTL="ovn-nbctl -p /ovn-cert/tls.key -c /ovn-cert/tls.crt -C /ovn-ca/ca-bundle.crt --db "{{.OVN_NB_DB_LIST}}""
                 northd_probe_interval=${OVN_NORTHD_PROBE_INTERVAL:-10000}
                 echo "Setting northd probe interval to ${northd_probe_interval} ms"
                 retries=0
                 current_probe_interval=0
                 while [[ "${retries}" -lt 10 ]]; do
-                  current_probe_interval=$(ovn-nbctl --if-exists get NB_GLOBAL . options:northd_probe_interval)
+                  current_probe_interval=$(${OVN_NB_CTL} --if-exists get NB_GLOBAL . options:northd_probe_interval)
                   if [[ $? == 0 ]]; then
                     current_probe_interval=$(echo ${current_probe_interval} | tr -d '\"')
                     break
@@ -171,7 +208,7 @@ spec:
                 if [[ "${current_probe_interval}" != "${northd_probe_interval}" ]]; then
                   retries=0
                   while [[ "${retries}" -lt 10 ]]; do
-                    ovn-nbctl set NB_GLOBAL . options:northd_probe_interval=${northd_probe_interval}
+                    ${OVN_NB_CTL} set NB_GLOBAL . options:northd_probe_interval=${northd_probe_interval}
                     if [[ $? != 0 ]]; then
                       echo "Failed to set northd probe interval to ${northd_probe_interval}. retrying....."
                       sleep 2
@@ -208,6 +245,10 @@ spec:
           value: info
         - name: OVN_NORTHD_PROBE_INTERVAL
           value: "5000"
+        - name: K8S_NODE_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.hostIP
         volumeMounts:
         - mountPath: /run/openvswitch/
           name: run-openvswitch
@@ -215,10 +256,22 @@ spec:
           name: run-ovn
         - mountPath: /env
           name: env-overrides
+
+        - mountPath: /ovn-cert
+          name: ovn-cert
+        - mountPath: /ovn-ca
+          name: ovn-ca
+
         resources:
           requests:
             cpu: 10m
             memory: 10Mi
+
+        ports:
+        - name: nb-db-port
+          containerPort: {{.OVN_NB_PORT}}
+        - name: nb-db-raft-port
+          containerPort: {{.OVN_NB_RAFT_PORT}}
         terminationMessagePolicy: FallbackToLogsOnError
 
       # sbdb: The southbound, or flow DB. In raft mode
@@ -258,12 +311,19 @@ spec:
           db="sb"
           ovn_db_file="/etc/ovn/ovn${db}_db.db"
 
-          OVN_ARGS="--db-sb-cluster-local-port=9644 --no-monitor"
+          OVN_ARGS="--db-sb-cluster-local-port=9644 \
+            --db-sb-cluster-local-addr=$(bracketify ${K8S_NODE_IP}) \
+            --db-sb-cluster-local-proto=ssl \
+            --ovn-sb-db-ssl-key=/ovn-cert/tls.key \
+            --ovn-sb-db-ssl-cert=/ovn-cert/tls.crt \
+            --ovn-sb-db-ssl-ca-cert=/ovn-ca/ca-bundle.crt \
+            --no-monitor"
 
           echo "$(date -Iseconds) - starting sbdb "
           exec /usr/share/ovn/scripts/ovn-ctl \
             ${OVN_ARGS} \
             --ovn-sb-log="-vconsole:${OVN_LOG_LEVEL} -vfile:off -vPATTERN:console:%D{%Y-%m-%dT%H:%M:%S.###Z}|%05N|%c%T|%p|%m" \
+            --db-sb-election-timer=16000 \
             run_sb_ovsdb &
           db_pid=$!
           compact $db &
@@ -277,6 +337,20 @@ spec:
               - |
                 set -x
                 rm -f /var/run/ovn/ovnsb_db.pid
+
+                retries=0
+                while [[ "${retries}" -lt 60 ]]; do
+                  ovn-sbctl --no-leader-only -t 5 set-connection pssl:{{.OVN_SB_PORT}} -- set connection . inactivity_probe=60000
+                  if [[ $? == 0 ]]; then
+                    echo "Successfully set sbdb connection"
+                    break
+                  else
+                    sleep 2
+                    (( retries += 1 ))
+                  fi
+                  echo "Failed to set sbdb connection"
+                done
+
 
           preStop:
             exec:
@@ -300,6 +374,10 @@ spec:
         env:
         - name: OVN_LOG_LEVEL
           value: info
+        - name: K8S_NODE_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.hostIP
         volumeMounts:
         - mountPath: /run/openvswitch/
           name: run-openvswitch
@@ -307,10 +385,22 @@ spec:
           name: run-ovn
         - mountPath: /env
           name: env-overrides
+
+        - mountPath: /ovn-cert
+          name: ovn-cert
+        - mountPath: /ovn-ca
+          name: ovn-ca
+
         resources:
           requests:
             cpu: 10m
             memory: 10Mi
+
+        ports:
+        - name: sb-db-port
+          containerPort: {{.OVN_SB_PORT}}
+        - name: sb-db-raft-port
+          containerPort: {{.OVN_SB_RAFT_PORT}}
         terminationMessagePolicy: FallbackToLogsOnError
 
       # ovnkube master: convert kubernetes objects in to nbdb logical network components
@@ -330,51 +420,30 @@ spec:
           # K8S_NODE_IP triggers reconcilation of this daemon when node IP changes
           echo "$(date -Iseconds) - starting ovnkube-master, Node: ${K8S_NODE} IP: ${K8S_NODE_IP}"
 
-          echo "I$(date "+%m%d %H:%M:%S.%N") - copy ovn-k8s-cni-overlay"
-          cp -f /usr/libexec/cni/ovn-k8s-cni-overlay /cni-bin-dir/
-
-          echo "I$(date "+%m%d %H:%M:%S.%N") - disable conntrack on geneve port"
-          iptables -t raw -A PREROUTING -p udp --dport 6081 -j NOTRACK
-          iptables -t raw -A OUTPUT -p udp --dport 6081 -j NOTRACK
-          ip6tables -t raw -A PREROUTING -p udp --dport 6081 -j NOTRACK
-          ip6tables -t raw -A OUTPUT -p udp --dport 6081 -j NOTRACK
-          echo "I$(date "+%m%d %H:%M:%S.%N") - starting ovnkube-node"
-
           gateway_mode_flags="--gateway-mode local --gateway-interface br-ex"
 
           sysctl net.ipv4.ip_forward=1
 
-          gw_interface_flag=
-          # if br-ex1 is configured on the node, we want to use it for external gateway traffic
-          if [ -d /sys/class/net/br-ex1 ]; then
-            gw_interface_flag="--exgw-interface=br-ex1"
-            # the functionality depends on ip_forwarding being enabled
-          fi
-
-          echo "I$(date "+%m%d %H:%M:%S.%N") - ovnkube-master - start ovnkube --init-master ${K8S_NODE} --init-node ${K8S_NODE}"
+          echo "I$(date "+%m%d %H:%M:%S.%N") - ovnkube-master - start ovnkube --init-master ${K8S_NODE}"
           exec /usr/bin/ovnkube \
             --init-master "${K8S_NODE}" \
-            --init-node "${K8S_NODE}" \
+            --nb-address "{{.OVN_NB_DB_LIST}}" \
+            --nb-client-privkey /ovn-cert/tls.key \
+            --nb-client-cert /ovn-cert/tls.crt \
+            --nb-client-cacert /ovn-ca/ca-bundle.crt \
+            --nb-cert-common-name "ovn" \
+            --sb-address "{{.OVN_SB_DB_LIST}}" \
+            --sb-client-privkey /ovn-cert/tls.key \
+            --sb-client-cert /ovn-cert/tls.crt \
+            --sb-client-cacert /ovn-ca/ca-bundle.crt \
+            --sb-cert-common-name "ovn" \
             --config-file=/run/ovnkube-config/ovnkube.conf \
             --loglevel "${OVN_KUBE_LOG_LEVEL}" \
             ${gateway_mode_flags} \
-            ${gw_interface_flag} \
             --inactivity-probe="180000" \
-            --nb-address "" \
-            --sb-address "" \
             --enable-multicast \
             --disable-snat-multiple-gws \
-            --single-node \
             --acl-logging-rate-limit "20"
-        lifecycle:
-          preStop:
-            exec:
-              command: ["rm","-f","/etc/cni/net.d/10-ovn-kubernetes.conf"]
-        readinessProbe:
-          exec:
-            command: ["test", "-f", "/etc/cni/net.d/10-ovn-kubernetes.conf"]
-          initialDelaySeconds: 5
-          periodSeconds: 5
         volumeMounts:
         # for checking ovs-configuration service
         - mountPath: /etc/systemd/system
@@ -390,27 +459,22 @@ spec:
           name: kubeconfig
         - mountPath: /env
           name: env-overrides
-        - mountPath: /etc/cni/net.d
-          name: host-cni-netd
-        - mountPath: /cni-bin-dir
-          name: host-cni-bin
         - mountPath: /run/ovn-kubernetes/
           name: host-run-ovn-kubernetes
         - mountPath: /dev/log
           name: log-socket
         - mountPath: /var/log/ovn
           name: node-log
-        - mountPath: /host
-          name: host-slash
-          readOnly: true
-        - mountPath: /run/netns
-          name: host-run-netns
-          readOnly: true
-          mountPropagation: HostToContainer
         - mountPath: /etc/openvswitch
           name: etc-openvswitch-node
         - mountPath: /etc/ovn/
           name: etc-openvswitch-node
+
+        - mountPath: /ovn-cert
+          name: ovn-cert
+        - mountPath: /ovn-ca
+          name: ovn-ca
+
         resources:
           requests:
             cpu: 10m
@@ -430,6 +494,7 @@ spec:
           privileged: true
         terminationMessagePolicy: FallbackToLogsOnError
       nodeSelector:
+        node-role.kubernetes.io/master: ""
         kubernetes.io/os: "linux"
       volumes:
       # for checking ovs-configuration service
@@ -443,13 +508,6 @@ spec:
         hostPath:
           path: /var/run/ovn
 
-      # used for iptables wrapper scripts
-      - name: host-slash
-        hostPath:
-          path: /
-      - name: host-run-netns
-        hostPath:
-          path: /run/netns
       - name: etc-openvswitch-node
         hostPath:
           path: /etc/openvswitch
@@ -464,12 +522,6 @@ spec:
       - name: host-run-ovn-kubernetes
         hostPath:
           path: /run/ovn-kubernetes
-      - name: host-cni-netd
-        hostPath:
-          path: "/etc/cni/net.d"
-      - name: host-cni-bin
-        hostPath:
-          path: "/opt/cni/bin"
 
       - name: kubeconfig
         hostPath:
@@ -477,6 +529,14 @@ spec:
       - name: ovnkube-config
         configMap:
           name: ovnkube-config
+
+      - name: ovn-ca
+        configMap:
+          name: ovn-ca
+      - name: ovn-cert
+        secret:
+          secretName: ovn-cert
+
       - name: env-overrides
         configMap:
           name: env-overrides
