@@ -62,7 +62,6 @@ apiServerArguments:
     - LimitRanger
     - MutatingAdmissionWebhook
     - NamespaceLifecycle
-    - NodeRestriction
     - OwnerReferencesPermissionEnforcement
     - PersistentVolumeClaimResize
     - PersistentVolumeLabel

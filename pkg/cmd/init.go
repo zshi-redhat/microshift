@@ -390,7 +390,7 @@ func initKubeconfigs(
 	}
 
 	// Generate one kubeconfigs per name
-	for _, name := range append(cfg.SubjectAltNames, cfg.NodeName, "localhost") {
+	for _, name := range append(cfg.SubjectAltNames, cfg.NodeName, "localhost", "worker") {
 		u.Host = fmt.Sprintf("%s:%d", name, apiServerPort)
 		if err := util.KubeConfigWithClientCerts(
 			cfg.KubeConfigAdminPath(name),
