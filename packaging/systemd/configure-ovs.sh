@@ -200,6 +200,12 @@ convert_to_bridge() {
     iface_type=tun
     tun_mode=$(nmcli --get-values tun.mode -e no connection show ${old_conn})
     extra_phys_args+=( tun.mode "${tun_mode}" )
+  elif [ $(nmcli --get-values connection.type conn show ${old_conn}) == "802-11-wireless" ]; then
+    iface_type=wifi
+    wifi_ssid=$(nmcli --get-values 802-11-wireless.ssid conn show ${old_conn})
+    wifi_sec_psk=$(nmcli --show-secrets --get-values 802-11-wireless-security.psk conn show ${old_conn})
+    wifi_sec_key_mgmt=$(nmcli --get-values 802-11-wireless-security.key-mgmt conn show ${old_conn})
+    extra_phys_args+=( wifi.ssid ${wifi_ssid} wifi-sec.psk ${wifi_sec_psk} wifi-sec.key-mgmt ${wifi_sec_key_mgmt} )
   else
     iface_type=802-3-ethernet
   fi
@@ -214,13 +220,22 @@ convert_to_bridge() {
     # Do set it though for other link aggregation configurations where the
     # mac address would otherwise depend on enslave order for which we have
     # no control going forward.
-    extra_phys_args+=( 802-3-ethernet.cloned-mac-address "${iface_mac}" )
+    if [ "${iface_type}" == "wifi" ]; then
+      extra_phys_args+=( 802-11-wireless.cloned-mac-address "${iface_mac}" )
+    else
+      extra_phys_args+=( 802-3-ethernet.cloned-mac-address "${iface_mac}" )
+    fi
   fi
   # use ${extra_phys_args[@]+"${extra_phys_args[@]}"} instead of ${extra_phys_args[@]} to be compatible with bash 4.2 in RHEL7.9
   if ! nmcli connection show "$bridge_interface_name" &> /dev/null; then
     ovs-vsctl --timeout=30 --if-exists destroy interface ${iface}
-    add_nm_conn type ${iface_type} conn.interface ${iface} master "$default_port_name" con-name "$bridge_interface_name" \
-    connection.autoconnect-priority 100 802-3-ethernet.mtu ${iface_mtu} ${extra_phys_args[@]+"${extra_phys_args[@]}"}
+    if [ "${iface_type}" == "wifi" ]; then
+      add_nm_conn type ${iface_type} conn.interface ${iface} master "$default_port_name" con-name "$bridge_interface_name" \
+      connection.autoconnect-priority 100 802-11-wireless.mtu ${iface_mtu} ${extra_phys_args[@]+"${extra_phys_args[@]}"}
+    else
+      add_nm_conn type ${iface_type} conn.interface ${iface} master "$default_port_name" con-name "$bridge_interface_name" \
+      connection.autoconnect-priority 100 802-3-ethernet.mtu ${iface_mtu} ${extra_phys_args[@]+"${extra_phys_args[@]}"}
+    fi
   fi
   # Get the new connection uuids
   new_conn=$(nmcli -g connection.uuid conn show "$bridge_interface_name")
