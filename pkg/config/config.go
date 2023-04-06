@@ -33,6 +33,8 @@ type Config struct {
 	// Internal-only fields
 	Ingress      IngressConfig `json:"-"`
 	userSettings *Config       `json:"-"` // the values read from the config file
+
+	MultiNode MultiNode `json:"multiNode"` // the value read from commond line
 }
 
 // NewDefault creates a new Config struct populated with the
@@ -104,6 +106,8 @@ func (c *Config) fillDefaults() error {
 		MaxFragmentedPercentage: 45,
 		DefragCheckFreq:         5 * time.Minute,
 	}
+
+	c.MultiNode.Enabled = false
 
 	return nil
 }

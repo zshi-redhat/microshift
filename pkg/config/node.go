@@ -19,6 +19,13 @@ type Node struct {
 	NodeIP string `json:"nodeIP"`
 }
 
+type MultiNode struct {
+	Enabled bool `json:"enabled"`
+	// only one master node is supported, no control plane HA
+	Master  string   `json:"master"`
+	Workers []string `json:"workers"`
+}
+
 // Determine if the config file specified a NodeName (by default it's assigned the hostname)
 func (c *Config) isDefaultNodeName() bool {
 	hostname, err := os.Hostname()

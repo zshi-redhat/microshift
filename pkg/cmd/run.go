@@ -33,19 +33,31 @@ func NewRunMicroshiftCommand() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "run",
 		Short: "Run MicroShift",
-		RunE: func(cmd *cobra.Command, args []string) error {
-			cfg, err := config.ActiveConfig()
-			if err != nil {
-				return err
-			}
-			// Things to very badly if the node's name has changed
-			// since the last time the server started.
-			err = cfg.EnsureNodeNameHasNotChanged()
-			if err != nil {
-				return err
-			}
-			return RunMicroshift(cfg)
-		},
+	}
+
+	var master bool
+
+	flags := cmd.Flags()
+	flags.BoolVar(&master, "master", false, "act as control plane node in multinode mode")
+	flags.MarkHidden("master")
+
+	cmd.RunE = func(cmd *cobra.Command, args []string) error {
+		cfg, err := config.ActiveConfig()
+		if err != nil {
+			return err
+		}
+
+		// Multinode is enabled when master flag is true
+		cfg.MultiNode.Enabled = master
+		cfg.MultiNode.Master = cfg.Node.NodeIP
+
+		// Things to very badly if the node's name has changed
+		// since the last time the server started.
+		err = cfg.EnsureNodeNameHasNotChanged()
+		if err != nil {
+			return err
+		}
+		return RunMicroshift(cfg)
 	}
 
 	return cmd
