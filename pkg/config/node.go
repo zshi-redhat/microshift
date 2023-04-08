@@ -22,7 +22,8 @@ type Node struct {
 type MultiNode struct {
 	Enabled bool `json:"enabled"`
 	// only one master node is supported, no control plane HA
-	Master  string   `json:"master"`
+	Master  bool     `json:"master"`
+	Worker  bool     `json:"worker"`
 	Workers []string `json:"workers"`
 }
 

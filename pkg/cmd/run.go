@@ -36,10 +36,13 @@ func NewRunMicroshiftCommand() *cobra.Command {
 	}
 
 	var master bool
+	var worker bool
 
 	flags := cmd.Flags()
 	flags.BoolVar(&master, "master", false, "act as control plane node in multinode mode")
+	flags.BoolVar(&worker, "worker", false, "act as worker node in multinode mode")
 	flags.MarkHidden("master")
+	flags.MarkHidden("worker")
 
 	cmd.RunE = func(cmd *cobra.Command, args []string) error {
 		cfg, err := config.ActiveConfig()
@@ -49,7 +52,8 @@ func NewRunMicroshiftCommand() *cobra.Command {
 
 		// Multinode is enabled when master flag is true
 		cfg.MultiNode.Enabled = master
-		cfg.MultiNode.Master = cfg.Node.NodeIP
+		cfg.MultiNode.Master = master
+		cfg.MultiNode.Worker = worker
 
 		// Things to very badly if the node's name has changed
 		// since the last time the server started.
@@ -111,22 +115,26 @@ func RunMicroshift(cfg *config.Config) error {
 	}
 
 	m := servicemanager.NewServiceManager()
-	util.Must(m.AddService(node.NewNetworkConfiguration(cfg)))
-	util.Must(m.AddService(controllers.NewEtcd(cfg)))
-	util.Must(m.AddService(sysconfwatch.NewSysConfWatchController(cfg)))
-	util.Must(m.AddService(controllers.NewKubeAPIServer(cfg)))
-	util.Must(m.AddService(controllers.NewKubeScheduler(cfg)))
-	util.Must(m.AddService(controllers.NewKubeControllerManager(cfg)))
-	util.Must(m.AddService(controllers.NewOpenShiftCRDManager(cfg)))
-	util.Must(m.AddService(controllers.NewRouteControllerManager(cfg)))
-	util.Must(m.AddService(controllers.NewClusterPolicyController(cfg)))
-	util.Must(m.AddService(controllers.NewOpenShiftDefaultSCCManager(cfg)))
-	util.Must(m.AddService(mdns.NewMicroShiftmDNSController(cfg)))
-	util.Must(m.AddService(controllers.NewInfrastructureServices(cfg)))
-	util.Must(m.AddService((controllers.NewVersionManager((cfg)))))
-	util.Must(m.AddService(kustomize.NewKustomizer(cfg)))
-	util.Must(m.AddService(node.NewKubeletServer(cfg)))
-	util.Must(m.AddService(loadbalancerservice.NewLoadbalancerServiceController(cfg)))
+	if cfg.MultiNode.Worker {
+		util.Must(m.AddService(node.NewKubeletServer(cfg)))
+	} else {
+		util.Must(m.AddService(node.NewNetworkConfiguration(cfg)))
+		util.Must(m.AddService(controllers.NewEtcd(cfg)))
+		util.Must(m.AddService(sysconfwatch.NewSysConfWatchController(cfg)))
+		util.Must(m.AddService(controllers.NewKubeAPIServer(cfg)))
+		util.Must(m.AddService(controllers.NewKubeScheduler(cfg)))
+		util.Must(m.AddService(controllers.NewKubeControllerManager(cfg)))
+		util.Must(m.AddService(controllers.NewOpenShiftCRDManager(cfg)))
+		util.Must(m.AddService(controllers.NewRouteControllerManager(cfg)))
+		util.Must(m.AddService(controllers.NewClusterPolicyController(cfg)))
+		util.Must(m.AddService(controllers.NewOpenShiftDefaultSCCManager(cfg)))
+		util.Must(m.AddService(mdns.NewMicroShiftmDNSController(cfg)))
+		util.Must(m.AddService(controllers.NewInfrastructureServices(cfg)))
+		util.Must(m.AddService((controllers.NewVersionManager((cfg)))))
+		util.Must(m.AddService(kustomize.NewKustomizer(cfg)))
+		util.Must(m.AddService(node.NewKubeletServer(cfg)))
+		util.Must(m.AddService(loadbalancerservice.NewLoadbalancerServiceController(cfg)))
+	}
 
 	// Storing and clearing the env, so other components don't send the READY=1 until MicroShift is fully ready
 	notifySocket := os.Getenv("NOTIFY_SOCKET")
